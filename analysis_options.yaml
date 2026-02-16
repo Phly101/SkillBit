@@ -1,0 +1,27 @@
+
+include: package:flutter_lints/flutter.yaml
+
+linter:
+
+  rules:
+    avoid_print: false
+    prefer_single_quotes: true
+    prefer_final_fields: true
+    prefer_final_parameters: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_const_constructors_in_immutables: true
+    always_specify_types: true
+    avoid_unused_constructor_parameters: true
+    prefer_typing_uninitialized_variables: true
+    lines_longer_than_80_chars: false # Optional but keeps code readable
+    sort_constructors_first: true      # Good for entity/model classes
+#    sort_pub_dependencies: true        # Keeps pubspec tidy
+    avoid_unnecessary_containers: true
+    prefer_const_literals_to_create_immutables: true
+
+
+
+
+
+
