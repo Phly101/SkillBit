@@ -31,7 +31,6 @@ class AppTheme {
         error: AppColors.mainRed,
         onError: Colors.white,
 
-        // Other colors can be mapped to custom slots
         outline: AppColors.mainGrey,
         shadow: Colors.black.withValues(alpha: 0.05),
       ),
@@ -58,7 +57,7 @@ class AppTheme {
           foregroundColor: Colors.white,
           minimumSize: const Size(double.infinity, 50),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(8),
           ),
           textStyle: const TextStyle(
             fontFamily: 'Lexend',
@@ -101,31 +100,61 @@ class AppTheme {
   );
 }
 
-// theme helper for using theme colors :) =))
+/// ===========================================================================
+/// THEME HELPER
+/// ===========================================================================
+/// Provides quick access to the app's [TextTheme] and [ColorScheme].
+/// This removes the need to write `Theme.of(context)` repeatedly.
 extension ThemeHelper on BuildContext {
+  /// Access text styles defined in your AppTheme.
+  /// Example: `context.textTheme.displayLarge`
   TextTheme get textTheme => Theme.of(this).textTheme;
 
+  /// Access the semantic colors defined in your AppTheme.
+  /// Example: `context.colorScheme.primary`
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }
 
-// Spacing helper for using space between widgets ;) =))
+/// ===========================================================================
+/// SPACING HELPER
+/// ===========================================================================
+/// Adds spacing shortcuts to [num] (int and double).
+/// This is used to create gaps between widgets in Columns or Rows
+/// without manually creating a [SizedBox].
 extension SpacingHelper on num {
-  // Use: 10.heightBox
+  /// Creates a vertical gap.
+  /// Example: `16.heightBox` is equivalent to `SizedBox(height: 16)`
   SizedBox get heightBox => SizedBox(height: toDouble());
 
-  // Use: 20.widthBox
+  /// Creates a horizontal gap.
+  /// Example: `10.widthBox` is equivalent to `SizedBox(width: 10)`
   SizedBox get widthBox => SizedBox(width: toDouble());
 }
 
-// Padding helper for using pads between widgets ;) =))
+/// ===========================================================================
+/// PADDING HELPER
+/// ===========================================================================
+/// Allows you to wrap any Widget in Padding by calling a method on it.
+/// This prevents deep nesting and keeps the "child" visible at the start.
 extension WidgetPadding on Widget {
-  Padding p10() => Padding(padding: const EdgeInsets.all(10), child: this);
 
-  Padding pW(final double vertical) => Padding(
+  /// Wraps the widget with 10 pixels of padding on all sides.
+  /// Example: `Text("Hello").p10()`
+  Padding p10() => Padding(
+    padding: const EdgeInsets.all(10),
+    child: this,
+  );
+
+  /// Wraps the widget with symmetric vertical padding.
+  /// Example: `MyWidget().pV(20)`
+  /// Note: renamed from pW to pV for "Vertical" clarity.
+  Padding pV(final double vertical) => Padding(
     padding: EdgeInsets.symmetric(vertical: vertical),
     child: this,
   );
 
+  /// Wraps the widget with symmetric horizontal padding.
+  /// Example: `MyButton().pH(16)`
   Padding pH(final double horizontal) => Padding(
     padding: EdgeInsets.symmetric(horizontal: horizontal),
     child: this,
