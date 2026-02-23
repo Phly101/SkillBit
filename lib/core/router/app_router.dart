@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skill_bit/features/assessment/presentation/pages/assessment_transition_page.dart';
 import 'package:skill_bit/features/auth/presentation/pages/forgot_password_page.dart';
 import 'package:skill_bit/features/auth/presentation/pages/new_password_page.dart';
 import 'package:skill_bit/features/auth/presentation/pages/sign_up_page.dart';
@@ -8,11 +9,14 @@ import 'package:skill_bit/features/auth/presentation/pages/verification_page.dar
 import 'package:skill_bit/features/home/presentation/pages/home_page.dart';
 import 'package:skill_bit/features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import 'package:skill_bit/features/splash/presentation/pages/splash_page.dart';
+import '../../features/agenda/presentation/pages/agenda_page.dart';
 import '../../features/auth/presentation/pages/log_in_page.dart';
+import '../../features/course/presentation/pages/library_page.dart';
+import '../../features/home/presentation/pages/main_navigation_page.dart';
 import '../../features/onboarding/presentation/pages/onboarding_page.dart';
+import '../../features/profile/presentation/pages/profile_page.dart';
 import '../app_state/app_state_notifier.dart';
 import 'routes.dart';
-
 
 class AppRouter {
   AppRouter({required this.appStateNotifier, required this.onboardingBloc});
@@ -61,7 +65,7 @@ class AppRouter {
 
       // ➣ ➣ ➣ Force login  if they aren't already in the auth flow
       if (isOnboarded && !isLoggedIn && !goingToAuthFlow) {
-        return AppRoutes.login;
+        return AppRoutes.home;
       }
 
       // ➣ ➣ ➣ Prevent logged-in users from going back to login/onboarding
@@ -103,6 +107,11 @@ class AppRouter {
         builder: (final BuildContext context, final GoRouterState state) =>
             const NewPasswordPage(),
       ),
+      GoRoute(
+        path: AppRoutes.assessment,
+        builder: (final BuildContext context, final GoRouterState state) =>
+            const AssessmentTransitionPage(),
+      ),
 
       GoRoute(
         path: AppRoutes.onBoarding,
@@ -112,11 +121,57 @@ class AppRouter {
               child: const OnboardingPage(),
             ),
       ),
-
-      GoRoute(
-        path: AppRoutes.home,
-        builder: (final BuildContext context, final GoRouterState state) =>
-            const HomePage(),
+      StatefulShellRoute.indexedStack(
+        builder:
+            (
+              final BuildContext context,
+              final GoRouterState state,
+              final StatefulNavigationShell navigationShell,
+            ) {
+              return MainNavigationPage(navigationShell: navigationShell);
+            },
+        branches: <StatefulShellBranch>[
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: AppRoutes.home,
+                builder:
+                    (final BuildContext context, final GoRouterState state) =>
+                        const HomePage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: AppRoutes.library,
+                builder:
+                    (final BuildContext context, final GoRouterState state) =>
+                        const LibraryPage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: AppRoutes.agenda,
+                builder:
+                    (final BuildContext context, final GoRouterState state) =>
+                        const AgendaPage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: AppRoutes.profile,
+                builder:
+                    (final BuildContext context, final GoRouterState state) =>
+                        const ProfilePage(),
+              ),
+            ],
+          ),
+        ],
       ),
     ],
   );
