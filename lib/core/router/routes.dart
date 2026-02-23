@@ -1,4 +1,6 @@
 class AppRoutes {
+  AppRoutes._();
+
   //? splash screen
   static const String splash = '/';
 
@@ -10,6 +12,7 @@ class AppRoutes {
   static const String login = '/login';
   static const String verification = '/verification';
   static const String forgotPassword = '/forgotPassword';
+  static const String newPassword = '/NewPassword';
 
   //? Home Screen
   static const String home = '/home';

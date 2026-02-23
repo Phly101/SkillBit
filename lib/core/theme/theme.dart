@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTheme {
+  AppTheme._();
+
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
@@ -29,7 +31,7 @@ class AppTheme {
 
         // Functional Colors
         error: AppColors.mainRed,
-        onError: Colors.white,
+        onError: AppColors.correct,
 
         outline: AppColors.mainGrey,
         shadow: Colors.black.withValues(alpha: 0.05),
@@ -56,9 +58,7 @@ class AppTheme {
           backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           minimumSize: const Size(double.infinity, 50),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           textStyle: const TextStyle(
             fontFamily: 'Lexend',
             fontWeight: FontWeight.w600,
@@ -72,13 +72,13 @@ class AppTheme {
   static const TextTheme _textTheme = TextTheme(
     displayLarge: TextStyle(
       fontFamily: 'Poppins',
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w900,
       fontSize: 28,
       color: AppColors.textMain,
     ),
     displayMedium: TextStyle(
       fontFamily: 'Poppins',
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w900,
       fontSize: 16,
       color: AppColors.surface,
     ),
@@ -137,13 +137,9 @@ extension SpacingHelper on num {
 /// Allows you to wrap any Widget in Padding by calling a method on it.
 /// This prevents deep nesting and keeps the "child" visible at the start.
 extension WidgetPadding on Widget {
-
   /// Wraps the widget with 10 pixels of padding on all sides.
   /// Example: `Text("Hello").p10()`
-  Padding p10() => Padding(
-    padding: const EdgeInsets.all(10),
-    child: this,
-  );
+  Padding p10() => Padding(padding: const EdgeInsets.all(10), child: this);
 
   /// Wraps the widget with symmetric vertical padding.
   /// Example: `MyWidget().pV(20)`

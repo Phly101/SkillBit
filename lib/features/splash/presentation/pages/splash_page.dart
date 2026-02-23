@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-
-import '../../../../core/constants/assets.dart';
-import '../../../../core/constants/routes.dart';
+import '../../../../core/app_state/app_state_notifier.dart';
+import '../../../../core/utils/assets.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -16,12 +15,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-
-    Future.delayed(const Duration(seconds: 2), () {
-      if (!mounted) return;
-
-      context.go(AppRoutes.onBoarding);
-    });
+    context.read<AppStateNotifier>().initializeApp();
   }
 
   @override

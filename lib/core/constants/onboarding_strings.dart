@@ -8,7 +8,6 @@ class OnboardingStrings {
   static const String buttonText1 = 'Get started';
   static const String buttonText2 = 'Next';
 
-
   static const String screen1Description =
       'Learn the basics of coding with interactive lessons and fun challenges.';
 
@@ -18,5 +17,5 @@ class OnboardingStrings {
   static const String screen3Description =
       'Compete with your friends and see who can solve the most coding challenges. Earn badges and climb the leaderboard!';
   static const String screen4Description =
-      'Complete challenges Contest with others and win Badges and achievements that shows your skills!';
+      'Complete challenges, Contest with others and earn achievements that show your skills!';
 }

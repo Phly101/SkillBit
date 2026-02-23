@@ -14,9 +14,9 @@ linter:
     always_specify_types: true
     avoid_unused_constructor_parameters: true
     prefer_typing_uninitialized_variables: true
-    lines_longer_than_80_chars: false # Optional but keeps code readable
-    sort_constructors_first: true      # Good for entity/model classes
-#    sort_pub_dependencies: true        # Keeps pubspec tidy
+    lines_longer_than_80_chars: false  # Optional but keeps code readable
+    sort_constructors_first: true       # Good for entity/model classes
+#    sort_pub_dependencies: true         # Keeps pubspec tidy
     avoid_unnecessary_containers: true
     prefer_const_literals_to_create_immutables: true
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  AppColors._();
   static const Color primary = Color(0xFF4F3EF5);
   static const Color secondary = Color(0xFF9C6FF5);
   static const Color tertiary = Color(0xFF15D7E3);
@@ -13,4 +14,5 @@ class AppColors {
   static const Color correct = Color(0xFF1CE31C);
   static const Color locked = Color(0xFF7F7F7F);
   static const Color mainBlue = Color(0xFF3894F0);
+  static const Color secBlue = Color(0xFF647496);
 }
