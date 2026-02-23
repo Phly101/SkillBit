@@ -61,9 +61,7 @@ class FooterWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: .center,
             children: <Widget>[
-              Image.asset(Assets.icon('Facebook_Original.png')).pH(10),
               Image.asset(Assets.icon('Google_Original.png')).pH(10),
-              Image.asset(Assets.icon('Apple_Original.png')).pH(10),
             ],
 
           ).pV(45),
