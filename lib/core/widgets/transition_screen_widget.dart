@@ -31,8 +31,7 @@ class TransitionScreenWidget extends StatelessWidget {
             height: MediaQuery.heightOf(context) * 0.5,
             child: Lottie.asset(assetUrl),
           ),
-          20.heightBox,
-          Text(screenTitle, style: context.textTheme.displayLarge).p10(),
+          Text(screenTitle, style: context.textTheme.displayLarge),
           Text(
             description,
             style: context.textTheme.bodyMedium,
@@ -42,7 +41,7 @@ class TransitionScreenWidget extends StatelessWidget {
           ElevatedButton(
             onPressed: function,
             child: Text(buttonText, style: context.textTheme.displayMedium),
-          ).pV(40),
+          ),
         ],
       ).p10(),
     );
