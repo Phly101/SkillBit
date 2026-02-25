@@ -1,34 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skill_bit/core/constants/home_strings.dart';
 import 'package:skill_bit/core/router/routes.dart';
-import 'package:skill_bit/features/home/presentation/widgets/common/course_card_widget.dart';
+import 'package:skill_bit/features/home/presentation/widgets/common/course_card_grid.dart';
+import 'package:skill_bit/features/home/presentation/widgets/common/level_button_widget.dart';
 import 'package:skill_bit/features/home/presentation/widgets/components/home_header_widget.dart';
-
-import '../../../../core/theme/theme.dart';
 import '../../../../core/utils/assets.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String currentLevel = 'Level1';
+
+  @override
   Widget build(final BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          HomeHeaderWidget(
-            name: 'Basel',
-            onTap: //Todo: Implement Function logic
-            () {
-              context.go(AppRoutes.assessment);
-            },
+
+    return CustomScrollView(
+      slivers: <Widget>[
+
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 60, left: 10, right: 10),
+            child: HomeHeaderWidget(
+              name: 'Basel',
+              onTap: () => context.go(AppRoutes.assessment),
+            ),
           ),
-          CourseCardWidget(
-            title: 'test',
-            imageUrl: Assets.imageLogo('Depth 4, Frame 0.png'),
-            progress: 0.6,
+        ),
+
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                LevelButtonWidget(
+                  level: HomeStrings.lvl1,
+                  function: () => setState(() => currentLevel = 'Level1'),
+                ),
+                LevelButtonWidget(
+                  level: HomeStrings.lvl2,
+                  function: () => setState(() => currentLevel = 'Level2'),
+                ),
+                LevelButtonWidget(
+                  level: HomeStrings.lvl3,
+                  function: () => setState(() => currentLevel = 'Level3'),
+                ),
+              ],
+            ),
           ),
-        ],
-      ).pH(10),
-    ).pV(60);
+        ),
+        CourseCardGrid(
+          itemCount: HomeStrings.levels[currentLevel] ?? 0,
+          title: currentLevel,
+          imageUrl: Assets.imageLogo('Depth 4, Frame 0.png'),
+          progress: 1,
+        ),
+
+
+        const SliverToBoxAdapter(child: SizedBox(height: 40)),
+      ],
+    );
   }
 }
