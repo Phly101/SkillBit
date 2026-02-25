@@ -33,25 +33,34 @@ class AppTheme {
         error: AppColors.mainRed,
         onError: AppColors.correct,
 
+
         outline: AppColors.mainGrey,
         shadow: Colors.black.withValues(alpha: 0.05),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.surface,
         selectedItemColor: AppColors.secondary,
-        unselectedItemColor: AppColors.textSecondary,
+        selectedIconTheme: IconThemeData(
+          size: 30
+        ),
+        unselectedIconTheme: IconThemeData(
+          size: 20
+        ),
+        unselectedItemColor: AppColors.mainGrey,
         selectedLabelStyle: TextStyle(
           fontFamily: 'Inter',
-          fontSize: 12,
+          fontSize: 16,
+          fontWeight: FontWeight.w800,
           color: AppColors.secondary,
         ),
         unselectedLabelStyle: TextStyle(
           fontFamily: 'Inter',
-          fontSize: 12,
+          fontSize: 16,
+          fontWeight: FontWeight.w800,
           color: AppColors.textSecondary,
         ),
         type: BottomNavigationBarType
-            .fixed, // Keeps labels visible like in your design
+            .fixed,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -145,7 +154,7 @@ extension WidgetPadding on Widget {
   /// Example: `MyWidget().pV(20)`
   /// Note: renamed from pW to pV for "Vertical" clarity.
   Padding pV(final double vertical) => Padding(
-    padding: EdgeInsets.symmetric(vertical: vertical),
+    padding: EdgeInsets.only(top: vertical),
     child: this,
   );
 
