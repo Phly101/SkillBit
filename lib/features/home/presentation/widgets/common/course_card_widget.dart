@@ -19,73 +19,62 @@ class CourseCardWidget extends StatelessWidget {
     return SizedBox(
       height: 200,
       width: 220,
-
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Stack(
-          alignment: .centerLeft,
+          alignment: Alignment.center,
           children: <Widget>[
-            progress < 1.0
-                ? WaterAnimation(
-                    height: 200,
-                    width: 220,
-                    waterFillFraction: progress,
-                    fillTransitionDuration: const Duration(milliseconds: 3000),
-                    fillTransitionCurve: Curves.easeInOutQuart,
-                    amplitude: 10,
-                    frequency: 1,
-                    speed: 1,
-                    gradientColors: <Color>[
-                      context.colorScheme.primary,
-                      context.colorScheme.secondary,
-                    ],
-                    enableRipple: true,
-                    realisticWave: true,
-                    decoration: BoxDecoration(color: Colors.grey.shade200),
-                  )
-                : Container(
-                    height: 200,
-                    width: 220,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: <Color>[
-                          context.colorScheme.primary,
-                          context.colorScheme.secondary,
-                        ],
+            Positioned.fill(
+              child: progress < 1.0
+                  ? WaterAnimation(
+                      waterFillFraction: progress,
+                      fillTransitionDuration: const Duration(
+                        milliseconds: 600,
+                      ),
+                      amplitude: 8,
+                      frequency: 1,
+                      speed: 1,
+                      gradientColors: <Color>[
+                        context.colorScheme.primary,
+                        context.colorScheme.secondary,
+                      ],
+                      decoration: BoxDecoration(color: Colors.grey.shade200),
+                    )
+                  : Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: <Color>[
+                            context.colorScheme.primary.withValues(alpha: 0.9),
+                            context.colorScheme.secondary.withValues(alpha: 0.9),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
+            ),
 
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: <Widget>[
-                  Expanded(child: Image.asset(imageUrl, fit: BoxFit.contain)),
-                  const SizedBox(height: 12),
 
-                  Align(
-                    alignment: .topLeft,
-                    child: Text(
+            RepaintBoundary(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisSize: .min,
+                  children: <Widget>[
+                    Expanded(child: Image.asset(imageUrl, fit: BoxFit.contain)),
+                    const SizedBox(height: 8),
+                    Text(
                       title,
-                      textAlign: .left,
-                      style: const TextStyle(
-                        fontSize: 18,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                        shadows: <Shadow>[
-                          Shadow(
-                            offset: Offset(0, 1),
-                            blurRadius: 3.0,
-                            color: Colors.white70,
-                          ),
-                        ],
+                        color: progress >= 1.0 ? Colors.white : Colors.black87,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
