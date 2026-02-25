@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../core/theme/app_colors.dart';
-import '../../../../../core/theme/theme.dart';
 
-class NotificationButton extends StatelessWidget {
-  const NotificationButton({super.key});
+class ButtonWidget extends StatelessWidget {
+  const ButtonWidget({
+    super.key,
+    this.child,
+    this.color,
+    this.padding,
+    this.function,
+  });
+
+  final Widget? child;
+  final Color? color;
+  final double? padding;
+  final void Function()? function;
 
   @override
   Widget build(final BuildContext context) {
     return InkWell(
       onTap: //Todo: Implement Function logic
-          () {},
+          function,
       child: Container(
-        width: 50,
-        height: 50,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: color ?? Colors.white,
           borderRadius: BorderRadius.circular(8),
           boxShadow: <BoxShadow>[
             BoxShadow(
@@ -25,10 +32,11 @@ class NotificationButton extends StatelessWidget {
             ),
           ],
         ),
-        child: Icon(
-          Icons.notifications,
-          color: context.colorScheme.secondary,
-          size: 35,
+        child: Padding(
+          padding: EdgeInsets.all(padding ?? 10.0),
+          child: Center(
+            child: child ?? const SizedBox(child: Text('no widget')),
+          ),
         ),
       ),
     );
