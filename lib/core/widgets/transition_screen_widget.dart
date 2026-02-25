@@ -9,7 +9,7 @@ class TransitionScreenWidget extends StatelessWidget {
     required this.screenTitle,
     required this.description,
     required this.buttonText,
-    required this.function,
+    this.function,
   });
 
   final String assetUrl;
@@ -26,16 +26,23 @@ class TransitionScreenWidget extends StatelessWidget {
         crossAxisAlignment: .center,
         children: <Widget>[
           150.heightBox,
-          Lottie.asset(assetUrl),
+          SizedBox(
+            width: double.infinity,
+            height: MediaQuery.heightOf(context) * 0.5,
+            child: Lottie.asset(assetUrl),
+          ),
           20.heightBox,
           Text(screenTitle, style: context.textTheme.displayLarge).p10(),
-          Text(description, style: context.textTheme.bodyMedium).p10(),
+          Text(
+            description,
+            style: context.textTheme.bodyMedium,
+            textAlign: .center,
+          ).p10(),
           const Spacer(),
           ElevatedButton(
             onPressed: function,
             child: Text(buttonText, style: context.textTheme.displayMedium),
           ).pV(40),
-
         ],
       ).p10(),
     );

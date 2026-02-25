@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:dartz/dartz.dart';
-// import 'package:skill_bit/core/error/failure.dart';
+import 'package:dartz/dartz.dart';
+import 'package:skill_bit/core/error/failure.dart';
 import 'package:skill_bit/core/useCases/use_cases.dart';
 import '../../features/onboarding/domain/useCases/has_on_boarded_use_case.dart';
 
@@ -24,14 +24,14 @@ class AppStateNotifier extends ChangeNotifier {
     final Stopwatch stopwatch = Stopwatch()..start();
 
     // Check onboarding status
-//    final Either<Failure, bool> result =
+   final Either<Failure, bool> result =
     await hasOnBoardedUseCase(const NoParams());
 
-    // _isOnboarded = result.getOrElse(() => false);
-    _isOnboarded = false;
+    _isOnboarded = result.getOrElse(() => false);
+    // _isOnboarded = false;
 
     //  until auth domain exists
-    _isLoggedIn = false;
+    _isLoggedIn = true;
 
     _isInitialized = true;
 
@@ -40,7 +40,7 @@ class AppStateNotifier extends ChangeNotifier {
     final int elapsed = stopwatch.elapsedMilliseconds;
 
     if (elapsed < minSplashMs) {
-      await Future.delayed(
+      await Future<void>.delayed(
         Duration(milliseconds: minSplashMs - elapsed),
       );
     }
