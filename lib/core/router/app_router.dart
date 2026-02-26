@@ -6,6 +6,7 @@ import 'package:skill_bit/features/auth/presentation/pages/forgot_password_page.
 import 'package:skill_bit/features/auth/presentation/pages/new_password_page.dart';
 import 'package:skill_bit/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:skill_bit/features/auth/presentation/pages/verification_page.dart';
+import 'package:skill_bit/features/contests/presentation/pages/contest_details_page.dart';
 import 'package:skill_bit/features/home/presentation/pages/home_page.dart';
 import 'package:skill_bit/features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import 'package:skill_bit/features/splash/presentation/pages/splash_page.dart';
@@ -144,10 +145,10 @@ class AppRouter {
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
-                path: AppRoutes.library,
+                path: AppRoutes.contest,
                 builder:
                     (final BuildContext context, final GoRouterState state) =>
-                        const LibraryPage(),
+                        const ContestDetailsPage(),
               ),
             ],
           ),
