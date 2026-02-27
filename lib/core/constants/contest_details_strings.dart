@@ -12,8 +12,12 @@ class ContestStrings {
   static const String startsIn = 'starts in';
   static const String contestDate = '25 March 2026 | 8:00 Pm';
 
+  static const String contestTime = '02: 14 :26';
+
   // Stats
-  static const String participants = 'Participants';
+    static const String participants = 'Participants';
+
+  static const String participantsLabel = '377';
   static const String duration = 'Duration';
   static const String durationValue = '1h 30m';
   static const String reward = 'Reward';

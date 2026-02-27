@@ -12,7 +12,6 @@ import 'package:skill_bit/features/onboarding/presentation/Bloc/onboarding_bloc.
 import 'package:skill_bit/features/splash/presentation/pages/splash_page.dart';
 import '../../features/agenda/presentation/pages/agenda_page.dart';
 import '../../features/auth/presentation/pages/log_in_page.dart';
-import '../../features/course/presentation/pages/library_page.dart';
 import '../../features/home/presentation/pages/main_navigation_page.dart';
 import '../../features/onboarding/presentation/pages/onboarding_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
@@ -142,17 +141,7 @@ class AppRouter {
               ),
             ],
           ),
-          StatefulShellBranch(
-            routes: <RouteBase>[
-              GoRoute(
-                path: AppRoutes.contest,
-                builder:
-                    (final BuildContext context, final GoRouterState state) =>
-                        const ContestDetailsPage(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
+             StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
                 path: AppRoutes.agenda,
@@ -162,6 +151,17 @@ class AppRouter {
               ),
             ],
           ),
+            StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: AppRoutes.contest,
+                builder:
+                    (final BuildContext context, final GoRouterState state) =>
+                        const ContestDetailsPage(),
+              ),
+            ],
+          ),
+       
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(

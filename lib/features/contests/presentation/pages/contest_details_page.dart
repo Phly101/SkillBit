@@ -6,8 +6,6 @@ class ContestDetailsPage extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
-    return const Scaffold(
-      body: ContestDetailsBody(),
-    );
+    return const ContestDetailsBody();
   }
 }
