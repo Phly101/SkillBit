@@ -17,7 +17,7 @@ class ContestDetailsBody extends StatelessWidget {
           44.heightBox,
           const CustomAppBar(title: ContestStrings.contest),
           30.heightBox,
-          const ContestTimerCard(),
+          const ContestTimerCard(contestTime: ContestStrings.contestTime, contestDate: ContestStrings.contestDate),
           15.heightBox,
           const EventStatsRow(),
           10.heightBox,
