@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
 
-import '../theme/theme.dart';
-
 class ShadowContainer extends StatelessWidget {
-  const ShadowContainer({super.key, required this.child});
+  const ShadowContainer({
+    super.key,
+    required this.child,
+    this.color = Colors.white,
+    this.shape = BoxShape.rectangle,
+    this.borderRadius = 4.0,
+    this.blurRadius = 10.0,
+    this.offset = const Offset(0, 4),
+    this.margin,
+  });
 
   final Widget child;
+  final Color? color;
+  final BoxShape shape;
+  final double borderRadius;
+  final double blurRadius;
+  final Offset offset;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(final BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      margin: margin,
       decoration: BoxDecoration(
-        color: context.colorScheme.surface,
-        borderRadius: BorderRadius.circular(4),
+        color: color,
+        shape: shape,
+        borderRadius: shape == BoxShape.rectangle
+            ? BorderRadius.circular(borderRadius)
+            : null,
         boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.2),
-            blurRadius: 10,
-            spreadRadius: 2,
-            offset: const Offset(0, 4),
+            blurRadius: blurRadius,
+            offset: offset,
           ),
         ],
       ),
