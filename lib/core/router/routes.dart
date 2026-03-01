@@ -40,11 +40,11 @@ class AppRoutes {
 
   //? profile screens
   static const String profile = '/profile';
-  static const String badges = '/badges';
-  static const String achievement = '/achievement';
-  static const String contactUs = '/contactUs';
-  static const String aboutUs = '/aboutUs';
-  static const String settings = '/settings';
+  static const String badges = 'badges';
+  static const String achievement = 'achievement';
+  static const String contactUs = 'contactUs';
+  static const String aboutUs = 'aboutUs';
+  static const String settings = 'settings';
 
   //? Contest screens
   static const String contestScreen = '/contestScreen';

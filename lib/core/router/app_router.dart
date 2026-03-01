@@ -168,6 +168,7 @@ class AppRouter {
                 routes: <RouteBase>[
                   // badges page
                   GoRoute(
+                    name: AppRoutes.badges,
                     path: AppRoutes.badges,
                     builder:
                         (
@@ -177,6 +178,7 @@ class AppRouter {
                   ),
                   // achievement page
                   GoRoute(
+                    name: AppRoutes.achievement,
                     path: AppRoutes.achievement,
                     builder:
                         (
@@ -186,6 +188,7 @@ class AppRouter {
                   ),
                   // about us page
                   GoRoute(
+                    name: AppRoutes.aboutUs,
                     path: AppRoutes.aboutUs,
                     builder:
                         (
@@ -195,6 +198,7 @@ class AppRouter {
                   ),
                   // contact us page
                   GoRoute(
+                    name: AppRoutes.contactUs,
                     path: AppRoutes.contactUs,
                     builder:
                         (
@@ -204,6 +208,7 @@ class AppRouter {
                   ),
                   // settings page
                   GoRoute(
+                    name: AppRoutes.settings,
                     path: AppRoutes.settings,
                     builder:
                         (
