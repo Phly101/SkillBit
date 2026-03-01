@@ -43,6 +43,7 @@ class AppRoutes {
   static const String badges = '/badges';
   static const String achievement = '/achievement';
   static const String contactUs = '/contactUs';
+  static const String aboutUs = '/aboutUs';
   static const String settings = '/settings';
 
   //? Contest screens

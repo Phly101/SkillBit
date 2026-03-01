@@ -10,12 +10,17 @@ import 'package:skill_bit/features/contest/presentation/pages/contest_page.dart'
 import 'package:skill_bit/features/home/presentation/pages/home_page.dart';
 import 'package:skill_bit/features/notifications/presentation/pages/notification_page.dart';
 import 'package:skill_bit/features/onboarding/presentation/Bloc/onboarding_bloc.dart';
+import 'package:skill_bit/features/profile/presentation/pages/about_us_page.dart';
+import 'package:skill_bit/features/profile/presentation/pages/contact_us_page.dart';
 import 'package:skill_bit/features/splash/presentation/pages/splash_page.dart';
 import '../../features/agenda/presentation/pages/agenda_page.dart';
 import '../../features/auth/presentation/pages/log_in_page.dart';
 import '../../features/home/presentation/pages/main_navigation_page.dart';
 import '../../features/onboarding/presentation/pages/onboarding_page.dart';
+import '../../features/profile/presentation/pages/achievements_page.dart';
+import '../../features/profile/presentation/pages/badges_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
+import '../../features/settings/presentation/pages/settings_page.dart';
 import '../app_state/app_state_notifier.dart';
 import 'routes.dart';
 
@@ -119,7 +124,6 @@ class AppRouter {
             const NotificationPage(),
       ),
 
-
       GoRoute(
         path: AppRoutes.onBoarding,
         builder: (final BuildContext context, final GoRouterState state) =>
@@ -175,6 +179,53 @@ class AppRouter {
                 builder:
                     (final BuildContext context, final GoRouterState state) =>
                         const ProfilePage(),
+                routes: <RouteBase>[
+                  // badges page
+                  GoRoute(
+                    path: AppRoutes.badges,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const BadgesPage(),
+                  ),
+                  // achievement page
+                  GoRoute(
+                    path: AppRoutes.achievement,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const AchievementsPage(),
+                  ),
+                  // about us page
+                  GoRoute(
+                    path: AppRoutes.aboutUs,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const AboutUsPage(),
+                  ),
+                  // contact us page
+                  GoRoute(
+                    path: AppRoutes.contactUs,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const ContactUsPage(),
+                  ),
+                  // settings page
+                  GoRoute(
+                    path: AppRoutes.settings,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const SettingsPage(),
+                  ),
+                ],
               ),
             ],
           ),
