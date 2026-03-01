@@ -3,8 +3,9 @@ import 'package:skill_bit/core/constants/contest_details_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/button_widget.dart';
 import 'package:skill_bit/core/widgets/custom_app_par.dart';
-import 'package:skill_bit/features/contests/presentation/pages/widgets/common/Event_Stats_Row.dart';
-import 'package:skill_bit/features/contests/presentation/pages/widgets/common/contest_timer_card.dart';
+
+import 'common/Event_Stats_Row.dart';
+import 'common/contest_timer_card.dart';
 
 class ContestDetailsBody extends StatelessWidget {
   const ContestDetailsBody({super.key});
@@ -33,7 +34,7 @@ class ContestDetailsBody extends StatelessWidget {
             child: ButtonWidget(
               color: context.colorScheme.onSurfaceVariant,
               padding: 13,
-              function: () {},
+              function:() {},
               child: Text(
                 ContestStrings.contestLocked,
                 style: context.textTheme.displayMedium?.copyWith(

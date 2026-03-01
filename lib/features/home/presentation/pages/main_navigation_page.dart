@@ -22,7 +22,7 @@ class MainNavigationPage extends StatelessWidget {
   Widget build(final BuildContext context) {
     return Scaffold(
       body: navigationShell,
-      drawer:  navigationShell.currentIndex == 3?  DrawerWidget(): null,
+      drawer:  navigationShell.currentIndex == 3?  const DrawerWidget(): null,
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[

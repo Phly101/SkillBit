@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/constants/contest_details_strings.dart';
 import 'package:skill_bit/core/utils/assets.dart';
-import 'package:skill_bit/features/contests/presentation/pages/widgets/common/stete_card.dart';
+import 'package:skill_bit/features/contests/presentation/widgets/common/stete_card.dart';
 
 class EventStatsRow extends StatelessWidget {
   const EventStatsRow({super.key});
