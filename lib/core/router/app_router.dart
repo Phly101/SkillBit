@@ -6,12 +6,13 @@ import 'package:skill_bit/features/auth/presentation/pages/forgot_password_page.
 import 'package:skill_bit/features/auth/presentation/pages/new_password_page.dart';
 import 'package:skill_bit/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:skill_bit/features/auth/presentation/pages/verification_page.dart';
+import 'package:skill_bit/features/contest/presentation/pages/contest_page.dart';
 import 'package:skill_bit/features/home/presentation/pages/home_page.dart';
+import 'package:skill_bit/features/notifications/presentation/pages/notification_page.dart';
 import 'package:skill_bit/features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import 'package:skill_bit/features/splash/presentation/pages/splash_page.dart';
 import '../../features/agenda/presentation/pages/agenda_page.dart';
 import '../../features/auth/presentation/pages/log_in_page.dart';
-import '../../features/course/presentation/pages/library_page.dart';
 import '../../features/home/presentation/pages/main_navigation_page.dart';
 import '../../features/onboarding/presentation/pages/onboarding_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
@@ -112,6 +113,12 @@ class AppRouter {
         builder: (final BuildContext context, final GoRouterState state) =>
             const AssessmentTransitionPage(),
       ),
+      GoRoute(
+        path: AppRoutes.notifications,
+        builder: (final BuildContext context, final GoRouterState state) =>
+            const NotificationPage(),
+      ),
+
 
       GoRoute(
         path: AppRoutes.onBoarding,
@@ -144,20 +151,20 @@ class AppRouter {
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
-                path: AppRoutes.library,
+                path: AppRoutes.agenda,
                 builder:
                     (final BuildContext context, final GoRouterState state) =>
-                        const LibraryPage(),
+                        const AgendaPage(),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
-                path: AppRoutes.agenda,
+                path: AppRoutes.contest,
                 builder:
                     (final BuildContext context, final GoRouterState state) =>
-                        const AgendaPage(),
+                        const ContestPage(),
               ),
             ],
           ),

@@ -36,6 +36,7 @@ class AppRoutes {
 
   //? library screens
   static const String library = '/library';
+  static const String contest = '/contest';
 
   //? profile screens
   static const String profile = '/profile';
