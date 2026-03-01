@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../features/features_index.dart';
 import '../../features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import '../app_state/app_state_notifier.dart';
@@ -135,7 +136,7 @@ class AppRouter {
               ),
             ],
           ),
-          StatefulShellBranch(
+             StatefulShellBranch(
             routes: <RouteBase>[
               // agenda page
               GoRoute(
@@ -146,17 +147,18 @@ class AppRouter {
               ),
             ],
           ),
-          StatefulShellBranch(
+            StatefulShellBranch(
             routes: <RouteBase>[
               // contest page
               GoRoute(
                 path: AppRoutes.contest,
                 builder:
                     (final BuildContext context, final GoRouterState state) =>
-                        const ContestPage(),
+                        const ContestDetailsPage(),
               ),
             ],
           ),
+       
           StatefulShellBranch(
             routes: <RouteBase>[
               // profile page

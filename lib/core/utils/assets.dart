@@ -8,4 +8,5 @@ class Assets {
   static String icon(final String name) => 'assets/icons/$name';
 
   static String animation(final String name) => 'assets/animations/$name';
+  
 }

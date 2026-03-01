@@ -34,8 +34,7 @@ class AppRoutes {
   //? notifications screens
   static const String notifications = '/notifications';
 
-  //? library screens
-  static const String library = '/library';
+  //? contest screens
   static const String contest = '/contest';
 
   //? profile screens
