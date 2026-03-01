@@ -126,6 +126,7 @@ class AppRouter {
         branches: <StatefulShellBranch>[
           StatefulShellBranch(
             routes: <RouteBase>[
+              // home page
               GoRoute(
                 path: AppRoutes.home,
                 builder:
@@ -136,6 +137,7 @@ class AppRouter {
           ),
           StatefulShellBranch(
             routes: <RouteBase>[
+              // agenda page
               GoRoute(
                 path: AppRoutes.agenda,
                 builder:
@@ -146,6 +148,7 @@ class AppRouter {
           ),
           StatefulShellBranch(
             routes: <RouteBase>[
+              // contest page
               GoRoute(
                 path: AppRoutes.contest,
                 builder:
@@ -156,6 +159,7 @@ class AppRouter {
           ),
           StatefulShellBranch(
             routes: <RouteBase>[
+              // profile page
               GoRoute(
                 path: AppRoutes.profile,
                 builder:
