@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/home_strings.dart';
+import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/avatar_widget.dart';
 import 'package:skill_bit/core/widgets/button_widget.dart';
 
-import '../../../../../core/utils/assets.dart';
 import '../common/search_field_widget.dart';
 
 class HomeHeaderWidget extends StatelessWidget {
@@ -44,13 +46,7 @@ class HomeHeaderWidget extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            CircleAvatar(
-              backgroundColor: context.colorScheme.outline,
-              radius: 25,
-              child: (profileUrl != null)
-                  ? Image.asset(Assets.image(profileUrl!))
-                  : const Icon(Icons.person, size: 35),
-            ),
+            AvatarWidget(profileUrl: profileUrl),
           ],
         ),
         30.heightBox,
@@ -60,7 +56,9 @@ class HomeHeaderWidget extends StatelessWidget {
             const SearchFieldWidget(),
             ButtonWidget(
               function: //Todo: Implement Function logic
-                  () {},
+              () {
+                context.go(AppRoutes.notifications);
+              },
               child: Icon(
                 Icons.notifications,
                 color: context.colorScheme.secondary,

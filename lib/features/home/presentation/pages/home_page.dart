@@ -19,16 +19,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(final BuildContext context) {
-
     return CustomScrollView(
       slivers: <Widget>[
-
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.only(top: 60, left: 10, right: 10),
             child: HomeHeaderWidget(
               name: 'Basel',
+              //Todo: assessment must be removed if the user have already taken it.
               onTap: () => context.go(AppRoutes.assessment),
+              profileUrl: Assets.image('Basel_EL_Rafei.jpeg'),
             ),
           ),
         ),
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: .spaceBetween,
               children: <Widget>[
                 LevelButtonWidget(
                   level: HomeStrings.lvl1,
@@ -61,7 +61,6 @@ class _HomePageState extends State<HomePage> {
           imageUrl: Assets.imageLogo('Depth 4, Frame 0.png'),
           progress: 1,
         ),
-
 
         const SliverToBoxAdapter(child: SizedBox(height: 40)),
       ],

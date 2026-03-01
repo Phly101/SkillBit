@@ -1,20 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:skill_bit/features/assessment/presentation/pages/assessment_transition_page.dart';
-import 'package:skill_bit/features/auth/presentation/pages/forgot_password_page.dart';
-import 'package:skill_bit/features/auth/presentation/pages/new_password_page.dart';
-import 'package:skill_bit/features/auth/presentation/pages/sign_up_page.dart';
-import 'package:skill_bit/features/auth/presentation/pages/verification_page.dart';
-import 'package:skill_bit/features/contests/presentation/pages/contest_details_page.dart';
-import 'package:skill_bit/features/home/presentation/pages/home_page.dart';
-import 'package:skill_bit/features/onboarding/presentation/Bloc/onboarding_bloc.dart';
-import 'package:skill_bit/features/splash/presentation/pages/splash_page.dart';
-import '../../features/agenda/presentation/pages/agenda_page.dart';
-import '../../features/auth/presentation/pages/log_in_page.dart';
-import '../../features/home/presentation/pages/main_navigation_page.dart';
-import '../../features/onboarding/presentation/pages/onboarding_page.dart';
-import '../../features/profile/presentation/pages/profile_page.dart';
+
+import '../../features/features_index.dart';
+import '../../features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import '../app_state/app_state_notifier.dart';
 import 'routes.dart';
 
@@ -112,6 +101,11 @@ class AppRouter {
         builder: (final BuildContext context, final GoRouterState state) =>
             const AssessmentTransitionPage(),
       ),
+      GoRoute(
+        path: AppRoutes.notifications,
+        builder: (final BuildContext context, final GoRouterState state) =>
+            const NotificationPage(),
+      ),
 
       GoRoute(
         path: AppRoutes.onBoarding,
@@ -133,6 +127,7 @@ class AppRouter {
         branches: <StatefulShellBranch>[
           StatefulShellBranch(
             routes: <RouteBase>[
+              // home page
               GoRoute(
                 path: AppRoutes.home,
                 builder:
@@ -143,6 +138,7 @@ class AppRouter {
           ),
              StatefulShellBranch(
             routes: <RouteBase>[
+              // agenda page
               GoRoute(
                 path: AppRoutes.agenda,
                 builder:
@@ -153,6 +149,7 @@ class AppRouter {
           ),
             StatefulShellBranch(
             routes: <RouteBase>[
+              // contest page
               GoRoute(
                 path: AppRoutes.contest,
                 builder:
@@ -164,11 +161,64 @@ class AppRouter {
        
           StatefulShellBranch(
             routes: <RouteBase>[
+              // profile page
               GoRoute(
                 path: AppRoutes.profile,
                 builder:
                     (final BuildContext context, final GoRouterState state) =>
                         const ProfilePage(),
+                routes: <RouteBase>[
+                  // badges page
+                  GoRoute(
+                    name: AppRoutes.badges,
+                    path: AppRoutes.badges,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const BadgesPage(),
+                  ),
+                  // achievement page
+                  GoRoute(
+                    name: AppRoutes.achievement,
+                    path: AppRoutes.achievement,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const AchievementsPage(),
+                  ),
+                  // about us page
+                  GoRoute(
+                    name: AppRoutes.aboutUs,
+                    path: AppRoutes.aboutUs,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const AboutUsPage(),
+                  ),
+                  // contact us page
+                  GoRoute(
+                    name: AppRoutes.contactUs,
+                    path: AppRoutes.contactUs,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const ContactUsPage(),
+                  ),
+                  // settings page
+                  GoRoute(
+                    name: AppRoutes.settings,
+                    path: AppRoutes.settings,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const SettingsPage(),
+                  ),
+                ],
               ),
             ],
           ),

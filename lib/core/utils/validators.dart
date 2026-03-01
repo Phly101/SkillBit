@@ -8,6 +8,9 @@ class AppValidators {
     if (value.trim().length < 2) {
       return 'Name must be at least 2 characters long';
     }
+    if (value.length > 30) {
+      return 'Name must not exceed 30 characters long';
+    }
 
     final RegExp nameRegExp = RegExp(r"^[a-zA-Z\s']+$");
     if (!nameRegExp.hasMatch(value)) {
@@ -35,6 +38,9 @@ class AppValidators {
     }
     if (value.length < 8) {
       return 'Password must be at least 8 characters long';
+    }
+    if (value.length > 30) {
+      return 'Password cannot be more than 30 characters long';
     }
     if (!value.contains(RegExp(r'[A-Z]'))) {
       return 'Include at least one uppercase letter';
