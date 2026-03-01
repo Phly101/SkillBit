@@ -14,6 +14,7 @@ class ButtonWidget extends StatelessWidget {
     this.paddingL,
     this.paddingT,
     this.paddingB,
+    this.padding,
   });
 
   final Widget? child;
@@ -25,6 +26,7 @@ class ButtonWidget extends StatelessWidget {
   final double? radius;
   final void Function()? function;
   final bool hasBorder;
+  final double? padding;
 
   @override
   Widget build(final BuildContext context) {
@@ -36,7 +38,10 @@ class ButtonWidget extends StatelessWidget {
           color: color ?? Colors.white,
           borderRadius: BorderRadius.circular(radius ?? 8),
           border: hasBorder
-              ? Border.all(color: context.colorScheme.onSurface.withValues(alpha: 0.4), width: 1)
+              ? Border.all(
+                  color: context.colorScheme.onSurface.withValues(alpha: 0.4),
+                  width: 1,
+                )
               : Border.all(color: context.colorScheme.surface, width: 0),
           boxShadow: <BoxShadow>[
             BoxShadow(
@@ -47,12 +52,15 @@ class ButtonWidget extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.only(
-            left: paddingL ?? 10,
-            right: paddingR ?? 10,
-            bottom: paddingB ?? 10,
-            top: paddingT ?? 10,
-          ),
+          padding: padding == null
+              ? EdgeInsets.only(
+                  left: paddingL ?? 10,
+                  right: paddingR ?? 10,
+                  bottom: paddingB ?? 10,
+                  top: paddingT ?? 10,
+                )
+              : EdgeInsets.all(padding!),
+
           child: Center(
             child: child ?? const SizedBox(child: Text('no widget')),
           ),
