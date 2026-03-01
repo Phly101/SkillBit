@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/home_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 
+import '../../../profile/presentation/widgets/common/drawer_widget.dart';
+
 class MainNavigationPage extends StatelessWidget {
   const MainNavigationPage({super.key, required this.navigationShell});
 
@@ -20,6 +22,7 @@ class MainNavigationPage extends StatelessWidget {
   Widget build(final BuildContext context) {
     return Scaffold(
       body: navigationShell,
+      drawer:  navigationShell.currentIndex == 3?  DrawerWidget(): null,
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
