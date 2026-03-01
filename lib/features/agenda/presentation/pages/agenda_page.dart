@@ -53,6 +53,8 @@ class _AgendaPageState extends State<AgendaPage> {
                   ),
                   TextField(
                     controller: subjectController,
+                    maxLines: 1,
+                    maxLength: 30,
                     decoration: const InputDecoration(
                       labelText: 'Subject (ex: Study OOP)',
                     ),
@@ -63,6 +65,7 @@ class _AgendaPageState extends State<AgendaPage> {
                       _selectedTime == null
                           ? 'Select Time'
                           : 'Time: ${_selectedTime!.format(context)}',
+                      overflow: TextOverflow.ellipsis,
                     ),
                     onTap: () async {
                       TimeOfDay? picked = await showTimePicker(
