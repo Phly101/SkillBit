@@ -18,17 +18,17 @@ class StatCard extends StatelessWidget {
   Widget build(final BuildContext context) {
     return Container(
       width: 120,
-      height: 100,
+     // height: 100,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onPrimary,
+        color: context.colorScheme.onPrimary,
         borderRadius: BorderRadius.circular(8),
         
         border: Border.all(color: context.colorScheme.tertiary, width: 1),
         
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Theme.of(context).colorScheme.onPrimary
-            .withOpacity(0.25),
+            
+            color: context.colorScheme.onPrimary.withValues(alpha: .25),
             offset: const Offset(0, 4),
             blurRadius: 4,
            

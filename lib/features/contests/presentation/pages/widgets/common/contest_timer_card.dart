@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skill_bit/core/constants/contest_details_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/assets.dart';
@@ -19,18 +18,21 @@ class ContestTimerCard extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return Container(
-      width: 376,
-      height: 235,
+       //update here
+      width: double.infinity,
+     
       decoration: BoxDecoration(
         border: Border.all(
-          color: context.colorScheme.onSurface.withOpacity(0.2),
+          //update here
+          color: context.colorScheme.onSurface.withValues(alpha: .25),
           width: 1,
         ),
         color: context.colorScheme.onPrimary,
         borderRadius: BorderRadius.circular(10),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: context.colorScheme.onPrimary.withOpacity(0.25),
+            //update here
+            color: context.colorScheme.onPrimary.withValues(alpha: .25),
             blurRadius: 4,
             spreadRadius: 3,
           ),
@@ -65,7 +67,8 @@ class ContestTimerCard extends StatelessWidget {
                 .copyWith(color: context.colorScheme.onSurface, fontSize: 18),
           ),
         ],
-      ),
+        //update here
+      ).p10()
     );
   }
 }
