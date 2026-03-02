@@ -16,7 +16,7 @@ class HomeStrings {
   static const String explore = 'Explore Courses';
   static const String search = 'Search';
   static const String home = 'Home';
-  static const String library = 'Library';
+  static const String contest = 'Contest';
   static const String myAgenda = 'My agenda';
   static const String profile = 'Profile';
   static const String lvl1 = 'Level 1';

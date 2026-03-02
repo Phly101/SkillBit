@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/home_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 
-import '../../../profile/presentation/widgets/common/drawer_widget.dart';
+import '../../../../core/utils/assets.dart';
+import '../../../profile/presentation/widgets/profile_common/drawer_widget.dart';
 
 class MainNavigationPage extends StatelessWidget {
   const MainNavigationPage({super.key, required this.navigationShell});
@@ -20,9 +22,10 @@ class MainNavigationPage extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
+    final bool isActive = navigationShell.currentIndex == 2;
     return Scaffold(
       body: navigationShell,
-      drawer:  navigationShell.currentIndex == 3?  const DrawerWidget(): null,
+      drawer: navigationShell.currentIndex == 3 ? const DrawerWidget() : null,
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -34,20 +37,26 @@ class MainNavigationPage extends StatelessWidget {
           BottomNavigationBar(
             currentIndex: navigationShell.currentIndex,
             onTap: _onTap,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
+            items: <BottomNavigationBarItem>[
+              const BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.house),
                 label: HomeStrings.home,
               ),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                 icon: FaIcon(Icons.calendar_month),
                 label: HomeStrings.myAgenda,
               ),
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.book),
-                label: HomeStrings.library,
+                icon: SvgPicture.asset(
+                  isActive
+                      ? Assets.icon('contest_icon_activated.svg')
+                      : Assets.icon('contest_icon_inactive.svg'),
+                  width: isActive ? 40 : 25,
+                  height: isActive ? 40 : 25,
+                ),
+                label: HomeStrings.contest,
               ),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                 icon: FaIcon(Icons.person),
                 label: HomeStrings.profile,
               ),
