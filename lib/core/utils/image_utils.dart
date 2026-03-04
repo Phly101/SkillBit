@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 class ImageUtils {
   ImageUtils._();
 
-  static void showHeroPreview(
-    final BuildContext context, {
-    required final String profileUrl,
+  static void showHeroPreview({
+    required final BuildContext context,
     required final String heroTag,
+    required final String profileUrl,
   }) {
     showGeneralDialog(
       context: context,
