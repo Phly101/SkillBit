@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:skill_bit/core/constants/contest_details_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/button_widget.dart';
-import 'package:skill_bit/core/widgets/custom_app_par.dart';
+import 'package:skill_bit/core/widgets/custom_app_bar.dart';
 
-import 'common/Event_Stats_Row.dart';
+import 'common/event_stats_row.dart';
 import 'common/contest_timer_card.dart';
 
 class ContestDetailsBody extends StatelessWidget {
@@ -18,7 +18,8 @@ class ContestDetailsBody extends StatelessWidget {
           44.heightBox,
           const CustomAppBar(title: ContestStrings.contest),
           30.heightBox,
-          const ContestTimerCard(contestTime: ContestStrings.contestTime, contestDate: ContestStrings.contestDate),
+          const ContestTimerCard(contestTime: ContestStrings.contestTime,
+              contestDate: ContestStrings.contestDate),
           15.heightBox,
           const EventStatsRow(),
           10.heightBox,
@@ -34,7 +35,7 @@ class ContestDetailsBody extends StatelessWidget {
             child: ButtonWidget(
               color: context.colorScheme.onSurfaceVariant,
               padding: 13,
-              function:() {},
+              function: () {},
               child: Text(
                 ContestStrings.contestLocked,
                 style: context.textTheme.displayMedium?.copyWith(
