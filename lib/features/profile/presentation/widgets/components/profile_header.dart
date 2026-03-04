@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/button_widget.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/common/user_widget.dart';
+
+import '../../../../../core/utils/assets.dart';
+import '../profile_common/user_widget.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({
@@ -26,27 +28,31 @@ class ProfileHeader extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 50),
           child: Builder(
             builder: (final BuildContext context) {
-              return ButtonWidget(
-                paddingR: 8,
-                paddingL: 8,
-                paddingB: 8,
-                paddingT: 8,
-                child: FaIcon(
-                  FontAwesomeIcons.bars,
-                  color: context.colorScheme.onSurface,
+              return Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: ButtonWidget(
+                  paddingR: 8,
+                  paddingL: 8,
+                  paddingB: 8,
+                  paddingT: 8,
+                  child: FaIcon(
+                    FontAwesomeIcons.bars,
+                    color: context.colorScheme.onSurface,
+                  ),
+                  function: //Todo: Implement Function logic
+                  () {
+                    Scaffold.of(context).openDrawer();
+                  },
                 ),
-                function: //Todo: Implement Function logic
-                () {
-                  Scaffold.of(context).openDrawer();
-                },
               );
             },
           ),
         ),
-        Spacer(),
+        const Spacer(),
         // user info
         UserWidget(
           profileUrl: profileUrl,
+          badgeUrl: Assets.icon('bronze_badge.png'),
           userName: userName,
           userPoints: userPoints,
         ),
