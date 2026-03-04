@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/app_colors.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/image_utils.dart';
-import 'package:skill_bit/core/widgets/avatar_widget.dart';
-
-import '../../../../../core/utils/assets.dart';
-import '../../../../../core/widgets/shadow_container.dart';
+import 'package:skill_bit/core/widgets/profile_guard_widget.dart';
 
 class UserWidget extends StatelessWidget {
   const UserWidget({
@@ -13,7 +10,7 @@ class UserWidget extends StatelessWidget {
     required this.profileUrl,
     required this.userName,
     required this.userPoints,
-    this.badgeUrl,
+    required this.badgeUrl,
   });
 
   final String profileUrl;
@@ -26,50 +23,24 @@ class UserWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: .center,
       children: <Widget>[
+        // profile image
         GestureDetector(
           onTap: () {
             ImageUtils.showHeroPreview(
-              context,
+              context: context,
               profileUrl: profileUrl,
               heroTag: 'profile-pic',
             );
           },
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: <Widget>[
-              // profile image
-              ShadowContainer(
-                shape: BoxShape.circle,
-                color: Colors.transparent,
-                blurRadius: 10,
-                offset: const Offset(0, 5),
-                child: Hero(
-                  tag: 'profile-pic',
-                  child: AvatarWidget(profileUrl: profileUrl, radius: 35),
-                ),
-              ),
-
-              // The Badge
-              Positioned(
-                bottom: -10,
-                right: -6,
-                child: ShadowContainer(
-                  shape: BoxShape.circle,
-                  color: Colors.transparent,
-                  blurRadius: 8,
-                  offset: const Offset(0, 3),
-                  child: Image.asset(
-                    Assets.icon('bronze_badge.png'),
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
-              ),
-            ],
+          child: ProfileGuardWidget(
+            profileUrl: profileUrl,
+            badgeUrl: badgeUrl,
+            heroTag: 'profile-pic',
           ),
         ),
 
         10.heightBox,
+        // user name
         Text(
           userName,
           style: context.textTheme.bodySmall!.copyWith(
@@ -78,6 +49,7 @@ class UserWidget extends StatelessWidget {
             fontFamily: 'Poppins',
           ),
         ),
+        // score
         ShaderMask(
           shaderCallback: (final Rect bounds) {
             return const LinearGradient(
@@ -98,6 +70,6 @@ class UserWidget extends StatelessWidget {
           ),
         ),
       ],
-    );
+    ).pH(15);
   }
 }
