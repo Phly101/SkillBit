@@ -33,7 +33,7 @@ class RoundAndDifficulty extends StatelessWidget {
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: <Widget>[
                Image.asset(difficultyImagePath, height: 25, width: 25),
               5.widthBox,
               Text(difficulty, style: context.textTheme.displayMedium),
