@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../features/features_index.dart';
 import '../../features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import '../app_state/app_state_notifier.dart';
@@ -15,9 +14,7 @@ class AppRouter {
 
   late final GoRouter router = GoRouter(
     initialLocation: AppRoutes.splash,
-
     refreshListenable: appStateNotifier,
-
     redirect: (final BuildContext context, final GoRouterState state) {
       final bool isInitialized = appStateNotifier.isInitialized;
       final bool isOnboarded = appStateNotifier.isOnboarded;
@@ -136,7 +133,7 @@ class AppRouter {
               ),
             ],
           ),
-             StatefulShellBranch(
+          StatefulShellBranch(
             routes: <RouteBase>[
               // agenda page
               GoRoute(
@@ -147,7 +144,7 @@ class AppRouter {
               ),
             ],
           ),
-            StatefulShellBranch(
+          StatefulShellBranch(
             routes: <RouteBase>[
               // contest page
               GoRoute(
@@ -158,7 +155,6 @@ class AppRouter {
               ),
             ],
           ),
-       
           StatefulShellBranch(
             routes: <RouteBase>[
               // profile page
