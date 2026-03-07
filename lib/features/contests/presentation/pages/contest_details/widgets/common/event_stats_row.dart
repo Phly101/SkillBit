@@ -19,7 +19,7 @@ class EventStatsRow extends StatelessWidget {
 
         // المربع الثاني
         StatCard(
-          imagePath: Assets.image('Vector.png'),
+          imagePath: Assets.image('clock_image.png'),
           topText: ContestStrings.durationValue,
           bottomText: ContestStrings.duration,
           //borderColor هنا ستأخذ القيمة الافتراضية الرمادية
