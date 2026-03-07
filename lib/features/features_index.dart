@@ -11,7 +11,7 @@ export './auth/presentation/pages/new_password_page.dart';
 export './auth/presentation/pages/sign_up_page.dart';
 export './auth/presentation/pages/verification_page.dart';
 
-export './contests/presentation/pages/contest_details_page.dart';
+export 'contests/presentation/pages/contest_details/page/contest_details_page.dart';
 
 export './home/presentation/pages/home_page.dart';
 export './home/presentation/pages/main_navigation_page.dart';
