@@ -10,6 +10,7 @@ class VerificationPage extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return Scaffold(
+      //Todo: don't forget to activate the validation
       resizeToAvoidBottomInset: true,
       body: ScreenLayout(
         widget: Align(
