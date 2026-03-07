@@ -98,7 +98,7 @@ class TeamDetailsPage extends StatelessWidget {
             // Advice section
             MemberSectionWidget(
               title: AboutUsStrings.advice,
-              content: about,
+              content: advice,
               icon: Icons.lightbulb_outline_rounded,
               iconColor: Colors.amber,
             ),
