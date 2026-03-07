@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:skill_bit/core/constants/contest_details_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/assets.dart';
-import 'package:skill_bit/features/contests/presentation/widgets/common/round_and_difficulty.dart';
-import 'package:skill_bit/features/contests/presentation/widgets/common/start_in.dart';
+import 'package:skill_bit/features/contests/presentation/pages/contest_details/widgets/common/round_and_difficulty.dart';
+import 'package:skill_bit/features/contests/presentation/pages/contest_details/widgets/common/start_in.dart';
 
 class ContestTimerCard extends StatelessWidget {
   const ContestTimerCard({

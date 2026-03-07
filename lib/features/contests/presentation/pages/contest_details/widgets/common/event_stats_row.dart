@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/constants/contest_details_strings.dart';
 import 'package:skill_bit/core/utils/assets.dart';
-import 'package:skill_bit/features/contests/presentation/widgets/common/stete_card.dart';
+import 'package:skill_bit/features/contests/presentation/pages/contest_details/widgets/common/state_card.dart';
 
 class EventStatsRow extends StatelessWidget {
   const EventStatsRow({super.key});
@@ -11,12 +11,10 @@ class EventStatsRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        
         StatCard(
           imagePath: Assets.image('Group.png'),
-          topText:ContestStrings.participants,
+          topText: ContestStrings.participants,
           bottomText: ContestStrings.participantsLabel,
-          
         ),
 
         // المربع الثاني

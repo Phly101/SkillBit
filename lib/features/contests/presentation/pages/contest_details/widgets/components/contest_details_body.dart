@@ -4,8 +4,8 @@ import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/button_widget.dart';
 import 'package:skill_bit/core/widgets/custom_app_bar.dart';
 
-import 'common/event_stats_row.dart';
-import 'common/contest_timer_card.dart';
+import '../common/event_stats_row.dart';
+import '../common/contest_timer_card.dart';
 
 class ContestDetailsBody extends StatelessWidget {
   const ContestDetailsBody({super.key});

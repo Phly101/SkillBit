@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import '../widgets/contest_details_body.dart';
+import '../widgets/components/contest_details_body.dart';
 
 
 class ContestDetailsPage extends StatelessWidget {
