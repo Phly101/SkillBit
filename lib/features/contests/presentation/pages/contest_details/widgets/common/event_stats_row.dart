@@ -12,14 +12,14 @@ class EventStatsRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         StatCard(
-          imagePath: Assets.image('Group.png'),
+          imagePath: Assets.icon('Group.png'),
           topText: ContestStrings.participants,
           bottomText: ContestStrings.participantsLabel,
         ),
 
         // المربع الثاني
         StatCard(
-          imagePath: Assets.image('clock_image.png'),
+          imagePath: Assets.icon('clock_image.png'),
           topText: ContestStrings.durationValue,
           bottomText: ContestStrings.duration,
           //borderColor هنا ستأخذ القيمة الافتراضية الرمادية
