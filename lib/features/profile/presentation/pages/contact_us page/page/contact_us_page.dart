@@ -3,10 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/about_us_strings.dart';
 import 'package:skill_bit/core/constants/contact_us_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/common/banner_widget.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/common/team_tile_widget.dart';
+import 'package:skill_bit/features/profile/presentation/pages/contact_us%20page/widget/banner_widget.dart';
+import 'package:skill_bit/features/profile/presentation/pages/contact_us%20page/widget/team_tile_widget.dart';
 
-import '../../../../core/utils/assets.dart';
+import '../../../../../../core/utils/assets.dart';
 
 class ContactUsPage extends StatelessWidget {
   const ContactUsPage({super.key});

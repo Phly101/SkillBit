@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/widgets/shadow_container.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/common/banner_item.dart';
+import 'package:skill_bit/features/profile/presentation/pages/contact_us%20page/widget/banner_item.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
-import '../../../../../core/constants/contact_us_strings.dart';
-import '../../../../../core/theme/theme.dart';
-import '../../../../../core/utils/assets.dart';
+import '../../../../../../core/constants/contact_us_strings.dart';
+import '../../../../../../core/theme/theme.dart';
+import '../../../../../../core/utils/assets.dart';
 
 class BannerWidget extends StatelessWidget {
   const BannerWidget({super.key});
