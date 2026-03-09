@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:skill_bit/core/app_state/app_state_notifier.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-
 import 'core/di/injection_container.dart' as di;
 import 'core/router/app_router.dart';
 
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
       value: di.sl<AppStateNotifier>(),
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'SkillBit',
         theme: AppTheme.lightTheme,
         routerConfig: router,
       ),
