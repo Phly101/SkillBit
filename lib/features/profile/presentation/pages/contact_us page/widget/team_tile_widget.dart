@@ -5,8 +5,8 @@ import 'package:skill_bit/core/utils/launch_external_url.dart';
 import 'package:skill_bit/core/widgets/avatar_widget.dart';
 import 'package:skill_bit/core/widgets/shadow_container.dart';
 import 'package:skill_bit/features/profile/presentation/widgets/common/social_icons.dart';
-import '../../../../../core/utils/assets.dart';
-import '../../pages/team_details_page.dart';
+import '../../../../../../core/utils/assets.dart';
+import '../../team_details_page.dart';
 
 class TeamTileWidget extends StatelessWidget {
   const TeamTileWidget({
