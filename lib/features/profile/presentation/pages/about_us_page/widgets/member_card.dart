@@ -5,7 +5,7 @@ import 'package:skill_bit/core/widgets/avatar_widget.dart';
 import 'package:skill_bit/core/widgets/shadow_container.dart';
 
 
-import '../../team_details_page.dart';
+import '../../team_details_page/page/team_details_page.dart';
 
 
 
