@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skill_bit/features/contests/presentation/pages/contest_results/contest_result_page.dart';
 import '../../features/features_index.dart';
 import '../../features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import '../app_state/app_state_notifier.dart';
 import 'routes.dart';
 
+//Todo: will be subject for optimization later....
 class AppRouter {
   AppRouter({required this.appStateNotifier, required this.onboardingBloc});
 
@@ -69,6 +71,14 @@ class AppRouter {
             const SplashPage(),
       ),
       GoRoute(
+        path: AppRoutes.onBoarding,
+        builder: (final BuildContext context, final GoRouterState state) =>
+            BlocProvider<OnboardingBloc>.value(
+              value: onboardingBloc,
+              child: const OnboardingPage(),
+            ),
+      ),
+      GoRoute(
         path: AppRoutes.login,
         builder: (final BuildContext context, final GoRouterState state) =>
             const LogInPage(),
@@ -103,15 +113,17 @@ class AppRouter {
         builder: (final BuildContext context, final GoRouterState state) =>
             const NotificationPage(),
       ),
-
       GoRoute(
-        path: AppRoutes.onBoarding,
+        path: AppRoutes.contestPage,
         builder: (final BuildContext context, final GoRouterState state) =>
-            BlocProvider<OnboardingBloc>.value(
-              value: onboardingBloc,
-              child: const OnboardingPage(),
-            ),
+            const ContestPage(),
       ),
+      GoRoute(
+        path: AppRoutes.contestResults,
+        builder: (final BuildContext context, final GoRouterState state) =>
+            const ContestResultPage(),
+      ),
+
       StatefulShellRoute.indexedStack(
         builder:
             (
@@ -148,7 +160,7 @@ class AppRouter {
             routes: <RouteBase>[
               // contest page
               GoRoute(
-                path: AppRoutes.contest,
+                path: AppRoutes.contestDetails,
                 builder:
                     (final BuildContext context, final GoRouterState state) =>
                         const ContestDetailsPage(),
