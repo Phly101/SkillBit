@@ -36,7 +36,7 @@ dependencies:
   percent_indicator: ^4.2.5
   pinput: ^6.0.2
   smooth_page_indicator: ^2.0.1
-  flutter_svg: ^2.2.3
+  flutter_svg: ^2.2.4
   water_animation: ^0.0.3
   flutter_svg_provider: ^1.0.7
   shimmer_flutter: ^1.0.1
