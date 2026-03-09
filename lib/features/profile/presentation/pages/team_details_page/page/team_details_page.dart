@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/about_us_strings.dart';
 import 'package:skill_bit/core/widgets/avatar_widget.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/common/member_section_widget.dart';
-import '../../../../core/theme/theme.dart';
-import '../../../../core/utils/image_utils.dart';
-import '../../../../core/widgets/shadow_container.dart';
+import 'package:skill_bit/features/profile/presentation/pages/team_details_page/widget/member_section_widget.dart';
+import '../../../../../../core/theme/theme.dart';
+import '../../../../../../core/utils/image_utils.dart';
+import '../../../../../../core/widgets/shadow_container.dart';
 
 class TeamDetailsPage extends StatelessWidget {
   const TeamDetailsPage({
