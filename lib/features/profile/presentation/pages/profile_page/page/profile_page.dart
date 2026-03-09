@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/components/profile_body.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/components/profile_header.dart';
+import 'package:skill_bit/features/profile/presentation/pages/profile_page/widgets/components/profile_body.dart';
+import 'package:skill_bit/features/profile/presentation/pages/profile_page/widgets/components/profile_header.dart';
 
-import '../../../../core/utils/assets.dart';
+import '../../../../../../core/utils/assets.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

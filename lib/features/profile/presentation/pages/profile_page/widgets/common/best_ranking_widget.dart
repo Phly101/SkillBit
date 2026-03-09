@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/constants/profile_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/profile_common/podium_widget.dart';
+import 'package:skill_bit/features/profile/presentation/pages/profile_page/widgets/common/podium_widget.dart';
 
-import '../../../../../core/utils/assets.dart';
+import '../../../../../../../core/utils/assets.dart';
+
 
 class BestRankingWidget extends StatelessWidget {
   const BestRankingWidget({super.key});

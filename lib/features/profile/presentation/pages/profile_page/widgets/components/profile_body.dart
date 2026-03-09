@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/profile_common/best_ranking_widget.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/profile_common/growth_graph_widget.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/profile_common/progress_pie_char_widget.dart';
+import '../common/best_ranking_widget.dart';
+import '../common/growth_graph_widget.dart';
+import '../common/progress_pie_char_widget.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key, this.hasBestRank = false});
