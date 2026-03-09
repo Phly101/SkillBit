@@ -25,7 +25,7 @@ class BadgesPage extends StatelessWidget {
           onPressed: () => context.pop(),
         ),
       ),
-      body: const BadgeBody(),
+      body:  BadgeBody(),
     );
   }
 }
