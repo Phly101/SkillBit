@@ -5,7 +5,10 @@ import 'package:skill_bit/core/widgets/shadow_container.dart';
 import 'package:skill_bit/features/settings/presentation/widgets/common/profile_action_tile.dart';
 
 class ProfileSettingSection extends StatelessWidget {
-  const ProfileSettingSection({super.key});
+  const ProfileSettingSection({super.key, required this.name, required this.email});
+
+  final String name;
+  final String email;
 
   @override
   Widget build(final BuildContext context) {
@@ -19,18 +22,16 @@ class ProfileSettingSection extends StatelessWidget {
               ProfileActionTile(
                 icon: FontAwesomeIcons.userPen,
                 title: SettingsStrings.editName,
-                subTitle:SettingsStrings.userName,
+                subTitle: name,
                 onTap: () {},
               ),
-          
+
               ProfileActionTile(
                 icon: FontAwesomeIcons.solidEnvelope,
                 title: SettingsStrings.editEmail,
-                subTitle: SettingsStrings.userEmail,
+                subTitle: email,
                 onTap: () {},
               ),
-             
-
             ],
           ),
         ),
