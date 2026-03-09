@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/constants/profile_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/features/profile/presentation/pages/profile_page/widgets/common/podium_widget.dart';
+import 'package:skill_bit/core/widgets/podium_widget.dart';
 
 import '../../../../../../../core/utils/assets.dart';
 
