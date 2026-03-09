@@ -34,9 +34,6 @@ class AppRoutes {
   //? notifications screens
   static const String notifications = '/notifications';
 
-  //? contest screens
-  static const String contest = '/contest';
-
   //? profile screens
   static const String profile = '/profile';
   static const String badges = 'badges';
@@ -46,7 +43,8 @@ class AppRoutes {
   static const String settings = 'settings';
 
   //? Contest screens
-  static const String contestScreen = '/contestScreen';
+  static const String contestDetails = '/contestDetails';
+  static const String contestPage = '/contestPage';
   static const String contestResults = '/contestResults';
   static const String contestReview = '/contestReview';
   static const String contestLeaderboards = '/contestLeaderBoards';
