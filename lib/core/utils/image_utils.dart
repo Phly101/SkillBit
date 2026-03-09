@@ -9,6 +9,7 @@ class ImageUtils {
     required final BuildContext context,
     required final String heroTag,
     required final String profileUrl,
+    final bool haveEditButton=false,
   }) {
     showGeneralDialog(
       context: context,
@@ -55,26 +56,29 @@ class ImageUtils {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 24),
-                          ElevatedButton.icon(
-                            onPressed: //Todo: Implement Function logic
-                                () {},
-                            icon: const Icon(Icons.edit),
-                            label: const Text('Choose from Gallery'),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white.withValues(
-                                alpha: 0.9,
+                          if(haveEditButton)...<Widget>[
+                            const SizedBox(height: 24),
+                            ElevatedButton.icon(
+                              onPressed: //Todo: Implement Function logic
+                                  () {},
+                              icon: const Icon(Icons.edit),
+                              label: const Text('Choose from Gallery'),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white.withValues(
+                                  alpha: 0.9,
+                                ),
+                                foregroundColor: Colors.black,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                  vertical: 12,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
                               ),
-                              foregroundColor: Colors.black,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 24,
-                                vertical: 12,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                          ).pH(10),
+                            ).pH(10),
+                          ]
+
                         ],
                       ),
                     ),
