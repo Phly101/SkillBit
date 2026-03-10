@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/assets.dart';
 import 'package:skill_bit/features/profile/domain/entities/padge_entity.dart';
 import 'package:skill_bit/features/profile/presentation/widgets/components/badge_component/badge_card.dart';
 import 'package:skill_bit/features/profile/presentation/widgets/components/badge_component/badge_row_widget.dart';
 
 class BadgeBody extends StatelessWidget {
-  BadgeBody({super.key});
+  const BadgeBody({super.key, required this.badges});
 
-  final List<BadgeEntity> badges = <BadgeEntity>[
-    BadgeEntity(imagePath: Assets.icon('bronze_badge.png'), isLocked: false),
-    BadgeEntity(imagePath: Assets.icon('bronze_badge.png'), isLocked: true),
-    BadgeEntity(imagePath: Assets.icon('bronze_badge.png'), isLocked: true),
-    BadgeEntity(imagePath: Assets.icon('bronze_badge.png'), isLocked: true),
-    BadgeEntity(imagePath: Assets.icon('bronze_badge.png'), isLocked: true),
-  ];
+  final List<BadgeEntity> badges;
 
   @override
   Widget build(final BuildContext context) {
