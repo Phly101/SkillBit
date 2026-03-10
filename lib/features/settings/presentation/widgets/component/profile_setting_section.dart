@@ -21,14 +21,14 @@ class ProfileSettingSection extends StatelessWidget {
             children: <Widget>[
               ProfileActionTile(
                 icon: FontAwesomeIcons.userPen,
-                title: SettingsStrings.editName,
-                subTitle: name,
+                title: name,
+                subTitle: email,
                 onTap: () {},
               ),
 
               ProfileActionTile(
                 icon: FontAwesomeIcons.solidEnvelope,
-                title: SettingsStrings.editEmail,
+                title: name,
                 subTitle: email,
                 onTap: () {},
               ),
