@@ -11,7 +11,7 @@ class BadgeCard extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return isLocked
-        ? LockedCard(imagePath: imagePath)
+        ? const LockedCard()
         : UnlockedCard(imagePath: imagePath);
   }
 }
