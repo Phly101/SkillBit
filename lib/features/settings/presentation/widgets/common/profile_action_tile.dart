@@ -31,6 +31,7 @@ class ProfileActionTile extends StatelessWidget {
       child: Row(
         children: <Widget>[
           ShadowContainer(
+            shadowColor: AppColors.textMain.withValues(alpha: 0.12),
            borderRadius: 8,
             color: iconBgColor ?? AppColors.brandBlue.withValues(alpha: 0.15),
             child: Icon(

@@ -5,8 +5,8 @@ import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/shadow_container.dart';
 import 'package:skill_bit/features/settings/domain/entities/settings_entity.dart';
 import 'package:skill_bit/features/settings/presentation/widgets/common/profile_action_tile.dart';
-import 'package:skill_bit/features/settings/presentation/widgets/component/profile%20information.dart';
 import 'package:skill_bit/features/settings/presentation/widgets/component/profile_setting_section.dart';
+import 'package:skill_bit/features/settings/presentation/widgets/component/settings_header.dart';
 
 class SettingsBody extends StatelessWidget {
   const SettingsBody({super.key, required this.settingsEntity});
@@ -18,10 +18,12 @@ class SettingsBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         46.heightBox,
-        ProfileInformation(
+        SettingsHeader(
+          
           profileUrl: settingsEntity.profileImageUrl,
           name: settingsEntity.name,
           email: settingsEntity.email,
+          badgeUrl: settingsEntity.badgeImageUrl,
         ),
         50.heightBox,
         ProfileSettingSection(

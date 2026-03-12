@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/settings_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/utils/assets.dart';
 import 'package:skill_bit/features/settings/domain/entities/settings_entity.dart';
 import 'package:skill_bit/features/settings/presentation/widgets/component/settings_body.dart';
 
@@ -27,10 +28,9 @@ class SettingsPage extends StatelessWidget {
         ),
       
       ),
-      body: const SettingsBody(settingsEntity:
-       SettingsEntity(name: SettingsStrings.userName, email: SettingsStrings.userEmail, profileImageUrl:null)
-      
-      ,),
+      body: SettingsBody(settingsEntity:
+       SettingsEntity(name: SettingsStrings.userName, email: SettingsStrings.userEmail, profileImageUrl: Assets.image('Menna_image.jpeg'), badgeImageUrl: Assets.icon('camera_icon.png'))
+      ),
     );
   }
 }
