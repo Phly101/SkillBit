@@ -19,6 +19,7 @@ class NavigationButtonFactory {
     required final bool isFinalPage,
   }) {
     if (isViewingAnswers) {
+      // viewing buttons layout
       return <Widget>[
         // back button
         _myButton(
@@ -27,12 +28,25 @@ class NavigationButtonFactory {
           context,
           color: context.colorScheme.tertiary,
         ),
-        const SizedBox(width: 20,),
-        _myButton(goHomeButtonTxt, goHomeFunction, context),
+        const SizedBox(width: 20),
+        // forward button
+        if (!isFinalPage) ...<Widget>[
+          _myButton(
+            forwardButtonTxt,
+            forwardFunction,
+            context,
+            // color: isFinalPage ? context.colorScheme.tertiary : null,
+          ),
+        ],
+        if (isFinalPage) ...<Widget>[
+          _myButton(goHomeButtonTxt, goHomeFunction, context),
+        ],
       ];
     }
 
     return <Widget>[
+      // solving buttons layout
+
       // back button
       _myButton(
         backButtonTxt,
@@ -40,7 +54,7 @@ class NavigationButtonFactory {
         context,
         color: context.colorScheme.tertiary,
       ),
-      const SizedBox(width: 20,),
+      const SizedBox(width: 20),
       // forward button + submit button
       _myButton(
         isFinalPage ? submitButtonTxt : forwardButtonTxt,
