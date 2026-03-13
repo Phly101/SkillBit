@@ -9,7 +9,9 @@ import 'core/router/app_router.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
-  final GoRouter router = di.sl<AppRouter>().router;
+  final GoRouter router = di
+      .sl<AppRouter>()
+      .router;
   runApp(MyApp(router: router));
 }
 
