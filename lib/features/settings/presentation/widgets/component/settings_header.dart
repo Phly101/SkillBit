@@ -36,6 +36,8 @@ class SettingsHeader extends StatelessWidget {
               profileUrl: profileUrl ?? '',
               radius: 60,
                 badgeUrl: badgeUrl          ),
+
+
           ),
           16.heightBox,
           Text(
