@@ -4,12 +4,13 @@ import 'package:skill_bit/core/constants/home_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 
 class SearchFieldWidget extends StatelessWidget {
-  const SearchFieldWidget({super.key});
+  const SearchFieldWidget({super.key, required this.width});
+  final double width;
 
   @override
   Widget build(final BuildContext context) {
     return SizedBox(
-      width: MediaQuery.sizeOf(context).width * 0.8,
+      width: width,
       child: SearchBar(
         elevation: WidgetStateProperty.all(0),
         side: WidgetStateProperty.all(
