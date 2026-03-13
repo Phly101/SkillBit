@@ -6,7 +6,6 @@ import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/features/profile/presentation/pages/contact_us%20page/widget/banner_widget.dart';
 import 'package:skill_bit/features/profile/presentation/pages/contact_us%20page/widget/team_tile_widget.dart';
 
-import '../../../../../../core/utils/assets.dart';
 
 class ContactUsPage extends StatelessWidget {
   const ContactUsPage({super.key});
@@ -48,7 +47,7 @@ class ContactUsPage extends StatelessWidget {
             10.heightBox,
             // Basel
             TeamTileWidget(
-              profileUrl: Assets.image('basel_image.jfif'),
+              profileUrl: 'basel_image.jfif',
               tag: 'basel_tag',
               name: ContactUsStrings.teamNames['Basel']!,
               role: ContactUsStrings.roles['Basel']!,
@@ -62,7 +61,7 @@ class ContactUsPage extends StatelessWidget {
             ),
             // Hagar
             TeamTileWidget(
-              profileUrl: Assets.image('hagar_image.jpeg'),
+              profileUrl: 'hagar_image.jpeg',
               tag: 'Hagar_tag',
               name: ContactUsStrings.teamNames['Hagar']!,
               role: ContactUsStrings.roles['Hagar']!,
@@ -76,7 +75,7 @@ class ContactUsPage extends StatelessWidget {
             ),
             //Ahmed
             TeamTileWidget(
-              profileUrl: Assets.image('ahmed_image.jfif'),
+              profileUrl: 'ahmed_image.jfif',
               tag: 'Ahmed_tag',
               name: ContactUsStrings.teamNames['Ahmed']!,
               role: ContactUsStrings.roles['Ahmed']!,
@@ -90,7 +89,7 @@ class ContactUsPage extends StatelessWidget {
             ),
             // Menna
             TeamTileWidget(
-              profileUrl: Assets.image('Menna_image.jpeg'),
+              profileUrl: 'Menna_image.jpeg',
               tag: 'Menna_tag',
               name: ContactUsStrings.teamNames['Menna']!,
               role: ContactUsStrings.roles['Menna']!,

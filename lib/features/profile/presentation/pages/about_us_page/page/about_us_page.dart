@@ -4,7 +4,6 @@ import 'package:skill_bit/core/constants/about_us_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/gradiant_container.dart';
 import 'package:skill_bit/features/profile/presentation/pages/about_us_page/widgets/member_card.dart';
-
 import '../../../../../../core/utils/assets.dart';
 
 class AboutUsPage extends StatelessWidget {
@@ -52,7 +51,7 @@ class AboutUsPage extends StatelessWidget {
           ),
           // basel
           MemberCard(
-            profileUrl: Assets.image('basel_image.jfif'),
+            profileUrl: 'basel_image.jfif',
             tag: 'basel-tag',
             name: AboutUsStrings.teamNames['Basel']!,
             role: AboutUsStrings.roles['Basel']!,
@@ -62,7 +61,7 @@ class AboutUsPage extends StatelessWidget {
           ).pV(30),
           // Hagar
           MemberCard(
-            profileUrl: Assets.image('hagar_image.jpeg'),
+            profileUrl: 'hagar_image.jpeg',
             tag: 'hagar-tag',
             name: AboutUsStrings.teamNames['Hagar']!,
             role: AboutUsStrings.roles['Hagar']!,
@@ -72,7 +71,7 @@ class AboutUsPage extends StatelessWidget {
           ).pV(30),
           // ahmed
           MemberCard(
-            profileUrl: Assets.image('ahmed_image.jfif'),
+            profileUrl: 'ahmed_image.jfif',
             tag: 'ahmed-tag',
             name: AboutUsStrings.teamNames['Ahmed']!,
             role: AboutUsStrings.roles['Ahmed']!,
@@ -82,7 +81,7 @@ class AboutUsPage extends StatelessWidget {
           ).pV(30),
           // menna
           MemberCard(
-            profileUrl: Assets.image('Menna_image.jpeg'),
+            profileUrl: 'Menna_image.jpeg',
             tag: 'menna-tag',
             name: AboutUsStrings.teamNames['Menna']!,
             role: AboutUsStrings.roles['Menna']!,
