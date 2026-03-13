@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/contest_details_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/button_widget.dart';
 import 'package:skill_bit/core/widgets/custom_app_bar.dart';
 
+import '../../../../../../../core/router/routes.dart';
 import '../common/event_stats_row.dart';
 import '../common/contest_timer_card.dart';
 
@@ -18,9 +20,13 @@ class ContestDetailsBody extends StatelessWidget {
           44.heightBox,
           const CustomAppBar(title: ContestStrings.contest),
           30.heightBox,
-          const ContestTimerCard(contestTime: ContestStrings.contestTime,
-              contestDate: ContestStrings.contestDate),
+          //contest Card
+          const ContestTimerCard(
+            contestTime: ContestStrings.contestTime,
+            contestDate: ContestStrings.contestDate,
+          ),
           15.heightBox,
+          // Contest Event stats widgets
           const EventStatsRow(),
           10.heightBox,
           Divider(
@@ -30,12 +36,18 @@ class ContestDetailsBody extends StatelessWidget {
             indent: 15,
           ),
           10.heightBox,
+          // join contest button
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: ButtonWidget(
               color: context.colorScheme.onSurfaceVariant,
               padding: 13,
-              function: () {},
+              function: //Todo: Implement Function logic
+              () {
+                //temp use for now
+                //Todo: change the logic to only go if contest date is met
+                context.go(AppRoutes.contestPage);
+              },
               child: Text(
                 ContestStrings.contestLocked,
                 style: context.textTheme.displayMedium?.copyWith(
@@ -45,14 +57,16 @@ class ContestDetailsBody extends StatelessWidget {
             ),
           ),
           20.heightBox,
+          // register contest button
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: ButtonWidget(
               color: context.colorScheme.primary,
               padding: 13,
-              function: () {},
+              function: //Todo: Implement Function logic
+                  () {},
               child: Text(
-                ContestStrings.contestLocked,
+                ContestStrings.register,
                 style: context.textTheme.displayMedium?.copyWith(
                   color: context.colorScheme.surface,
                 ),
@@ -73,6 +87,7 @@ class ContestDetailsBody extends StatelessWidget {
             ),
           ),
           10.heightBox,
+          //contest description
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
