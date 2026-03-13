@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/button_widget.dart';
-import '../../../../../../../core/utils/assets.dart';
 import '../common/user_widget.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -51,7 +50,7 @@ class ProfileHeader extends StatelessWidget {
         // user info
         UserWidget(
           profileUrl: profileUrl,
-          badgeUrl: Assets.icon('bronze_badge.png'),
+          badgeUrl: 'bronze_badge.png',
           userName: userName,
           userPoints: userPoints,
         ),
