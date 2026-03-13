@@ -46,8 +46,6 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(final BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        mainAxisAlignment: .center,
-        crossAxisAlignment: .start,
         children: <Widget>[
           const ProfileHeader(
             profileUrl: 'Basel_EL_Rafei.jpeg',
