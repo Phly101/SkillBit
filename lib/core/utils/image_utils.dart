@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 
+import 'assets.dart';
+
 class ImageUtils {
   ImageUtils._();
 
@@ -11,6 +13,7 @@ class ImageUtils {
     required final String profileUrl,
     final bool haveEditButton=false,
   }) {
+    if (profileUrl.isEmpty) return;
     showGeneralDialog(
       context: context,
       barrierDismissible: true,
@@ -49,7 +52,7 @@ class ImageUtils {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
                                   image: DecorationImage(
-                                    image: AssetImage(profileUrl),
+                                    image: AssetImage(Assets.image(profileUrl)),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
