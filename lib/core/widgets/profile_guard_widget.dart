@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:skill_bit/core/utils/image_utils.dart';
 import 'package:skill_bit/core/widgets/shadow_container.dart';
+import '../utils/assets.dart';
 import 'avatar_widget.dart';
 
 class ProfileGuardWidget extends StatelessWidget {
@@ -9,7 +11,8 @@ class ProfileGuardWidget extends StatelessWidget {
     this.heroTag,
     this.needsHero = false,
     this.badgeUrl,
-    this.radius =35,
+    this.radius = 35,
+    this.size = 35,
   }) : assert(
          badgeUrl == null || badgeUrl != '',
          'If you provide a badgeUrl, it cannot be empty',
@@ -20,6 +23,7 @@ class ProfileGuardWidget extends StatelessWidget {
   final bool needsHero;
   final String? badgeUrl;
   final double? radius;
+  final double size;
 
   @override
   Widget build(final BuildContext context) {
@@ -35,9 +39,26 @@ class ProfileGuardWidget extends StatelessWidget {
           child: needsHero
               ? Hero(
                   tag: heroTag!,
-                  child: AvatarWidget(profileUrl: profileUrl, radius: radius),
+                  child: InkWell(
+                    onTap: (){
+                      ImageUtils.showHeroPreview(
+                        context: context,
+                        profileUrl: profileUrl,
+                        heroTag: heroTag!,
+                      );
+                    },
+                    child: AvatarWidget(
+                      profileUrl: profileUrl,
+                      radius: radius,
+                      size: size,
+                    ),
+                  ),
                 )
-              : AvatarWidget(profileUrl: profileUrl, radius: radius),
+              : AvatarWidget(
+                  profileUrl: profileUrl,
+                  radius: radius,
+                  size: size,
+                ),
         ),
 
         // The Badge
@@ -50,7 +71,7 @@ class ProfileGuardWidget extends StatelessWidget {
               color: Colors.transparent,
               blurRadius: 8,
               offset: const Offset(0, 3),
-              child: Image.asset(badgeUrl!, width: 40, height: 40),
+              child: Image.asset(Assets.icon(badgeUrl!), width: 40, height: 40),
             ),
           ),
         ],
