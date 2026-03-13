@@ -38,6 +38,7 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String badges = 'badges';
   static const String achievement = 'achievement';
+  static const String friends = 'friends';
   static const String contactUs = 'contactUs';
   static const String aboutUs = 'aboutUs';
   static const String settings = 'settings';
