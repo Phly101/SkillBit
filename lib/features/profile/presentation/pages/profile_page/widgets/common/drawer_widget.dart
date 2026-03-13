@@ -39,6 +39,18 @@ class DrawerWidget extends StatelessWidget {
               context.pushNamed(AppRoutes.achievement);
             },
           ),
+          // friends page button
+          NavTileWidget(
+            title: ProfileStrings.friends,
+            isIcon: true,
+            icon: FontAwesomeIcons.userGroup,
+            scale: 15,
+            function: //Todo: Implement Function logic
+            () {
+              context.pop();
+              context.pushNamed(AppRoutes.friends);
+            },
+          ),
           const Spacer(),
           // About us button
           NavTileWidget(
