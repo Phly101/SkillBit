@@ -6,6 +6,7 @@ class ProfileStrings {
   static const String achievement = 'Achievement';
   static const String aboutUs = 'About Us';
   static const String contactUs = 'Contact Us';
+  static const String friends = 'Friends';
   static const String settings = 'Settings';
   static const String performance = 'Performance Growth';
   static const String bestRanking = 'Best Ranking';
