@@ -17,6 +17,7 @@ export './auth/presentation/pages/verification_page.dart';
 export 'contests/presentation/pages/contest_details/page/contest_details_page.dart';
 export 'contests/presentation/pages/contest_page/contest_page.dart';
 export 'contests/presentation/pages/contest_results/contest_result_page.dart';
+export 'contests/presentation/pages/leaderBoard/page/leaderboard_page.dart';
 
 // Home page
 export './home/presentation/pages/home_page.dart';
@@ -34,6 +35,7 @@ export './profile/presentation/pages/badges_page.dart';
 export 'profile/presentation/pages/contact_us page/page/contact_us_page.dart';
 export 'profile/presentation/pages/profile_page/page/profile_page.dart';
 export './settings/presentation/pages/settings_page.dart';
+export 'profile/presentation/pages/friends_page/page/friends_page.dart';
 
 // Splash page
 export './splash/presentation/pages/splash_page.dart';
