@@ -1,0 +1,5 @@
+enum ContestType {
+  global,
+  friendly,
+}
+
