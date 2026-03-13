@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/rank_tile_widget.dart';
+import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/common/rank_tile_widget.dart';
 
-import '../../../../../../core/entities/leaderboard_entity.dart';
+import '../../../../../../../core/entities/leaderboard_entity.dart';
 
 class LeaderboardBody extends StatelessWidget {
   const LeaderboardBody({super.key, required this.contestantsList});
