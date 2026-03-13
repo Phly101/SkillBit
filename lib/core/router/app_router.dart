@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:skill_bit/features/contests/presentation/pages/contest_results/contest_result_page.dart';
 import '../../features/features_index.dart';
 import '../../features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import '../app_state/app_state_notifier.dart';
@@ -123,6 +122,11 @@ class AppRouter {
         builder: (final BuildContext context, final GoRouterState state) =>
             const ContestResultPage(),
       ),
+      GoRoute(
+        path: AppRoutes.contestLeaderboards,
+        builder: (final BuildContext context, final GoRouterState state) =>
+            const LeaderboardPage(),
+      ),
 
       StatefulShellRoute.indexedStack(
         builder:
@@ -195,6 +199,16 @@ class AppRouter {
                           final BuildContext context,
                           final GoRouterState state,
                         ) => const AchievementsPage(),
+                  ),
+                  // friends page
+                  GoRoute(
+                    name: AppRoutes.friends,
+                    path: AppRoutes.friends,
+                    builder:
+                        (
+                          final BuildContext context,
+                          final GoRouterState state,
+                        ) => const FriendsPage(),
                   ),
                   // about us page
                   GoRoute(
