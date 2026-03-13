@@ -6,18 +6,20 @@ import 'profile_guard_widget.dart';
 class PodiumWidget extends StatelessWidget {
   const PodiumWidget({
     super.key,
-    required this.label,
+    required this.standing,
     required this.profileUrl,
     this.badgeUrl,
     this.paddingTop = 20,
     this.radius,
+    required this.heroTag,
   });
 
-  final String label;
+  final String standing;
   final String profileUrl;
   final String? badgeUrl;
   final double paddingTop;
   final double? radius;
+  final String heroTag;
 
   @override
   Widget build(final BuildContext context) {
@@ -27,7 +29,7 @@ class PodiumWidget extends StatelessWidget {
         children: <Widget>[
           // Label or Crown
           Text(
-            label,
+            standing,
             style: context.textTheme.bodySmall!.copyWith(
               color: context.colorScheme.tertiary,
             ),
@@ -37,6 +39,8 @@ class PodiumWidget extends StatelessWidget {
             profileUrl: profileUrl,
             badgeUrl: badgeUrl,
             radius: radius,
+            heroTag:heroTag,
+            needsHero: true,
           ),
         ],
       ),
