@@ -12,6 +12,7 @@ class FriendsPage extends StatelessWidget {
     final List<FriendsEntity> friendsList = <FriendsEntity>[
       FriendsEntity(
         name: 'Basel El Rafei',
+        profileUrl: '',
         scorePoints: 250,
         progress: 0.85,
       ),
@@ -71,29 +72,29 @@ class FriendsPage extends StatelessWidget {
       ),
     ];
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.transparent,
-          elevation: 0,
-          title: Text(
-            'My Learning Circle',
-            style: context.textTheme.displayLarge,
-          ),
-          centerTitle: true,
-          leading:  IconButton(
-            onPressed: //Todo: Implement Function logic
-                () {
-              context.pop();
-            },
-            icon: Icon(
-              Icons.arrow_back,
-              fontWeight: .bold,
-              size: 30,
-              color: context.colorScheme.onSurface,
-            ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          'My Learning Circle',
+          style: context.textTheme.displayLarge,
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: //Todo: Implement Function logic
+          () {
+            context.pop();
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            fontWeight: .bold,
+            size: 30,
+            color: context.colorScheme.onSurface,
           ),
         ),
-      body: FriendsBody(friendsList: friendsList).pH(10)
+      ),
+      body: FriendsBody(friendsList: friendsList).pH(10),
     );
   }
 }
