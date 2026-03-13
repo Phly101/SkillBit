@@ -6,17 +6,17 @@ import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/avatar_widget.dart';
 import 'package:skill_bit/core/widgets/button_widget.dart';
 
-import '../common/search_field_widget.dart';
+import '../../../../../core/widgets/search_field_widget.dart';
 
 class HomeHeaderWidget extends StatelessWidget {
   const HomeHeaderWidget({
     super.key,
     required this.name,
     required this.onTap,
-    this.profileUrl,
+    required this.profileUrl,
   });
 
-  final String? profileUrl;
+  final String profileUrl;
   final String name;
   final void Function() onTap;
 
@@ -53,7 +53,7 @@ class HomeHeaderWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: .spaceBetween,
           children: <Widget>[
-            const SearchFieldWidget(),
+            SearchFieldWidget(width: MediaQuery.sizeOf(context).width * 0.8),
             ButtonWidget(
               function: //Todo: Implement Function logic
               () {
