@@ -10,6 +10,7 @@ class ShadowContainer extends StatelessWidget {
     this.blurRadius = 10.0,
     this.offset = const Offset(0, 4),
     this.margin,
+    this.shadowColor,
   });
 
   final Widget child;
@@ -19,6 +20,7 @@ class ShadowContainer extends StatelessWidget {
   final double blurRadius;
   final Offset offset;
   final EdgeInsetsGeometry? margin;
+  final Color? shadowColor;
 
   @override
   Widget build(final BuildContext context) {
@@ -32,7 +34,9 @@ class ShadowContainer extends StatelessWidget {
             : null,
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.2),
+            color:
+                shadowColor ??
+                Colors.black.withValues(alpha: 0.25),
             blurRadius: blurRadius,
             offset: offset,
           ),

@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, required this.title, this.iconBack});
 
   final String title;
+  final IconButton? iconBack;
 
   @override
   Widget build(final BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-      Text(title,
-      style: context.textTheme.displayLarge,
-      )]);
+        ?iconBack,
+    
+        Expanded(
+          child: Center(
+            child: Text(title, style: context.textTheme.displayLarge),
+          ),
+        ),
+    
+     
+      ],
+    );
   }
 }
