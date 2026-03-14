@@ -10,7 +10,7 @@ class CourseCardList extends StatelessWidget {
     required this.itemCount,
     required this.title,
     required this.imageUrl,
-   // required this.progressPercentage,
+    // required this.progressPercentage,
     required this.isLocked,
     required this.currentUserLevel,
   });
@@ -18,7 +18,8 @@ class CourseCardList extends StatelessWidget {
   final int? itemCount;
   final String? title;
   final String? imageUrl;
- // final double? progressPercentage;
+
+  // final double? progressPercentage;
   final bool isLocked;
 
   final int currentUserLevel;
@@ -27,40 +28,48 @@ class CourseCardList extends StatelessWidget {
   Widget build(final BuildContext context) {
     final List<CourseEntity> mockCourses = <CourseEntity>[
       CourseEntity(
+        id: '1',
         title: 'Introduction to C++',
-        imageUrl: Assets.image('Depth 4, Frame 0.png'),
+        imageUrl: Assets.image('temp_image.png'),
         // Replace with your actual asset path
         progress: 1.0,
         // Completed
         isLocked: false,
       ),
       CourseEntity(
+        id: '1',
         title: 'Variables & Data Types',
-        imageUrl: Assets.image('Depth 4, Frame 0.png'),
-        progress: 1.0, // Completed
+        imageUrl: Assets.image('temp_image.png'),
+        progress: 1.0,
+        // Completed
         isLocked: false,
       ),
       CourseEntity(
+        id: '1',
         title: 'Control Flow',
-        imageUrl: Assets.image('Depth 4, Frame 0.png'),
-        progress: 0.45, // Currently learning (Water animation will show)
+        imageUrl: Assets.image('temp_image.png'),
+        progress: 0.45,
+        // Currently learning (Water animation will show)
         isLocked: false,
       ),
       CourseEntity(
+        id: '1',
         title: 'Functions & Scope',
-        imageUrl: Assets.image('Depth 4, Frame 0.png'),
+        imageUrl: Assets.image('temp_image.png'),
         progress: 0.0,
         isLocked: true, // Locked
       ),
       CourseEntity(
+        id: '1',
         title: 'Arrays & Vectors',
-        imageUrl: Assets.image('Depth 4, Frame 0.png'),
+        imageUrl: Assets.image('temp_image.png'),
         progress: 0.0,
         isLocked: true,
       ),
       CourseEntity(
+        id: '1',
         title: 'Pointers & Memory',
-        imageUrl: Assets.image('Depth 4, Frame 0.png'),
+        imageUrl: Assets.image('temp_image.png'),
         progress: 0.0,
         isLocked: true,
       ),
