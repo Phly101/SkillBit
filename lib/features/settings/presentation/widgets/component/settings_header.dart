@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/image_utils.dart';
+import 'package:skill_bit/core/utils/global/image_utils.dart';
 import 'package:skill_bit/core/widgets/profile_guard_widget.dart';
 
 class SettingsHeader extends StatelessWidget {

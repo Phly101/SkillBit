@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/page/quiz_and_contest_factory.dart';
-import 'package:skill_bit/features/contests/domain/enums/contest_difficulty.dart';
-
 import '../../../../../core/entities/question_entity.dart';
 import '../../../../../core/enums/question_difficulty.dart';
 import '../../../../../core/router/routes.dart';
 import '../../../domain/entities/contest_entity.dart';
-import '../../../domain/enums/contest_status.dart';
-import '../../../domain/enums/contest_type.dart';
+import '../../../domain/entities/enums/contest_difficulty.dart';
+import '../../../domain/entities/enums/contest_status.dart';
+import '../../../domain/entities/enums/contest_type.dart';
+
 
 class ContestPage extends StatefulWidget {
   const ContestPage({super.key});

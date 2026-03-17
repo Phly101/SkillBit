@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/answer_color_factory.dart';
+import 'package:skill_bit/core/utils/features/contest&quiz/answer_color_factory.dart';
 
 class QuestionItem extends StatelessWidget {
   const QuestionItem({

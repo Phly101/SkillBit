@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/home_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import '../../../../core/utils/assets.dart';
+import '../../../../core/utils/global/assets.dart';
 import '../../../profile/presentation/pages/profile_page/widgets/common/drawer_widget.dart';
 
 

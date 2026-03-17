@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/shadow_container.dart';
 
-import '../../../../../../../core/utils/assets.dart';
+import '../../../../../utils/global/assets.dart';
 
 class ParticipantsTile extends StatelessWidget {
   const ParticipantsTile({super.key, this.numOfParticipants = 0});

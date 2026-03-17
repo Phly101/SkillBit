@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/entities/question_entity.dart';
-import 'package:skill_bit/core/utils/navigation_button_factory.dart';
+import 'package:skill_bit/core/utils/features/contest&quiz/navigation_button_factory.dart';
 import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/widgets/common/question_widget.dart';
 
 import 'contest_header.dart';

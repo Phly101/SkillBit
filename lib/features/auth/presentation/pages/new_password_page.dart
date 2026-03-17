@@ -3,7 +3,7 @@ import 'package:skill_bit/features/auth/presentation/widgets/common/password_val
 
 import '../../../../core/constants/auth_strings.dart';
 import '../../../../core/theme/theme.dart';
-import '../../../../core/utils/validators.dart';
+import '../../../../core/utils/features/auth/validators.dart';
 import '../widgets/widgets.dart';
 
 class NewPasswordPage extends StatefulWidget {

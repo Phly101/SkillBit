@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/time_format.dart';
+import 'package:skill_bit/core/utils/features/contest&quiz/time_format.dart';
 
-import '../../../../../../../core/utils/assets.dart';
+import '../../../../../utils/global/assets.dart';
 
 class TimerWidget extends StatefulWidget {
   const TimerWidget({super.key, required this.contestDuration});

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:skill_bit/core/constants/settings_strings.dart';
 import 'package:skill_bit/core/widgets/shadow_container.dart';
 import 'package:skill_bit/features/settings/presentation/widgets/common/profile_action_tile.dart';
 

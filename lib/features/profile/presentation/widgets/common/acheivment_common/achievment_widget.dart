@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/assets.dart';
+import 'package:skill_bit/core/utils/global/assets.dart';
 
 class AchievmentWidget extends StatelessWidget {
 

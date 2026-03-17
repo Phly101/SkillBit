@@ -5,7 +5,7 @@ import 'package:skill_bit/core/router/routes.dart';
 import '../../../../core/constants/auth_strings.dart';
 import '../../../../core/theme/theme.dart';
 
-import '../../../../core/utils/validators.dart';
+import '../../../../core/utils/features/auth/validators.dart';
 import '../widgets/common/password_validation_rules_widget.dart';
 import '../widgets/widgets.dart';
 

@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/auth_strings.dart';
 import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import '../../../../core/utils/validators.dart';
+import '../../../../core/utils/features/auth/validators.dart';
 import '../widgets/common/password_validation_rules_widget.dart';
 import '../widgets/widgets.dart';
 

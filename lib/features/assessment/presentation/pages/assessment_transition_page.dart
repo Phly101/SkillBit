@@ -6,7 +6,7 @@ import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/transition_screen_widget.dart';
 
-import '../../../../core/utils/assets.dart';
+import '../../../../core/utils/global/assets.dart';
 
 class AssessmentTransitionPage extends StatelessWidget {
   const AssessmentTransitionPage({super.key});

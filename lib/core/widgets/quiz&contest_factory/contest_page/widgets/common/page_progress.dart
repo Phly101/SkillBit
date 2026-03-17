@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skill_bit/core/theme/app_colors.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/line_progress_widget.dart';
 
 class PageProgress extends StatelessWidget {
   const PageProgress({
@@ -27,11 +27,9 @@ class PageProgress extends StatelessWidget {
         ),
         ClipRRect(
           borderRadius: .circular(8),
-          child: LinearProgressIndicator(
-            value: currentPageNum.toDouble() / lastPageNum.toDouble(),
+          child: LineProgressWidget(
+            progress: currentPageNum.toDouble() / lastPageNum.toDouble(),
             minHeight: 10,
-            backgroundColor: const Color(0xffCFDBE8),
-            valueColor: const AlwaysStoppedAnimation<Color>(AppColors.mainBlue),
           ),
         ),
       ],

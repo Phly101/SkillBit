@@ -4,7 +4,7 @@ import 'package:skill_bit/core/constants/about_us_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/gradiant_container.dart';
 import 'package:skill_bit/features/profile/presentation/pages/about_us_page/widgets/member_card.dart';
-import '../../../../../../core/utils/assets.dart';
+import '../../../../../../core/utils/global/assets.dart';
 
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});

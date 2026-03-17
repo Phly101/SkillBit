@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/app_colors.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/edit_image.dart';
+import 'package:skill_bit/core/utils/global/image_utils.dart';
 
 class ProfileInformation extends StatelessWidget {
   const ProfileInformation({
@@ -28,7 +28,7 @@ class ProfileInformation extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   if (profileUrl != null) {
-                    EditImage.showHeroPreview(
+                    ImageUtils.showHeroPreview(
                       context: context,
                       heroTag: heroTag,
                       profileUrl: profileUrl!,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/image_utils.dart';
+import 'package:skill_bit/core/utils/global/image_utils.dart';
 import 'package:skill_bit/core/widgets/avatar_widget.dart';
+import 'package:skill_bit/core/widgets/line_progress_widget.dart';
 import 'package:skill_bit/core/widgets/shadow_container.dart';
-import '../../../../../../../core/theme/app_colors.dart';
 import 'action_button.dart';
 
 class FriendListCard extends StatelessWidget {
@@ -53,14 +53,7 @@ class FriendListCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 4),
-                    LinearProgressIndicator(
-                      value: progress,
-                      backgroundColor: const Color(0xffCFDBE8),
-                      valueColor: const AlwaysStoppedAnimation<Color>(
-                        AppColors.mainBlue,
-                      ),
-                      minHeight: 8,
-                    ),
+                    LineProgressWidget(progress: progress),
                   ],
                 ),
               ),

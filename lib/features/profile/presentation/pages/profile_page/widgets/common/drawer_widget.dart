@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import '../../../../../../../core/constants/profile_strings.dart';
-import '../../../../../../../core/utils/assets.dart';
+import '../../../../../../../core/utils/global/assets.dart';
 import 'nav_tile_widget.dart';
 
 class DrawerWidget extends StatelessWidget {

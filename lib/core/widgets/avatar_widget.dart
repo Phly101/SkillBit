@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/theme.dart';
-import '../utils/assets.dart';
+import '../utils/global/assets.dart';
 
 class AvatarWidget extends StatelessWidget {
   const AvatarWidget({

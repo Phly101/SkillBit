@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/theme/theme.dart';
-import '../../../../../core/utils/validators.dart';
+import '../../../../../core/utils/features/auth/validators.dart';
 import 'build_rule_widget.dart';
 
 class PasswordValidationRulesWidget extends StatelessWidget {

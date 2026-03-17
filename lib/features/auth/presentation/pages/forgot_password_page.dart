@@ -3,9 +3,9 @@ import 'package:lottie/lottie.dart';
 import 'package:skill_bit/core/constants/auth_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 
-import '../../../../core/utils/validators.dart';
+import '../../../../core/utils/features/auth/validators.dart';
 import '../widgets/widgets.dart';
-import '../../../../core/utils/assets.dart';
+import '../../../../core/utils/global/assets.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});

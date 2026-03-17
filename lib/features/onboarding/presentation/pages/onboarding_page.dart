@@ -5,7 +5,7 @@ import 'package:skill_bit/features/onboarding/presentation/Bloc/onboarding_bloc.
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/app_state/app_state_notifier.dart';
-import '../../../../core/utils/assets.dart';
+import '../../../../core/utils/global/assets.dart';
 import '../../../../core/constants/onboarding_strings.dart';
 
 class OnboardingPage extends StatefulWidget {

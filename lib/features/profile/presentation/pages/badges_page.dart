@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/assets.dart';
+import 'package:skill_bit/core/utils/global/assets.dart';
 import 'package:skill_bit/features/profile/domain/entities/padge_entity.dart';
 import 'package:skill_bit/features/profile/presentation/widgets/components/badge_component/badge_body.dart';
 
