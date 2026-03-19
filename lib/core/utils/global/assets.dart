@@ -5,8 +5,10 @@ class Assets {
 
   static String imageLogo(final String name) => 'assets/images/logos/$name';
 
+  static String imageCourse(final String name) =>
+      'assets/images/course_images/$name';
+
   static String icon(final String name) => 'assets/icons/$name';
 
   static String animation(final String name) => 'assets/animations/$name';
-  
 }
