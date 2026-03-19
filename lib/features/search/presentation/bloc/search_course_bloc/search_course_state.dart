@@ -1,35 +1,42 @@
 part of 'search_course_bloc.dart';
 
-sealed class SearchCourseState extends Equatable {
+sealed class SearchCourseState extends BaseState {
   const SearchCourseState();
 }
 
-final class SearchCourseInitial extends SearchCourseState {
+final class SearchCourseInitial extends SearchCourseState
+    implements InitialState {
   @override
   List<Object> get props => <Object>[];
 }
 
-final class SearchCourseLoading extends SearchCourseState {
+final class SearchCourseLoading extends SearchCourseState
+    implements LoadingState {
   @override
   List<Object> get props => <Object>[];
 }
-final class SearchCourseClear extends SearchCourseState {
+
+final class SearchCourseClear extends SearchCourseState implements ClearState {
   @override
   List<Object> get props => <Object>[];
 }
 
-final class SearchCourseSuccess extends SearchCourseState {
-  const SearchCourseSuccess({this.courses});
+final class SearchCourseSuccess extends SearchCourseState
+    implements SuccessState<List<SearchCourseEntity>> {
+  const SearchCourseSuccess({required this.courses});
 
-  final List<SearchCourseEntity>? courses;
+  final List<SearchCourseEntity> courses;
+
+
 
   @override
-  List<Object> get props => <Object>[courses ?? <dynamic>[]];
+  List<Object?> get props => <Object?>[courses];
 }
 
-final class SearchCourseError extends SearchCourseState {
+final class SearchCourseError extends SearchCourseState implements ErrorState {
   const SearchCourseError({required this.message});
 
+  @override
   final String message;
 
   @override

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:skill_bit/core/bloc/base_state.dart';
 import 'package:skill_bit/core/error/failure.dart';
 import 'package:skill_bit/features/search/domain/entities/search_friends_entity.dart';
 import 'package:skill_bit/features/search/domain/useCases/params/search_friends_params.dart';

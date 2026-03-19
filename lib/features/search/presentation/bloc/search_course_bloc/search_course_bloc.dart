@@ -7,7 +7,7 @@ import 'package:skill_bit/features/search/domain/entities/search_courses_entity.
 import 'package:skill_bit/features/search/domain/useCases/params/search_course_params.dart';
 import 'package:skill_bit/features/search/domain/useCases/search_course_usecase.dart';
 import 'package:stream_transform/stream_transform.dart';
-
+import '../../../../../core/bloc/base_state.dart';
 part 'search_course_event.dart';
 
 part 'search_course_state.dart';
