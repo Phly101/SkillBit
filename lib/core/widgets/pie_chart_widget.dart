@@ -9,13 +9,23 @@ class PieChartWidget extends StatefulWidget {
     required this.progressMade,
     required this.progressLeft,
     required this.title,
+    this.centerTextColor,
+    this.centerSpace = 80,
     this.height = 250,
+    this.centerTextSize = 32,
+    this.hasTitle = true,
+    this.progressColor,
   });
 
   final double progressMade;
   final double progressLeft;
   final double height;
+  final double? centerSpace;
+  final double centerTextSize;
   final String title;
+  final Color? centerTextColor;
+  final bool? hasTitle;
+  final Color? progressColor;
 
   @override
   State<PieChartWidget> createState() => _PieChartWidgetState();
@@ -47,20 +57,29 @@ class _PieChartWidgetState extends State<PieChartWidget> {
           height: widget.height,
           child: PieChart(
             PieChartData(
+              startDegreeOffset: -90,
               sectionsSpace: 0,
-              centerSpaceRadius: 80,
+              centerSpaceRadius: widget.centerSpace,
+              centerSpaceColor: Colors.transparent,
               sections: <PieChartSectionData>[
                 PieChartSectionData(
-                  color: context.colorScheme.tertiary,
+                  color: widget.progressColor ?? context.colorScheme.tertiary,
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      context.colorScheme.secondary,
+                      context.colorScheme.primary.withValues(alpha: 0.8),
+                      context.colorScheme.primary,
+                    ],
+                  ),
                   value: displayProgressMade,
                   showTitle: false,
-                  radius: 20,
+                  radius: 15,
                 ),
                 PieChartSectionData(
                   color: Colors.grey.withValues(alpha: 0.5),
                   value: displayProgressLeft,
                   showTitle: false,
-                  radius: 20,
+                  radius: 15,
                 ),
               ],
             ),
@@ -83,14 +102,25 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                     return Text(
                       '${value.toInt()}%',
                       style: context.textTheme.displayLarge!.copyWith(
-                        fontSize: 32,
+                        fontSize: widget.centerTextSize,
                         fontWeight: FontWeight.bold,
+                        color: widget.centerTextColor,
                       ),
                     );
                   },
             ),
             const SizedBox(height: 10),
-            Text(widget.title, style: context.textTheme.displayLarge),
+            widget.hasTitle!
+                ? Text(
+                    widget.title,
+                    maxLines: 2,
+                    style: context.textTheme.displayLarge!.copyWith(
+                      fontSize: widget.centerTextSize,
+                      fontWeight: FontWeight.bold,
+                      color: widget.centerTextColor,
+                    ),
+                  )
+                : const SizedBox(),
           ],
         ),
       ],
