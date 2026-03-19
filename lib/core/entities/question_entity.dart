@@ -15,5 +15,5 @@ class QuestionEntity {
   final List<String> options;
   final int? correctAnswerIndex;
   final QuestionDifficulty questionDifficulty;
-  int? selectedAnswerIndex; //Todo: should be removed when implementing the bloc
+  int? selectedAnswerIndex;
 }
