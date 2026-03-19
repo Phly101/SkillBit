@@ -1,3 +1,5 @@
+import 'package:skill_bit/core/di/injectors/home_injector.dart';
+import 'package:skill_bit/core/di/injectors/course_injector.dart';
 import 'package:skill_bit/core/di/injectors/search_injector.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,6 +17,8 @@ Future<void> init() async {
   sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
   //! Features
+  initHomeFeature();
+  initCourseFeature();
   initSearchFeature();
   initOnboardingFeature();
 
