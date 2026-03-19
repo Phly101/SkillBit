@@ -1,7 +1,8 @@
 import 'package:skill_bit/core/entities/question_entity.dart';
-import 'package:skill_bit/features/contests/domain/enums/contest_difficulty.dart';
-import 'package:skill_bit/features/contests/domain/enums/contest_status.dart';
-import 'package:skill_bit/features/contests/domain/enums/contest_type.dart';
+import 'enums/contest_difficulty.dart';
+import 'enums/contest_status.dart';
+import 'enums/contest_type.dart';
+
 
 class ContestEntity {
   ContestEntity({
