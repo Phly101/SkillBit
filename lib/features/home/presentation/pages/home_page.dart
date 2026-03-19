@@ -1,140 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:skill_bit/core/constants/home_strings.dart';
-import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/features/home/presentation/widgets/common/course_card_list.dart';
-import 'package:skill_bit/features/home/presentation/widgets/common/level_button_widget.dart';
-import 'package:skill_bit/features/home/presentation/widgets/components/home_header_widget.dart';
+import 'package:skill_bit/core/utils/global/state_switcher.dart';
+import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
+import 'package:skill_bit/features/home/presentation/widgets/components/home_body.dart';
+import 'package:skill_bit/features/home/presentation/widgets/components/search_list_widget.dart';
 import 'package:skill_bit/features/search/domain/entities/search_courses_entity.dart';
 import 'package:skill_bit/features/search/presentation/bloc/search_course_bloc/search_course_bloc.dart';
 import '../../../../core/di/injection_container.dart';
-import '../../../../core/utils/assets.dart';
-import '../widgets/common/course_card_widget.dart';
+import '../../../../core/router/routes.dart';
+import '../Bloc/home_bloc.dart';
+import '../widgets/components/home_header_widget.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  String currentLevel = 'Level1';
-
-  @override
   Widget build(final BuildContext context) {
-    return BlocProvider<SearchCourseBloc>(
-      create: (final BuildContext context) => sl<SearchCourseBloc>(),
-      child: Builder(
-        builder: (final BuildContext context) {
-          return CustomScrollView(
-            slivers: <Widget>[
-              // 1. HEADER
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 60),
-                  child: HomeHeaderWidget(
-                    name: 'Basel',
-                    onTap: () => context.go(AppRoutes.assessment),
-                    profileUrl: 'Basel_EL_Rafei.jpeg',
-                  ),
-                ),
-              ),
+    return MultiBlocProvider(
+      // ignore: always_specify_types
+      providers: [
+        BlocProvider<SearchCourseBloc>(
+          create: (final BuildContext context) => sl<SearchCourseBloc>(),
+        ),
 
-              // 2. DYNAMIC BODY
-              BlocBuilder<SearchCourseBloc, SearchCourseState>(
-                builder:
+        BlocProvider<HomeBloc>(
+          create: (final BuildContext context) =>
+              sl<HomeBloc>()..add(const LoadHomeData(levelId: 'lvl_1')),
+        ),
+      ],
+      child: CustomScrollView(
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 60),
+              child: HomeHeaderWidget(
+                name: 'Basel',
+                onTap: () => context.go(AppRoutes.assessment),
+                profileUrl: 'Basel_EL_Rafei.jpeg',
+              ),
+            ),
+          ),
+
+          StateSwitcher<HomeBloc, HomeState>(
+            onInitial: (final BuildContext context, final HomeState state) =>
+                const SliverToBoxAdapter(
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+            onSuccess: (final BuildContext context, final Object? homeState) {
+              final HomeSuccess successState = homeState as HomeSuccess;
+              final List<CourseEntity> homeCourses = successState.courses;
+              final String activeLevel = successState.currentLevelId;
+
+              return StateSwitcher<SearchCourseBloc, SearchCourseState>(
+                onInitial:
                     (
                       final BuildContext context,
-                      final SearchCourseState state,
+                      final SearchCourseState searchState,
                     ) {
-                      if (state is SearchCourseLoading) {
-                        return const SliverFillRemaining(
-                          child: Center(child: CircularProgressIndicator()),
-                        );
-                      }
-
-                      if (state is SearchCourseSuccess) {
-                        return SliverList(
-                          delegate: SliverChildBuilderDelegate((
-                            final BuildContext context,
-                            final int index,
-                          ) {
-                            final SearchCourseEntity course =
-                                state.courses![index];
-
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 8.0,
-                                horizontal: 10.0,
-                              ),
-                              child: CourseCardWidget(
-                                title: course.title,
-                                imageUrl: Assets.image(course.imageUrl),
-                                progress: 0.0,
-                                isLocked: false,
-                              ),
-                            );
-                          }, childCount: state.courses?.length ?? 0),
-                        );
-                      }
-
-                      if (state is SearchCourseError) {
-                        return SliverToBoxAdapter(
-                          child: Center(child: Text(state.message)),
-                        );
-                      }
-
-                      // (Initial State)
-                      return SliverMainAxisGroup(
-                        slivers: <Widget>[
-                          SliverToBoxAdapter(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 10,
-                                horizontal: 10,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  LevelButtonWidget(
-                                    level: HomeStrings.lvl1,
-                                    function: () =>
-                                        setState(() => currentLevel = 'Level1'),
-                                  ),
-                                  LevelButtonWidget(
-                                    level: HomeStrings.lvl2,
-                                    function: () =>
-                                        setState(() => currentLevel = 'Level2'),
-                                  ),
-                                  LevelButtonWidget(
-                                    level: HomeStrings.lvl3,
-                                    function: () =>
-                                        setState(() => currentLevel = 'Level3'),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          CourseCardList(
-                            itemCount: HomeStrings.levels[currentLevel] ?? 0,
-                            title: 'Introduction to C++',
-                            imageUrl: Assets.imageLogo('temp_image.png'),
-                            isLocked: true,
-                            currentUserLevel: 1,
-                          ),
-                        ],
+                      return HomeBody(
+                        key: ValueKey((activeLevel)),
+                        courses: homeCourses,
+                        currentLevel: activeLevel,
                       );
                     },
-              ),
-
-              const SliverToBoxAdapter(child: SizedBox(height: 40)),
-            ],
-          );
-        },
+                onSuccess:
+                    (
+                      final BuildContext context,
+                      final SearchCourseState searchState,
+                    ) {
+                      final List<SearchCourseEntity> foundCourses =
+                          (searchState as SearchCourseSuccess).courses;
+                      return SearchListWidget(courses: foundCourses);
+                    },
+              );
+            },
+          ),
+        ],
       ),
     ).pH(10);
   }

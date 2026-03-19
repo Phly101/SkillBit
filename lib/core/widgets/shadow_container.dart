@@ -11,6 +11,7 @@ class ShadowContainer extends StatelessWidget {
     this.offset = const Offset(0, 4),
     this.margin,
     this.shadowColor,
+    this.border,
   });
 
   final Widget child;
@@ -21,6 +22,7 @@ class ShadowContainer extends StatelessWidget {
   final Offset offset;
   final EdgeInsetsGeometry? margin;
   final Color? shadowColor;
+  final BoxBorder? border;
 
   @override
   Widget build(final BuildContext context) {
@@ -29,14 +31,13 @@ class ShadowContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         shape: shape,
+        border: border,
         borderRadius: shape == BoxShape.rectangle
             ? BorderRadius.circular(borderRadius)
             : null,
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color:
-                shadowColor ??
-                Colors.black.withValues(alpha: 0.25),
+            color: shadowColor ?? Colors.black.withValues(alpha: 0.25),
             blurRadius: blurRadius,
             offset: offset,
           ),

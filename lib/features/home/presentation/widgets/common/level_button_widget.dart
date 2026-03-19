@@ -8,9 +8,11 @@ class LevelButtonWidget extends StatelessWidget {
     super.key,
     required this.level,
     required this.function,
+    required this.isSelected,
   });
 
   final String level;
+  final bool isSelected;
   final void Function()? function;
 
   @override
@@ -21,10 +23,15 @@ class LevelButtonWidget extends StatelessWidget {
       paddingL: 20,
       paddingR: 20,
       hasBorder: true,
+      color: isSelected
+          ? context.colorScheme.primary
+          : context.colorScheme.surface,
       child: Text(
         level,
         style: context.textTheme.displayMedium!.copyWith(
-          color: context.colorScheme.secondary,
+          color: isSelected
+              ? context.colorScheme.surface
+              : context.colorScheme.secondary,
         ),
       ),
     ).p10();
