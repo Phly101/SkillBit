@@ -4,6 +4,7 @@
 
 //Agenda page
 export './agenda/presentation/pages/agenda_page.dart';
+
 //Assessment page
 export './assessment/presentation/pages/assessment_transition_page.dart';
 
@@ -13,6 +14,7 @@ export './auth/presentation/pages/log_in_page.dart';
 export './auth/presentation/pages/new_password_page.dart';
 export './auth/presentation/pages/sign_up_page.dart';
 export './auth/presentation/pages/verification_page.dart';
+
 // Contest pages
 export 'contests/presentation/pages/contest_details/page/contest_details_page.dart';
 export 'contests/presentation/pages/contest_page/contest_page.dart';
@@ -23,11 +25,18 @@ export 'contests/presentation/pages/leaderBoard/page/leaderboard_page.dart';
 export './home/presentation/pages/home_page.dart';
 export './home/presentation/pages/main_navigation_page.dart';
 
+//course page
+export './course/presentation/pages/main/main_course_nav_page.dart';
+export './course/presentation/pages/course_page/pages/course_page.dart';
+export './course/presentation/pages/lesson_page/pages/lesson_page.dart';
+export './quiz/presentation/pages/quiz_page.dart';
+
 // Notifications page
 export './notifications/presentation/pages/notification_page.dart';
 
 // Onboarding page
 export './onboarding/presentation/pages/onboarding_page.dart';
+
 // Profile pages
 export 'profile/presentation/pages/about_us_page/page/about_us_page.dart';
 export './profile/presentation/pages/achievements_page.dart';
