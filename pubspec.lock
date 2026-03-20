@@ -137,6 +137,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  easy_stepper:
+    dependency: "direct main"
+    description:
+      name: easy_stepper
+      sha256: "9063d526c194aa4a5601d629040a2f1f5de77552019e878f89cb2b3964034305"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   equatable:
     dependency: "direct main"
     description:
@@ -829,14 +837,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "15.0.2"
-  water_animation:
-    dependency: "direct main"
-    description:
-      name: water_animation
-      sha256: c864fb64d0b1eeb96c80e3fe2c06b2c6a0cdff73dac04af5b4aec27267bfd9ee
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.3"
   web:
     dependency: transitive
     description:
