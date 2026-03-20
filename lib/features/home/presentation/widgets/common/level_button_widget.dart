@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skill_bit/core/widgets/button_widget.dart';
+import 'package:skill_bit/core/widgets/global/button_widget.dart';
 
 import '../../../../../core/theme/theme.dart';
 

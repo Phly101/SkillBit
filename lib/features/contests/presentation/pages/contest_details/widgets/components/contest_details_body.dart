@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/contest_details_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/button_widget.dart';
-import 'package:skill_bit/core/widgets/custom_app_bar.dart';
+import 'package:skill_bit/core/widgets/global/button_widget.dart';
+import 'package:skill_bit/core/widgets/global/custom_app_bar.dart';
 
 import '../../../../../../../core/router/routes.dart';
 import '../common/event_stats_row.dart';

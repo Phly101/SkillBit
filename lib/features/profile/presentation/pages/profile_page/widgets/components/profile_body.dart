@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import '../../../../../../../core/entities/leaderboard_entity.dart';
-import '../../../../../../../core/widgets/best_ranking_widget.dart';
+import '../../../../../../../core/widgets/user/best_ranking_widget.dart';
 import '../common/growth_graph_widget.dart';
 import '../common/progress_pie_chart_widget.dart';
 

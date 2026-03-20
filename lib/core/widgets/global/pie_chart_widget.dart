@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import '../theme/theme.dart';
+import '../../theme/theme.dart';
 
 class PieChartWidget extends StatefulWidget {
   const PieChartWidget({

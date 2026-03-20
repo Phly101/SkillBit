@@ -4,10 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/home_strings.dart';
 import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/avatar_widget.dart';
-import 'package:skill_bit/core/widgets/button_widget.dart';
+import 'package:skill_bit/core/widgets/user/avatar_widget.dart';
+import 'package:skill_bit/core/widgets/global/button_widget.dart';
 
-import '../../../../../core/widgets/search_field_widget.dart';
+import '../../../../../core/widgets/global/search_field_widget.dart';
 import '../../../../search/presentation/bloc/search_course_bloc/search_course_bloc.dart';
 
 class HomeHeaderWidget extends StatefulWidget {

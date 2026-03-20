@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/global/image_utils.dart';
-import 'package:skill_bit/core/widgets/profile_guard_widget.dart';
-import 'package:skill_bit/core/widgets/shadow_container.dart';
+import 'package:skill_bit/core/widgets/user/profile_guard_widget.dart';
+import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 
 class RankTileWidget extends StatelessWidget {
   const RankTileWidget({

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/global/image_utils.dart';
-import 'package:skill_bit/core/widgets/avatar_widget.dart';
-import 'package:skill_bit/core/widgets/line_progress_widget.dart';
-import 'package:skill_bit/core/widgets/shadow_container.dart';
+import 'package:skill_bit/core/widgets/user/avatar_widget.dart';
+import 'package:skill_bit/core/widgets/global/line_progress_widget.dart';
+import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 import 'action_button.dart';
 
 class FriendListCard extends StatelessWidget {

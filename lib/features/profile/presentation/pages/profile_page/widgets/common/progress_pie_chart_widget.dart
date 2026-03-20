@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skill_bit/core/widgets/pie_chart_widget.dart';
+import 'package:skill_bit/core/widgets/global/pie_chart_widget.dart';
 
 class ProgressPieChartWidget extends StatelessWidget {
   const ProgressPieChartWidget({

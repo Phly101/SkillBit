@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/shadow_container.dart';
+import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 
 class NavTileWidget extends StatelessWidget {
   const NavTileWidget({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/pie_chart_widget.dart';
-import 'package:skill_bit/core/widgets/shadow_container.dart';
+import 'package:skill_bit/core/widgets/global/pie_chart_widget.dart';
+import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 import 'package:skill_bit/features/home/presentation/widgets/common/path_widget.dart';
 
 class PathDetailsWidget extends StatelessWidget {

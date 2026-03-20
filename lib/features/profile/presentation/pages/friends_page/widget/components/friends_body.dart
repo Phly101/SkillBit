@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_bit/features/search/presentation/bloc/search_friends_bloc/search_friends_bloc.dart';
 import '../../../../../../../core/theme/theme.dart';
-import '../../../../../../../core/widgets/search_field_widget.dart';
+import '../../../../../../../core/widgets/global/search_field_widget.dart';
 import '../../../../../../search/domain/entities/search_friends_entity.dart';
 import '../common/friend_list_card.dart';
 

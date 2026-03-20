@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/line_progress_widget.dart';
+import 'package:skill_bit/core/widgets/global/line_progress_widget.dart';
 
 class PageProgress extends StatelessWidget {
   const PageProgress({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/line_progress_widget.dart';
-import 'package:skill_bit/core/widgets/shadow_container.dart';
+import 'package:skill_bit/core/widgets/global/line_progress_widget.dart';
+import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 import 'package:skill_bit/features/home/presentation/widgets/common/status_container.dart';
 import '../../../../../core/utils/global/assets.dart';
 
@@ -36,7 +36,7 @@ class CourseCardWidget extends StatelessWidget {
             width: MediaQuery.widthOf(context) * 0.35,
             height: MediaQuery.heightOf(context) * 0.13,
             decoration: BoxDecoration(
-              border: .all(width: 0.5,color: context.colorScheme.tertiary),
+              border: .all(width: 0.5, color: context.colorScheme.tertiary),
               borderRadius: BorderRadius.circular(25),
               color: context.colorScheme.secondary,
               image: DecorationImage(
@@ -62,7 +62,8 @@ class CourseCardWidget extends StatelessWidget {
                         softWrap: true,
                       ),
                     ),
-                    StatusContainer(isLocked: isLocked),
+                    const SizedBox(width: 5,),
+                    StatusContainer(isLocked: isLocked, progress: progress),
                   ],
                 ),
                 const SizedBox(height: 10),

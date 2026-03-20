@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/shadow_container.dart';
+import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 
 import '../../../../../utils/global/assets.dart';
 

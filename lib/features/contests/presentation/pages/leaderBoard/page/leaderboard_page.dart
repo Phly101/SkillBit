@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skill_bit/core/widgets/best_ranking_widget.dart';
-import 'package:skill_bit/core/widgets/gradiant_container.dart';
+import 'package:skill_bit/core/widgets/user/best_ranking_widget.dart';
+import 'package:skill_bit/core/widgets/global/gradiant_container.dart';
 import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/components/leaderboard_body.dart';
 import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/components/leaderboard_header.dart';
 import '../../../../../../core/entities/leaderboard_entity.dart';

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/assessment_constants.dart';
 import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/transition_screen_widget.dart';
+import 'package:skill_bit/core/widgets/onboarding/transition_screen_widget.dart';
 
 import '../../../../core/utils/global/assets.dart';
 

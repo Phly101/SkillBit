@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/button_widget.dart';
+import 'package:skill_bit/core/widgets/global/button_widget.dart';
 import '../common/user_widget.dart';
 
 class ProfileHeader extends StatelessWidget {

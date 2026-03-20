@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/utils/global/image_utils.dart';
-import 'package:skill_bit/core/widgets/shadow_container.dart';
-import '../utils/global/assets.dart';
+import 'package:skill_bit/core/widgets/global/shadow_container.dart';
+import '../../utils/global/assets.dart';
 import 'avatar_widget.dart';
 
 class ProfileGuardWidget extends StatelessWidget {

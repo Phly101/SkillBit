@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/theme/theme.dart';
-import '../../../../../../core/widgets/shadow_container.dart';
+import '../../../../../../core/widgets/global/shadow_container.dart';
 
 class MemberSectionWidget extends StatelessWidget {
   const MemberSectionWidget({
