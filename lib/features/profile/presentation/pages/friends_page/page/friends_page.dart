@@ -113,7 +113,7 @@ class FriendsPage extends StatelessWidget {
               displayList =
                   <SearchFriendsEntity>[];
             } else if (state is SearchFriendsSuccess) {
-              displayList = state.friends ?? <SearchFriendsEntity>[];
+              displayList = state.friends;
             } else if (state is SearchFriendsError) {
               errorMessage = state.message;
               displayList = <SearchFriendsEntity>[];
