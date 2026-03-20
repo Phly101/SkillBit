@@ -1,0 +1,493 @@
+[
+  {
+    "id": "lvl_1",
+    "levelIndex": 1,
+    "title": "Level 1: Fundamentals (Beginner)",
+    "courses": [
+      {
+        "id": "c1_l1",
+        "title": "Computer Fundamentals",
+        "imageUrl": "Computer-Fundamentals-Tutorial.png",
+        "progress": 1.0,
+        "isLocked": false,
+        "courseType": "Mandatory",
+        "scoreEarned": 0,
+        "lessons": [
+          {
+            "id": "l1",
+            "title": "Hardware components",
+            "description": "CPU, RAM, Storage, I/O",
+            "isLocked": false,
+            "prerequisiteId": null,
+            "quiz": {
+              "id": "q1",
+              "title": "Hardware Basics Quiz",
+              "icCompleted": true
+            },
+            "resources": [
+              {
+                "id": "rly1",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=O5nskjZ_GoI"
+              },
+              {
+                "id": "rla1",
+                "type": "article",
+                "url": "https://www.geeksforgeeks.org/computer-fundamentals-tutorial/"
+              }
+            ]
+          },
+          {
+            "id": "l2",
+            "title": "Computer Architecture",
+            "description": "How a computer operates",
+            "isLocked": true,
+            "prerequisiteId": "q1",
+            "quiz": {
+              "id": "q2",
+              "title": "Architecture Deep Dive",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly2",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=QXjU9qTsYCc"
+              },
+              {
+                "id": "rla2",
+                "type": "article",
+                "url": "https://www.tutorialspoint.com/computer_fundamentals/index.htm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c3_l1",
+        "title": "Introduction to C++",
+        "imageUrl": "introduction-to-c.png",
+        "progress": 0.0,
+        "isLocked": false,
+        "courseType": "Mandatory",
+        "scoreEarned": 0,
+        "lessons": [
+          {
+            "id": "cpp_1",
+            "title": "Intro & Setup",
+            "description": "Installing compilers and IDEs",
+            "isLocked": false,
+            "prerequisiteId": "q2",
+            "quiz": {
+              "id": "qc_1",
+              "title": "Setup Check",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly3",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=vLnPwxZdW4Y"
+              }
+            ]
+          },
+          {
+            "id": "cpp_2",
+            "title": "Variables & Types",
+            "description": "int, double, string, bool",
+            "isLocked": true,
+            "prerequisiteId": "qc_1",
+            "quiz": {
+              "id": "qc_2",
+              "title": "Data Types Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rla3",
+                "type": "article",
+                "url": "https://www.learncpp.com/"
+              }
+            ]
+          },
+          {
+            "id": "cpp_3",
+            "title": "Input & Output",
+            "description": "Working with cin and cout",
+            "isLocked": true,
+            "prerequisiteId": "qc_2",
+            "quiz": {
+              "id": "qc_3",
+              "title": "I/O Mastery",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rla4",
+                "type": "article",
+                "url": "https://www.w3schools.com/cpp/"
+              }
+            ]
+          },
+          {
+            "id": "cpp_4",
+            "title": "Conditionals",
+            "description": "If, else if, and switch",
+            "isLocked": true,
+            "prerequisiteId": "qc_3",
+            "quiz": {
+              "id": "qc_4",
+              "title": "Logic Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rla5",
+                "type": "article",
+                "url": "https://www.programiz.com/cpp-programming"
+              }
+            ]
+          },
+          {
+            "id": "cpp_5",
+            "title": "Loops",
+            "description": "For, While, and Do-While",
+            "isLocked": true,
+            "prerequisiteId": "qc_4",
+            "quiz": {
+              "id": "qc_5",
+              "title": "Iteration Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly4",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=vLnPwxZdW4Y"
+              }
+            ]
+          },
+          {
+            "id": "cpp_6",
+            "title": "Arrays",
+            "description": "Fixed size collections",
+            "isLocked": true,
+            "prerequisiteId": "qc_5",
+            "quiz": {
+              "id": "qc_6",
+              "title": "Arrays Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rla6",
+                "type": "article",
+                "url": "https://www.learncpp.com/cpp-tutorial/arrays-part-i/"
+              }
+            ]
+          },
+          {
+            "id": "cpp_7",
+            "title": "Functions",
+            "description": "Parameters and return types",
+            "isLocked": true,
+            "prerequisiteId": "qc_6",
+            "quiz": {
+              "id": "qc_7",
+              "title": "Functions Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly5",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=vLnPwxZdW4Y"
+              }
+            ]
+          },
+          {
+            "id": "cpp_8",
+            "title": "Pointers Basics",
+            "description": "Memory addresses and references",
+            "isLocked": true,
+            "prerequisiteId": "qc_7",
+            "quiz": {
+              "id": "qc_8",
+              "title": "Memory Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rla7",
+                "type": "article",
+                "url": "https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "opt_debug",
+        "title": "Debugging (Optional)",
+        "imageUrl": "Debugging.png",
+        "progress": 0.0,
+        "isLocked": true,
+        "courseType": "Optional",
+        "scoreEarned": 0,
+        "lessons": [
+          {
+            "id": "l7",
+            "title": "Debugging Mindset",
+            "description": "Print debugging and stack traces",
+            "isLocked": true,
+            "prerequisiteId": "qc_8",
+            "quiz": {
+              "id": "qd_1",
+              "title": "Bug Hunter Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly6",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=H0XScE08hy8"
+              },
+              {
+                "id": "rla7",
+                "type": "article",
+                "url": "https://www.freecodecamp.org/news/how-to-debug-code/"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lvl_2",
+    "levelIndex": 2,
+    "title": "Level 2: Intermediate",
+    "courses": [
+      {
+        "id": "c1_l2",
+        "title": "Data Structures (DS 1)",
+        "imageUrl": "data_sturcture.jpg",
+        "progress": 0.0,
+        "isLocked": true,
+        "courseType": "Mandatory",
+        "scoreEarned": 0,
+        "lessons": [
+          {
+            "id": "l8",
+            "title": "Arrays & Strings",
+            "description": "Linear data storage",
+            "isLocked": true,
+            "prerequisiteId": "qd_1",
+            "quiz": {
+              "id": "q_ds1",
+              "title": "Arrays & Strings Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly7",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=RBSGKlAvoiM"
+              },
+              {
+                "id": "rla8",
+                "type": "article",
+                "url": "https://www.geeksforgeeks.org/data-structures/"
+              }
+            ]
+          },
+          {
+            "id": "l9",
+            "title": "Linked Lists, Stacks, Queues",
+            "description": "Abstract data types",
+            "isLocked": true,
+            "prerequisiteId": "q_ds1",
+            "quiz": {
+              "id": "q_ds2",
+              "title": "Linear DS Mastery",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rla9",
+                "type": "article",
+                "url": "https://visualgo.net/en"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c2_l2",
+        "title": "Object-Oriented Programming",
+        "imageUrl": "oop.jpg",
+        "progress": 0.0,
+        "isLocked": true,
+        "courseType": "Mandatory",
+        "scoreEarned": 0,
+        "lessons": [
+          {
+            "id": "l10",
+            "title": "Encapsulation & Inheritance",
+            "description": "Core OOP pillars",
+            "isLocked": true,
+            "prerequisiteId": "q_ds2",
+            "quiz": {
+              "id": "q_oop1",
+              "title": "Pillars of OOP Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly8",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=pTB0EiLXUC8"
+              },
+              {
+                "id": "rla10",
+                "type": "article",
+                "url": "https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/"
+              }
+            ]
+          },
+          {
+            "id": "l11",
+            "title": "Polymorphism",
+            "description": "Dynamic method binding",
+            "isLocked": true,
+            "prerequisiteId": "q_oop1",
+            "quiz": {
+              "id": "q_oop2",
+              "title": "Polymorphism Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rla11",
+                "type": "article",
+                "url": "https://www.programiz.com/cpp-programming/object-oriented-programming"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "opt_clean",
+        "title": "Clean Code Basics",
+        "imageUrl": "Clean_Code.jpg",
+        "progress": 0.0,
+        "isLocked": true,
+        "courseType": "Optional",
+        "scoreEarned": 0,
+        "lessons": [
+          {
+            "id": "l12",
+            "title": "Naming & Readability",
+            "description": "Writing maintainable code",
+            "isLocked": true,
+            "prerequisiteId": "q_oop2",
+            "quiz": {
+              "id": "q_clean1",
+              "title": "Clean Code Mindset",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly9",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=7EmboKQH8lM"
+              },
+              {
+                "id": "rla12",
+                "type": "article",
+                "url": "https://clean-code-developer.com/"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lvl_3",
+    "levelIndex": 3,
+    "title": "Level 3: Advanced",
+    "courses": [
+      {
+        "id": "c1_l3",
+        "title": "Advanced Data Structures",
+        "imageUrl": "data_sturcture.jpg",
+        "progress": 0.0,
+        "isLocked": true,
+        "courseType": "Mandatory",
+        "scoreEarned": 0,
+        "lessons": [
+          {
+            "id": "l13",
+            "title": "Trees & Graphs",
+            "description": "Non-linear structures",
+            "isLocked": true,
+            "prerequisiteId": "q_clean1",
+            "quiz": {
+              "id": "q_ads1",
+              "title": "Non-Linear DS Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly10",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=0IAPZzGSbME"
+              },
+              {
+                "id": "rla13",
+                "type": "article",
+                "url": "https://www.geeksforgeeks.org/advanced-data-structures/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "opt_tracks",
+        "title": "Frame Works",
+        "imageUrl": "frameworks.png",
+        "progress": 0.0,
+        "isLocked": true,
+        "courseType": "Optional",
+        "scoreEarned": 0,
+        "lessons": [
+          {
+            "id": "l14",
+            "title": "Mobile & Web",
+            "description": "Frontend vs Backend overview",
+            "isLocked": true,
+            "prerequisiteId": "q_ads1",
+            "quiz": {
+              "id": "q_tracks1",
+              "title": "Career Path Quiz",
+              "icCompleted": false
+            },
+            "resources": [
+              {
+                "id": "rly11",
+                "type": "youtube",
+                "url": "https://www.youtube.com/watch?v=PkZNo7MFNFg"
+              },
+              {
+                "id": "rla14",
+                "type": "article",
+                "url": "https://roadmap.sh/"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
