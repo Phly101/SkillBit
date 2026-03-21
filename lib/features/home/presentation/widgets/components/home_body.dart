@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/features/courses/course_extenstions.dart';
 import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/home/presentation/widgets/common/course_card_widget.dart';
 import 'package:skill_bit/features/home/presentation/widgets/common/level_row_widget.dart';
 import 'package:skill_bit/features/home/presentation/widgets/common/path_details_widget.dart';
+import '../../../../../core/router/routes.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({
@@ -47,10 +49,27 @@ class HomeBody extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: CourseCardWidget(
+                courseId: coursesItem.id,
                 courseUrl: coursesItem.imageUrl,
                 title: coursesItem.title,
                 progress: coursesItem.progress,
                 isLocked: coursesItem.isLocked,
+                function: //Todo: Implement Function logic
+                () {
+                  if (!coursesItem.isLocked) {
+                    if (coursesItem.progress == 0.0) {
+                      context.go('${AppRoutes.course}/${coursesItem.id}');
+                    } else {
+                      final String firstLessonId =
+                          coursesItem.lessons?.first.id ?? '';
+
+                      context.go(
+                        '${AppRoutes.course}/${coursesItem.id}/lesson/$firstLessonId',
+                      );
+                    }
+                  }
+                  //Todo: add else clause with show dialoge
+                },
               ),
             );
           },
