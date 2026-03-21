@@ -6,7 +6,6 @@ import 'package:skill_bit/core/utils/global/state_switcher.dart';
 import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/home/presentation/widgets/components/home_body.dart';
 import 'package:skill_bit/features/home/presentation/widgets/components/search_list_widget.dart';
-import 'package:skill_bit/features/search/domain/entities/search_courses_entity.dart';
 import 'package:skill_bit/features/search/presentation/bloc/search_course_bloc/search_course_bloc.dart';
 import '../../../../core/di/injection_container.dart';
 import '../../../../core/router/routes.dart';
@@ -70,7 +69,7 @@ class HomePage extends StatelessWidget {
                       final BuildContext context,
                       final SearchCourseState searchState,
                     ) {
-                      final List<SearchCourseEntity> foundCourses =
+                      final List<CourseEntity> foundCourses =
                           (searchState as SearchCourseSuccess).courses;
                       return SearchListWidget(courses: foundCourses);
                     },
