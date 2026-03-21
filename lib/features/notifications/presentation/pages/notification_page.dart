@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/global/back_button.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});
@@ -10,16 +11,11 @@ class NotificationPage extends StatelessWidget {
   Widget build(final BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: //Todo: Implement Function logic
-          () {
+        leading: ArrowBackButton(
+          function: () {
             context.go(AppRoutes.home);
           },
-          icon: const Icon(
-            Icons.arrow_back,
-            size: 30,
-            fontWeight: FontWeight.bold,
-          ),
+          size: 30,
         ),
         title: Text(
           'My Notifications',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/global/back_button.dart';
 import 'package:skill_bit/features/profile/presentation/widgets/components/acheivment_component/acheivment_body.dart';
 
 class AchievementsPage extends StatelessWidget {
@@ -11,23 +12,17 @@ class AchievementsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Achievements', style: context.textTheme.displayLarge),
-                centerTitle: true,
+        centerTitle: true,
 
-        leading: IconButton(
-          onPressed: //Todo: Implement Function logic
-          () {
+        leading: ArrowBackButton(
+          function: () {
             context.pop();
           },
-          icon: const Icon(
-            Icons.arrow_back,
-            size: 30,
-            fontWeight: FontWeight.bold,
-          ),
-
+          size: 30,
         ),
-        
       ),
-      body: const AcheivmentBody( ).pV(40),
+
+      body: const AcheivmentBody().pV(40),
     );
   }
 }

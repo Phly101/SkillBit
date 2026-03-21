@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/about_us_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/global/back_button.dart';
 import 'package:skill_bit/core/widgets/global/gradiant_container.dart';
 import 'package:skill_bit/features/profile/presentation/pages/about_us_page/widgets/member_card.dart';
 import '../../../../../../core/utils/global/assets.dart';
@@ -13,16 +14,11 @@ class AboutUsPage extends StatelessWidget {
   Widget build(final BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: //Todo: Implement Function logic
-          () {
+        leading: ArrowBackButton(
+          function: () {
             context.pop();
           },
-          icon: const Icon(
-            Icons.arrow_back,
-            size: 30,
-            fontWeight: FontWeight.bold,
-          ),
+          size: 30,
         ),
         title: Text(
           AboutUsStrings.aboutUs,

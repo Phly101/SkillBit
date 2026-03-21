@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/global/back_button.dart';
 
 class LeaderboardHeader extends StatelessWidget {
   const LeaderboardHeader({super.key});
@@ -14,17 +14,12 @@ class LeaderboardHeader extends StatelessWidget {
 
       children: <Widget>[
         //leading
-        IconButton(
-          onPressed: //Todo: Implement Function logic
-          () {
+        ArrowBackButton(
+          function: () {
             context.go(AppRoutes.contestResults);
           },
-          icon: const Icon(
-            Icons.arrow_back,
-            size: 25,
-            fontWeight: .bold,
-            color: Colors.white,
-          ),
+          size: 30,
+          color: context.colorScheme.surface,
         ),
         // title
         Text(
@@ -34,15 +29,11 @@ class LeaderboardHeader extends StatelessWidget {
           ),
         ),
         // trailing
-        IconButton(
-          onPressed: //Todo: Implement Function logic
-          () {
+        ArrowBackButton(
+          function: () {
             context.go(AppRoutes.home);
           },
-          icon: FaIcon(
-            FontAwesomeIcons.house,
-            color: context.colorScheme.surface,
-          ),
+          size: 30,
         ),
       ],
     );

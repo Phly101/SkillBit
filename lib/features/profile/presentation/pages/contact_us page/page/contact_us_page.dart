@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/about_us_strings.dart';
 import 'package:skill_bit/core/constants/contact_us_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/global/back_button.dart';
 import 'package:skill_bit/features/profile/presentation/pages/contact_us%20page/widget/banner_widget.dart';
 import 'package:skill_bit/features/profile/presentation/pages/contact_us%20page/widget/team_tile_widget.dart';
 
@@ -19,14 +20,7 @@ class ContactUsPage extends StatelessWidget {
           style: context.textTheme.displayLarge,
         ),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            size: 25,
-            fontWeight: FontWeight.bold,
-          ),
-          onPressed: () => context.pop(),
-        ),
+        leading: ArrowBackButton(function: () => context.pop(),)
       ),
       body: SingleChildScrollView(
         child: Column(

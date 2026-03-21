@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/global/back_button.dart';
 import 'package:skill_bit/features/profile/presentation/pages/friends_page/widget/components/friends_body.dart';
 import 'package:skill_bit/features/search/domain/entities/search_friends_entity.dart';
 import 'package:skill_bit/features/search/presentation/bloc/search_friends_bloc/search_friends_bloc.dart';
@@ -93,14 +94,7 @@ class FriendsPage extends StatelessWidget {
             style: context.textTheme.displayLarge,
           ),
           centerTitle: true,
-          leading: IconButton(
-            onPressed: () => context.pop(),
-            icon: Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: context.colorScheme.onSurface,
-            ),
-          ),
+          leading: ArrowBackButton(function: () => context.pop(),)
         ),
         body: BlocBuilder<SearchFriendsBloc, SearchFriendsState>(
           builder: (final BuildContext context, final SearchFriendsState state) {
