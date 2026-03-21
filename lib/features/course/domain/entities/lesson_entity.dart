@@ -10,13 +10,15 @@ class LessonEntity {
     required this.quiz,
     required this.isLocked,
     required this.prerequisiteId,
+    required this.imageUrl,
   });
 
   final String title;
   final String description;
   final String id;
+  final String imageUrl;
   final List<ResourceEntity>? resources;
-  final QuizViewEntity quiz;
+  final QuizViewEntity? quiz;
   final bool isLocked;
   final String? prerequisiteId;
 }

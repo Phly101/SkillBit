@@ -11,6 +11,7 @@ class LessonModel extends LessonEntity {
     required super.quiz,
     required super.isLocked,
     required super.prerequisiteId,
+    required super.imageUrl,
   });
 
   factory LessonModel.fromJson(final Map<String, dynamic> json) {
@@ -24,6 +25,7 @@ class LessonModel extends LessonEntity {
       quiz: QuizViewModel.fromJson(json['quiz']),
       isLocked: json['isLocked'],
       prerequisiteId: json['prerequisiteId'] ?? '',
+      imageUrl: json['imageUrl'] as String,
     );
   }
 
@@ -36,6 +38,7 @@ class LessonModel extends LessonEntity {
       'quiz': quiz,
       'isLocked': isLocked,
       'prerequisiteId': prerequisiteId,
+      'imageUrl': imageUrl,
     };
   }
 }
