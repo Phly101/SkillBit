@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_bit/core/error/failure.dart';
-import 'package:skill_bit/features/search/domain/entities/search_courses_entity.dart';
+import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/search/domain/useCases/params/search_course_params.dart';
 import 'package:skill_bit/features/search/domain/useCases/search_course_usecase.dart';
 import 'package:stream_transform/stream_transform.dart';
@@ -43,14 +43,14 @@ class SearchCourseBloc extends Bloc<SearchCourseEvent, SearchCourseState> {
     // searching state
 
     emit(SearchCourseLoading());
-    final Either<Failure, List<SearchCourseEntity>> result =
-        searchCourseUseCase(SearchCourseParams(event.query));
+    final Either<Failure, List<CourseEntity>> result =
+       await searchCourseUseCase(SearchCourseParams(event.query));
     result.fold(
       //Failure case
       (final Failure failure) =>
           emit(const SearchCourseError(message: 'Failed to fetch Courses')),
       //Success case
-      (final List<SearchCourseEntity> courses) =>
+      (final List<CourseEntity> courses) =>
           emit(SearchCourseSuccess(courses: courses)),
     );
   }
@@ -60,15 +60,15 @@ class SearchCourseBloc extends Bloc<SearchCourseEvent, SearchCourseState> {
     final SearchCourseCleared event,
     final Emitter<SearchCourseState> emit,
   ) async {
-    final Either<Failure, List<SearchCourseEntity>> result =
-        searchCourseUseCase(const SearchCourseParams(''));
+    final Either<Failure,List<CourseEntity> > result =
+      await  searchCourseUseCase(const SearchCourseParams(''));
 
     result.fold(
       //Failure case
       (final Failure failure) =>
           emit(const SearchCourseError(message: 'Could not reset list')),
       //Success case
-      (final List<SearchCourseEntity> courses) =>
+      (final List<CourseEntity> courses) =>
           emit(SearchCourseSuccess(courses: courses)),
     );
   }

@@ -1,85 +1,18 @@
-import 'package:skill_bit/features/search/data/models/search_course_model.dart';
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+import 'package:skill_bit/features/course/data/models/course_model.dart';
+import 'package:skill_bit/features/course/data/models/level_model.dart';
 import 'package:skill_bit/features/search/data/models/search_friends_model.dart';
 
 abstract class SearchLocalDataSource {
-  List<SearchCourseModel> searchCourses(final String courseQuery);
+  Future<List<CourseModel>> searchCourses(final String courseQuery);
 
   List<SearchFriendsModel> searchFriends(final String friendsQuery);
 }
 
 class SearchLocalDataSourceImpl implements SearchLocalDataSource {
-  final List<SearchCourseModel> _courses = <SearchCourseModel>[
-    SearchCourseModel(
-      id: '1',
-      title: 'Flutter UI Masterclass',
-      imageUrl: 'temp_image.png',
-      progress: 85.0,
-      isLocked: false,
-    ),
-    SearchCourseModel(
-      id: '2',
-      title: 'Clean Architecture in Dart',
-      imageUrl: 'temp_image.png',
-      progress: 40.0,
-      isLocked: false,
-    ),
-    SearchCourseModel(
-      id: '3',
-      title: 'Advanced State Management',
-      imageUrl: 'temp_image.png',
-      progress: 0.0,
-      isLocked: true,
-    ),
-    SearchCourseModel(
-      id: '4',
-      title: 'Node.js Backend Essentials',
-      imageUrl: 'temp_image.png',
-      progress: 10.0,
-      isLocked: false,
-    ),
-    SearchCourseModel(
-      id: '5',
-      title: 'Firebase Auth & Security',
-      imageUrl: 'temp_image.png',
-      progress: 100.0,
-      isLocked: false,
-    ),
-    SearchCourseModel(
-      id: '6',
-      title: 'Dart Design Patterns',
-      imageUrl: 'temp_image.png',
-      progress: 0.0,
-      isLocked: true,
-    ),
-    SearchCourseModel(
-      id: '7',
-      title: 'Animations & Micro-interactions',
-      imageUrl: 'temp_image.png',
-      progress: 25.0,
-      isLocked: false,
-    ),
-    SearchCourseModel(
-      id: '8',
-      title: 'Unit Testing Foundations',
-      imageUrl: 'temp_image.png',
-      progress: 60.0,
-      isLocked: false,
-    ),
-    SearchCourseModel(
-      id: '9',
-      title: 'Responsive Design Strategies',
-      imageUrl: 'temp_image.png',
-      progress: 0.0,
-      isLocked: true,
-    ),
-    SearchCourseModel(
-      id: '10',
-      title: 'Git & Team Collaboration',
-      imageUrl: 'temp_image.png',
-      progress: 95.0,
-      isLocked: false,
-    ),
-  ];
+  final String _assetPath = 'assets/json/mock_courses_data.json';
   final List<SearchFriendsModel> _friends = <SearchFriendsModel>[
     SearchFriendsModel(
       name: 'Basel El Rafei',
@@ -144,13 +77,36 @@ class SearchLocalDataSourceImpl implements SearchLocalDataSource {
   ];
 
   //Todo: might want to add later fuzzy package to handle search typos and find the correct query
-  @override
-  List<SearchCourseModel> searchCourses(final String courseQuery) {
-    final String query = courseQuery.trim().toLowerCase();
-    if (query.isEmpty) return _courses;
-    final List<String> queryWords = query.toLowerCase().split(' ');
 
-    return _courses.where((final SearchCourseModel course) {
+  List<LevelModel>? _cachedLevels;
+
+  Future<List<LevelModel>> _getAllLevels() async {
+    if (_cachedLevels != null) return _cachedLevels!;
+    final List<dynamic> rawJson = await _loadRawJson();
+    _cachedLevels = rawJson
+        .map(
+          (final dynamic json) =>
+              LevelModel.fromJson(json as Map<String, dynamic>),
+        )
+        .toList();
+
+    return _cachedLevels!;
+  }
+
+  @override
+  Future<List<CourseModel>> searchCourses(final String courseQuery) async {
+    final String query = courseQuery.trim().toLowerCase();
+    final List<LevelModel> allLevels = await _getAllLevels();
+    final List<CourseModel> allCourses = allLevels
+        .expand((final LevelModel level) => level.courses)
+        .cast<CourseModel>()
+        .toList();
+
+    if (query.isEmpty) return allCourses;
+
+    final List<String> queryWords = query.split(' ');
+
+    return allCourses.where((final CourseModel course) {
       final String title = course.title.toLowerCase();
       return queryWords.any((final String word) => title.contains(word));
     }).toList();
@@ -166,5 +122,11 @@ class SearchLocalDataSourceImpl implements SearchLocalDataSource {
               friend.name.toLowerCase().contains(query.toLowerCase()),
         )
         .toList();
+  }
+
+  // Helpers
+  Future<List<dynamic>> _loadRawJson() async {
+    final String response = await rootBundle.loadString(_assetPath);
+    return await jsonDecode(response) as List<dynamic>;
   }
 }

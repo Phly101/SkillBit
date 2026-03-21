@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:skill_bit/core/error/failure.dart';
-import 'package:skill_bit/features/search/domain/entities/search_courses_entity.dart';
+import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/search/domain/entities/search_friends_entity.dart';
 
 abstract class SearchRepository {
-  Either<Failure, List<SearchCourseEntity>> searchCourses(
+  Future<Either<Failure, List<CourseEntity>>> searchCourses(
     final String courseQuery,
   );
 

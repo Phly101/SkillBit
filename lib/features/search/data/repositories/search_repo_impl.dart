@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:skill_bit/core/error/failure.dart';
+import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/search/data/dataSources/search_local_data_source.dart';
-import 'package:skill_bit/features/search/domain/entities/search_courses_entity.dart';
 import 'package:skill_bit/features/search/domain/entities/search_friends_entity.dart';
 import 'package:skill_bit/features/search/domain/repositories/search_repo.dart';
 
@@ -11,15 +11,15 @@ class SearchRepoImpl implements SearchRepository {
   final SearchLocalDataSource searchLocalDataSource;
 
   @override
-  Either<Failure, List<SearchCourseEntity>> searchCourses(
+  Future<Either<Failure, List<CourseEntity>>> searchCourses(
     final String courseQuery,
-  ) {
+  ) async {
     try {
-      final List<SearchCourseEntity> result = searchLocalDataSource
+      final List<CourseEntity> result =  await searchLocalDataSource
           .searchCourses(courseQuery);
-      return Right<Failure, List<SearchCourseEntity>>(result);
+      return Right<Failure, List<CourseEntity>>(result);
     } catch (e) {
-      return Left<Failure, List<SearchCourseEntity>>(CacheFailures());
+      return Left<Failure, List<CourseEntity>>(CacheFailures());
     }
   }
 
