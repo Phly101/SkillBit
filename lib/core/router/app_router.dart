@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skill_bit/core/router/features/course_routes.dart';
 import '../../features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import '../app_state/app_state_notifier.dart';
 import 'guard/app_router_guard.dart';
@@ -28,8 +29,9 @@ class AppRouter {
       // ➣ ➣ ➣ Spread Utility routes (Notifications, etc.)
       ...GlobalRoutes.utilityRoutes(),
 
-      // ➣ ➣ ➣ Spread standalone Feature routes (Contests)
+      // ➣ ➣ ➣ Spread standalone Feature routes
       ...ContestRoutes.contestRoutes,
+      CourseRoutes.courseBranchRoutes,
 
       // ➣ ➣ ➣ The Main App Shell (Tabs)
       MainNavRoutes.mainRoutes(),
