@@ -9,7 +9,8 @@ class ResourceModel extends ResourceEntity {
     return ResourceModel(
       id: json['id'],
       type: ResourceType.values.firstWhere(
-        (final ResourceType e) => e.toString().split('.').last == json['type'],
+        (final ResourceType e) =>
+            e.name.toLowerCase() == json['type'].toString().toLowerCase(),
         orElse: () => ResourceType.other,
       ),
       url: json['url'],
@@ -17,6 +18,6 @@ class ResourceModel extends ResourceEntity {
   }
 
   Map<String, dynamic> toJson() {
-    return <String, dynamic>{'id': id, 'type': type, 'url': url};
+    return <String, dynamic>{'id': id, 'type': type.name, 'url': url};
   }
 }
