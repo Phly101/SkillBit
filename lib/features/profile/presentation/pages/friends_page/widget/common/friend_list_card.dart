@@ -1,0 +1,88 @@
+import 'package:flutter/material.dart';
+import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/utils/global/image_utils.dart';
+import 'package:skill_bit/core/widgets/user/avatar_widget.dart';
+import 'package:skill_bit/core/widgets/global/line_progress_widget.dart';
+import 'package:skill_bit/core/widgets/global/shadow_container.dart';
+import 'action_button.dart';
+
+class FriendListCard extends StatelessWidget {
+  const FriendListCard({
+    super.key,
+    required this.name,
+    required this.points,
+    required this.progress,
+    required this.profileUrl,
+  });
+
+  final String name;
+  final String profileUrl;
+  final int points;
+  final double progress;
+
+  @override
+  Widget build(final BuildContext context) {
+    return ShadowContainer(
+      borderRadius: 12,
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  ImageUtils.showHeroPreview(context: context,
+                      heroTag: 'hero-$name',
+                      profileUrl: profileUrl);
+                },
+                child: AvatarWidget(
+                  profileUrl: profileUrl,
+                  radius: 35,
+                  size: 35,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    LineProgressWidget(progress: progress),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                '$points Points',
+                style: const TextStyle(fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            children: <Widget>[
+              ActionButton(
+                label: 'View Profile',
+                onTap: //Todo: Implement Function logic
+                    () {},
+              ),
+              const SizedBox(width: 10),
+              ActionButton(
+                label: 'Challenge',
+                isPrimary: false,
+                onTap: //Todo: Implement Function logic
+                    () {},
+              ),
+            ],
+          ),
+        ],
+      ).pNum(12),
+    );
+  }
+}

@@ -4,7 +4,7 @@ import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/features/auth/presentation/widgets/common/build_or_divider.dart';
 import 'package:skill_bit/features/auth/presentation/widgets/common/custom_rich_text.dart';
 
-import '../../../../../core/utils/assets.dart';
+import '../../../../../core/utils/global/assets.dart';
 
 class FooterWidget extends StatelessWidget {
   factory FooterWidget.login({required final void Function() onSignUpTap}) {

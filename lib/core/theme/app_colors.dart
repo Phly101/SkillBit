@@ -15,4 +15,5 @@ class AppColors {
   static const Color locked = Color(0xFF7F7F7F);
   static const Color mainBlue = Color(0xFF3894F0);
   static const Color secBlue = Color(0xFF647496);
+  static const Color brandBlue = Color(0xFF0046DC);
 }

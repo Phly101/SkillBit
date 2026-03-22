@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:skill_bit/features/profile/presentation/widgets/components/badge_component/locked_card.dart';
+import 'package:skill_bit/features/profile/presentation/widgets/common/badge_common/unlocked_card.dart';
+
+class BadgeCard extends StatelessWidget {
+
+  const BadgeCard({super.key, required this.imagePath, required this.isLocked});
+  final String imagePath;
+  final bool isLocked;
+
+  @override
+  Widget build(final BuildContext context) {
+    return isLocked
+        ? const LockedCard()
+        : UnlockedCard(imagePath: imagePath);
+  }
+}

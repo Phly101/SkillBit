@@ -4,14 +4,14 @@ import 'package:skill_bit/features/onboarding/data/dataSources/onboarding_local_
 import 'package:skill_bit/features/onboarding/domain/repositories/onboarding_repo.dart';
 
 class OnboardingRepoImpl implements OnboardingRepo {
-  OnboardingRepoImpl({required this.onboardingLocalDataSource});
+  const OnboardingRepoImpl({required this.onboardingLocalDataSource});
 
   final OnboardingLocalDataSource onboardingLocalDataSource;
 
   @override
   Future<Either<Failure, void>> complete() async {
     try {
-       await onboardingLocalDataSource.completeOnboarding();
+      await onboardingLocalDataSource.completeOnboarding();
       return const Right<Failure, void>(null);
     } catch (e) {
       return Left<Failure, void>(CacheFailures());

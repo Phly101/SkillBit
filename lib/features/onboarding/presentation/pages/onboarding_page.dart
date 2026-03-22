@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skill_bit/core/widgets/transition_screen_widget.dart';
+import 'package:skill_bit/core/widgets/onboarding/transition_screen_widget.dart';
 import 'package:skill_bit/features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/app_state/app_state_notifier.dart';
-import '../../../../core/utils/assets.dart';
+import '../../../../core/utils/global/assets.dart';
 import '../../../../core/constants/onboarding_strings.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -35,61 +35,65 @@ class _OnboardingPageState extends State<OnboardingPage> {
         },
         child: Stack(
           children: <Widget>[
-            PageView(
-              controller: _controller,
-              children: <Widget>[
-                TransitionScreenWidget(
-                  assetUrl: Assets.animation('coding.json'),
-                  screenTitle: OnboardingStrings.screen1Title,
-                  description: OnboardingStrings.screen1Description,
-                  buttonText: OnboardingStrings.buttonText1,
-                  function: () {
-                    _controller.nextPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeIn,
-                    );
-                  },
-                ),
-                TransitionScreenWidget(
-                  assetUrl: Assets.animation('Developer.json'),
-                  screenTitle: OnboardingStrings.screen2Title,
-                  description: OnboardingStrings.screen2Description,
-                  buttonText: OnboardingStrings.buttonText2,
-                  function: () {
-                    _controller.nextPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeIn,
-                    );
-                  },
-                ),
-                //Todo: do something about the lag
-                TransitionScreenWidget(
-                  assetUrl: Assets.animation('podium_winners.json'),
-                  screenTitle: OnboardingStrings.screen3Title,
-                  description: OnboardingStrings.screen3Description,
-                  buttonText: OnboardingStrings.buttonText2,
-                  function: () {
-                    _controller.nextPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeIn,
-                    );
-                  },
-                ),
-                TransitionScreenWidget(
-                  assetUrl: Assets.animation('Awards.json'),
-                  screenTitle: OnboardingStrings.screen4Title,
-                  description: OnboardingStrings.screen4Description,
-                  buttonText: OnboardingStrings.buttonText2,
-                  function: () {
-                    context.read<OnboardingBloc>().add(
-                      const CompleteOnboardingPressed(),
-                    );
-                  },
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 40.0),
+              child: PageView(
+                controller: _controller,
+                children: <Widget>[
+                  TransitionScreenWidget(
+                    assetUrl: Assets.animation('coding.json'),
+                    screenTitle: OnboardingStrings.screen1Title,
+                    description: OnboardingStrings.screen1Description,
+                    buttonText: OnboardingStrings.buttonText1,
+                    function: () {
+                      _controller.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn,
+                      );
+                    },
+                  ),
+                  TransitionScreenWidget(
+                    assetUrl: Assets.animation('Developer.json'),
+                    screenTitle: OnboardingStrings.screen2Title,
+                    description: OnboardingStrings.screen2Description,
+                    buttonText: OnboardingStrings.buttonText2,
+                    function: () {
+                      _controller.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn,
+                      );
+                    },
+                  ),
+                  //Todo: do something about the lag
+                  TransitionScreenWidget(
+                    assetUrl: Assets.animation('podium_winners.json'),
+                    screenTitle: OnboardingStrings.screen3Title,
+                    description: OnboardingStrings.screen3Description,
+                    buttonText: OnboardingStrings.buttonText2,
+                    function: () {
+                      _controller.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn,
+                      );
+                    },
+                  ),
+                  TransitionScreenWidget(
+                    assetUrl: Assets.animation('Awards.json'),
+                    screenTitle: OnboardingStrings.screen4Title,
+                    description: OnboardingStrings.screen4Description,
+                    buttonText: OnboardingStrings.buttonText2,
+                    function: () {
+                      context.read<OnboardingBloc>().add(
+                        const CompleteOnboardingPressed(),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
+
             Container(
-              alignment: const Alignment(0, 0.60),
+              alignment: const Alignment(0, 0.65),
               child: SmoothPageIndicator(
                 controller: _controller,
                 count: 4,

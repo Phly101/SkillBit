@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import '../../../../core/app_state/app_state_notifier.dart';
-import '../../../../core/utils/assets.dart';
+import '../../../../core/utils/global/assets.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

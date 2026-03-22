@@ -34,18 +34,18 @@ class AppRoutes {
   //? notifications screens
   static const String notifications = '/notifications';
 
-  //? library screens
-  static const String library = '/library';
-
   //? profile screens
   static const String profile = '/profile';
-  static const String badges = '/badges';
-  static const String achievement = '/achievement';
-  static const String contactUs = '/contactUs';
-  static const String settings = '/settings';
+  static const String badges = 'badges';
+  static const String achievement = 'achievement';
+  static const String friends = 'friends';
+  static const String contactUs = 'contactUs';
+  static const String aboutUs = 'aboutUs';
+  static const String settings = 'settings';
 
   //? Contest screens
-  static const String contestScreen = '/contestScreen';
+  static const String contestDetails = '/contestDetails';
+  static const String contestPage = '/contestPage';
   static const String contestResults = '/contestResults';
   static const String contestReview = '/contestReview';
   static const String contestLeaderboards = '/contestLeaderBoards';

@@ -1,96 +1,88 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:water_animation/water_animation.dart';
+import 'package:skill_bit/core/widgets/global/line_progress_widget.dart';
+import 'package:skill_bit/core/widgets/global/shadow_container.dart';
+import 'package:skill_bit/features/home/presentation/widgets/common/status_container.dart';
+import '../../../../../core/utils/global/assets.dart';
 
 class CourseCardWidget extends StatelessWidget {
   const CourseCardWidget({
     super.key,
+    required this.courseUrl,
     required this.title,
-    required this.imageUrl,
     required this.progress,
+    required this.isLocked,
+    required this.function,
+    required this.courseId,
   });
 
+  final String? courseUrl;
+  final String courseId;
   final String title;
-  final String imageUrl;
   final double progress;
+  final bool isLocked;
+  final void Function()? function;
 
   @override
   Widget build(final BuildContext context) {
-    return SizedBox(
-      height: 200,
-      width: 220,
-
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Stack(
-          alignment: .centerLeft,
+    return GestureDetector(
+      onTap: function,
+      child: ShadowContainer(
+        borderRadius: 25,
+        border: Border(
+          left: BorderSide(
+            color: isLocked ? Colors.transparent : context.colorScheme.primary,
+            width: 6,
+          ),
+        ),
+        child: Row(
           children: <Widget>[
-            progress < 1.0
-                ? WaterAnimation(
-                    height: 200,
-                    width: 220,
-                    waterFillFraction: progress,
-                    fillTransitionDuration: const Duration(milliseconds: 3000),
-                    fillTransitionCurve: Curves.easeInOutQuart,
-                    amplitude: 10,
-                    frequency: 1,
-                    speed: 1,
-                    gradientColors: <Color>[
-                      context.colorScheme.primary,
-                      context.colorScheme.secondary,
-                    ],
-                    enableRipple: true,
-                    realisticWave: true,
-                    decoration: BoxDecoration(color: Colors.grey.shade200),
-                  )
-                : Container(
-                    height: 200,
-                    width: 220,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: <Color>[
-                          context.colorScheme.primary,
-                          context.colorScheme.secondary,
-                        ],
-                      ),
-                    ),
+            const SizedBox(width: 5),
+            Hero(
+              tag: courseId,
+              child: Container(
+                width: MediaQuery.widthOf(context) * 0.35,
+                height: MediaQuery.heightOf(context) * 0.13,
+                decoration: BoxDecoration(
+                  border: .all(width: 0.5, color: context.colorScheme.tertiary),
+                  borderRadius: BorderRadius.circular(25),
+                  color: context.colorScheme.secondary,
+                  image: DecorationImage(
+                    image: AssetImage(Assets.imageCourse(courseUrl!)),
+                    fit: .fill,
                   ),
-
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+                ),
+              ).p10(),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
               child: Column(
+                crossAxisAlignment: .start,
+                mainAxisSize: .min,
                 children: <Widget>[
-                  Expanded(child: Image.asset(imageUrl, fit: BoxFit.contain)),
-                  const SizedBox(height: 12),
-
-                  Align(
-                    alignment: .topLeft,
-                    child: Text(
-                      title,
-                      textAlign: .left,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                        shadows: <Shadow>[
-                          Shadow(
-                            offset: Offset(0, 1),
-                            blurRadius: 3.0,
-                            color: Colors.white70,
-                          ),
-                        ],
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Text(
+                          title,
+                          style: context.textTheme.bodyLarge,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
+                        ),
                       ),
-                    ),
+                      const SizedBox(width: 5),
+                      StatusContainer(isLocked: isLocked, progress: progress),
+                    ],
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 10),
+                  LineProgressWidget(progress: progress),
                 ],
               ),
             ),
           ],
-        ),
-      ),
+        ).p10(),
+      ).pNum(5),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:skill_bit/core/router/routes.dart';
 import '../../../../core/constants/auth_strings.dart';
 import '../../../../core/theme/theme.dart';
 
-import '../../../../core/utils/validators.dart';
+import '../../../../core/utils/features/auth/validators.dart';
 import '../widgets/common/password_validation_rules_widget.dart';
 import '../widgets/widgets.dart';
 
@@ -42,6 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(final BuildContext context) {
+    //Todo: don't forget to activate the validation
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: ScreenLayout(
