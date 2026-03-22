@@ -7,11 +7,13 @@ import 'package:skill_bit/features/course/domain/useCases/homeFetching/fetch_cou
 import 'package:skill_bit/features/course/domain/useCases/homeFetching/get_level_road_map.dart';
 import 'package:skill_bit/features/course/domain/useCases/progressTracking/get_course_progress.dart';
 import 'package:skill_bit/features/course/domain/useCases/progressTracking/update_course_progress.dart';
+import 'package:skill_bit/features/course/presentation/Bloc/courseDetails/course_details_bloc.dart';
+import 'package:skill_bit/features/course/presentation/Bloc/lessonDetails/lesson_details_bloc.dart';
 import '../../../features/course/data/dataSources/course_local_data_source.dart';
 import '../../../features/course/data/dataSources/dataSourcesImpl/course_local_data_source_impl.dart';
 import '../../../features/course/data/repositories/course_repository_impl.dart';
 import '../../../features/course/domain/repositories/course_repository.dart';
-import '../../../features/course/presentation/Bloc/course_bloc.dart';
+import '../../../features/course/presentation/Bloc/main/course_bloc.dart';
 
 void initCourseFeature() {
   //! Data Sources
@@ -39,10 +41,14 @@ void initCourseFeature() {
   sl.registerFactory(
     () => CourseBloc(
       fetchCoursesByLevelUseCase: sl(),
-      getLevelRoadMapUseCase: sl(),
+      //getLevelRoadMapUseCase: sl(),
       getCourseProgressUseCase: sl(),
       updateCourseProgressUseCase: sl(),
-      getCourseDetailsUseCase: sl(),
+    ),
+  );
+  sl.registerFactory(() => CourseDetailsBloc(getCourseDetailsUseCase: sl()));
+  sl.registerFactory(
+    () => LessonDetailsBloc(
       getLessonDetailsUseCase: sl(),
       visitArticleUseCase: sl(),
       watchVideoUseCase: sl(),
