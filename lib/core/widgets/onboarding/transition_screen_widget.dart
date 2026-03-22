@@ -31,7 +31,11 @@ class TransitionScreenWidget extends StatelessWidget {
             height: MediaQuery.heightOf(context) * 0.5,
             child: Lottie.asset(assetUrl),
           ),
-          Text(screenTitle, style: context.textTheme.displayLarge),
+          Text(screenTitle,
+              textAlign: .center,
+              maxLines: 2,
+              overflow: .ellipsis,
+              style: context.textTheme.displayLarge),
           Text(
             description,
             style: context.textTheme.bodyMedium,
