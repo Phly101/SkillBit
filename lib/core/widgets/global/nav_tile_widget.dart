@@ -13,6 +13,7 @@ class NavTileWidget extends StatelessWidget {
     this.function,
     this.size = 25,
     this.scale,
+    this.iconColor,
   });
 
   final String title;
@@ -21,6 +22,7 @@ class NavTileWidget extends StatelessWidget {
   final bool isIcon;
   final double? size;
   final double? scale;
+  final Color? iconColor;
   final void Function()? function;
 
   @override
@@ -31,10 +33,16 @@ class NavTileWidget extends StatelessWidget {
         child: ListTile(
           onTap: function,
           leading: isIcon
-              ? FaIcon(icon, size: size,color: context.colorScheme.onSurface,)
+              ? FaIcon(
+                  icon,
+                  size: size,
+                  color: iconColor ?? context.colorScheme.onSurface,
+                )
               : Image.asset(imageUrl!, scale: scale),
           title: Text(
             title,
+            maxLines: 2,
+            overflow: .ellipsis,
             style: context.textTheme.bodyMedium!.copyWith(
               fontWeight: FontWeight.bold,
             ),
