@@ -25,32 +25,6 @@ final class CoursesSuccess extends CourseState
   List<Object> get props => <Object>[courses, levelProgress];
 }
 
-final class CourseDetailSuccess extends CourseState
-    implements SuccessState<dynamic> {
-  const CourseDetailSuccess({required this.course});
-
-  final CourseEntity course;
-
-  @override
-  List<Object> get props => <Object>[course];
-}
-
-final class LessonDetailSuccess extends CourseState
-    implements SuccessState<dynamic> {
-  const LessonDetailSuccess({required this.lesson});
-
-  final LessonEntity lesson;
-
-  @override
-  List<Object> get props => <Object>[lesson];
-}
-
-final class LessonOperationSuccess extends CourseState
-    implements SuccessState<dynamic> {
-  @override
-  List<Object> get props => <Object>[];
-}
-
 final class CourseError extends CourseState implements ErrorState {
   const CourseError({required this.message});
 
