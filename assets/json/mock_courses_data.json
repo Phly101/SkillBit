@@ -16,7 +16,8 @@
           {
             "id": "l1",
             "title": "Hardware components",
-            "description": "CPU, RAM, Storage, I/O",
+            "description": "Computer hardware refers to the physical elements that make up a computer system. At the heart of every machine is the Central Processing Unit (CPU), often called the brain of the computer, which executes instructions and processes data. Supporting the CPU is Random Access Memory (RAM), providing high-speed, temporary storage for applications currently in use. \n\nUnlike RAM, long-term storage devices like SSDs and HDDs keep your files safe even when the power is turned off. Input devices, such as keyboards and mice, allow users to interact with the system and provide data. Output devices, like monitors and printers, translate the computer's processing into a form that humans can understand. \n\nUnderstanding how these components communicate via the motherboard is essential for any aspiring developer or engineer. This lesson explores the fetch-decode-execute cycle and how hardware performance directly impacts software efficiency. By mastering hardware fundamentals, you gain a deeper appreciation for how high-level code eventually turns into physical electrical signals. Get ready to dive deep into the silicon and circuits that power our modern digital world.",
+            "imageUrl": "Computer-Fundamentals-Tutorial.png",
             "isLocked": false,
             "prerequisiteId": null,
             "quiz": {
@@ -41,6 +42,7 @@
             "id": "l2",
             "title": "Computer Architecture",
             "description": "How a computer operates",
+            "imageUrl": "Computer-Fundamentals-Tutorial.png",
             "isLocked": true,
             "prerequisiteId": "q1",
             "quiz": {
@@ -76,6 +78,7 @@
             "id": "cpp_1",
             "title": "Intro & Setup",
             "description": "Installing compilers and IDEs",
+            "imageUrl": "introduction-to-c.png",
             "isLocked": false,
             "prerequisiteId": "q2",
             "quiz": {
@@ -95,6 +98,7 @@
             "id": "cpp_2",
             "title": "Variables & Types",
             "description": "int, double, string, bool",
+            "imageUrl": "introduction-to-c.png",
             "isLocked": true,
             "prerequisiteId": "qc_1",
             "quiz": {
@@ -114,6 +118,7 @@
             "id": "cpp_3",
             "title": "Input & Output",
             "description": "Working with cin and cout",
+            "imageUrl": "introduction-to-c.png",
             "isLocked": true,
             "prerequisiteId": "qc_2",
             "quiz": {
@@ -133,6 +138,7 @@
             "id": "cpp_4",
             "title": "Conditionals",
             "description": "If, else if, and switch",
+            "imageUrl": "introduction-to-c.png",
             "isLocked": true,
             "prerequisiteId": "qc_3",
             "quiz": {
@@ -152,6 +158,7 @@
             "id": "cpp_5",
             "title": "Loops",
             "description": "For, While, and Do-While",
+            "imageUrl": "introduction-to-c.png",
             "isLocked": true,
             "prerequisiteId": "qc_4",
             "quiz": {
@@ -171,6 +178,7 @@
             "id": "cpp_6",
             "title": "Arrays",
             "description": "Fixed size collections",
+            "imageUrl": "introduction-to-c.png",
             "isLocked": true,
             "prerequisiteId": "qc_5",
             "quiz": {
@@ -190,6 +198,7 @@
             "id": "cpp_7",
             "title": "Functions",
             "description": "Parameters and return types",
+            "imageUrl": "introduction-to-c.png",
             "isLocked": true,
             "prerequisiteId": "qc_6",
             "quiz": {
@@ -209,6 +218,7 @@
             "id": "cpp_8",
             "title": "Pointers Basics",
             "description": "Memory addresses and references",
+            "imageUrl": "introduction-to-c.png",
             "isLocked": true,
             "prerequisiteId": "qc_7",
             "quiz": {
@@ -239,6 +249,7 @@
             "id": "l7",
             "title": "Debugging Mindset",
             "description": "Print debugging and stack traces",
+            "imageUrl": "Debugging.png",
             "isLocked": true,
             "prerequisiteId": "qc_8",
             "quiz": {
@@ -281,6 +292,7 @@
             "id": "l8",
             "title": "Arrays & Strings",
             "description": "Linear data storage",
+            "imageUrl": "data_sturcture.jpg",
             "isLocked": true,
             "prerequisiteId": "qd_1",
             "quiz": {
@@ -305,6 +317,7 @@
             "id": "l9",
             "title": "Linked Lists, Stacks, Queues",
             "description": "Abstract data types",
+            "imageUrl": "data_sturcture.jpg",
             "isLocked": true,
             "prerequisiteId": "q_ds1",
             "quiz": {
@@ -335,6 +348,7 @@
             "id": "l10",
             "title": "Encapsulation & Inheritance",
             "description": "Core OOP pillars",
+            "imageUrl": "oop.jpg",
             "isLocked": true,
             "prerequisiteId": "q_ds2",
             "quiz": {
@@ -359,6 +373,7 @@
             "id": "l11",
             "title": "Polymorphism",
             "description": "Dynamic method binding",
+            "imageUrl": "oop.jpg",
             "isLocked": true,
             "prerequisiteId": "q_oop1",
             "quiz": {
@@ -389,6 +404,7 @@
             "id": "l12",
             "title": "Naming & Readability",
             "description": "Writing maintainable code",
+            "imageUrl": "Clean_Code.jpg",
             "isLocked": true,
             "prerequisiteId": "q_oop2",
             "quiz": {
@@ -431,6 +447,7 @@
             "id": "l13",
             "title": "Trees & Graphs",
             "description": "Non-linear structures",
+            "imageUrl": "data_sturcture.jpg",
             "isLocked": true,
             "prerequisiteId": "q_clean1",
             "quiz": {
@@ -466,6 +483,7 @@
             "id": "l14",
             "title": "Mobile & Web",
             "description": "Frontend vs Backend overview",
+            "imageUrl": "frameworks.png",
             "isLocked": true,
             "prerequisiteId": "q_ads1",
             "quiz": {
