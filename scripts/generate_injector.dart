@@ -23,8 +23,8 @@ import 'package:skill_bit/core/di/injection_container.dart';
 
 void init${className}Feature() {
   //! Data Sources
-  // sl.registerLazySingleton<${className}LocalDataSource>(() => ${className}DataSourceImpl());
-  // sl.registerLazySingleton<${className}RemoteDataSource>(() => ${className}DataSourceImpl());
+  // sl.registerLazySingleton<${className}LocalDataSource>(() => ${className}LocalDataSourceImpl());
+  // sl.registerLazySingleton<${className}RemoteDataSource>(() => ${className}RemoteDataSourceImpl());
 
   //! Repository
   // sl.registerLazySingleton<${className}Repo>(() => ${className}RepoImpl(sl()));
