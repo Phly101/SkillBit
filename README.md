@@ -21,7 +21,7 @@
 Whether you're just starting your programming journey or looking to strengthen your fundamentals, SkillBit provides a comprehensive ecosystem to learn, practice, and compete with learners worldwide.
 
 ---
-
+<a name="features"></a>
 ## 🚀 Key Features
 
 ### 👤 Intelligent User Onboarding
@@ -71,7 +71,7 @@ Whether you're just starting your programming journey or looking to strengthen y
 - **Motivation Engine**: Visible progression encourages continued learning and participation
 
 ---
-
+<a name="architecture"></a>
 ## 🏗️ Technical Architecture
 
 ### Technology Stack
@@ -127,7 +127,7 @@ SkillBit/
 - **Dependency Injection**: Loose coupling through injected dependencies
 
 ---
-
+<a name="gamification"></a>
 ## 🎯 Gamification Deep Dive
 
 ### Point System
@@ -162,7 +162,7 @@ Badges unlock progressively as users accumulate points:
 - **Monthly Achievements**: Seasonal rankings and special recognitions
 
 ---
-
+<a name="Getting Started"></a>
 ## 🛠️ Getting Started
 
 ### Prerequisites
@@ -355,7 +355,7 @@ See `pubspec.yaml` for the complete list of dependencies.
 - [ ] API for third-party integrations
 
 ---
-
+<a name="Contributing"></a>
 ## 🤝 Contributing
 
 We welcome contributions from the community! Here's how to get involved:
