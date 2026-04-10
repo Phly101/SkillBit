@@ -8,7 +8,7 @@
 
 **Master Programming Skills Through Interactive Challenges, Real-Time Contests, and Gamified Learning**
 
-[Key Features](#-key-features) • [Getting Started](#-getting-started) • [Technical Architecture](#-technical-architecture) • [Gamification Deep Dive](#-gamification-deep-dive) • [Contributing](#-contributing)
+[Key Features](#features) • [Getting Started](#getting-started) • [Technical Architecture](#architecture) • [Gamification Deep Dive](#gamification) • [Contributing](#contributing)
 
 </div>
 
@@ -162,7 +162,7 @@ Badges unlock progressively as users accumulate points:
 - **Monthly Achievements**: Seasonal rankings and special recognitions
 
 ---
-<a name="Getting Started"></a>
+<a name="getting-started"></a>
 ## 🛠️ Getting Started
 
 ### Prerequisites
@@ -355,7 +355,7 @@ See `pubspec.yaml` for the complete list of dependencies.
 - [ ] API for third-party integrations
 
 ---
-<a name="Contributing"></a>
+<a name="contributing"></a>
 ## 🤝 Contributing
 
 We welcome contributions from the community! Here's how to get involved:
