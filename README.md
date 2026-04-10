@@ -8,7 +8,7 @@
 
 **Master Programming Skills Through Interactive Challenges, Real-Time Contests, and Gamified Learning**
 
-[Key Features](#-features) • [Getting Started](#-getting-started) • [Technical Architecture](#-architecture) • [Gamification Deep Dive](#-gamification) • [Contributing](#-contributing)
+[Key Features](#-key-features) • [Getting Started](#-getting-started) • [Technical Architecture](#-technical-architecture) • [Gamification Deep Dive](#-gamification-deep-dive) • [Contributing](#-contributing)
 
 </div>
 
