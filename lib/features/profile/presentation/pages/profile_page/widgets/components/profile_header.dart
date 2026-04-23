@@ -10,9 +10,11 @@ class ProfileHeader extends StatelessWidget {
     required this.profileUrl,
     required this.userName,
     required this.userPoints,
+    required this.badgeUrl,
   });
 
   final String profileUrl;
+  final String badgeUrl;
   final String userName;
   final String userPoints;
 
@@ -50,7 +52,7 @@ class ProfileHeader extends StatelessWidget {
         // user info
         UserWidget(
           profileUrl: profileUrl,
-          badgeUrl: 'bronze_badge.png',
+          badgeUrl: badgeUrl,
           userName: userName,
           userPoints: userPoints,
         ),
