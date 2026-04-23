@@ -36,6 +36,8 @@ class UserWidget extends StatelessWidget {
             profileUrl: profileUrl,
             badgeUrl: badgeUrl,
             heroTag: 'profile-pic',
+            width: 30,
+            height: 30,
           ),
         ),
 
