@@ -41,6 +41,8 @@ class PodiumWidget extends StatelessWidget {
             radius: radius,
             heroTag:heroTag,
             needsHero: true,
+            width: 30,
+            height: 30,
           ),
         ],
       ),

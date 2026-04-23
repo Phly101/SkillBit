@@ -13,6 +13,8 @@ class ProfileGuardWidget extends StatelessWidget {
     this.badgeUrl,
     this.radius = 35,
     this.size = 35,
+    this.width = 40,
+    this.height = 40,
   }) : assert(
          badgeUrl == null || badgeUrl != '',
          'If you provide a badgeUrl, it cannot be empty',
@@ -24,6 +26,8 @@ class ProfileGuardWidget extends StatelessWidget {
   final String? badgeUrl;
   final double? radius;
   final double size;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(final BuildContext context) {
@@ -40,7 +44,7 @@ class ProfileGuardWidget extends StatelessWidget {
               ? Hero(
                   tag: heroTag!,
                   child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       ImageUtils.showHeroPreview(
                         context: context,
                         profileUrl: profileUrl,
@@ -64,14 +68,18 @@ class ProfileGuardWidget extends StatelessWidget {
         // The Badge
         if (badgeUrl != null && badgeUrl != '') ...<Widget>[
           Positioned(
-            bottom: -10,
-            right: -6,
+            bottom: -(size * 0.15),
+            right: -(size * 0.05),
             child: ShadowContainer(
               shape: BoxShape.circle,
               color: Colors.transparent,
-              blurRadius: 8,
-              offset: const Offset(0, 3),
-              child: Image.asset(Assets.icon(badgeUrl!), width: 40, height: 40),
+              blurRadius: size * 0.2,
+              offset: Offset(0, size * 0.08),
+              child: Image.asset(
+                Assets.badge(badgeUrl!),
+                width: width! * 1.1,
+                height: height! * 1.1,
+              ),
             ),
           ),
         ],
