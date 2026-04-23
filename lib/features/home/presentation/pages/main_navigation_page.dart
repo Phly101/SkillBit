@@ -10,7 +10,6 @@ import '../../../../core/utils/global/assets.dart';
 import '../../../../core/widgets/global/drawer_widget.dart';
 import '../../../../core/widgets/global/nav_tile_widget.dart';
 
-
 class MainNavigationPage extends StatelessWidget {
   const MainNavigationPage({super.key, required this.navigationShell});
 
@@ -28,80 +27,85 @@ class MainNavigationPage extends StatelessWidget {
     final bool isActive = navigationShell.currentIndex == 2;
     return Scaffold(
       body: navigationShell,
-      drawer: navigationShell.currentIndex == 3 ? DrawerWidget(drawerItems: <Widget>[
-        // badges button
-        NavTileWidget(
-          title: ProfileStrings.badges,
-          isIcon: false,
-          imageUrl: Assets.icon('shield_icon.png'),
-          scale: 15,
-          function: //Todo: Implement Function logic
-              () {
-            context.pop();
-            context.pushNamed(AppRoutes.badges);
-          },
-        ),
-        // Achievement button
-        NavTileWidget(
-          title: ProfileStrings.achievement,
-          isIcon: false,
-          imageUrl: Assets.icon('trophy_icon.png'),
-          scale: 15,
-          function: //Todo: Implement Function logic
-              () {
-            context.pop();
-            context.pushNamed(AppRoutes.achievement);
-          },
-        ),
-        // friends page button
-         NavTileWidget(
-          title: ProfileStrings.friends,
-          isIcon: true,
-          icon: FontAwesomeIcons.userGroup,
-          scale: 15,
-          function: //Todo: Implement Function logic
-              () {
-            context.pop();
-            context.pushNamed(AppRoutes.friends);
-          },
-        ),
+      drawer: navigationShell.currentIndex == 3
+          ? DrawerWidget(
+              isPadded: true,
+              drawerItems: <Widget>[
+                // badges button
+                NavTileWidget(
+                  title: ProfileStrings.badges,
+                  isIcon: false,
+                  imageUrl: Assets.icon('shield_icon.png'),
+                  scale: 15,
+                  function: //Todo: Implement Function logic
+                  () {
+                    context.pop();
+                    context.pushNamed(AppRoutes.badges);
+                  },
+                ),
+                // Achievement button
+                NavTileWidget(
+                  title: ProfileStrings.achievement,
+                  isIcon: false,
+                  imageUrl: Assets.icon('locked_trophy_icon.png'),
+                  scale: 15,
+                  function: //Todo: Implement Function logic
+                  () {
+                    context.pop();
+                    context.pushNamed(AppRoutes.achievement);
+                  },
+                ),
+                // friends page button
+                NavTileWidget(
+                  title: ProfileStrings.friends,
+                  isIcon: true,
+                  icon: FontAwesomeIcons.userGroup,
+                  scale: 15,
+                  function: //Todo: Implement Function logic
+                  () {
+                    context.pop();
+                    context.pushNamed(AppRoutes.friends);
+                  },
+                ),
 
-        // About us button
-         NavTileWidget(
-          title: ProfileStrings.aboutUs,
-          isIcon: true,
-          icon: Icons.person,
-          size: 30,
-          function: //Todo: Implement Function logic
-              () {
-            context.pop();
-            context.pushNamed(AppRoutes.aboutUs);
-          },
-        ),
-        // contact us button
-         NavTileWidget(
-          title: ProfileStrings.contactUs,
-          isIcon: true,
-          icon: FontAwesomeIcons.phone,
-          function: //Todo: Implement Function logic
-              () {
-            context.pop();
-            context.pushNamed(AppRoutes.contactUs);
-          },
-        ),
-        // settings button
-         NavTileWidget(
-          title: ProfileStrings.settings,
-          isIcon: true,
-          icon: FontAwesomeIcons.gear,
-          function: //Todo: Implement Function logic
-              () {
-            context.pop();
-            context.pushNamed(AppRoutes.settings);
-          },
-        ),
-        100.heightBox,
-      ],) : null,
+                // About us button
+                NavTileWidget(
+                  title: ProfileStrings.aboutUs,
+                  isIcon: true,
+                  icon: Icons.person,
+                  size: 30,
+                  function: //Todo: Implement Function logic
+                  () {
+                    context.pop();
+                    context.pushNamed(AppRoutes.aboutUs);
+                  },
+                ),
+                // contact us button
+                NavTileWidget(
+                  title: ProfileStrings.contactUs,
+                  isIcon: true,
+                  icon: FontAwesomeIcons.phone,
+                  function: //Todo: Implement Function logic
+                  () {
+                    context.pop();
+                    context.pushNamed(AppRoutes.contactUs);
+                  },
+                ),
+                // settings button
+                NavTileWidget(
+                  title: ProfileStrings.settings,
+                  isIcon: true,
+                  icon: FontAwesomeIcons.gear,
+                  function: //Todo: Implement Function logic
+                  () {
+                    context.pop();
+                    context.pushNamed(AppRoutes.settings);
+                  },
+                ),
+                100.heightBox,
+              ],
+            )
+          : null,
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
