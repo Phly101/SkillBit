@@ -59,6 +59,6 @@ class NotificationCard extends StatelessWidget {
           ).p10(),
         ),
       ),
-    );
+    ).pH(10);
   }
 }
