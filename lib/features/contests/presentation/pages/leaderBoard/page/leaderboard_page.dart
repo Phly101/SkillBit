@@ -21,7 +21,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 2500,
       rank: '👑',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge2.png',
       inPodium: true,
     ),
     LeaderboardEntity(
@@ -30,7 +30,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 2100,
       rank: '2',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge3.png',
       inPodium: true,
     ),
     LeaderboardEntity(
@@ -39,7 +39,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 1950,
       rank: '3',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge1.png',
       inPodium: true,
     ),
     LeaderboardEntity(
@@ -48,7 +48,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 1800,
       rank: '4',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge2.png',
     ),
     LeaderboardEntity(
       userId: '5',
@@ -56,7 +56,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 1750,
       rank: '5',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge2.png',
     ),
     LeaderboardEntity(
       userId: '6',
@@ -64,7 +64,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 1600,
       rank: '6',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge5.png',
     ),
     LeaderboardEntity(
       userId: '7',
@@ -72,7 +72,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 1550,
       rank: '7',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge2.png',
     ),
     LeaderboardEntity(
       userId: '8',
@@ -80,7 +80,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 1400,
       rank: '8',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge1.png',
     ),
     LeaderboardEntity(
       userId: '9',
@@ -88,7 +88,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 1350,
       rank: '9',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge4.png',
     ),
     LeaderboardEntity(
       userId: '10',
@@ -96,7 +96,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 1200,
       rank: '10',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge2.png',
     ),
   ];
 
