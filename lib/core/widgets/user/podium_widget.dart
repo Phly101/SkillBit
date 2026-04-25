@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'profile_guard_widget.dart';
 
-
 class PodiumWidget extends StatelessWidget {
   const PodiumWidget({
     super.key,
     required this.standing,
     required this.profileUrl,
+    required this.heroTag,
     this.badgeUrl,
     this.paddingTop = 20,
     this.radius,
-    required this.heroTag,
+    this.width = 30,
+    this.height = 30,
   });
 
   final String standing;
@@ -20,6 +21,8 @@ class PodiumWidget extends StatelessWidget {
   final double paddingTop;
   final double? radius;
   final String heroTag;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(final BuildContext context) {
@@ -39,10 +42,10 @@ class PodiumWidget extends StatelessWidget {
             profileUrl: profileUrl,
             badgeUrl: badgeUrl,
             radius: radius,
-            heroTag:heroTag,
+            heroTag: heroTag,
             needsHero: true,
-            width: 30,
-            height: 30,
+            width: width,
+            height: height,
           ),
         ],
       ),
