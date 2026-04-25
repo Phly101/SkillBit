@@ -12,31 +12,31 @@ class BadgesPage extends StatelessWidget {
   Widget build(final BuildContext context) {
     final List<BadgeEntity> badges = <BadgeEntity>[
       const BadgeEntity(
-        url: 'bronze_badge.png',
+        url: 'badge1.png',
         isLocked: false,
         id: '1',
         description: '',
       ),
       const BadgeEntity(
-        url: 'bronze_badge.png',
-        isLocked: true,
+        url: 'badge2.png',
+        isLocked: false,
         id: '2',
         description: '',
       ),
       const BadgeEntity(
-        url: 'bronze_badge.png',
-        isLocked: true,
+        url: 'badge3.png',
+        isLocked: false,
         id: '3',
         description: '',
       ),
       const BadgeEntity(
-        url: 'bronze_badge.png',
-        isLocked: true,
+        url: 'badge4.png',
+        isLocked: false,
         id: '4',
         description: '',
       ),
       const BadgeEntity(
-        url: 'bronze_badge.png',
+        url: 'badge5.png',
         isLocked: true,
         id: '5',
         description: '',
