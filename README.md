@@ -24,7 +24,7 @@ Whether you're just starting your programming journey or looking to strengthen y
 <a name="features"></a>
 ## 🚀 Key Features
 
-### 👤 Intelligent User Onboarding
+### 👤 Intelligent User Onboarding (Still in progress)
 - **Flexible Learning Path**: Begin at Level 1 or take an AI-powered assessment test
 - **Personalized Level Placement**: Our AI model analyzes your test responses to place you at an appropriate starting level
 - **Continuous Progress**: Advance through levels as you master new concepts
@@ -33,13 +33,13 @@ Whether you're just starting your programming journey or looking to strengthen y
 
 #### Course Architecture
 - **Organized Curriculum**: Courses broken down into progressive lessons
-- **Comprehensive Lessons**: Each lesson covers specific programming concepts with detailed explanations
+- **Comprehensive Lessons**: Each lesson covers specific programming concepts with detailed explanations about the parent course topic.
 - **Reinforcing Quizzes**: 
-  - Quiz content covers the current lesson + previous lessons for reinforcement
-  - Immediate feedback on answers
-  - Hints and explanations for incorrect responses
+  - Quiz content covers the current lesson + previous lessons for reinforcement learning.
+  - Immediate feedback on answers.
+  - Hints and explanations for incorrect responses.
 
-#### Achievement System
+#### Achievement System (Still in progress)
 - **Milestone Recognition**: Unlock "Contestant Achievement" badges upon course completion
 - **Skill Verification**: Demonstrates mastery of course material
 
@@ -57,7 +57,7 @@ Whether you're just starting your programming journey or looking to strengthen y
 - **Visual Podium System**: Top 3 performers displayed on a prestigious podium
 - **Comprehensive Rankings**: Remaining participants listed in order of performance
 - **Personal Highlighting**: Your position prominently highlighted in the leaderboard
-- **Real-Time Updates**: Live leaderboard tracking during and after contests
+
 
 ### 🎮 Gamification System
 
@@ -105,13 +105,13 @@ Whether you're just starting your programming journey or looking to strengthen y
 ```
 SkillBit/
 ├── lib/
-│   ├── core/                 # Core utilities, constants, theme
+│   ├── core/                 # Core utilities, constants, theme, DI
 │   ├── features/             # Feature modules (courses, contests, auth, etc.)
 │   │   └── [feature]/
 │   │       ├── data/        # Data layer (repositories, data sources)
 │   │       ├── domain/      # Domain layer (entities, use cases)
 │   │       └── presentation/ # Presentation layer (UI, bloc, pages)
-│   ├── config/              # App configuration & DI setup
+│   |
 │   └── main.dart           # App entry point
 ├── scripts/
 │   └── generate_injector    # DI template generator script
@@ -130,36 +130,21 @@ SkillBit/
 <a name="gamification"></a>
 ## 🎯 Gamification Deep Dive
 
-### Point System
-The point system is the core of SkillBit's motivation engine:
-
-| Activity | Points | Reward Type |
-|----------|--------|------------|
-| Complete Lesson | 10 | Course Progress |
-| Pass Lesson Quiz | 25 | Knowledge Verification |
-| Complete Course | 100 | Contestant Achievement |
-| Weekly Contest Participation | 50 | Base Participation |
-| Contest 1st Place | 150 | Top Tier |
-| Contest 2nd Place | 100 | High Achievement |
-| Contest 3rd Place | 75 | Recognition |
-| Top 10 Finish | 50 | Encouragement |
 
 ### Badge Tiers
 Badges unlock progressively as users accumulate points:
 
 ```
-🥉 Bronze Badge    → 500 points   (Beginner)
-🥈 Silver Badge    → 1,500 points (Intermediate)
-🥇 Gold Badge      → 3,000 points (Advanced)
-💎 Platinum Badge  → 5,000 points (Expert)
-👑 Master Badge    → 10,000 points (Master)
+🥉 Bronze Badge    → 1000 points   (Beginner)
+🥈 Silver Badge    → 3,500 points (Intermediate)
+🥇 Gold Badge      → 8,500 points (Advanced)
+💠 Platinum Badge  → 20,000 points (Expert)
+💎 Diamond Badge    → 50,000 points (Master)
 ```
 
-### Leaderboard Tiers
-- **Global Leaderboard**: Top performers across all levels
-- **Level-Specific Leaderboards**: Competition within your learning level
+### Leaderboard
 - **Weekly Contest Leaderboards**: Fresh competition every week
-- **Monthly Achievements**: Seasonal rankings and special recognitions
+
 
 ---
 <a name="getting-started"></a>
@@ -289,7 +274,6 @@ Track Progress & Points
 - **Progress Visualization**: Charts showing course completion and score trends
 - **Badge Collection**: Visual display of earned badges
 - **Contest History**: Past contest performance and results
-- **Learning Statistics**: Time spent, topics mastered, improvement areas
 
 ### Performance Metrics
 - **Course Completion Rate**: Track progress through courses
@@ -349,6 +333,10 @@ See `pubspec.yaml` for the complete list of dependencies.
 - [ ] Social features (friend requests, study groups)
 - [ ] Custom practice problem creation
 - [ ] Real-time multiplayer contests
+- [ ] Global leaderboards
+- [ ] real-time leaderboards
+- [ ] Helper chatBot
+- [ ] Learning Statistics: Time spent, topics mastered, improvement areas
 - [ ] Mobile app notifications
 - [ ] Advanced analytics dashboard
 - [ ] Mentor matching system
@@ -426,7 +414,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍💻 Author
 
-**Phly101** - Full-stack developer passionate about education technology and mobile development.
+**Phly101** - Junior Fullter developer passionate about education technology and mobile development.
 
 ---
 
