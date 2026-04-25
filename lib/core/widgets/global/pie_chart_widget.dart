@@ -32,7 +32,7 @@ class PieChartWidget extends StatefulWidget {
 }
 
 class _PieChartWidgetState extends State<PieChartWidget> {
-  double displayProgressMade = 0.01;
+  double displayProgressMade = 0.1;
   double displayProgressLeft = 100.0;
 
   @override
@@ -60,7 +60,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
               startDegreeOffset: -90,
               sectionsSpace: 0,
               centerSpaceRadius: widget.centerSpace,
-              centerSpaceColor: Colors.transparent,
+              centerSpaceColor: Colors.white,
               sections: <PieChartSectionData>[
                 PieChartSectionData(
                   color: widget.progressColor ?? context.colorScheme.tertiary,
@@ -71,13 +71,13 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                       context.colorScheme.primary,
                     ],
                   ),
-                  value: displayProgressMade,
+                  value: displayProgressMade+0.01,
                   showTitle: false,
                   radius: 15,
                 ),
                 PieChartSectionData(
                   color: Colors.grey.withValues(alpha: 0.5),
-                  value: displayProgressLeft,
+                  value: displayProgressLeft+0.01,
                   showTitle: false,
                   radius: 15,
                 ),

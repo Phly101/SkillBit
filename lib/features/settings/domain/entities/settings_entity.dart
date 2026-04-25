@@ -4,10 +4,10 @@ class SettingsEntity {
     required this.name,
     required this.email,
     this.profileImageUrl,
-    this.badgeImageUrl,
+    this.imageUrl,
   });
   final String name;
   final String email;
   final String? profileImageUrl;
-  final String? badgeImageUrl;
+  final String? imageUrl;
 }

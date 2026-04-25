@@ -19,7 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 2500,
       rank: '👑',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge1.png',
       inPodium: true,
     ),
     LeaderboardEntity(
@@ -28,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 2100,
       rank: '2',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge1.png',
       inPodium: true,
     ),
     LeaderboardEntity(
@@ -37,7 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
       profileUrl: 'Basel_EL_Rafei.jpeg',
       score: 1950,
       rank: '3',
-      badgeIcon: 'bronze_badge.png',
+      badgeIcon: 'badge1.png',
       inPodium: true,
     ),
   ];
@@ -51,6 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
             profileUrl: 'Basel_EL_Rafei.jpeg',
             userName: 'Basel',
             userPoints: '200 points',
+            badgeUrl: 'badge1.png',
           ),
           ProfileBody(hasBestRank: true, topThree: contestantsList),
           30.heightBox,

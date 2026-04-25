@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/features/agenda/presentation/widgets/agenda_header.dart';
 import 'package:skill_bit/features/agenda/presentation/widgets/calendar_widget.dart';
-import 'package:skill_bit/features/agenda/presentation/widgets/notification_card.dart';
 
 class AgendaPage extends StatefulWidget {
   const AgendaPage({super.key});
@@ -115,11 +114,11 @@ class _AgendaPageState extends State<AgendaPage> {
                       });
                     },
               ).pH(10),
-              NotificationCard(
-                title: subjectController.text,
-                date: '${_selectedDay.year}',
-                time: '${_selectedTime?.format(context)}',
-              ),
+              // NotificationCard(
+              //   title: subjectController.text,
+              //   date: '${_selectedDay.year}',
+              //   time: '${_selectedTime?.format(context)}',
+              // ),
             ],
           ),
         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/features/profile/domain/entities/padge_entity.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/components/badge_component/badge_card.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/components/badge_component/badge_row_widget.dart';
+import 'package:skill_bit/features/profile/domain/entities/badge_entity.dart';
+import 'package:skill_bit/features/profile/presentation/pages/badges_page/widgets/components/badge_card.dart';
+import 'package:skill_bit/features/profile/presentation/pages/badges_page/widgets/components/badge_row_widget.dart';
 
 class BadgeBody extends StatelessWidget {
   const BadgeBody({super.key, required this.badges});
@@ -20,7 +20,7 @@ class BadgeBody extends StatelessWidget {
           BadgeRowWidget(badges: <BadgeEntity>[badges[2], badges[3]]),
           50.heightBox,
           BadgeCard(
-            imagePath: badges[4].imagePath,
+            url: badges[4].url,
             isLocked: badges[4].isLocked,
           ),
         ],

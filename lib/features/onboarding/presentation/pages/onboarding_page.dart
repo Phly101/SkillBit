@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:skill_bit/core/widgets/onboarding/transition_screen_widget.dart';
 import 'package:skill_bit/features/onboarding/presentation/Bloc/onboarding_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../../../core/app_state/app_state_notifier.dart';
 import '../../../../core/utils/global/assets.dart';
 import '../../../../core/constants/onboarding_strings.dart';
@@ -17,6 +17,19 @@ class OnboardingPage extends StatefulWidget {
 
 class _OnboardingPageState extends State<OnboardingPage> {
   final PageController _controller = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    for (String path in <String>[
+      'coding.json',
+      'Developer.json',
+      'podium_winners.json',
+      'Awards.json',
+    ]) {
+      AssetLottie(Assets.animation(path)).load();
+    }
+  }
 
   @override
   void dispose() {
@@ -64,7 +77,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       );
                     },
                   ),
-                  //Todo: do something about the lag
                   TransitionScreenWidget(
                     assetUrl: Assets.animation('podium_winners.json'),
                     screenTitle: OnboardingStrings.screen3Title,

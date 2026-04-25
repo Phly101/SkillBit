@@ -5,7 +5,8 @@ class RoundAndDifficulty extends StatelessWidget {
   const RoundAndDifficulty({
     super.key,
     required this.round,
-    required this.difficulty, required this.difficultyImagePath,
+    required this.difficulty,
+    required this.difficultyImagePath,
   });
 
   final String round;
@@ -34,7 +35,7 @@ class RoundAndDifficulty extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-               Image.asset(difficultyImagePath, height: 25, width: 25),
+              Image.asset(difficultyImagePath, height: 25, width: 25),
               5.widthBox,
               Text(difficulty, style: context.textTheme.displayMedium),
             ],

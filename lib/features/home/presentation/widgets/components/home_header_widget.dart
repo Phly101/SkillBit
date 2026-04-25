@@ -28,10 +28,22 @@ class HomeHeaderWidget extends StatefulWidget {
 
 class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
   final TextEditingController _controller = .new();
-
+  final FocusNode _focusNode= .new();
+@override
+void initState() {
+    super.initState();
+    _focusNode.addListener(_onFocusChange);
+  }
+  void _onFocusChange(){
+    if (!_focusNode.hasFocus && _controller.text.isEmpty) {
+      context.read<SearchCourseBloc>().add(SearchCourseResetToOriginal());
+    }
+  }
   @override
   void dispose() {
     _controller.dispose();
+    _focusNode.removeListener(_onFocusChange);
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -62,27 +74,41 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
               ),
             ),
             const Spacer(),
-            AvatarWidget(profileUrl: widget.profileUrl),
+            AvatarWidget(profileUrl: widget.profileUrl,radius: 35,),
           ],
         ),
         30.heightBox,
         Row(
           mainAxisAlignment: .spaceBetween,
           children: <Widget>[
-            SearchFieldWidget(
-              controller: _controller,
-              width: MediaQuery.sizeOf(context).width * 0.8,
-              onChanged: (final String value) {
-                courseBloc.add(SearchCourseUpdated(value));
-              },
-              function: () {
-                _controller.clear();
-                courseBloc.add(SearchCourseCleared());
-              },
+            ValueListenableBuilder<TextEditingValue>(
+              valueListenable: _controller,
+              builder:
+                  (
+                    final BuildContext context,
+                    final TextEditingValue value,
+                    final Widget? child,
+                  ) {
+                    final bool hasText = value.text.isNotEmpty;
+                    return SearchFieldWidget(
+                      focusNode: _focusNode,
+                      controller: _controller,
+                      width: MediaQuery.sizeOf(context).width * 0.8,
+                      onChanged: (final String value) {
+                        courseBloc.add(SearchCourseUpdated(value));
+                      },
+                      function: hasText
+                          ? () {
+                              _controller.clear();
+                              courseBloc.add(SearchCourseCleared());
+                              _focusNode.requestFocus();
+                            }
+                          : null,
+                    );
+                  },
             ),
             ButtonWidget(
-              function:
-              () {
+              function: () {
                 context.go(AppRoutes.notifications);
               },
               child: Icon(

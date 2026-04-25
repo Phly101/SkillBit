@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
@@ -29,11 +30,15 @@ class LeaderboardHeader extends StatelessWidget {
           ),
         ),
         // trailing
-        ArrowBackButton(
-          function: () {
+        IconButton(
+          onPressed: () {
             context.go(AppRoutes.home);
           },
-          size: 30,
+          iconSize: 30,
+          icon: FaIcon(
+            FontAwesomeIcons.house,
+            color: context.colorScheme.surface,
+          ),
         ),
       ],
     );

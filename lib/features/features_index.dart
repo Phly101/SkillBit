@@ -38,13 +38,13 @@ export './notifications/presentation/pages/notification_page.dart';
 export './onboarding/presentation/pages/onboarding_page.dart';
 
 // Profile pages
-export 'profile/presentation/pages/about_us_page/page/about_us_page.dart';
-export './profile/presentation/pages/achievements_page.dart';
-export './profile/presentation/pages/badges_page.dart';
-export 'profile/presentation/pages/contact_us page/page/contact_us_page.dart';
-export 'profile/presentation/pages/profile_page/page/profile_page.dart';
+export './profile/presentation/pages/about_us_page/page/about_us_page.dart';
+export './profile/presentation/pages/achievement_page/pages/achievements_page.dart';
+export './profile/presentation/pages/badges_page/pages/badges_page.dart';
+export './profile/presentation/pages/contact_us page/page/contact_us_page.dart';
+export './profile/presentation/pages/profile_page/page/profile_page.dart';
 export './settings/presentation/pages/settings_page.dart';
-export 'profile/presentation/pages/friends_page/page/friends_page.dart';
+export './profile/presentation/pages/friends_page/page/friends_page.dart';
 
 // Splash page
 export './splash/presentation/pages/splash_page.dart';

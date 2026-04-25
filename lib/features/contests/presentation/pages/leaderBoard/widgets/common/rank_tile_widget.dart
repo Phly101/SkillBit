@@ -59,6 +59,8 @@ class RankTileWidget extends StatelessWidget {
                 profileUrl: profileUrl,
                 badgeUrl: badgeUrl,
                 heroTag: 'hero-$name',
+                width: 25,
+                height: 25,
               ),
             ),
             const SizedBox(width: 15),

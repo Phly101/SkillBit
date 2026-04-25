@@ -17,15 +17,12 @@ class EventStatsRow extends StatelessWidget {
           bottomText: ContestStrings.participantsLabel,
         ),
 
-        // المربع الثاني
         StatCard(
           imagePath: Assets.icon('clock_image.png'),
           topText: ContestStrings.durationValue,
           bottomText: ContestStrings.duration,
-          //borderColor هنا ستأخذ القيمة الافتراضية الرمادية
         ),
 
-        // المربع الثالث
         StatCard(
           imagePath: Assets.image('Diamond-removebg-preview.png'),
           topText: ContestStrings.rewardValue,

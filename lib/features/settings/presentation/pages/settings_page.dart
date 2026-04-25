@@ -20,12 +20,13 @@ class SettingsPage extends StatelessWidget {
         centerTitle: true,
         leading: ArrowBackButton(function: () => context.pop()),
       ),
+      //Todo: fix a bug where we can't open the image viewer if there is no image thus not being able to change image
       body: const SettingsBody(
         settingsEntity: SettingsEntity(
           name: SettingsStrings.userName,
           email: SettingsStrings.userEmail,
-          profileImageUrl: 'Menna_image.jpeg',
-          badgeImageUrl: 'camera_icon.png',
+          profileImageUrl: 'basel_image.jfif',
+          imageUrl: 'camera_icon.png',
         ),
       ),
     );

@@ -29,13 +29,19 @@ class TransitionScreenWidget extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             height: MediaQuery.heightOf(context) * 0.5,
-            child: Lottie.asset(assetUrl),
+            child: Lottie.asset(
+              assetUrl,
+              renderCache: RenderCache.drawingCommands,
+              addRepaintBoundary: true,
+            ),
           ),
-          Text(screenTitle,
-              textAlign: .center,
-              maxLines: 2,
-              overflow: .ellipsis,
-              style: context.textTheme.displayLarge),
+          Text(
+            screenTitle,
+            textAlign: .center,
+            maxLines: 2,
+            overflow: .ellipsis,
+            style: context.textTheme.displayLarge,
+          ),
           Text(
             description,
             style: context.textTheme.bodyMedium,
