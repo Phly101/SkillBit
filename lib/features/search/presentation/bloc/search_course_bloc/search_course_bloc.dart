@@ -27,6 +27,7 @@ class SearchCourseBloc extends Bloc<SearchCourseEvent, SearchCourseState> {
       transformer: debounce(_debounceDuration),
     );
     on<SearchCourseCleared>(_onSearchCourseCleared);
+    on<SearchCourseResetToOriginal>(_searchCourseResetToOriginal);
   }
 
   final SearchCourseUseCase searchCourseUseCase;
@@ -71,5 +72,11 @@ class SearchCourseBloc extends Bloc<SearchCourseEvent, SearchCourseState> {
       (final List<CourseEntity> courses) =>
           emit(SearchCourseSuccess(courses: courses)),
     );
+  }
+  Future<void> _searchCourseResetToOriginal(
+    final SearchCourseResetToOriginal event,
+    final Emitter<SearchCourseState> emit,
+  ) async {
+    emit(SearchCourseInitial());
   }
 }

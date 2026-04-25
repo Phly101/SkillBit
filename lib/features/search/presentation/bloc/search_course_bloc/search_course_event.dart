@@ -13,6 +13,11 @@ class SearchCourseUpdated extends SearchCourseEvent {
   List<Object?> get props => <Object?>[query];
 }
 
+class SearchCourseResetToOriginal extends SearchCourseEvent {
+  @override
+  List<Object?> get props => <Object?>[];
+}
+
 class SearchCourseCleared extends SearchCourseEvent {
   @override
   List<Object?> get props => <Object?>[];

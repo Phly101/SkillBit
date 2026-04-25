@@ -10,18 +10,21 @@ class SearchFieldWidget extends StatelessWidget {
     required this.onChanged,
     required this.function,
     required this.controller,
+    this.focusNode,
   });
 
   final double width;
   final ValueChanged<String> onChanged;
   final void Function()? function;
   final TextEditingController controller;
+  final FocusNode? focusNode;
 
   @override
   Widget build(final BuildContext context) {
     return SizedBox(
       width: width,
       child: SearchBar(
+        focusNode: focusNode,
         controller: controller,
         onChanged: onChanged,
         elevation: WidgetStateProperty.all(0),
