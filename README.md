@@ -19,6 +19,10 @@
 **SkillBit** is an innovative, interactive online learning platform designed specifically for programming beginners and junior developers. Drawing inspiration from platforms like SoloLearn and LeetCode, SkillBit combines structured course content, interactive quizzes, and competitive weekly contests to create an engaging learning experience that motivates skill development.
 
 Whether you're just starting your programming journey or looking to strengthen your fundamentals, SkillBit provides a comprehensive ecosystem to learn, practice, and compete with learners worldwide.
+<div align="center">
+  <img src="assets/previews/app_lifecycle.gif" width="250" />
+  <p><em>Full User Journey: From Onboarding to Leaderboard</em></p>
+</div>
 
 ---
 <a name="features"></a>
