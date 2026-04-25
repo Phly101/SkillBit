@@ -1,0 +1,1 @@
+enum TrophyStatus { gold, silver }
