@@ -23,7 +23,7 @@ class SettingsBody extends StatelessWidget {
           profileUrl: settingsEntity.profileImageUrl,
           name: settingsEntity.name,
           email: settingsEntity.email,
-          badgeUrl: settingsEntity.badgeImageUrl,
+          badgeUrl: settingsEntity.imageUrl,
         ),
         50.heightBox,
         ProfileSettingSection(

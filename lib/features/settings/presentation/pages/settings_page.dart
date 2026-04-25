@@ -25,7 +25,7 @@ class SettingsPage extends StatelessWidget {
           name: SettingsStrings.userName,
           email: SettingsStrings.userEmail,
           profileImageUrl: 'Menna_image.jpeg',
-          badgeImageUrl: 'camera_icon.png',
+          imageUrl: 'camera_icon.png',
         ),
       ),
     );

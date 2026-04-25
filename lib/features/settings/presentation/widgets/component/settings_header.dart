@@ -8,11 +8,12 @@ class SettingsHeader extends StatelessWidget {
     super.key,
     this.profileUrl,
     required this.name,
-    required this.email, this.badgeUrl,
+    required this.email,
+    this.badgeUrl,
   });
 
   final String? profileUrl;
-    final String? badgeUrl;
+  final String? badgeUrl;
 
   final String name;
   final String email;
@@ -35,9 +36,8 @@ class SettingsHeader extends StatelessWidget {
             child: ProfileGuardWidget(
               profileUrl: profileUrl ?? '',
               radius: 60,
-                badgeUrl: badgeUrl          ),
-
-
+              badgeUrl: badgeUrl,
+            ),
           ),
           16.heightBox,
           Text(
