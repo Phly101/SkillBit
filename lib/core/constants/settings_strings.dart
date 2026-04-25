@@ -5,8 +5,8 @@ class SettingsStrings {
   static const String settings = 'Settings';
 
   // Profile Info
-  static const String userName = 'Menna Ahmed';
-  static const String userEmail = 'MennaAhmed@email.com';
+  static const String userName = 'Basel';
+  static const String userEmail = 'Basel@email.com';
 
   // Account Options
   static const String editName = 'Edit Name';
