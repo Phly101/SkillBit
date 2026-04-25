@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/app_colors.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/common/badge_common/background_circle.dart';
-import 'package:skill_bit/features/profile/presentation/widgets/common/badge_common/gradient_overlay.dart';
+import 'package:skill_bit/features/profile/presentation/pages/badges_page/widgets/common/background_circle.dart';
+import 'package:skill_bit/features/profile/presentation/pages/badges_page/widgets/common/gradient_overlay.dart';
 
 class LockedCard extends StatelessWidget {
   const LockedCard({super.key});
