@@ -20,8 +20,7 @@
 
 Whether you're just starting your programming journey or looking to strengthen your fundamentals, SkillBit provides a comprehensive ecosystem to learn, practice, and compete with learners worldwide.
 <div align="center">
-  <img src="assets/previews/entire_app_fixed-ezgif.com-optimize.gif" width="250" />
-  <p><em>Full User Journey: From Onboarding to Leaderboard</em></p>
+  <img src="assets/preview/entire_app_fixed-ezgif.com-optimize.gif" width="250" />
 </div>
 
 ---
