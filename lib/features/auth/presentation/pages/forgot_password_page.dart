@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:skill_bit/core/constants/auth_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 
+import '../../../../core/router/routes.dart';
 import '../../../../core/utils/features/auth/validators.dart';
 import '../widgets/widgets.dart';
 import '../../../../core/utils/global/assets.dart';
@@ -26,7 +28,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(final BuildContext context) {
-    //Todo: don't forget to activate the validation
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: ScreenLayout(
@@ -56,8 +57,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
                 // send Button
                 ElevatedButton(
-                  onPressed: //Todo: Implement Function logic
-                      () {},
+                  onPressed:
+                      () {
+                        //Todo: call the auth service
+                        if (_formKey.currentState!.validate()) {
+                          context.go(AppRoutes.newPassword);
+                        }
+                      },
                   child: const Text(AuthStrings.send),
                 ).pV(40),
                 80.heightBox,

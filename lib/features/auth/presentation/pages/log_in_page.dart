@@ -36,7 +36,6 @@ class _LogInPageState extends State<LogInPage> {
 
   @override
   Widget build(final BuildContext context) {
-    //Todo: don't forget to activate the validation
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: ScreenLayout(
@@ -95,8 +94,14 @@ class _LogInPageState extends State<LogInPage> {
                   30.heightBox,
                   // Login button
                   ElevatedButton(
-                    onPressed: //Todo: Implement Function logic
-                        () {},
+                    onPressed: () {
+                      //Todo: call the auth service
+                      //Todo: check if user verified if yes go home no go verify then go home
+                      if (_formKey.currentState!.validate()) {
+                        context.go(AppRoutes.home);
+                        debugPrint('login should happen');
+                      }
+                    },
                     child: Text(
                       AuthStrings.login,
                       style: context.textTheme.displayMedium,

@@ -41,7 +41,7 @@ class FooterWidget extends StatelessWidget {
     required this.footer,
     required this.name,
     this.showSocials = true,
-    this.showOr =true,
+    this.showOr = true,
   });
 
   final String footer;
@@ -53,22 +53,20 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return Column(
-
       children: <Widget>[
         40.heightBox,
-        if(showOr)...<Widget>[const BuildOrDivider(),],
+        if (showOr) ...<Widget>[const BuildOrDivider()],
         if (showSocials) ...<Widget>[
           Row(
             mainAxisAlignment: .center,
             children: <Widget>[
               Image.asset(Assets.icon('Google_Original.png')).pH(10),
             ],
-
           ).pV(45),
-          ],
-          CustomRichText(function: function, footer: footer, name: name),
-          20.heightBox,
-
+        ],
+        20.heightBox,
+        CustomRichText(function: function, footer: footer, name: name),
+        20.heightBox,
       ],
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skill_bit/features/auth/presentation/widgets/common/password_validation_rules_widget.dart';
 
 import '../../../../core/constants/auth_strings.dart';
+import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
 import '../../../../core/utils/features/auth/validators.dart';
 import '../widgets/widgets.dart';
@@ -35,7 +37,6 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
 
   @override
   Widget build(final BuildContext context) {
-    //Todo: don't forget to activate the validation
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: ScreenLayout(
@@ -50,7 +51,6 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                 children: <Widget>[
                   // Header
                   const HeaderWidget(pageName: AuthStrings.newPassword),
-
                   // Password
                   CustomTextField(
                     label: AuthStrings.newPasswordField,
@@ -80,8 +80,12 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                   70.heightBox,
                   // Send Button
                   ElevatedButton(
-                    onPressed: //Todo: Implement Function logic
-                        () {},
+                    onPressed: () {
+                      //Todo: call the auth service
+                      if (_formKey.currentState!.validate()) {
+                        context.go(AppRoutes.login);
+                      }
+                    },
                     child: Text(
                       AuthStrings.send,
                       style: context.textTheme.displayMedium,

@@ -42,7 +42,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(final BuildContext context) {
-    //Todo: don't forget to activate the validation
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: ScreenLayout(
@@ -65,7 +64,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       AppValidators.validateName(value),
                 ),
                 40.heightBox,
-
                 //Email
                 CustomTextField(
                   label: AuthStrings.emailField,
@@ -74,7 +72,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       AppValidators.validateEmail(value),
                 ),
                 30.heightBox,
-
                 //Password
                 CustomTextField(
                   label: AuthStrings.newPasswordField,
@@ -83,13 +80,12 @@ class _SignUpPageState extends State<SignUpPage> {
                   controller: _passwordController,
                   validator: (final String? value) =>
                       AppValidators.validatePassword(value),
+
                 ),
                 10.heightBox,
-
                 PasswordValidationRulesWidget(
                   password: _passwordController.text,
                 ),
-
                 30.heightBox,
                 //Confirm Password
                 CustomTextField(
@@ -107,7 +103,12 @@ class _SignUpPageState extends State<SignUpPage> {
 
                 // Sign up Button
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    //Todo: call the auth service
+                    if (_formKey.currentState!.validate()) {
+                      context.go(AppRoutes.login);
+                    }
+                  },
                   child: Text(
                     AuthStrings.signUp,
                     style: context.textTheme.displayMedium,

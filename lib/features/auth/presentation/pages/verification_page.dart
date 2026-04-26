@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/constants/auth_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 
+import '../../../../core/router/routes.dart';
 import '../widgets/widgets.dart';
 
 class VerificationPage extends StatelessWidget {
@@ -10,7 +12,6 @@ class VerificationPage extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return Scaffold(
-      //Todo: don't forget to activate the validation
       resizeToAvoidBottomInset: true,
       body: ScreenLayout(
         widget: Align(
@@ -28,7 +29,10 @@ class VerificationPage extends StatelessWidget {
                 // Send Button
                 ElevatedButton(
                   onPressed: //Todo: Implement Function logic
-                      () {},
+                  () {
+                    //Todo: call the auth service
+                    context.go(AppRoutes.home);
+                  },
                   child: const Text(AuthStrings.send),
                 ),
 
@@ -37,7 +41,6 @@ class VerificationPage extends StatelessWidget {
                   onVerificationTap: //Todo: Implement Function logic
                       () {},
                 ),
-
               ],
             ),
           ),
