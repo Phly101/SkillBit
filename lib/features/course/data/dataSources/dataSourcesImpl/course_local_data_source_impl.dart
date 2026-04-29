@@ -6,7 +6,9 @@ import 'package:skill_bit/features/course/data/models/course_model.dart';
 import 'package:skill_bit/features/course/data/models/lesson_model.dart';
 import 'package:skill_bit/features/course/data/models/level_model.dart';
 import 'package:skill_bit/features/course/domain/entities/lesson_entity.dart';
-import '../../../../../core/exceptions/exception.dart';
+
+import '../../../../../core/error/exceptions/exception.dart';
+
 
 class CourseLocalDataSourceImpl implements CourseLocalDataSource {
   final String _assetPath = 'assets/json/mock_courses_data.json';
