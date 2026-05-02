@@ -5,7 +5,6 @@ import 'package:skill_bit/features/course/data/models/level_model.dart';
 import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/course/domain/entities/lesson_entity.dart';
 import 'package:skill_bit/features/course/domain/repositories/course_repository.dart';
-
 import '../../../../core/error/exceptions/exception.dart';
 
 class CourseRepositoryImpl implements CourseRepo {

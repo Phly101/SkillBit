@@ -4,6 +4,7 @@ import 'package:skill_bit/features/course/domain/entities/lesson_entity.dart';
 import '../../../../core/error/failure.dart';
 import '../entities/course_entity.dart';
 
+//Todo: missing 2 use Cases enroll course and finish course
 abstract class CourseRepo {
   // --- Discovery & Initialization ---
   Future<Either<Failure, List<LevelModel>>> fetchCoursesByLevel(
