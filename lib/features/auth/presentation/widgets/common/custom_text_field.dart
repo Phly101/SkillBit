@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   const CustomTextField({
     required this.label,
     this.controller,
     this.validator,
     this.keyboardType = TextInputType.text,
-    this.isPassword = false,
     this.onChanged,
     this.textInputAction,
+    this.isPassword = false,
     super.key,
   });
 
@@ -21,19 +21,40 @@ class CustomTextField extends StatelessWidget {
   final bool isPassword;
   final TextInputAction? textInputAction;
 
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  bool isVisible = false;
+  bool obscure = true;
 
   @override
   Widget build(final BuildContext context) {
     return TextFormField(
-      textInputAction: textInputAction,
+      textInputAction: widget.textInputAction,
       autocorrect: true,
-      controller: controller,
-      validator: validator,
-      obscureText: isPassword,
-      keyboardType: keyboardType,
-      onChanged: onChanged,
+      controller: widget.controller,
+      validator: widget.validator,
+      obscureText: obscure == widget.isPassword,
+      keyboardType: widget.keyboardType,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
-        labelText: label,
+        suffixIcon: widget.isPassword
+            ? IconButton(
+                onPressed: //Todo: Implement Function logic
+                () {
+                  setState(() {
+                    isVisible = !isVisible;
+                    obscure = !obscure;
+                  });
+                },
+                icon: isVisible
+                    ? const Icon(Icons.visibility)
+                    : const Icon(Icons.visibility_off),
+              )
+            : const SizedBox.shrink(),
+        labelText: widget.label,
         labelStyle: context.textTheme.bodyMedium,
         errorStyle: context.textTheme.bodySmall!.copyWith(
           color: context.colorScheme.error,
@@ -44,7 +65,10 @@ class CustomTextField extends StatelessWidget {
 
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(color: Colors.blue, width: 2.0),
+          borderSide: BorderSide(
+            color: context.colorScheme.tertiary,
+            width: 2.0,
+          ),
         ),
 
         contentPadding: const EdgeInsets.symmetric(

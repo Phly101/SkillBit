@@ -1,25 +1,88 @@
 import 'dart:io';
 
+// ─── Entry Point ────────────────────────────────────────────────────────────
+
 void main(final List<String> args) {
-  if (args.isEmpty) {
-    print(
-      '❌ Error: Please provide a feature name (e.g., dart generate_injector.dart search)',
-    );
+  final (String featureName, List<String> useCases) = _resolveInput(args);
+
+  if (featureName.isEmpty || useCases.isEmpty) {
+    print('❌ Error: Feature name and at least one use case are required.');
     return;
   }
-  final String featureName = args[0].toLowerCase();
-  final String className =
-      featureName[0].toUpperCase() + featureName.substring(1);
-  // Define path
+
+  final String className = _toClassName(featureName);
+  final String filePath = _getInjectorFilePath(featureName);
+
+  _createInjectorFile(filePath, featureName, className, useCases);
+  _updateMainContainer(className, featureName);
+  _gitAdd(filePath);
+}
+
+// ─── Input ───────────────────────────────────────────────────────────────────
+
+(String, List<String>) _resolveInput(final List<String> args) {
+  if (args.isNotEmpty) {
+    return (args[0].toLowerCase(), args.sublist(1));
+  }
+  return _askInteractively();
+}
+
+(String, List<String>) _askInteractively() {
+  stdout.write('Enter feature name (ex: auth): ');
+  final String featureName = stdin.readLineSync()!.trim().toLowerCase();
+
+  stdout.write(
+    'Enter use cases separated by space (ex: Login SignUp Logout): ',
+  );
+  final String useCasesInput = stdin.readLineSync()!.trim();
+  final List<String> useCases = useCasesInput
+      .split(' ')
+      .where((final String e) => e.isNotEmpty)
+      .toList();
+
+  return (featureName, useCases);
+}
+
+// ─── File Generation ─────────────────────────────────────────────────────────
+
+String _getInjectorFilePath(final String featureName) {
   const String directoryPath = 'lib/core/di/injectors';
-  final String filePath = '$directoryPath/${featureName}_injector.dart';
-
   Directory(directoryPath).createSync(recursive: true);
-  final String injectorContent =
-      '''
-import 'package:skill_bit/core/di/injection_container.dart';
+  return '$directoryPath/${featureName}_injector.dart';
+}
 
-// TODO: Add feature-specific imports here
+void _createInjectorFile(
+  final String filePath,
+  final String featureName,
+  final String className,
+  final List<String> useCases,
+) {
+  final String content = _buildInjectorContent(
+    featureName,
+    className,
+    useCases,
+  );
+  File(filePath).writeAsStringSync(content);
+  print('-----------------------------------------');
+  print('✅ Success!');
+  print('Created: $filePath');
+  print('Registered ${useCases.length} use case(s): ${useCases.join(', ')}');
+}
+
+String _buildInjectorContent(
+  final String featureName,
+  final String className,
+  final List<String> useCases,
+) {
+  final String imports = _buildUseCaseImports(featureName, useCases);
+  final String registrations = _buildUseCaseRegistrations(
+    featureName,
+    useCases,
+  );
+
+  return '''
+import 'package:skill_bit/core/di/injection_container.dart';
+$imports
 
 void init${className}Feature() {
   //! Data Sources
@@ -30,60 +93,107 @@ void init${className}Feature() {
   // sl.registerLazySingleton<${className}Repo>(() => ${className}RepoImpl(sl()));
 
   //! Use Cases
-  // sl.registerLazySingleton(() => ${className}UseCase(sl()));
+$registrations
 
   //! Feature Bloc
   // sl.registerFactory(() => ${className}Bloc(sl()));
 }
 ''';
-
-  File(filePath).writeAsStringSync(injectorContent);
-
-  print('-----------------------------------------');
-  print('✅ Success!');
-  print('Created: $filePath');
-  // 3. Auto-register in main container
-  _updateMainContainer(className, featureName);
 }
+
+String _buildUseCaseImports(
+  final String featureName,
+  final List<String> useCases,
+) {
+  return useCases
+      .map((final String uc) {
+        final String fileName = _toSnakeCase(uc);
+        return "import 'package:skill_bit/features/$featureName/domain/usecases/$fileName.dart';";
+      })
+      .join('\n');
+}
+
+String _buildUseCaseRegistrations(
+  final String featureName,
+  final List<String> useCases,
+) {
+  return useCases
+      .map((final String uc) {
+        return '  sl.registerLazySingleton(() => $uc(${featureName}Repo: sl()));';
+      })
+      .join('\n');
+}
+
+// ─── Main Container ──────────────────────────────────────────────────────────
 
 void _updateMainContainer(final String className, final String featureName) {
   final File mainFile = File('lib/core/di/injection_container.dart');
   if (!mainFile.existsSync()) return;
 
   String content = mainFile.readAsStringSync();
+  content = _addImportIfMissing(content, featureName);
+  content = _addFunctionCallIfMissing(content, className, featureName);
+  mainFile.writeAsStringSync(content);
 
-  // 1. Add the Import at the top
+  print('✅ Feature successfully stitched into injection_container.dart');
+}
+
+String _addImportIfMissing(final String content, final String featureName) {
   final String importLine =
       "import 'package:skill_bit/core/di/injectors/${featureName}_injector.dart';";
-  if (!content.contains(importLine)) {
-    content = '$importLine\n$content';
-  }
+  if (content.contains(importLine)) return content;
+  return '$importLine\n$content';
+}
 
-  // 2. Add the function call
+String _addFunctionCallIfMissing(
+  final String content,
+  final String className,
+  final String featureName,
+) {
   final String callLine = '  init${className}Feature();';
+  if (content.contains(callLine)) return content;
+  return _injectFunctionCall(content, callLine);
+}
 
-  if (!content.contains(callLine)) {
-    //define the function RegEXP
-    final RegExp initFunctionRegex = RegExp(
-      r'void\s+init\s*\(\s*\)\s*(async\s*)?\{',
-    );
+String _injectFunctionCall(final String content, final String callLine) {
+  final RegExp initFunctionRegex = RegExp(
+    r'void\s+init\s*\(\s*\)\s*(async\s*)?\{',
+  );
 
-    if (content.contains(initFunctionRegex)) {
-      content = content.replaceFirstMapped(initFunctionRegex, (
-        final Match match,
-      ) {
-        // Keeps the original match and adds the call right after it
-        return '${match.group(0)}\n$callLine';
-      });
-    } else {
-      // Fallback: If RegExp fails, try  comment method
-      content = content.replaceFirst(
-        '  //! Features',
-        '  //! Features\n$callLine',
-      );
-    }
+  if (content.contains(initFunctionRegex)) {
+    return content.replaceFirstMapped(initFunctionRegex, (final Match match) {
+      return '${match.group(0)}\n$callLine';
+    });
   }
 
-  mainFile.writeAsStringSync(content);
-  print('✅ Feature successfully stitched into injection_container.dart');
+  return content.replaceFirst('  //! Features', '  //! Features\n$callLine');
+}
+
+// ─── Git ─────────────────────────────────────────────────────────────────────
+
+void _gitAdd(final String filePath) {
+  final ProcessResult result = Process.runSync('git', <String>[
+    'add',
+    filePath,
+  ]);
+  print(
+    result.exitCode == 0
+        ? '✅ File added to git!'
+        : '❌ Git add failed: ${result.stderr}',
+  );
+}
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+
+String _toSnakeCase(final String input) {
+  return input
+      .replaceAllMapped(
+        RegExp(r'[A-Z]'),
+        (final Match m) => '_${m.group(0)!.toLowerCase()}',
+      )
+      .replaceFirst(RegExp(r'^_'), '');
+}
+
+String _toClassName(final String featureName) {
+  return featureName[0].toUpperCase() + featureName.substring(1);
 }

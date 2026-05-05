@@ -6,7 +6,8 @@ import 'package:skill_bit/features/course/data/models/course_model.dart';
 import 'package:skill_bit/features/course/data/models/lesson_model.dart';
 import 'package:skill_bit/features/course/data/models/level_model.dart';
 import 'package:skill_bit/features/course/domain/entities/lesson_entity.dart';
-import '../../../../../core/exceptions/exception.dart';
+import '../../../../../core/error/exceptions/exception.dart';
+
 
 class CourseLocalDataSourceImpl implements CourseLocalDataSource {
   final String _assetPath = 'assets/json/mock_courses_data.json';
@@ -27,7 +28,7 @@ class CourseLocalDataSourceImpl implements CourseLocalDataSource {
     } catch (e, stack) {
       print('DATA SOURCE ERROR: $e'); // This will tell us if it's a Cast error
       print('DATA SOURCE STACK: $stack');
-      throw CacheException();
+      throw const CacheException();
     }
   }
 
@@ -41,7 +42,7 @@ class CourseLocalDataSourceImpl implements CourseLocalDataSource {
         }
       }
     }
-    throw CacheException();
+    throw const CacheException();
   }
 
   @override
@@ -54,7 +55,7 @@ class CourseLocalDataSourceImpl implements CourseLocalDataSource {
         }
       }
     }
-    throw CacheException();
+    throw const CacheException();
   }
 
   @override
@@ -111,7 +112,7 @@ class CourseLocalDataSourceImpl implements CourseLocalDataSource {
     );
 
     if (!exists) {
-      throw CacheException();
+      throw const CacheException();
     }
 
     print('--- MOCK LOG: Tracking Progress ---');
@@ -136,7 +137,7 @@ class CourseLocalDataSourceImpl implements CourseLocalDataSource {
     );
 
     if (!exists) {
-      throw CacheException();
+      throw const CacheException();
     }
 
     print('--- MOCK LOG: Tracking Progress ---');
@@ -157,7 +158,7 @@ class CourseLocalDataSourceImpl implements CourseLocalDataSource {
         if (course['id'] == courseId) return course as Map<String, dynamic>;
       }
     }
-    throw CacheException();
+    throw const CacheException();
   }
 
   Future<Map<String, dynamic>> _findLessonMapInCourse({
@@ -169,7 +170,7 @@ class CourseLocalDataSourceImpl implements CourseLocalDataSource {
 
     final dynamic lesson = lessons.firstWhere(
       (final dynamic lesson) => lesson['id'] == lessonId,
-      orElse: () => throw CacheException(),
+      orElse: () => throw const CacheException(),
     );
 
     return lesson as Map<String, dynamic>;

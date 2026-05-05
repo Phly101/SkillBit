@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:skill_bit/core/widgets/auth/auth_submit_button.dart';
 import 'package:skill_bit/features/auth/presentation/widgets/common/password_validation_rules_widget.dart';
 
 import '../../../../core/constants/auth_strings.dart';
+import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
 import '../../../../core/utils/features/auth/validators.dart';
+import '../Bloc/auth_bloc.dart';
 import '../widgets/widgets.dart';
 
 class NewPasswordPage extends StatefulWidget {
-  const NewPasswordPage({super.key});
+  const NewPasswordPage({super.key, required this.email, required this.code});
+
+  final String email;
+  final String code;
 
   @override
   State<NewPasswordPage> createState() => _NewPasswordPageState();
@@ -35,59 +43,73 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
 
   @override
   Widget build(final BuildContext context) {
-    //Todo: don't forget to activate the validation
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: ScreenLayout(
-        widget: Align(
-          alignment: const Alignment(0, -0.9),
-          child: Form(
-            key: _formKey,
-            autovalidateMode: AutovalidateMode.onUserInteractionIfError,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: .min,
-                children: <Widget>[
-                  // Header
-                  const HeaderWidget(pageName: AuthStrings.newPassword),
-
-                  // Password
-                  CustomTextField(
-                    label: AuthStrings.newPasswordField,
-                    isPassword: true,
-                    textInputAction: TextInputAction.next,
-                    controller: _passwordController,
-                    validator: (final String? value) =>
-                        AppValidators.validatePassword(value),
-                  ),
-                  10.heightBox,
-                  PasswordValidationRulesWidget(
-                    password: _passwordController.text,
-                  ),
-                  40.heightBox,
-                  // Confirm Password
-                  CustomTextField(
-                    label: AuthStrings.confirmField,
-                    isPassword: true,
-                    textInputAction: TextInputAction.done,
-                    controller: _confirmPasswordController,
-                    validator: (final String? value) =>
-                        AppValidators.validateConfirmPassword(
-                          value,
-                          _passwordController.text,
-                        ),
-                  ),
-                  70.heightBox,
-                  // Send Button
-                  ElevatedButton(
-                    onPressed: //Todo: Implement Function logic
-                        () {},
-                    child: Text(
-                      AuthStrings.send,
-                      style: context.textTheme.displayMedium,
+      body: BlocListener<AuthBloc, AuthState>(
+        listener: (final BuildContext context, final AuthState state) {
+          if (state is AuthError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+                backgroundColor: context.colorScheme.error,
+              ),
+            );
+          }
+          if (state is AuthPasswordResetSuccess) {
+            context.go(AppRoutes.login);
+          }
+        },
+        child: ScreenLayout(
+          widget: Align(
+            alignment: const Alignment(0, -0.9),
+            child: Form(
+              key: _formKey,
+              autovalidateMode: AutovalidateMode.onUserInteractionIfError,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: .min,
+                  children: <Widget>[
+                    // Header
+                    const HeaderWidget(pageName: AuthStrings.newPassword),
+                    // Password
+                    CustomTextField(
+                      label: AuthStrings.newPasswordField,
+                      isPassword: true,
+                      textInputAction: TextInputAction.next,
+                      controller: _passwordController,
+                      validator: (final String? value) =>
+                          AppValidators.validatePassword(value),
                     ),
-                  ),
-                ],
+                    10.heightBox,
+                    PasswordValidationRulesWidget(
+                      password: _passwordController.text,
+                    ),
+                    40.heightBox,
+                    // Confirm Password
+                    CustomTextField(
+                      label: AuthStrings.confirmField,
+                      isPassword: true,
+                      textInputAction: TextInputAction.done,
+                      controller: _confirmPasswordController,
+                      validator: (final String? value) =>
+                          AppValidators.validateConfirmPassword(
+                            value,
+                            _passwordController.text,
+                          ),
+                    ),
+                    70.heightBox,
+                    // Send Button
+                    AuthSubmitButton(
+                      label: AuthStrings.send,
+                      formKey: _formKey,
+                      onSubmit: () => AuthResetPasswordRequested(
+                        email: widget.email,
+                        code: widget.code,
+                        newPassword: _passwordController.text.trim(),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

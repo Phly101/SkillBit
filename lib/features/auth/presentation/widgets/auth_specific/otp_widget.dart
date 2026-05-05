@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-
 import '../../../../../core/theme/app_colors.dart';
 
 class OtpWidget extends StatelessWidget {
-  const OtpWidget({super.key});
+  const OtpWidget({
+    super.key,
+    required this.controller,
+    this.validator,
+  });
+
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(final BuildContext context) {
@@ -17,16 +23,22 @@ class OtpWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
     );
-    return
-      Pinput(
-      length: 4,
+
+    return Pinput(
+      length: 6,
+      controller: controller,
+      validator: validator,
       defaultPinTheme: defaultPinTheme,
       focusedPinTheme: defaultPinTheme.copyWith(
         decoration: defaultPinTheme.decoration!.copyWith(
           border: Border.all(color: AppColors.tertiary),
         ),
       ),
-
+      errorPinTheme: defaultPinTheme.copyWith(
+        decoration: defaultPinTheme.decoration!.copyWith(
+          border: Border.all(color: Colors.red),
+        ),
+      ),
     );
   }
 }

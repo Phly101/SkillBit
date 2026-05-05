@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:skill_bit/core/error/failure.dart';
-import 'package:skill_bit/core/exceptions/exception.dart';
 import 'package:skill_bit/features/course/data/dataSources/course_local_data_source.dart';
 import 'package:skill_bit/features/course/data/models/level_model.dart';
 import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/course/domain/entities/lesson_entity.dart';
 import 'package:skill_bit/features/course/domain/repositories/course_repository.dart';
+import '../../../../core/error/exceptions/exception.dart';
 
 class CourseRepositoryImpl implements CourseRepo {
   const CourseRepositoryImpl({required this.courseLocalDataSource});
@@ -21,7 +21,8 @@ class CourseRepositoryImpl implements CourseRepo {
       final List<LevelModel> result = await courseLocalDataSource
           .fetchCoursesByLevel(levelId);
       return Right<Failure, List<LevelModel>>(result);
-    } catch (e, stacktrace) { // Catch 'e' to see the actual error
+    } catch (e, stacktrace) {
+      // Catch 'e' to see the actual error
       print('DEBUG: REPO CAUGHT ERROR: $e');
       print('DEBUG: STACKTRACE: $stacktrace');
       return Left<Failure, List<LevelModel>>(CacheFailures());
