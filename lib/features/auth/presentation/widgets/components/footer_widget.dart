@@ -7,17 +7,25 @@ import 'package:skill_bit/features/auth/presentation/widgets/common/custom_rich_
 import '../../../../../core/utils/global/assets.dart';
 
 class FooterWidget extends StatelessWidget {
-  factory FooterWidget.login({required final void Function() onSignUpTap}) {
+  factory FooterWidget.login({
+    required final void Function() onSignUpTap,
+    required final void Function() googleFunction,
+  }) {
     return FooterWidget(
-      function: onSignUpTap,
+      googleFunction: googleFunction,
+      goToFunction: onSignUpTap,
       footer: AuthStrings.loginFooter,
       name: AuthStrings.signUp,
     );
   }
 
-  factory FooterWidget.signup({required final void Function() onLoginTap}) {
+  factory FooterWidget.signup({
+    required final void Function() onLoginTap,
+    required final void Function() googleFunction,
+  }) {
     return FooterWidget(
-      function: onLoginTap,
+      googleFunction: googleFunction,
+      goToFunction: onLoginTap,
       footer: AuthStrings.signUpFooter,
       name: AuthStrings.login,
     );
@@ -27,7 +35,7 @@ class FooterWidget extends StatelessWidget {
     required final void Function() onVerificationTap,
   }) {
     return FooterWidget(
-      function: onVerificationTap,
+      goToFunction: onVerificationTap,
       footer: AuthStrings.verificationFooter,
       name: AuthStrings.reSend,
       showSocials: false,
@@ -37,16 +45,18 @@ class FooterWidget extends StatelessWidget {
 
   const FooterWidget({
     super.key,
-    required this.function,
+    required this.goToFunction,
     required this.footer,
     required this.name,
+    this.googleFunction,
     this.showSocials = true,
     this.showOr = true,
   });
 
   final String footer;
   final String name;
-  final void Function() function;
+  final void Function() goToFunction;
+  final void Function()? googleFunction;
   final bool showSocials;
   final bool showOr;
 
@@ -60,12 +70,15 @@ class FooterWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: .center,
             children: <Widget>[
-              Image.asset(Assets.icon('Google_Original.png')).pH(10),
+              GestureDetector(
+                onTap: googleFunction,
+                child: Image.asset(Assets.icon('Google_Original.png')).pH(10),
+              ),
             ],
           ).pV(45),
         ],
         20.heightBox,
-        CustomRichText(function: function, footer: footer, name: name),
+        CustomRichText(function: goToFunction, footer: footer, name: name),
         20.heightBox,
       ],
     );
