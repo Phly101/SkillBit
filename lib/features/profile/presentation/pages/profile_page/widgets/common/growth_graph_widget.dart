@@ -6,10 +6,9 @@ import 'package:skill_bit/core/theme/theme.dart';
 class GrowthGraphWidget extends StatelessWidget {
   const GrowthGraphWidget({super.key});
 
+  //Todo: most of the data here must be exchanged for a variable data not fixed
   @override
   Widget build(final BuildContext context) {
-    // --- DATA SOURCE ---
-    // Maps months (X: 0-11) to performance scores (Y)
     final List<FlSpot> dummyData = <FlSpot>[
       const FlSpot(0, 0),
       const FlSpot(1, 300),
@@ -27,7 +26,6 @@ class GrowthGraphWidget extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        // --- HEADER ---
         Align(
           alignment: Alignment.topLeft,
           child: Text(
@@ -38,37 +36,29 @@ class GrowthGraphWidget extends StatelessWidget {
           ),
         ),
         20.heightBox,
-
-        // --- CHART CONTAINER ---
-        // Setting a fixed height prevents the "stretching/distortion" issue
         SizedBox(
           width: double.infinity,
           height: 250,
           child: LineChart(
             LineChartData(
-              // --- AXIS RANGE ---
               minX: 0,
               maxX: 11,
               minY: 0,
               maxY: 1000,
-
-              // --- BACKGROUND GRID ---
               gridData: FlGridData(
                 show: true,
-                drawVerticalLine: false, // Clean look: horizontal lines only
-                horizontalInterval: 100, // Distance between background lines
+                drawVerticalLine: false,
+                horizontalInterval: 100,
                 getDrawingHorizontalLine: (final double value) {
                   return FlLine(
                     color: context.colorScheme.outlineVariant.withValues(
                       alpha: 0.2,
                     ),
                     strokeWidth: 1,
-                    dashArray: <int>[5, 5], // Creates the dashed effect
+                    dashArray: <int>[5, 5],
                   );
                 },
               ),
-
-              // --- INTERACTIVE TOOLTIP (Pop-up on Tap) ---
               lineTouchData: LineTouchData(
                 enabled: true,
                 handleBuiltInTouches: true,
@@ -78,7 +68,6 @@ class GrowthGraphWidget extends StatelessWidget {
                   tooltipBorderRadius: BorderRadius.circular(8),
                   tooltipPadding: const EdgeInsets.all(8),
                   fitInsideHorizontally: true,
-                  // Prevents bubble clipping on screen edges
                   fitInsideVertically: true,
                   getTooltipItems: (final List<LineBarSpot> touchedSpots) {
                     return touchedSpots.map((final LineBarSpot barSpot) {
@@ -92,7 +81,6 @@ class GrowthGraphWidget extends StatelessWidget {
                     }).toList();
                   },
                 ),
-                // The vertical line & dot that appears when you touch a point
                 getTouchedSpotIndicator:
                     (
                       final LineChartBarData barData,
@@ -112,23 +100,15 @@ class GrowthGraphWidget extends StatelessWidget {
                       }).toList();
                     },
               ),
-
-              // --- CHART BORDER ---
               borderData: FlBorderData(show: false),
-
-              // --- MAIN DATA LINE ---
               lineBarsData: <LineChartBarData>[
                 LineChartBarData(
                   spots: dummyData,
                   barWidth: 4,
                   isCurved: true,
-                  // Enables the "wave" look
                   color: context.colorScheme.primary,
                   curveSmoothness: 0.35,
-                  dotData: const FlDotData(show: true),
-                  // Shows the fixed circles on line
-
-                  // The color fill underneath the line
+                  dotData: const FlDotData(show: false),
                   belowBarData: BarAreaData(
                     show: true,
                     gradient: LinearGradient(
@@ -143,8 +123,6 @@ class GrowthGraphWidget extends StatelessWidget {
                   ),
                 ),
               ],
-
-              // --- AXIS LABELS (Titles) ---
               titlesData: FlTitlesData(
                 topTitles: const AxisTitles(
                   sideTitles: SideTitles(showTitles: false),
@@ -153,12 +131,11 @@ class GrowthGraphWidget extends StatelessWidget {
                   sideTitles: SideTitles(showTitles: false),
                 ),
 
-                // Y-AXIS (Left Side)
                 leftTitles: AxisTitles(
                   sideTitles: SideTitles(
                     showTitles: true,
-                    interval: 100, // Shows labels at 0, 100, 200...
-                    reservedSize: 45, // Breathing room so text isn't "eaten"
+                    interval: 100,
+                    reservedSize: 45,
                     getTitlesWidget:
                         (final double value, final TitleMeta meta) {
                           return Text(
@@ -168,8 +145,6 @@ class GrowthGraphWidget extends StatelessWidget {
                         },
                   ),
                 ),
-
-                // X-AXIS (Bottom Side - Months)
                 bottomTitles: AxisTitles(
                   axisNameWidget: Text(
                     ProfileStrings.graphBottomTitle,
@@ -178,7 +153,7 @@ class GrowthGraphWidget extends StatelessWidget {
                   sideTitles: SideTitles(
                     showTitles: true,
                     reservedSize: 40,
-                    interval: 1, // Evaluate every single integer (0, 1, 2...)
+                    interval: 1,
                     getTitlesWidget:
                         (final double value, final TitleMeta meta) {
                           const List<String> months = <String>[
@@ -196,8 +171,8 @@ class GrowthGraphWidget extends StatelessWidget {
                             'Dec',
                           ];
                           final int index = value.toInt();
-                          // Safety check to ensure index is within month range
-                          final String text = (index >= 0 && index < months.length)
+                          final String text =
+                              (index >= 0 && index < months.length)
                               ? months[index]
                               : '';
 
