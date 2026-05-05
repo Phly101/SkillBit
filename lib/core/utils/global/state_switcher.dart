@@ -5,14 +5,14 @@ import 'package:skill_bit/core/bloc/base_state.dart';
 class StateSwitcher<B extends StateStreamable<S>, S> extends StatelessWidget {
   const StateSwitcher({
     super.key,
-    required this.onSuccess,
+    this.onSuccess,
     this.onInitial,
     this.loadingWidget,
     this.onError,
     this.buildWhen,
   });
 
-  final Widget Function(BuildContext context, S state) onSuccess;
+  final Widget Function(BuildContext context, S state)? onSuccess;
   final Widget Function(BuildContext context, S state)? onInitial;
   final bool Function(S previous, S current)? buildWhen;
   final Widget? loadingWidget;
@@ -36,7 +36,7 @@ class StateSwitcher<B extends StateStreamable<S>, S> extends StatelessWidget {
               Center(child: Text(message));
         }
         if (state is SuccessState) {
-          return onSuccess(context, state);
+          return onSuccess?.call(context, state) ?? const SizedBox.shrink();
         }
         return onInitial?.call(context, state) ??
             const SliverToBoxAdapter(child: SizedBox.shrink());
