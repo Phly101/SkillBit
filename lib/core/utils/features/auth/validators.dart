@@ -66,6 +66,13 @@ class AppValidators {
     }
     return null;
   }
+
+  static String? validateOTP(final String? value) {
+    if (value == null || value.length < 6) {
+      return 'Please enter the complete 4-digit code';
+    }
+    return null;
+  }
 }
 
 class PasswordRequirements {
