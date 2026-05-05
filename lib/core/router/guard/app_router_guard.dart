@@ -26,8 +26,6 @@ class AppRouterGuard {
     return _handleAuthenticatedFlow(location);
   }
 
-
-
   static String? _handleOnboardingFlow(final String location) {
     if (location == AppRoutes.onBoarding) return null;
     return AppRoutes.onBoarding;
@@ -47,13 +45,17 @@ class AppRouterGuard {
   }
 
   static String? _handleAuthenticatedFlow(final String location) {
-    final List<String> restricted = <String>[
+    final List<String> authRoutes = <String>[
       AppRoutes.login,
+      AppRoutes.signUp,
+      AppRoutes.forgotPassword,
+      AppRoutes.newPassword,
+      AppRoutes.verification,
       AppRoutes.onBoarding,
       AppRoutes.splash,
     ];
 
-    if (restricted.contains(location)) return AppRoutes.home;
+    if (authRoutes.contains(location)) return AppRoutes.home;
 
     return null;
   }
