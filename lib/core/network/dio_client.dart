@@ -10,8 +10,8 @@ class DioClient implements ApiClient {
   DioClient(this._dio) {
     _dio.options = BaseOptions(
       baseUrl: ApiEndpoints.baseUrl,
-      connectTimeout: const Duration(seconds: 15),
-      receiveTimeout: const Duration(seconds: 15),
+      connectTimeout: const Duration(seconds: 30),
+      receiveTimeout: const Duration(seconds: 30),
     );
     _dio.interceptors.addAll(<Interceptor>[
       LoggingInterceptor(),

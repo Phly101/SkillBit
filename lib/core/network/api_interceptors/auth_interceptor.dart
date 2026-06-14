@@ -18,6 +18,13 @@ class AuthInterceptor extends Interceptor {
     final RequestOptions options,
     final RequestInterceptorHandler handler,
   ) async {
+    final bool isAuthPath = options.path.contains('auth/');
+    final bool isRefresh = options.extra['isRefreshRequest'] == true;
+
+    if (isAuthPath && !isRefresh) {
+      return handler.next(options);
+    }
+
     final String? token = await TokenStorage.getAccessToken();
     if (token != null) {
       options.headers['Authorization'] = 'Bearer $token';

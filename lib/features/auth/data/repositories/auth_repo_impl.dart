@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:skill_bit/core/app_state/app_state_notifier.dart';
 import 'package:skill_bit/core/error/failure.dart';
@@ -30,6 +31,8 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await authRemoteDataSource.forgotPassword(email);
       return const Right<Failure, void>(null);
+    } on UserNotVerifiedException catch (e) {
+      return Left<Failure, void>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
       return Left<Failure, void>(ServerFailures());
     } catch (e) {
@@ -51,6 +54,12 @@ class AuthRepoImpl implements AuthRepo {
         password,
       );
 
+      if (response.isVerified == false) {
+        return Left<Failure, void>(
+          UserNotVerifiedFailure(email: response.email ?? email),
+        );
+      }
+
       await TokenStorage.saveTokens(
         accessToken: response.accessToken,
         refreshToken: response.refreshToken,
@@ -60,6 +69,18 @@ class AuthRepoImpl implements AuthRepo {
       sl<AppStateNotifier>().setLoggedIn();
 
       return const Right<Failure, void>(null);
+    } on DioException catch (e) {
+      if (e.error is UserNotVerifiedException) {
+        final UserNotVerifiedException ex = e.error as UserNotVerifiedException;
+        return Left<Failure, void>(
+          UserNotVerifiedFailure(email: ex.email ?? email),
+        );
+      }
+      if (e.error is NetworkTimeoutException ||
+          e.error is NoInternetException) {
+        return Left<Failure, void>(NetworkFailures());
+      }
+      return Left<Failure, void>(ServerFailures());
     } on ServerException {
       return Left<Failure, void>(ServerFailures());
     } on NetworkException {
@@ -80,6 +101,8 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await authRemoteDataSource.reSendVerificationCode(email);
       return const Right<Failure, void>(null);
+    } on UserNotVerifiedException catch (e) {
+      return Left<Failure, void>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
       return Left<Failure, void>(ServerFailures());
     } catch (e) {
@@ -122,6 +145,8 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await authRemoteDataSource.resetPassword(email, code, newPassword);
       return const Right<Failure, void>(null);
+    } on UserNotVerifiedException catch (e) {
+      return Left<Failure, void>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
       return Left<Failure, void>(ServerFailures());
     } on NetworkException {
@@ -149,6 +174,8 @@ class AuthRepoImpl implements AuthRepo {
       return Right<Failure, UserEntity>(
         UserEntity(id: response.id ?? 'returning_user'),
       );
+    } on UserNotVerifiedException catch (e) {
+      return Left<Failure, UserEntity>(UserNotVerifiedFailure(email: e.email));
     } on OperationCancelledException {
       return Left<Failure, UserEntity>(CancelledFailure());
     } catch (e) {
@@ -162,6 +189,8 @@ class AuthRepoImpl implements AuthRepo {
     required final String email,
     required final String password,
     required final String name,
+    required final String confirmPassword,
+    final String? role,
   }) async {
     if (!await networkInfo.isConnected) {
       return Left<Failure, UserEntity>(NoInternetFailures());
@@ -171,15 +200,19 @@ class AuthRepoImpl implements AuthRepo {
         email,
         password,
         name,
+        confirmPassword,
+        role,
       );
       return Right<Failure, UserEntity>(user);
+    } on UserNotVerifiedException catch (e) {
+      return Left<Failure, UserEntity>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
       return Left<Failure, UserEntity>(ServerFailures());
     } on NetworkException {
       return Left<Failure, UserEntity>(NetworkFailures());
     } catch (e) {
       debugPrint('Signup Error: $e');
-      return Left<Failure, UserEntity>(ServerFailures());
+      return Left<Failure, UserEntity>(MessageFailure(e.toString()));
     }
   }
 
@@ -194,6 +227,8 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await authRemoteDataSource.verifyEmail(code, email);
       return const Right<Failure, void>(null);
+    } on UserNotVerifiedException catch (e) {
+      return Left<Failure, void>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
       return Left<Failure, void>(ServerFailures());
     } on NetworkException {

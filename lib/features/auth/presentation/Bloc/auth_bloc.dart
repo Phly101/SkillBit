@@ -70,11 +70,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final Either<Failure, void> result = await _login(
       LoginParams(email: event.email, password: event.password),
     );
-    result.fold(
-      (final Failure failure) =>
-          emit(const AuthError(message: 'Could not log in')),
-      (_) => emit(AuthEmailVerified()),
-    );
+    result.fold((final Failure failure) {
+      if (failure is UserNotVerifiedFailure) {
+        emit(AuthNeedsVerification(email: failure.email ?? event.email));
+        return;
+      }
+      emit(const AuthError(message: 'Could not log in'));
+    }, (_) => emit(AuthEmailVerified()));
   }
 
   Future<void> _onSignUp(
@@ -87,11 +89,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         email: event.email,
         password: event.password,
         name: event.name,
+        confirmPassword: event.confirmPassword,
       ),
     );
     result.fold(
-      (final Failure failure) =>
-          emit(const AuthError(message: 'Could not sign up')),
+      (final Failure failure) {
+        String message = 'Could not sign up';
+        if (failure is MessageFailure) {
+          message = failure.message;
+        }
+        emit(AuthError(message: message));
+      },
       (final UserEntity user) =>
           emit(AuthNeedsVerification(email: event.email)),
     );
@@ -106,7 +114,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     result.fold(
       (final Failure failure) =>
           emit(const AuthError(message: 'could not log out')),
-      (_) => emit(AuthEmailVerified()),
+      (_) => emit(AuthInitial()),
     );
   }
 

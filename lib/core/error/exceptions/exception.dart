@@ -34,6 +34,14 @@ class ForbiddenException extends AppException {
   const ForbiddenException();
 }
 
+class UserNotVerifiedException extends AppException {
+  const UserNotVerifiedException({this.email});
+  final String? email;
+
+  @override
+  List<Object?> get props => <Object?>[email];
+}
+
 class NotFoundException extends AppException {
   const NotFoundException([this.message]);
 

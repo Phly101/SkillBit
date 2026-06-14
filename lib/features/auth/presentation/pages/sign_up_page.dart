@@ -4,10 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/app_state/app_state_notifier.dart';
 import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/widgets/auth/auth_submit_button.dart';
-
 import '../../../../core/constants/auth_strings.dart';
 import '../../../../core/theme/theme.dart';
-
 import '../../../../core/utils/features/auth/validators.dart';
 import '../Bloc/auth_bloc.dart';
 import '../widgets/common/password_validation_rules_widget.dart';
@@ -64,10 +62,7 @@ class _SignUpPageState extends State<SignUpPage> {
           if (state is AuthNeedsVerification) {
             context.go(
               AppRoutes.verification,
-              extra: <String, dynamic>{
-                'email': state.email,
-                'isReset': false,
-              },
+              extra: <String, dynamic>{'email': state.email, 'isReset': false},
             );
           }
         },
@@ -134,6 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     onSubmit: () => AuthSignUpRequested(
                       email: _emailController.text.trim(),
                       password: _passwordController.text.trim(),
+                      confirmPassword: _confirmPasswordController.text.trim(),
                       name: _nameController.text.trim(),
                     ),
                   ),
