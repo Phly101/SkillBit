@@ -10,9 +10,9 @@ class AnswerResultWidget extends StatelessWidget {
     required this.rightAnswers,
   });
 
-  final int totalQuestions;
-  final int wrongAnswers;
-  final int rightAnswers;
+  final num totalQuestions;
+  final num wrongAnswers;
+  final num rightAnswers;
 
   @override
   Widget build(final BuildContext context) {
