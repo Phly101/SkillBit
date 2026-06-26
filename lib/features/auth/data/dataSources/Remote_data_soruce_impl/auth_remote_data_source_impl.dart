@@ -50,7 +50,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       endpoint: ApiEndpoints.refresh,
       extra: <String, dynamic>{'isRefreshRequest': true},
     );
-    return AuthResponseModel.fromJson(response as Map<String, dynamic>);
+    final Map<String, dynamic> body = response as Map<String, dynamic>;
+    return AuthResponseModel.fromJson(body['data'] as Map<String, dynamic>);
   }
 
   @override
