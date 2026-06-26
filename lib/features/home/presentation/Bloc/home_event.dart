@@ -4,10 +4,10 @@ sealed class HomeEvent extends Equatable {
   const HomeEvent();
 }
 
-class LoadHomeData extends HomeEvent {
-  const LoadHomeData({required this.levelId});
+class GetHomeData extends HomeEvent {
+  const GetHomeData({required this.levelId});
 
-  final String levelId;
+  final int levelId;
 
   @override
   List<Object?> get props => <Object?>[levelId];

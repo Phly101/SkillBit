@@ -20,7 +20,7 @@ final class LessonDetailSuccess extends LessonDetailsState
     implements SuccessState<dynamic> {
   const LessonDetailSuccess({required this.lesson});
 
-  final LessonEntity lesson;
+  final LessonDetailsEntity lesson;
 
   @override
   List<Object> get props => <Object>[lesson];

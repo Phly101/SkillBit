@@ -3,21 +3,29 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_bit/core/bloc/base_state.dart';
 import '../../../../../core/error/failure.dart';
-import '../../../../../core/useCases/params/id_params.dart';
 import '../../../domain/entities/course_entity.dart';
+import '../../../domain/useCases/activeLearingActions/enroll_course.dart';
+import '../../../domain/useCases/activeLearingActions/finish_course.dart';
 import '../../../domain/useCases/coursePageFetching/get_course_details.dart';
+import '../../../domain/useCases/params/course_params.dart';
 
 part 'course_details_event.dart';
 
 part 'course_details_state.dart';
 
 class CourseDetailsBloc extends Bloc<CourseDetailsEvent, CourseDetailsState> {
-  CourseDetailsBloc({required this.getCourseDetailsUseCase})
-    : super(CourseDetailsInitial()) {
+  CourseDetailsBloc({
+    required this.getCourseDetailsUseCase,
+    required this.enrollCourseUseCase,
+    required this.finishCourseUseCase,
+  }) : super(CourseDetailsInitial()) {
     on<LoadCourseDetails>(_onLoadCourseDetails);
+    on<EnrollCourseEvent>(_onEnrollCourse);
   }
 
   final GetCourseDetailsUseCase getCourseDetailsUseCase;
+  final EnrollCourse enrollCourseUseCase;
+  final FinishCourse finishCourseUseCase;
 
   //  Loading the Lessons for one Course
   Future<void> _onLoadCourseDetails(
@@ -25,15 +33,32 @@ class CourseDetailsBloc extends Bloc<CourseDetailsEvent, CourseDetailsState> {
     final Emitter<CourseDetailsState> emit,
   ) async {
     emit(CourseDetailsLoading());
-    final Either<Failure, CourseEntity> result = await getCourseDetailsUseCase(
-      IdParams(id: event.courseId),
-    );
+    final Either<Failure, CourseDetailsEntity> result =
+        await getCourseDetailsUseCase(CourseParams(courseId: event.courseId));
 
     result.fold(
       (final Failure failure) => emit(
         const CourseDetailsError(message: 'could not get course details'),
       ),
-      (final CourseEntity course) => emit(CourseDetailSuccess(course: course)),
+      (final CourseDetailsEntity course) =>
+          emit(CourseDetailSuccess(course: course)),
     );
+  }
+
+  Future<void> _onEnrollCourse(
+    final EnrollCourseEvent event,
+    final Emitter<CourseDetailsState> emit,
+  ) async {
+    final Either<Failure, void> result = await enrollCourseUseCase(
+      CourseParams(courseId: event.courseId),
+    );
+
+    result.fold((final Failure failure) {
+      if (failure is AlreadyEnrolledFailure) {
+        add(LoadCourseDetails(courseId: event.courseId));
+      } else {
+        emit(const CourseDetailsError(message: 'could not enroll in course'));
+      }
+    }, (final _) => add(LoadCourseDetails(courseId: event.courseId)));
   }
 }

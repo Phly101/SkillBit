@@ -15,18 +15,13 @@ final class HomeLoading extends HomeState implements LoadingState {
 }
 
 final class HomeSuccess extends HomeState implements SuccessState<dynamic> {
-  const HomeSuccess({
-    required this.levelProgress,
-    required this.courses,
-    required this.currentLevelId,
-  });
+  const HomeSuccess({required this.homeDetailsEntity, required this.levelId});
 
-  final List<CourseEntity> courses;
-  final double levelProgress;
-  final String currentLevelId;
+  final HomeDetailsEntity homeDetailsEntity;
+  final int levelId;
 
   @override
-  List<Object> get props => <Object>[courses, levelProgress, currentLevelId];
+  List<Object> get props => <Object>[homeDetailsEntity, levelId];
 }
 
 final class HomeError extends HomeState implements ErrorState {
