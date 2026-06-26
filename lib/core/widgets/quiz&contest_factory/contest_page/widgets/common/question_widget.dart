@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/entities/question_entity.dart';
-
+import '../../../../../entities/quiz_question_entity.dart';
 import 'question_item.dart';
 
 class QuestionWidget extends StatelessWidget {
@@ -14,7 +13,7 @@ class QuestionWidget extends StatelessWidget {
     required this.onOptionSelected,
   });
 
-  final QuestionEntity question;
+  final QuizQuestionEntity question;
   final int questionNumber;
   final int? selectedIndex;
   final bool isViewingAnswers;
@@ -26,7 +25,7 @@ class QuestionWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          '$questionNumber.${question.title}',
+          '$questionNumber.${question.question}',
           style: context.textTheme.displayLarge!.copyWith(fontSize: 20),
         ),
         10.heightBox,
@@ -38,7 +37,7 @@ class QuestionWidget extends StatelessWidget {
           final String optionText = entry.value;
 
           final bool isThisChosen = selectedIndex == index;
-          final bool isThisCorrect = question.correctAnswerIndex == index;
+          final bool isThisCorrect = (question.correctAnswerIndex ?? -1) == index;
 
           return InkWell(
             onTap: isViewingAnswers ? null : () => onOptionSelected(index),
@@ -47,6 +46,8 @@ class QuestionWidget extends StatelessWidget {
               isChosen: isThisChosen,
               isCorrect: isThisCorrect,
               isViewingAnswers: isViewingAnswers,
+              optionIndex: index,
+              hint: isThisCorrect ? question.correctAnswerHint : null,
             ),
           );
         }),
