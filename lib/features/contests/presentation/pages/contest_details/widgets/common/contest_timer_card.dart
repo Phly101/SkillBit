@@ -5,15 +5,21 @@ import 'package:skill_bit/core/utils/global/assets.dart';
 import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 import 'package:skill_bit/features/contests/presentation/pages/contest_details/widgets/common/round_and_difficulty.dart';
 
+import '../../../../../../../core/utils/features/contest&quiz/count_down_timer.dart';
+
+import 'package:intl/intl.dart';
+
 class ContestTimerCard extends StatelessWidget {
   const ContestTimerCard({
     super.key,
-    required this.contestTime,
-    required this.contestDate,
+    required this.contestDate, required this.difficulty,
   });
 
-  final String contestTime;
-  final String contestDate;
+  final DateTime contestDate;
+  final String difficulty;
+
+  String get _formattedDate =>
+      DateFormat('MMM d, yyyy • h:mm a').format(contestDate.toLocal());
 
   @override
   Widget build(final BuildContext context) {
@@ -22,13 +28,13 @@ class ContestTimerCard extends StatelessWidget {
       child: Column(
         children: <Widget>[
           RoundAndDifficulty(
-            round: ContestStrings.round1,
-            difficulty: ContestStrings.medium,
+            round: ContestStrings.contest,
+            difficulty: difficulty,
             difficultyImagePath: Assets.image('fire_icon.png'),
           ),
           10.heightBox,
-          Text(
-            contestTime,
+          CountdownTimerText(
+            targetDate: contestDate,
             style: (context.textTheme.displayLarge ?? const TextStyle())
                 .copyWith(color: context.colorScheme.error, fontSize: 50),
           ),
@@ -39,7 +45,7 @@ class ContestTimerCard extends StatelessWidget {
             indent: 5,
           ),
           Text(
-            contestDate,
+            _formattedDate,
             style: (context.textTheme.displayMedium ?? const TextStyle())
                 .copyWith(color: context.colorScheme.onSurface, fontSize: 18),
           ),
