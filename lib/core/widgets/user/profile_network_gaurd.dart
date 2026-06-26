@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:skill_bit/core/utils/global/image_utils.dart';
 import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 import '../../utils/global/assets.dart';
-import 'avatar_widget.dart';
+import 'avatar_network_widget.dart';
 
-class ProfileGuardWidget extends StatelessWidget {
-  const ProfileGuardWidget({
+
+class ProfileNetworkGuardWidget extends StatelessWidget {
+  const ProfileNetworkGuardWidget({
     super.key,
     required this.profileUrl,
     this.heroTag,
@@ -16,9 +17,9 @@ class ProfileGuardWidget extends StatelessWidget {
     this.width = 40,
     this.height = 40,
   }) : assert(
-         badgeUrl == null || badgeUrl != '',
-         'If you provide a badgeUrl, it cannot be empty',
-       );
+  badgeUrl == null || badgeUrl != '',
+  'If you provide a badgeUrl, it cannot be empty',
+  );
 
   final String profileUrl;
   final String? heroTag;
@@ -42,27 +43,27 @@ class ProfileGuardWidget extends StatelessWidget {
           offset: const Offset(0, 5),
           child: needsHero
               ? Hero(
-                  tag: heroTag!,
-                  child: InkWell(
-                    onTap: () {
-                      ImageUtils.showHeroPreview(
-                        context: context,
-                        profileUrl: profileUrl,
-                        heroTag: heroTag!,
-                      );
-                    },
-                    child: AvatarWidget(
-                      profileUrl: profileUrl,
-                      radius: radius,
-                      size: size,
-                    ),
-                  ),
-                )
-              : AvatarWidget(
+            tag: heroTag!,
+            child: InkWell(
+              onTap: () {
+                ImageUtils.showHeroPreview(
+                  context: context,
                   profileUrl: profileUrl,
-                  radius: radius,
-                  size: size,
-                ),
+                  heroTag: heroTag!,
+                );
+              },
+              child: AvatarNetworkWidget(
+                profileUrl: profileUrl,
+                radius: radius,
+                size: size,
+              ),
+            ),
+          )
+              : AvatarNetworkWidget(
+            profileUrl: profileUrl,
+            radius: radius,
+            size: size,
+          ),
         ),
 
         // The Badge

@@ -15,7 +15,7 @@ class PodiumWidget extends StatelessWidget {
     this.height = 30,
   });
 
-  final String standing;
+  final int standing;
   final String profileUrl;
   final String? badgeUrl;
   final double paddingTop;
@@ -32,7 +32,7 @@ class PodiumWidget extends StatelessWidget {
         children: <Widget>[
           // Label or Crown
           Text(
-            standing,
+            standing.toString(),
             style: context.textTheme.bodySmall!.copyWith(
               color: context.colorScheme.tertiary,
             ),
