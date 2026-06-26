@@ -25,9 +25,16 @@ class AuthInterceptor extends Interceptor {
       return handler.next(options);
     }
 
-    final String? token = await TokenStorage.getAccessToken();
-    if (token != null) {
-      options.headers['Authorization'] = 'Bearer $token';
+    if (isRefresh) {
+      final String? refreshToken = await TokenStorage.getRefreshToken();
+      if (refreshToken != null) {
+        options.headers['Authorization'] = 'Bearer $refreshToken';
+      }
+    } else {
+      final String? token = await TokenStorage.getAccessToken();
+      if (token != null) {
+        options.headers['Authorization'] = 'Bearer $token';
+      }
     }
     handler.next(options);
   }
@@ -37,7 +44,11 @@ class AuthInterceptor extends Interceptor {
     final DioException err,
     final ErrorInterceptorHandler handler,
   ) async {
-    if (err.response?.statusCode != 401) return handler.next(err);
+    final bool isUnauthorized = err.response?.statusCode == 401;
+
+    if (!isUnauthorized) {
+      return handler.next(err);
+    }
 
     if (err.requestOptions.extra['isRetry'] == true) {
       await _handleSessionExpired();
