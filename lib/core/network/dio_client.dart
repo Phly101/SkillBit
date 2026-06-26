@@ -14,9 +14,9 @@ class DioClient implements ApiClient {
       receiveTimeout: const Duration(seconds: 30),
     );
     _dio.interceptors.addAll(<Interceptor>[
+      AuthInterceptor(_dio),
       LoggingInterceptor(),
       ErrorInterceptor(),
-      AuthInterceptor(_dio),
     ]);
   }
 
