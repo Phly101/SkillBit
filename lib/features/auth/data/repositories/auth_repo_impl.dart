@@ -34,9 +34,9 @@ class AuthRepoImpl implements AuthRepo {
     } on UserNotVerifiedException catch (e) {
       return Left<Failure, void>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     } catch (e) {
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     }
   }
 
@@ -80,14 +80,14 @@ class AuthRepoImpl implements AuthRepo {
           e.error is NoInternetException) {
         return Left<Failure, void>(NetworkFailures());
       }
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     } on ServerException {
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     } on NetworkException {
       return Left<Failure, void>(NetworkFailures());
     } catch (e) {
       debugPrint('Login Error: $e');
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     }
   }
 
@@ -104,9 +104,9 @@ class AuthRepoImpl implements AuthRepo {
     } on UserNotVerifiedException catch (e) {
       return Left<Failure, void>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     } catch (e) {
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     }
   }
 
@@ -126,10 +126,10 @@ class AuthRepoImpl implements AuthRepo {
 
       return Right<Failure, AuthResponseModel>(newToken);
     } on ServerException {
-      return Left<Failure, AuthResponseModel>(ServerFailures());
+      return const Left<Failure, AuthResponseModel>(ServerFailures());
     } catch (e) {
       debugPrint('Token Refresh Error: $e');
-      return Left<Failure, AuthResponseModel>(ServerFailures());
+      return const Left<Failure, AuthResponseModel>(ServerFailures());
     }
   }
 
@@ -148,12 +148,12 @@ class AuthRepoImpl implements AuthRepo {
     } on UserNotVerifiedException catch (e) {
       return Left<Failure, void>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     } on NetworkException {
       return Left<Failure, void>(NetworkFailures());
     } catch (e) {
       debugPrint('change password error: $e');
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     }
   }
 
@@ -180,7 +180,7 @@ class AuthRepoImpl implements AuthRepo {
       return Left<Failure, UserEntity>(CancelledFailure());
     } catch (e) {
       debugPrint('Google Sign In Error: $e');
-      return Left<Failure, UserEntity>(ServerFailures());
+      return const Left<Failure, UserEntity>(ServerFailures());
     }
   }
 
@@ -207,7 +207,7 @@ class AuthRepoImpl implements AuthRepo {
     } on UserNotVerifiedException catch (e) {
       return Left<Failure, UserEntity>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
-      return Left<Failure, UserEntity>(ServerFailures());
+      return const Left<Failure, UserEntity>(ServerFailures());
     } on NetworkException {
       return Left<Failure, UserEntity>(NetworkFailures());
     } catch (e) {
@@ -230,12 +230,12 @@ class AuthRepoImpl implements AuthRepo {
     } on UserNotVerifiedException catch (e) {
       return Left<Failure, void>(UserNotVerifiedFailure(email: e.email));
     } on ServerException {
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     } on NetworkException {
       return Left<Failure, void>(NetworkFailures());
     } catch (e) {
       debugPrint(e.toString());
-      return Left<Failure, void>(ServerFailures());
+      return const Left<Failure, void>(ServerFailures());
     }
   }
 
