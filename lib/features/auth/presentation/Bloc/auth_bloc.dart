@@ -17,11 +17,9 @@ import 'package:skill_bit/features/auth/domain/useCases/reset_password.dart';
 import 'package:skill_bit/features/auth/domain/useCases/sign_in_with_google.dart';
 import 'package:skill_bit/features/auth/domain/useCases/sign_up.dart';
 import 'package:skill_bit/features/auth/domain/useCases/verify_email.dart';
-
 import '../../domain/entities/user_entity.dart';
 
 part 'auth_event.dart';
-
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
