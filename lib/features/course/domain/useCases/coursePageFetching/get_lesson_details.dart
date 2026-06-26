@@ -1,13 +1,13 @@
 import '../course_usecase_index.dart'
-    hide UpdateCourseProgressParams, CourseEntity,ResourceParams;
+    hide UpdateCourseProgressParams, CourseDetailsEntity;
 
-class GetLessonDetailsUseCase implements UseCase<LessonEntity, LessonParams> {
+class GetLessonDetailsUseCase implements UseCase<LessonDetailsEntity, LessonParams> {
   GetLessonDetailsUseCase({required this.courseRepo});
 
   final CourseRepo courseRepo;
 
   @override
-  Future<Either<Failure, LessonEntity>> call(final LessonParams params) {
-    return courseRepo.getLessonDetails(params.lessonId, params.courseId);
+  Future<Either<Failure, LessonDetailsEntity>> call(final LessonParams params) {
+    return courseRepo.getLessonDetails(params.lessonId,);
   }
 }

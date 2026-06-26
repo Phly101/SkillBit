@@ -6,7 +6,8 @@ import 'level_button_widget.dart';
 
 class LevelRowWidget extends StatelessWidget {
   const LevelRowWidget({super.key, required this.currentLevel});
-  final String currentLevel;
+
+  final int currentLevel;
 
   @override
   Widget build(final BuildContext context) {
@@ -15,23 +16,23 @@ class LevelRowWidget extends StatelessWidget {
       children: <Widget>[
         LevelButtonWidget(
           level: HomeStrings.lvl1,
-          isSelected: currentLevel == 'lvl_1',
+          isSelected: currentLevel == 1,
           function: () {
-            context.read<HomeBloc>().add(const LoadHomeData(levelId: 'lvl_1'));
+            context.read<HomeBloc>().add(const GetHomeData(levelId: 1));
           },
         ),
         LevelButtonWidget(
           level: HomeStrings.lvl2,
-          isSelected: currentLevel == 'lvl_2',
+          isSelected: currentLevel == 2,
           function: () {
-            context.read<HomeBloc>().add(const LoadHomeData(levelId: 'lvl_2'));
+            context.read<HomeBloc>().add(const GetHomeData(levelId: 2));
           },
         ),
         LevelButtonWidget(
           level: HomeStrings.lvl3,
-          isSelected: currentLevel == 'lvl_3',
+          isSelected: currentLevel == 3,
           function: () {
-            context.read<HomeBloc>().add(const LoadHomeData(levelId: 'lvl_3'));
+            context.read<HomeBloc>().add(const GetHomeData(levelId: 3));
           },
         ),
       ],

@@ -3,22 +3,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/global/state_switcher.dart';
+import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
 import 'package:skill_bit/core/widgets/global/error/error_state_widget.dart';
 import 'package:skill_bit/features/course/domain/entities/lesson_entity.dart';
 import 'package:skill_bit/features/course/domain/entities/resource_entity.dart';
 import 'package:skill_bit/features/course/presentation/Bloc/lessonDetails/lesson_details_bloc.dart';
-import 'package:skill_bit/features/course/presentation/pages/lesson_page/widgets/common/lesson_page_loading_state_widget.dart';
+import 'package:skill_bit/core/widgets/course/lesson_page_skeleton.dart';
 import 'package:skill_bit/features/course/presentation/pages/lesson_page/widgets/components/lesson_body.dart';
 import 'package:skill_bit/features/course/presentation/pages/lesson_page/widgets/components/lesson_footer.dart';
 import 'package:skill_bit/features/course/presentation/pages/lesson_page/widgets/components/lesson_header.dart';
 import '../../../../../../core/di/injection_container.dart';
 
 class LessonPage extends StatelessWidget {
-  const LessonPage({super.key, required this.courseId, required this.lessonId});
+  const LessonPage({
+    super.key,
+    required this.courseId,
+    required this.lessonId,
+    this.courseImageUrl,
+  });
 
   final String? courseId;
   final String? lessonId;
+  final String? courseImageUrl;
 
   @override
   Widget build(final BuildContext context) {
@@ -44,7 +50,7 @@ class LessonPage extends StatelessWidget {
             );
           }
         },
-        child: StateSwitcher<LessonDetailsBloc, LessonDetailsState>(
+        child: BoxStateSwitcher<LessonDetailsBloc, LessonDetailsState>(
           buildWhen:
               (
                 final LessonDetailsState previous,
@@ -56,12 +62,16 @@ class LessonPage extends StatelessWidget {
           onInitial:
               (final BuildContext context, final LessonDetailsState state) =>
                   const Center(child: Text('init')),
-          loadingWidget: const LessonPageLoadingStateWidget(),
+          loadingWidget: const LessonPageSkeleton(),
           onSuccess:
               (final BuildContext context, final LessonDetailsState state) {
                 final LessonDetailSuccess successState =
                     state as LessonDetailSuccess;
-                final LessonEntity lesson = successState.lesson;
+                final LessonDetailsEntity lesson = successState.lesson;
+                final String imageUrl = lesson.imageUrl.isNotEmpty
+                    ? lesson.imageUrl
+                    : (courseImageUrl ?? '');
+
                 return SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: .center,
@@ -69,19 +79,17 @@ class LessonPage extends StatelessWidget {
                     children: <Widget>[
                       const SizedBox(height: 30),
                       // header
-                      LessonHeader(title: lesson.title),
+                      LessonHeader(title: lesson.name),
                       const SizedBox(height: 10),
                       // body
                       LessonBody(
-                        imageUrl: lesson.imageUrl,
+                        imageUrl: imageUrl,
                         description: lesson.description,
                         courseId: courseId ?? '',
                       ),
                       const SizedBox(height: 10),
                       LessonFooter(
-                        resourceList: lesson.resources ?? <ResourceEntity>[],
-                        lessonId: lessonId ?? '',
-                        courseId: courseId ?? '',
+                        resourceList: lesson.resources ?? <MaterialEntity>[],
                       ),
 
                       // footer

@@ -15,7 +15,8 @@ class CourseDetailsEntity {
     required this.courseImage,
     required this.lessons,
   });
-  final bool isEnrolled;
+
+  final bool? isEnrolled;
   final EnrollmentStatus status;
   final String id;
   final String title;
@@ -25,6 +26,32 @@ class CourseDetailsEntity {
   final bool isLocked;
   final String courseImage;
   final List<LessonViewModel> lessons;
+
+  CourseDetailsEntity copyWith({
+    final bool? isEnrolled,
+    final EnrollmentStatus? status,
+    final String? id,
+    final String? title,
+    final String? description,
+    final CourseType? type,
+    final bool? isTutorial,
+    final bool? isLocked,
+    final String? courseImage,
+    final List<LessonViewModel>? lessons,
+  }) {
+    return CourseDetailsEntity(
+      isEnrolled: isEnrolled ?? this.isEnrolled,
+      status: status ?? this.status,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      type: type ?? this.type,
+      isTutorial: isTutorial ?? this.isTutorial,
+      isLocked: isLocked ?? this.isLocked,
+      courseImage: courseImage ?? this.courseImage,
+      lessons: lessons ?? this.lessons,
+    );
+  }
 }
 
 //-----------------------------------------------------------------

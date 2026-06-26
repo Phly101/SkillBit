@@ -1,13 +1,16 @@
-import '../course_usecase_index.dart'
-    hide UpdateCourseProgressParams, LessonEntity,LessonParams,ResourceParams;
+import 'package:skill_bit/features/course/domain/useCases/params/course_params.dart';
 
-class GetCourseDetailsUseCase implements UseCase<CourseEntity, IdParams> {
+import '../course_usecase_index.dart'
+    hide UpdateCourseProgressParams, LessonDetailsEntity, LessonParams;
+
+class GetCourseDetailsUseCase
+    implements UseCase<CourseDetailsEntity, CourseParams> {
   GetCourseDetailsUseCase({required this.courseRepo});
 
   final CourseRepo courseRepo;
 
   @override
-  Future<Either<Failure, CourseEntity>> call(final IdParams params) {
-    return courseRepo.getCourseDetails(params.id);
+  Future<Either<Failure, CourseDetailsEntity>> call(final CourseParams params) {
+    return courseRepo.getCourseDetails(params.courseId);
   }
 }

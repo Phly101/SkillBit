@@ -1,9 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/global/line_progress_widget.dart';
 import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 import 'package:skill_bit/features/home/presentation/widgets/common/status_container.dart';
-import '../../../../../core/utils/global/assets.dart';
 
 class CourseCardWidget extends StatelessWidget {
   const CourseCardWidget({
@@ -19,7 +19,7 @@ class CourseCardWidget extends StatelessWidget {
   final String? courseUrl;
   final String courseId;
   final String title;
-  final double progress;
+  final num progress;
   final bool isLocked;
   final void Function()? function;
 
@@ -48,7 +48,7 @@ class CourseCardWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25),
                   color: context.colorScheme.secondary,
                   image: DecorationImage(
-                    image: AssetImage(Assets.imageCourse(courseUrl!)),
+                    image: CachedNetworkImageProvider(courseUrl!),
                     fit: .fill,
                   ),
                 ),

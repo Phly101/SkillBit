@@ -17,8 +17,8 @@ class PieChartWidget extends StatefulWidget {
     this.progressColor,
   });
 
-  final double progressMade;
-  final double progressLeft;
+  final num progressMade;
+  final num progressLeft;
   final double height;
   final double? centerSpace;
   final double centerTextSize;
@@ -32,8 +32,8 @@ class PieChartWidget extends StatefulWidget {
 }
 
 class _PieChartWidgetState extends State<PieChartWidget> {
-  double displayProgressMade = 0.1;
-  double displayProgressLeft = 100.0;
+  num displayProgressMade = 0.1;
+  num displayProgressLeft = 100.0;
 
   @override
   void initState() {
@@ -71,13 +71,13 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                       context.colorScheme.primary,
                     ],
                   ),
-                  value: displayProgressMade+0.01,
+                  value: displayProgressMade + 0.01,
                   showTitle: false,
                   radius: 15,
                 ),
                 PieChartSectionData(
                   color: Colors.grey.withValues(alpha: 0.5),
-                  value: displayProgressLeft+0.01,
+                  value: displayProgressLeft + 0.01,
                   showTitle: false,
                   radius: 15,
                 ),
@@ -90,13 +90,13 @@ class _PieChartWidgetState extends State<PieChartWidget> {
         Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            TweenAnimationBuilder<double>(
-              tween: Tween<double>(begin: 0, end: widget.progressMade),
+            TweenAnimationBuilder<num>(
+              tween: Tween<num>(begin: 0, end: widget.progressMade),
               duration: const Duration(milliseconds: 1200),
               builder:
                   (
                     final BuildContext context,
-                    final double value,
+                    final num value,
                     final Widget? child,
                   ) {
                     return Text(

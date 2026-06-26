@@ -46,19 +46,27 @@ class CourseDetailsBloc extends Bloc<CourseDetailsEvent, CourseDetailsState> {
   }
 
   Future<void> _onEnrollCourse(
-    final EnrollCourseEvent event,
-    final Emitter<CourseDetailsState> emit,
-  ) async {
+      final EnrollCourseEvent event,
+      final Emitter<CourseDetailsState> emit,
+      ) async {
     final Either<Failure, void> result = await enrollCourseUseCase(
       CourseParams(courseId: event.courseId),
     );
 
+    final CourseDetailsState currentState = state;
+
     result.fold((final Failure failure) {
-      if (failure is AlreadyEnrolledFailure) {
-        add(LoadCourseDetails(courseId: event.courseId));
+      if (failure is AlreadyEnrolledFailure && currentState is CourseDetailSuccess) {
+        emit(CourseDetailSuccess(course: currentState.course.copyWith(isEnrolled: true)));
       } else {
-        emit(const CourseDetailsError(message: 'could not enroll in course'));
+        emit(const EnrollCourseError(message: 'could not enroll in course'));
       }
-    }, (final _) => add(LoadCourseDetails(courseId: event.courseId)));
+    }, (final _) {
+      if (currentState is CourseDetailSuccess) {
+        emit(CourseDetailSuccess(course: currentState.course.copyWith(isEnrolled: true)));
+      } else {
+        add(LoadCourseDetails(courseId: event.courseId));
+      }
+    });
   }
 }

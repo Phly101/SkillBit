@@ -10,29 +10,24 @@ class PathWidget extends StatelessWidget {
     required this.courseTitles,
     required this.lockedCourses,
     required this.coursesListLength,
+    required this.activeStep,
     this.function,
   });
 
   final List<String> courseTitles;
   final List<bool> lockedCourses;
   final int coursesListLength;
+  final int activeStep;
   final void Function(int index)? function;
 
-  //Todo: refactor the step calculations to the home bloc
   @override
   Widget build(final BuildContext context) {
     final Color primary = context.colorScheme.primary;
     final Color outline = context.colorScheme.outline;
 
-    // 1. Logic for active step
-    final int calculatedActiveStep = lockedCourses.indexWhere(
-      (final bool isLocked) => isLocked,
-    );
-
-    // 2. Padding specifically to prevent label clipping
-    const double stepWidth = 100.0; // Reduced width to keep it compact
-    const double firstStepOffset =
-        40.0; // The "Safety Buffer" for the first label
+    // Layout constants - Increased stepWidth to accommodate labels
+    const double stepWidth = 120.0; 
+    const double firstStepOffset = 60.0;
 
     final double totalPathWidth =
         (coursesListLength * stepWidth) + (firstStepOffset * 2);
@@ -46,13 +41,13 @@ class PathWidget extends StatelessWidget {
           stepRadius: 15,
           alignment: Alignment.centerLeft,
           showLoadingAnimation: false,
-          activeStep: calculatedActiveStep,
+          activeStep: activeStep,
           lineStyle: LineStyle(
-            lineLength: stepWidth - 20,
+            lineLength: stepWidth - 30,
             lineType: LineType.normal,
             defaultLineColor: outline,
             finishedLineColor: primary,
-            lineThickness: 1,
+            lineThickness: 2,
           ),
           steps: <EasyStep>[
             for (int index = 0; index < coursesListLength; index++)

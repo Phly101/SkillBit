@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/widgets/global/back_button.dart';
-
-import '../../../../../../../core/router/routes.dart';
 import '../../../../../../../core/theme/theme.dart';
 import '../../../../../../../core/widgets/global/button_widget.dart';
 
@@ -17,7 +15,7 @@ class LessonHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: .start,
       children: <Widget>[
-        ArrowBackButton(function: () => context.go(AppRoutes.home),size: 30,),
+        ArrowBackButton(function: () => context.pop(),size: 30,),
         Row(
           children: <Widget>[
             ButtonWidget(
