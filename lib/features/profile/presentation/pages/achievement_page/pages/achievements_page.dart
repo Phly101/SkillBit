@@ -3,8 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/global/back_button.dart';
 import 'package:skill_bit/features/profile/domain/entities/achievement_entity.dart';
-import '../../../../domain/enums/trophy_status.dart';
-import '../widgets/components/achievement_body.dart';
+import 'package:skill_bit/features/profile/domain/enums/trophy_status.dart';
+import 'package:skill_bit/features/profile/presentation/pages/achievement_page/widgets/components/achievement_body.dart';
+
 
 class AchievementsPage extends StatelessWidget {
   const AchievementsPage({super.key});

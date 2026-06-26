@@ -1,11 +1,12 @@
 // quiz_review_content.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skill_bit/core/entities/quiz_question_entity.dart';
+import 'package:skill_bit/core/entities/review_results_entity.dart';
 import 'package:skill_bit/core/router/routes.dart';
+import 'package:skill_bit/core/utils/features/quiz/review_data_mapper.dart';
 import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/page/quiz_and_contest_factory.dart';
-import '../../../../../core/entities/quiz_question_entity.dart';
-import '../../../../../core/entities/review_results_entity.dart';
-import '../../../../../core/utils/features/quiz/review_data_mapper.dart';
+
 
 class QuizReviewAnswers extends StatelessWidget {
   const QuizReviewAnswers({

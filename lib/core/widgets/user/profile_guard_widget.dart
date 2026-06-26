@@ -81,7 +81,7 @@ class ProfileGuardWidget extends StatelessWidget {
                 ),
                 width: width! * 1.1,
                 height: height! * 1.1,
-                errorBuilder: (context, error, stackTrace) => const SizedBox(),
+                errorBuilder: (final BuildContext context, final Object error, final StackTrace? stackTrace) => const SizedBox(),
               ),
             ),
           ),

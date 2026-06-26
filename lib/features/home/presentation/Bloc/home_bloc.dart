@@ -2,10 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_bit/core/bloc/base_state.dart';
+import 'package:skill_bit/core/error/failure.dart';
+import 'package:skill_bit/features/course/domain/entities/home_entity.dart';
 import 'package:skill_bit/features/course/domain/useCases/homeFetching/get_home_data.dart';
 import 'package:skill_bit/features/course/domain/useCases/params/level_params.dart';
-import '../../../../core/error/failure.dart';
-import '../../../course/domain/entities/home_entity.dart';
+
 // import '../../../course/domain/useCases/homeFetching/fetch_courses_by_level_use_case.dart';
 
 part 'home_event.dart';

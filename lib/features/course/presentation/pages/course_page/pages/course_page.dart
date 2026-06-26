@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:skill_bit/core/constants/course_constants.dart';
 import 'package:skill_bit/core/router/routes.dart';
+import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/utils/global/assets.dart';
 import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
 import 'package:skill_bit/core/widgets/course/course_intro_skeleton.dart';
 import 'package:skill_bit/core/widgets/global/back_button.dart';
 import 'package:skill_bit/core/widgets/global/error/error_state_widget.dart';
 import 'package:skill_bit/core/widgets/onboarding/transition_screen_widget.dart';
 import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
-import '../../../../../../core/constants/course_constants.dart';
-import '../../../../../../core/theme/theme.dart';
-import '../../../../../../core/utils/global/assets.dart';
-import '../../../Bloc/courseDetails/course_details_bloc.dart';
-import '../widgets/components/course_intro_widget.dart';
+import 'package:skill_bit/features/course/presentation/Bloc/courseDetails/course_details_bloc.dart';
+import 'package:skill_bit/features/course/presentation/pages/course_page/widgets/components/course_intro_widget.dart';
+
 
 class CoursePage extends StatelessWidget {
   const CoursePage({super.key, this.isEnrolledFromHome});

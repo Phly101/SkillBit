@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/app_state/app_state_notifier.dart';
+import 'package:skill_bit/core/constants/auth_strings.dart';
 import 'package:skill_bit/core/router/routes.dart';
+import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/utils/features/auth/validators.dart';
 import 'package:skill_bit/core/widgets/auth/auth_submit_button.dart';
-import '../../../../core/constants/auth_strings.dart';
-import '../../../../core/theme/theme.dart';
-import '../../../../core/utils/features/auth/validators.dart';
-import '../Bloc/auth_bloc.dart';
-import '../widgets/common/password_validation_rules_widget.dart';
-import '../widgets/widgets.dart';
+import 'package:skill_bit/features/auth/presentation/Bloc/auth_bloc.dart';
+import 'package:skill_bit/features/auth/presentation/widgets/common/custom_text_field.dart';
+import 'package:skill_bit/features/auth/presentation/widgets/common/password_validation_rules_widget.dart';
+import 'package:skill_bit/features/auth/presentation/widgets/common/screen_layout.dart';
+import 'package:skill_bit/features/auth/presentation/widgets/components/footer_widget.dart';
+import 'package:skill_bit/features/auth/presentation/widgets/components/header_widget.dart';
+
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});

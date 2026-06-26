@@ -19,7 +19,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
     } on NoInternetException {
       return Left<Failure, UserProfileEntity>(NoInternetFailures());
     } catch (e) {
-      return Left<Failure, UserProfileEntity>(ServerFailures());
+      return const Left<Failure, UserProfileEntity>(ServerFailures());
     }
   }
 }

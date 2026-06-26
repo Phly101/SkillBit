@@ -4,11 +4,12 @@ import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
 import 'package:skill_bit/core/widgets/global/error/error_state_widget.dart';
 import 'package:skill_bit/core/widgets/user/best_ranking_widget.dart';
 import 'package:skill_bit/core/widgets/global/gradiant_container.dart';
+import 'package:skill_bit/features/contests/domain/entities/leaderboard_entity.dart';
+import 'package:skill_bit/features/contests/domain/entities/my_results_entity.dart';
 import 'package:skill_bit/features/contests/presentation/Bloc/contest_bloc.dart';
 import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/components/leaderboard_body.dart';
 import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/components/leaderboard_header.dart';
-import '../../../../domain/entities/leaderboard_entity.dart';
-import '../../../../domain/entities/my_results_entity.dart';
+
 
 class LeaderboardPage extends StatefulWidget {
   const LeaderboardPage({super.key, this.contestId});

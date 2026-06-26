@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:skill_bit/core/bloc/base_state.dart';
 import 'package:skill_bit/core/entities/quiz_entity.dart';
 import 'package:skill_bit/core/entities/results_details_entity.dart';
 import 'package:skill_bit/core/entities/review_results_entity.dart';
@@ -9,20 +10,20 @@ import 'package:skill_bit/core/error/failure.dart';
 import 'package:skill_bit/core/useCases/use_cases.dart';
 import 'package:skill_bit/features/contests/domain/entities/contest_details_entity.dart';
 import 'package:skill_bit/features/contests/domain/entities/contest_results_entity.dart';
+import 'package:skill_bit/features/contests/domain/entities/leaderboard_entity.dart';
 import 'package:skill_bit/features/contests/domain/entities/leaderboard_response_entity.dart';
+import 'package:skill_bit/features/contests/domain/entities/my_results_entity.dart';
+import 'package:skill_bit/features/contests/domain/entities/podium_entity.dart';
+import 'package:skill_bit/features/contests/domain/useCases/contest_start.dart';
+import 'package:skill_bit/features/contests/domain/useCases/contest_submit.dart';
+import 'package:skill_bit/features/contests/domain/useCases/get_contest_details.dart';
 import 'package:skill_bit/features/contests/domain/useCases/get_contest_results.dart';
 import 'package:skill_bit/features/contests/domain/useCases/get_leaderboard.dart';
 import 'package:skill_bit/features/contests/domain/useCases/params/contest_params.dart';
+import 'package:skill_bit/features/contests/domain/useCases/review_contest_answers.dart';
 import 'package:skill_bit/features/quiz/domain/useCases/params/review_params.dart';
 import 'package:skill_bit/features/quiz/domain/useCases/params/send_params.dart';
-import '../../../../core/bloc/base_state.dart';
-import '../../domain/entities/leaderboard_entity.dart';
-import '../../domain/entities/my_results_entity.dart';
-import '../../domain/entities/podium_entity.dart';
-import '../../domain/useCases/contest_start.dart';
-import '../../domain/useCases/contest_submit.dart';
-import '../../domain/useCases/get_contest_details.dart';
-import '../../domain/useCases/review_contest_answers.dart';
+
 
 part 'contest_event.dart';
 

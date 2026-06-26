@@ -2,12 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_bit/core/bloc/base_state.dart';
-import '../../../../../core/error/failure.dart';
-import '../../../domain/entities/course_entity.dart';
-import '../../../domain/useCases/activeLearingActions/enroll_course.dart';
-import '../../../domain/useCases/activeLearingActions/finish_course.dart';
-import '../../../domain/useCases/coursePageFetching/get_course_details.dart';
-import '../../../domain/useCases/params/course_params.dart';
+import 'package:skill_bit/core/error/failure.dart';
+import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
+import 'package:skill_bit/features/course/domain/useCases/activeLearingActions/enroll_course.dart';
+import 'package:skill_bit/features/course/domain/useCases/activeLearingActions/finish_course.dart';
+import 'package:skill_bit/features/course/domain/useCases/coursePageFetching/get_course_details.dart';
+import 'package:skill_bit/features/course/domain/useCases/params/course_params.dart';
+
 
 part 'course_details_event.dart';
 

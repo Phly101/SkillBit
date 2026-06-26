@@ -4,9 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/di/injection_container.dart';
 import 'package:skill_bit/core/entities/send_answers_entity.dart';
 import 'package:skill_bit/core/router/routes.dart';
+import 'package:skill_bit/core/widgets/global/error/error_state_widget.dart';
+import 'package:skill_bit/features/contests/presentation/Bloc/contest_bloc.dart';
 import 'package:skill_bit/features/contests/presentation/pages/contest_page/widgets/components/contest_body_widget.dart';
-import '../../../../../core/widgets/global/error/error_state_widget.dart';
-import '../../Bloc/contest_bloc.dart';
+
 
 class ContestPage extends StatefulWidget {
   const ContestPage({super.key, required this.contestId});

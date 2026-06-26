@@ -4,7 +4,6 @@ import 'package:skill_bit/core/widgets/global/shadow_container.dart';
 import '../../utils/global/assets.dart';
 import 'avatar_network_widget.dart';
 
-
 class ProfileNetworkGuardWidget extends StatelessWidget {
   const ProfileNetworkGuardWidget({
     super.key,
@@ -17,9 +16,9 @@ class ProfileNetworkGuardWidget extends StatelessWidget {
     this.width = 40,
     this.height = 40,
   }) : assert(
-  badgeUrl == null || badgeUrl != '',
-  'If you provide a badgeUrl, it cannot be empty',
-  );
+         badgeUrl == null || badgeUrl != '',
+         'If you provide a badgeUrl, it cannot be empty',
+       );
 
   final String profileUrl;
   final String? heroTag;
@@ -43,27 +42,27 @@ class ProfileNetworkGuardWidget extends StatelessWidget {
           offset: const Offset(0, 5),
           child: needsHero
               ? Hero(
-            tag: heroTag!,
-            child: InkWell(
-              onTap: () {
-                ImageUtils.showHeroPreview(
-                  context: context,
-                  profileUrl: profileUrl,
-                  heroTag: heroTag!,
-                );
-              },
-              child: AvatarNetworkWidget(
-                profileUrl: profileUrl,
-                radius: radius,
-                size: size,
-              ),
-            ),
-          )
+                  tag: heroTag!,
+                  child: InkWell(
+                    onTap: () {
+                      ImageUtils.showHeroPreview(
+                        context: context,
+                        profileUrl: profileUrl,
+                        heroTag: heroTag!,
+                      );
+                    },
+                    child: AvatarNetworkWidget(
+                      profileUrl: profileUrl,
+                      radius: radius,
+                      size: size,
+                    ),
+                  ),
+                )
               : AvatarNetworkWidget(
-            profileUrl: profileUrl,
-            radius: radius,
-            size: size,
-          ),
+                  profileUrl: profileUrl,
+                  radius: radius,
+                  size: size,
+                ),
         ),
 
         // The Badge
@@ -82,7 +81,12 @@ class ProfileNetworkGuardWidget extends StatelessWidget {
                 ),
                 width: width! * 1.1,
                 height: height! * 1.1,
-                errorBuilder: (context, error, stackTrace) => const SizedBox(),
+                errorBuilder:
+                    (
+                      final BuildContext context,
+                      final Object error,
+                      final StackTrace? stackTrace,
+                    ) => const SizedBox(),
               ),
             ),
           ),

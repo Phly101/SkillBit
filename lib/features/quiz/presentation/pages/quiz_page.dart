@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skill_bit/core/entities/quiz_question_entity.dart';
+import 'package:skill_bit/core/entities/send_answers_entity.dart';
+import 'package:skill_bit/core/router/routes.dart';
+import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
 import 'package:skill_bit/core/widgets/global/error/error_state_widget.dart';
-import '../../../../core/entities/quiz_question_entity.dart';
-import '../../../../core/entities/send_answers_entity.dart';
-import '../../../../core/router/routes.dart';
-import '../../../../core/utils/global/box_state_switcher.dart';
-import '../../../../core/widgets/quiz&contest_factory/contest_page/page/quiz_and_contest_factory.dart';
-import '../Bloc/quiz_bloc.dart';
+import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/page/quiz_and_contest_factory.dart';
+import 'package:skill_bit/features/quiz/presentation/Bloc/quiz_bloc.dart';
+
 
 class QuizPage extends StatefulWidget {
   const QuizPage({

@@ -1,6 +1,7 @@
+import 'package:skill_bit/features/contests/domain/repositories/contest_repo.dart';
 import 'package:skill_bit/features/quiz/domain/useCases/quiz_usecase_index.dart';
 
-import '../repositories/contest_repo.dart';
+
 
 
 

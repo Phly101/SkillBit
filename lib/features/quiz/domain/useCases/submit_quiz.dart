@@ -1,3 +1,4 @@
+import 'package:skill_bit/core/entities/results_details_entity.dart';
 import 'package:skill_bit/features/quiz/domain/useCases/quiz_usecase_index.dart';
 
 

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/constants/contest_strings.dart';
-import '../../../../entities/quiz_question_entity.dart';
-import '../../../../theme/theme.dart';
-import '../widgets/common/page_progress.dart';
-import '../widgets/common/participants_tile.dart';
-import '../widgets/common/timer_widget.dart';
-import '../widgets/components/contest_body.dart';
+import 'package:skill_bit/core/entities/quiz_question_entity.dart';
+import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/widgets/common/page_progress.dart';
+import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/widgets/common/participants_tile.dart';
+import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/widgets/common/timer_widget.dart';
+import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/widgets/components/contest_body.dart';
+
 
 //Todo: will be subject for optimization later....
 class QuizAndContestFactory extends StatefulWidget {

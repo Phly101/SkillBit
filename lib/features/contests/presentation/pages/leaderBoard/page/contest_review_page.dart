@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skill_bit/core/entities/quiz_question_entity.dart';
 import 'package:skill_bit/core/utils/features/quiz/review_data_mapper.dart';
 import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
 import 'package:skill_bit/core/widgets/global/back_button.dart';
 import 'package:skill_bit/core/widgets/global/error/error_state_widget.dart';
 import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/page/quiz_and_contest_factory.dart';
-import '../../../../../../core/entities/quiz_question_entity.dart';
-import '../../../Bloc/contest_bloc.dart';
+import 'package:skill_bit/features/contests/presentation/Bloc/contest_bloc.dart';
+
 
 class ContestReviewPage extends StatefulWidget {
   const ContestReviewPage({

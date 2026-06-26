@@ -1,18 +1,20 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/bloc/base_state.dart';
-import '../../../../core/entities/results_details_entity.dart';
-import '../../../../core/entities/review_results_entity.dart';
-import '../../../../core/entities/send_answers_entity.dart';
-import '../../../../core/error/failure.dart';
-import '../../../../core/entities/quiz_entity.dart';
-import '../../domain/useCases/params/quiz_params.dart';
-import '../../domain/useCases/params/review_params.dart';
-import '../../domain/useCases/params/send_params.dart';
-import '../../domain/useCases/review_answers.dart';
-import '../../domain/useCases/start_quiz.dart';
-import '../../domain/useCases/submit_quiz.dart';
+import 'package:skill_bit/core/bloc/base_state.dart';
+import 'package:skill_bit/core/entities/quiz_entity.dart';
+import 'package:skill_bit/core/entities/results_details_entity.dart';
+import 'package:skill_bit/core/entities/review_results_entity.dart';
+import 'package:skill_bit/core/entities/send_answers_entity.dart';
+import 'package:skill_bit/core/error/failure.dart';
+
+import 'package:skill_bit/features/quiz/domain/useCases/params/quiz_params.dart';
+import 'package:skill_bit/features/quiz/domain/useCases/params/review_params.dart';
+import 'package:skill_bit/features/quiz/domain/useCases/params/send_params.dart';
+import 'package:skill_bit/features/quiz/domain/useCases/review_answers.dart';
+import 'package:skill_bit/features/quiz/domain/useCases/start_quiz.dart';
+import 'package:skill_bit/features/quiz/domain/useCases/submit_quiz.dart';
+
 
 part 'quiz_event.dart';
 

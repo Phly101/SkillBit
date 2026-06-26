@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class ReviewParams extends Equatable {
-  const ReviewParams({required this.contestId});
+class ReviewContestParams extends Equatable {
+  const ReviewContestParams({required this.contestId});
 
   final String contestId;
 

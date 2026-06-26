@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:skill_bit/core/entities/quiz_question_entity.dart';
 import 'package:skill_bit/core/utils/features/contest&quiz/navigation_button_factory.dart';
 import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/widgets/common/question_widget.dart';
 
-import '../../../../../entities/quiz_question_entity.dart';
 
 
 //Todo: will be subject for optimization later....
