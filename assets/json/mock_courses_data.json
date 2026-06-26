@@ -68,8 +68,8 @@
       {
         "id": "c3_l1",
         "title": "Introduction to C++",
-        "imageUrl": "introduction-to-c.png",
-        "progress": 0.0,
+        "imageUrl": "cpp-concepts.png",
+        "progress": 1.0,
         "isLocked": false,
         "courseType": "Mandatory",
         "scoreEarned": 0,
@@ -78,7 +78,7 @@
             "id": "cpp_1",
             "title": "Intro & Setup",
             "description": "Installing compilers and IDEs",
-            "imageUrl": "introduction-to-c.png",
+            "imageUrl": "cpp-concepts.png",
             "isLocked": false,
             "prerequisiteId": "q2",
             "quiz": {
@@ -98,7 +98,7 @@
             "id": "cpp_2",
             "title": "Variables & Types",
             "description": "int, double, string, bool",
-            "imageUrl": "introduction-to-c.png",
+            "imageUrl": "what-is-cpp-programming.jpg",
             "isLocked": true,
             "prerequisiteId": "qc_1",
             "quiz": {
@@ -118,7 +118,7 @@
             "id": "cpp_3",
             "title": "Input & Output",
             "description": "Working with cin and cout",
-            "imageUrl": "introduction-to-c.png",
+            "imageUrl": "what-is-cpp-programming.jpg",
             "isLocked": true,
             "prerequisiteId": "qc_2",
             "quiz": {
@@ -138,7 +138,7 @@
             "id": "cpp_4",
             "title": "Conditionals",
             "description": "If, else if, and switch",
-            "imageUrl": "introduction-to-c.png",
+            "imageUrl": "what-is-cpp-programming.jpg",
             "isLocked": true,
             "prerequisiteId": "qc_3",
             "quiz": {
@@ -158,7 +158,7 @@
             "id": "cpp_5",
             "title": "Loops",
             "description": "For, While, and Do-While",
-            "imageUrl": "introduction-to-c.png",
+            "imageUrl": "what-is-cpp-programming.jpg",
             "isLocked": true,
             "prerequisiteId": "qc_4",
             "quiz": {
@@ -178,7 +178,7 @@
             "id": "cpp_6",
             "title": "Arrays",
             "description": "Fixed size collections",
-            "imageUrl": "introduction-to-c.png",
+            "imageUrl": "cpp-concepts.png",
             "isLocked": true,
             "prerequisiteId": "qc_5",
             "quiz": {
@@ -198,7 +198,7 @@
             "id": "cpp_7",
             "title": "Functions",
             "description": "Parameters and return types",
-            "imageUrl": "introduction-to-c.png",
+            "imageUrl": "cpp-concepts.png",
             "isLocked": true,
             "prerequisiteId": "qc_6",
             "quiz": {
@@ -218,7 +218,7 @@
             "id": "cpp_8",
             "title": "Pointers Basics",
             "description": "Memory addresses and references",
-            "imageUrl": "introduction-to-c.png",
+            "imageUrl": "cpp-concepts.png",
             "isLocked": true,
             "prerequisiteId": "qc_7",
             "quiz": {
@@ -240,8 +240,8 @@
         "id": "opt_debug",
         "title": "Debugging (Optional)",
         "imageUrl": "Debugging.png",
-        "progress": 0.0,
-        "isLocked": true,
+        "progress": 1.0,
+        "isLocked": false,
         "courseType": "Optional",
         "scoreEarned": 0,
         "lessons": [
@@ -284,7 +284,7 @@
         "title": "Data Structures (DS 1)",
         "imageUrl": "data_sturcture.jpg",
         "progress": 0.0,
-        "isLocked": true,
+        "isLocked": false,
         "courseType": "Mandatory",
         "scoreEarned": 0,
         "lessons": [

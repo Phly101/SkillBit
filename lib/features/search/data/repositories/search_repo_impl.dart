@@ -11,15 +11,15 @@ class SearchRepoImpl implements SearchRepository {
   final SearchLocalDataSource searchLocalDataSource;
 
   @override
-  Future<Either<Failure, List<CourseEntity>>> searchCourses(
+  Future<Either<Failure, List<CourseDetailsEntity>>> searchCourses(
     final String courseQuery,
   ) async {
     try {
-      final List<CourseEntity> result =  await searchLocalDataSource
+      final List<CourseDetailsEntity> result =  await searchLocalDataSource
           .searchCourses(courseQuery);
-      return Right<Failure, List<CourseEntity>>(result);
+      return Right<Failure, List<CourseDetailsEntity>>(result);
     } catch (e) {
-      return Left<Failure, List<CourseEntity>>(CacheFailures());
+      return Left<Failure, List<CourseDetailsEntity>>(CacheFailures());
     }
   }
 

@@ -1,5 +1,5 @@
-import '../params/quiz_params.dart';
-import '../quiz_usecase_index.dart' hide UpdateQuizProgressParams;
+import 'params/quiz_params.dart';
+import 'quiz_usecase_index.dart' ;
 
 class AttemptQuiz implements UseCase<QuizEntity, QuizParams> {
   AttemptQuiz({required this.quizRepository});
@@ -8,6 +8,6 @@ class AttemptQuiz implements UseCase<QuizEntity, QuizParams> {
 
   @override
   Future<Either<Failure, QuizEntity>> call(final QuizParams params) {
-    return quizRepository.attemptQuiz(params.id);
+    return quizRepository.startQuiz(params.id);
   }
 }

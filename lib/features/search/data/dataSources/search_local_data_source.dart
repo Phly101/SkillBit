@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:skill_bit/features/course/data/models/course_model.dart';
-import 'package:skill_bit/features/course/data/models/level_model.dart';
+import 'package:skill_bit/features/course/data/models/home_details_model.dart';
 import 'package:skill_bit/features/search/data/models/search_friends_model.dart';
 
 abstract class SearchLocalDataSource {
-  Future<List<CourseModel>> searchCourses(final String courseQuery);
+  Future<List<CourseDetailsModel>> searchCourses(final String courseQuery);
 
   List<SearchFriendsModel> searchFriends(final String friendsQuery);
 }
@@ -78,15 +78,15 @@ class SearchLocalDataSourceImpl implements SearchLocalDataSource {
 
   //Todo: might want to add later fuzzy package to handle search typos and find the correct query
 
-  List<LevelModel>? _cachedLevels;
+  List<HomeDetailsModel>? _cachedLevels;
 
-  Future<List<LevelModel>> _getAllLevels() async {
+  Future<List<HomeDetailsModel>> _getAllLevels() async {
     if (_cachedLevels != null) return _cachedLevels!;
     final List<dynamic> rawJson = await _loadRawJson();
     _cachedLevels = rawJson
         .map(
           (final dynamic json) =>
-              LevelModel.fromJson(json as Map<String, dynamic>),
+              HomeDetailsModel.fromJson(json as Map<String, dynamic>),
         )
         .toList();
 
@@ -94,19 +94,21 @@ class SearchLocalDataSourceImpl implements SearchLocalDataSource {
   }
 
   @override
-  Future<List<CourseModel>> searchCourses(final String courseQuery) async {
+  Future<List<CourseDetailsModel>> searchCourses(
+    final String courseQuery,
+  ) async {
     final String query = courseQuery.trim().toLowerCase();
-    final List<LevelModel> allLevels = await _getAllLevels();
-    final List<CourseModel> allCourses = allLevels
-        .expand((final LevelModel level) => level.courses)
-        .cast<CourseModel>()
+    final List<HomeDetailsModel> allLevels = await _getAllLevels();
+    final List<CourseDetailsModel> allCourses = allLevels
+        .expand((final HomeDetailsModel level) => level.courses)
+        .cast<CourseDetailsModel>()
         .toList();
 
     if (query.isEmpty) return allCourses;
 
     final List<String> queryWords = query.split(' ');
 
-    return allCourses.where((final CourseModel course) {
+    return allCourses.where((final CourseDetailsModel course) {
       final String title = course.title.toLowerCase();
       return queryWords.any((final String word) => title.contains(word));
     }).toList();

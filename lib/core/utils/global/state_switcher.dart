@@ -32,8 +32,11 @@ class StateSwitcher<B extends StateStreamable<S>, S> extends StatelessWidget {
         if (state is ErrorState) {
           final dynamic errorState = state;
           final String message = errorState.message ?? 'An error occurred';
-          return onError?.call(message, context, errorState) ??
-              Center(child: Text(message));
+
+          return SliverToBoxAdapter(
+            child: onError?.call(message, context, errorState) ??
+                Center(child: Text(message)),
+          );
         }
         if (state is SuccessState) {
           return onSuccess?.call(context, state) ?? const SizedBox.shrink();

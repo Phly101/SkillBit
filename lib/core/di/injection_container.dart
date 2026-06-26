@@ -1,3 +1,6 @@
+import 'package:skill_bit/core/di/injectors/settings_injector.dart';
+import 'package:skill_bit/core/di/injectors/contest_injector.dart';
+import 'package:skill_bit/core/di/injectors/profile_injector.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,12 +11,14 @@ import 'package:skill_bit/core/di/injectors/auth_injector.dart';
 import 'package:skill_bit/core/di/injectors/course_injector.dart';
 import 'package:skill_bit/core/di/injectors/home_injector.dart';
 import 'package:skill_bit/core/di/injectors/onboarding_injector.dart';
+import 'package:skill_bit/core/di/injectors/quiz_injector.dart';
 import 'package:skill_bit/core/di/injectors/search_injector.dart';
 import 'package:skill_bit/core/network/api_client.dart';
 import 'package:skill_bit/core/network/dio_client.dart';
 import 'package:skill_bit/core/network/network_info.dart';
 import 'package:skill_bit/core/network/network_info_impl.dart';
 import 'package:skill_bit/core/router/app_router.dart';
+import 'package:skill_bit/core/utils/storage/course_id_cache.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -22,20 +27,28 @@ Future<void> init() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
   sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
-
   sl.registerLazySingleton<Dio>(() => Dio());
   sl.registerLazySingleton<InternetConnection>(() => InternetConnection());
+  await GoogleSignIn.instance.initialize(
+    clientId:
+        '59041864085-q8fnt93a0to4nr77b29561ofvnucnlr7.apps.googleusercontent.com',
+  );
   sl.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn.instance);
 
   //! Core
   sl.registerLazySingleton<ApiClient>(() => DioClient(sl<Dio>()));
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+  sl.registerLazySingleton<CourseIdCache>(() => CourseIdCache());
 
   //! Features
+  initSettingsFeature();
+  initContestFeature();
+  initProfileFeature();
   initAuthFeature();
   initHomeFeature();
   initCourseFeature();
   initSearchFeature();
+  initQuizFeature();
   initOnboardingFeature();
 
   //! App State (Core logic that spans features)
