@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import '../../theme/theme.dart';
 import '../../utils/global/assets.dart';
@@ -10,13 +11,13 @@ class AvatarWidget extends StatelessWidget {
     this.size = 35,
   });
 
-  final String profileUrl;
+  final String? profileUrl;
   final double? radius;
   final double size;
 
   @override
   Widget build(final BuildContext context) {
-    final bool hasImage = profileUrl.isNotEmpty;
+    final bool hasImage = profileUrl != null && profileUrl!.isNotEmpty;
 
     return CircleAvatar(
       backgroundColor: !hasImage
@@ -24,7 +25,7 @@ class AvatarWidget extends StatelessWidget {
           : Colors.transparent,
       radius: radius,
 
-      backgroundImage: hasImage ? AssetImage(Assets.image(profileUrl)) : null,
+      backgroundImage: hasImage ? AssetImage(Assets.image(profileUrl ?? 'temp_image.png')) : null,
       child: !hasImage
           ? Icon(Icons.person, size: size, color: context.colorScheme.onSurface)
           : null,
