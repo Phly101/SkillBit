@@ -5,8 +5,11 @@ import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/global/back_button.dart';
 
+
 class LeaderboardHeader extends StatelessWidget {
-  const LeaderboardHeader({super.key});
+  const LeaderboardHeader({super.key, required this.contestId});
+
+  final String contestId;
 
   @override
   Widget build(final BuildContext context) {
@@ -17,7 +20,7 @@ class LeaderboardHeader extends StatelessWidget {
         //leading
         ArrowBackButton(
           function: () {
-            context.go(AppRoutes.contestResults);
+            context.pop();
           },
           size: 30,
           color: context.colorScheme.surface,
