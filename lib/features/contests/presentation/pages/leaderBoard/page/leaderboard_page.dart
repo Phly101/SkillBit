@@ -1,135 +1,108 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
+import 'package:skill_bit/core/widgets/global/error/error_state_widget.dart';
 import 'package:skill_bit/core/widgets/user/best_ranking_widget.dart';
 import 'package:skill_bit/core/widgets/global/gradiant_container.dart';
+import 'package:skill_bit/features/contests/presentation/Bloc/contest_bloc.dart';
 import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/components/leaderboard_body.dart';
 import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/components/leaderboard_header.dart';
-import '../../../../../../core/entities/leaderboard_entity.dart';
+import '../../../../domain/entities/leaderboard_entity.dart';
+import '../../../../domain/entities/my_results_entity.dart';
 
 class LeaderboardPage extends StatefulWidget {
-  const LeaderboardPage({super.key});
+  const LeaderboardPage({super.key, this.contestId});
+
+  final String? contestId;
 
   @override
   State<LeaderboardPage> createState() => _LeaderboardPageState();
 }
 
 class _LeaderboardPageState extends State<LeaderboardPage> {
-  //  list of 10 contestants
-  final List<LeaderboardEntity> contestantsList = <LeaderboardEntity>[
-    LeaderboardEntity(
-      userId: '1',
-      name: 'Ahmed Zaki',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 2500,
-      rank: '👑',
-      badgeIcon: 'badge2.png',
-      inPodium: true,
-    ),
-    LeaderboardEntity(
-      userId: '2',
-      name: 'Sarah Connor',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 2100,
-      rank: '2',
-      badgeIcon: 'badge3.png',
-      inPodium: true,
-    ),
-    LeaderboardEntity(
-      userId: '3',
-      name: 'John Doe',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 1950,
-      rank: '3',
-      badgeIcon: 'badge1.png',
-      inPodium: true,
-    ),
-    LeaderboardEntity(
-      userId: '4',
-      name: 'Elena Fisher',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 1800,
-      rank: '4',
-      badgeIcon: 'badge2.png',
-    ),
-    LeaderboardEntity(
-      userId: '5',
-      name: 'Marcus Holloway',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 1750,
-      rank: '5',
-      badgeIcon: 'badge2.png',
-    ),
-    LeaderboardEntity(
-      userId: '6',
-      name: 'Lara Croft',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 1600,
-      rank: '6',
-      badgeIcon: 'badge5.png',
-    ),
-    LeaderboardEntity(
-      userId: '7',
-      name: 'Nathan Drake',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 1550,
-      rank: '7',
-      badgeIcon: 'badge2.png',
-    ),
-    LeaderboardEntity(
-      userId: '8',
-      name: 'Chloe Frazer',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 1400,
-      rank: '8',
-      badgeIcon: 'badge1.png',
-    ),
-    LeaderboardEntity(
-      userId: '9',
-      name: 'Victor Sullivan',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 1350,
-      rank: '9',
-      badgeIcon: 'badge4.png',
-    ),
-    LeaderboardEntity(
-      userId: '10',
-      name: 'Sam Drake',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 1200,
-      rank: '10',
-      badgeIcon: 'badge2.png',
-    ),
-  ];
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<ContestBloc>().add(
+      ContestLeaderboardPageRequested(contestId: widget.contestId ?? ''),
+    );
+  }
 
   @override
   Widget build(final BuildContext context) {
-    final List<LeaderboardEntity> podiumData = contestantsList
-        .where((final LeaderboardEntity c) => c.inPodium)
-        .toList();
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          GradiantContainer(
-            width: double.infinity,
-            height: MediaQuery.heightOf(context) * 0.70,
-            doAllTakeBorder: false,
-            bottomLeft: 100,
-            bottomRight: 100,
-            begin: .topCenter,
-            end: .bottomCenter,
-          ),
-          Column(
+      body: BoxStateSwitcher<ContestBloc, ContestState>(
+        onInitial: (final BuildContext context, final ContestState state) =>
+            const Center(child: CircularProgressIndicator()),
+        loadingWidget: const Center(child: CircularProgressIndicator()),
+        onError:
+            (
+              final String message,
+              final BuildContext context,
+              final ContestState state,
+            ) => ErrorStateWidget(
+              message: message,
+              reFreshFunction: () => context.read<ContestBloc>().add(
+                widget.contestId != null
+                    ? ContestLeaderboardPageRequested(
+                        contestId: widget.contestId!,
+                      )
+                    : const LeaderBoardDetailsRequested(),
+              ),
+            ),
+        onSuccess: (final BuildContext context, final ContestState state) {
+          List<dynamic> podium = <dynamic>[];
+          List<LeaderboardEntity> others = <LeaderboardEntity>[];
+          MyResultEntity? myResult;
+          if (state is ContestLeaderboardPageSuccess) {
+            podium = state.top3;
+            myResult = state.myResult;
+
+            final List<String> podiumNames = podium
+                .map((final dynamic e) => e.fullname as String)
+                .toList();
+
+            others =
+                state.leaderboard
+                    .where(
+                      (final LeaderboardEntity e) =>
+                          !podiumNames.contains(e.fullname),
+                    )
+                    .toList()
+                  ..sort(
+                    (final LeaderboardEntity a, final LeaderboardEntity b) =>
+                        a.rank.compareTo(b.rank),
+                  );
+          }
+
+          return Stack(
             children: <Widget>[
-              // title, arrow back and home buttons
-              const SizedBox(height: 60),
-              const LeaderboardHeader(),
-              // podium of the top 3
-              BestRankingWidget(topThree: podiumData),
-              const Spacer(),
-              // list of contestants in the contest
-              LeaderboardBody(contestantsList: contestantsList),
+              GradiantContainer(
+                width: double.infinity,
+                height: MediaQuery.heightOf(context) * 0.70,
+                doAllTakeBorder: false,
+                bottomLeft: 100,
+                bottomRight: 100,
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              Column(
+                children: <Widget>[
+                  const SizedBox(height: 60),
+                  LeaderboardHeader(contestId: widget.contestId ?? ''),
+                  if (podium.isNotEmpty) BestRankingWidget(topThree: podium),
+                  const Spacer(),
+                  if (others.isNotEmpty)
+                    LeaderboardBody(
+                      contestantsList: others,
+                      myResult: myResult,
+                    ),
+                ],
+              ),
             ],
-          ),
-        ],
+          );
+        },
       ),
     );
   }
