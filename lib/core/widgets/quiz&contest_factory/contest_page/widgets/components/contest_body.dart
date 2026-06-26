@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:skill_bit/core/entities/question_entity.dart';
 import 'package:skill_bit/core/utils/features/contest&quiz/navigation_button_factory.dart';
 import 'package:skill_bit/core/widgets/quiz&contest_factory/contest_page/widgets/common/question_widget.dart';
 
-import 'contest_header.dart';
+import '../../../../../entities/quiz_question_entity.dart';
+
 
 //Todo: will be subject for optimization later....
 class ContestBody extends StatelessWidget {
@@ -19,13 +19,10 @@ class ContestBody extends StatelessWidget {
     required this.backButtonTxt,
     required this.submitButtonTxt,
     required this.questions,
+    this.selectedAnswers = const <int, int>{},
     required this.pageIndex,
     required this.isViewingAnswers,
     this.isFinalPage = false,
-    required this.contestDuration,
-    required this.numOfParticipants,
-    required this.currentPageIndex,
-    required this.totalPages,
     required this.isContest,
   });
 
@@ -33,17 +30,13 @@ class ContestBody extends StatelessWidget {
   final void Function()? forwardFunction;
   final void Function()? submitFunction;
   final void Function()? goHomeFunction;
-  final void Function(QuestionEntity question, int optionIndex)
-  onOptionSelected;
+  final void Function(int questionIndex, int optionIndex) onOptionSelected;
   final String forwardButtonTxt;
   final String backButtonTxt;
   final String submitButtonTxt;
   final String goHomeButtonTxt;
-  final List<QuestionEntity> questions;
-  final Duration contestDuration;
-  final int numOfParticipants;
-  final int currentPageIndex;
-  final int totalPages;
+  final List<QuizQuestionEntity> questions;
+  final Map<int, int> selectedAnswers;
   final int pageIndex;
   final bool isViewingAnswers;
   final bool isFinalPage;
@@ -55,30 +48,27 @@ class ContestBody extends StatelessWidget {
       child: Column(
         children: <Widget>[
           const SizedBox(height: 60),
-          ContestHeader(
-            contestDuration: contestDuration,
-            numOfParticipants: numOfParticipants,
-            currentPageNum: currentPageIndex + 1,
-            lastPageNum: totalPages,
-            isContest: isContest,
-          ),
+
           //questions part
-          ...questions.asMap().entries
-          // loop to make the question Widgets
-          .map((final MapEntry<int, QuestionEntity> entry) {
-            int localIndex = entry.key;
-            QuestionEntity q = entry.value;
-            // question number calculator
-            int questionNumber = (pageIndex * 5) + localIndex + 1;
+          ...questions.asMap().entries.map((
+            final MapEntry<int, QuizQuestionEntity> entry,
+          ) {
+            final int localIndex = entry.key;
+            final QuizQuestionEntity q = entry.value;
+            final int absoluteIndex = (pageIndex * 5) + localIndex;
+            final int questionNumber = absoluteIndex + 1;
+
+            final int selectedIndex = selectedAnswers[absoluteIndex] ?? -1;
+
             return Padding(
-              padding: const .only(bottom: 20.0),
+              padding: const EdgeInsets.only(bottom: 20.0),
               child: QuestionWidget(
                 onOptionSelected: (final int selectedOption) {
-                  onOptionSelected(q, selectedOption);
+                  onOptionSelected(localIndex, selectedOption);
                 },
                 isViewingAnswers: isViewingAnswers,
                 question: q,
-                selectedIndex: q.selectedAnswerIndex ?? -1,
+                selectedIndex: selectedIndex,
                 questionNumber: questionNumber,
               ),
             );
