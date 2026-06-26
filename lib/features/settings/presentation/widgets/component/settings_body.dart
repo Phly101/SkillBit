@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skill_bit/core/constants/settings_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/global/shadow_container.dart';
+import 'package:skill_bit/features/auth/presentation/Bloc/auth_bloc.dart';
 import 'package:skill_bit/features/settings/domain/entities/settings_entity.dart';
 import 'package:skill_bit/features/settings/presentation/widgets/common/profile_action_tile.dart';
 import 'package:skill_bit/features/settings/presentation/widgets/component/profile_setting_section.dart';
@@ -12,6 +14,7 @@ class SettingsBody extends StatelessWidget {
   const SettingsBody({super.key, required this.settingsEntity});
 
   final SettingsEntity settingsEntity;
+
   @override
   Widget build(final BuildContext context) {
     return Column(
@@ -19,15 +22,14 @@ class SettingsBody extends StatelessWidget {
       children: <Widget>[
         46.heightBox,
         SettingsHeader(
-          
-          profileUrl: settingsEntity.profileImageUrl,
-          name: settingsEntity.name,
+          profileUrl: settingsEntity.profilePicture,
+          name: settingsEntity.fullname,
           email: settingsEntity.email,
-          badgeUrl: settingsEntity.imageUrl,
+          badgeUrl: 'camera_icon.png',
         ),
         50.heightBox,
         ProfileSettingSection(
-          name: settingsEntity.name,
+          name: settingsEntity.fullname,
           email: settingsEntity.email,
         ),
         45.heightBox,
@@ -37,13 +39,15 @@ class SettingsBody extends StatelessWidget {
               .copyWith(fontSize: 18, color: context.colorScheme.outline),
         ),
         10.heightBox,
-
+        // log out button
         ShadowContainer(
           borderRadius: 8,
           child: ProfileActionTile(
             icon: FontAwesomeIcons.rightFromBracket,
             title: SettingsStrings.logOut,
-            onTap: () {},
+            onTap: () {
+              context.read<AuthBloc>().add(const AuthLogoutRequested());
+            },
             iconColor: context.colorScheme.error,
             iconBgColor: context.colorScheme.error.withValues(alpha: .12),
             arrowColor: context.colorScheme.error.withValues(alpha: 0.20),
