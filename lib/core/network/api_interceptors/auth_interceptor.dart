@@ -128,7 +128,7 @@ class AuthInterceptor extends Interceptor {
 
   Future<void> _handleSessionExpired() async {
     await sl<AuthRepo>().logout();
-    // Force a small delay to ensure listeners are notified and navigation occurs
+
     await Future<void>.delayed(const Duration(milliseconds: 100));
   }
 }

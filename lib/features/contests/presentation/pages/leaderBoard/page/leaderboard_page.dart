@@ -6,10 +6,10 @@ import 'package:skill_bit/core/widgets/user/best_ranking_widget.dart';
 import 'package:skill_bit/core/widgets/global/gradiant_container.dart';
 import 'package:skill_bit/features/contests/domain/entities/leaderboard_entity.dart';
 import 'package:skill_bit/features/contests/domain/entities/my_results_entity.dart';
+import 'package:skill_bit/features/contests/domain/entities/podium_entity.dart';
 import 'package:skill_bit/features/contests/presentation/Bloc/contest_bloc.dart';
 import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/components/leaderboard_body.dart';
 import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/components/leaderboard_header.dart';
-
 
 class LeaderboardPage extends StatefulWidget {
   const LeaderboardPage({super.key, this.contestId});
@@ -53,7 +53,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
               ),
             ),
         onSuccess: (final BuildContext context, final ContestState state) {
-          List<dynamic> podium = <dynamic>[];
+          List<TopThreeEntity> podium = <TopThreeEntity>[];
           List<LeaderboardEntity> others = <LeaderboardEntity>[];
           MyResultEntity? myResult;
           if (state is ContestLeaderboardPageSuccess) {

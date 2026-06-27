@@ -4,7 +4,7 @@ import 'package:skill_bit/core/di/injection_container.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
 import 'package:skill_bit/core/widgets/profile/profile_skeleton.dart';
-import 'package:skill_bit/features/contests/domain/entities/leaderboard_entity.dart';
+import 'package:skill_bit/features/contests/domain/entities/podium_entity.dart';
 import 'package:skill_bit/features/profile/presentation/Bloc/profile_bloc.dart';
 import 'package:skill_bit/features/profile/presentation/pages/profile_page/widgets/components/profile_body.dart';
 import 'package:skill_bit/features/profile/presentation/pages/profile_page/widgets/components/profile_header.dart';
@@ -40,7 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   const ProfileBody(
                     hasBestRank: false,
-                    topThree: <LeaderboardEntity>[],
+                    topThree: <TopThreeEntity>[],
                   ),
                   30.heightBox,
                 ],

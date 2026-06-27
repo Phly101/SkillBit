@@ -3,6 +3,7 @@ import 'package:skill_bit/core/constants/profile_strings.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/features/contest&quiz/get_best_ranking_data.dart';
 import 'package:skill_bit/core/widgets/user/podium_widget.dart';
+import 'package:skill_bit/features/contests/domain/entities/podium_entity.dart';
 import '../../../features/contests/presentation/pages/leaderBoard/widgets/common/winner_column.dart';
 
 class BestRankingWidget extends StatelessWidget {
@@ -13,7 +14,7 @@ class BestRankingWidget extends StatelessWidget {
   });
 
   final bool isProfile;
-  final List<dynamic> topThree;
+  final List<TopThreeEntity> topThree;
 
   @override
   Widget build(final BuildContext context) {
@@ -38,15 +39,15 @@ class BestRankingWidget extends StatelessWidget {
             // top 2
             if (topThree.length > 1)
               WinnerColumn(
-                name: GetBestRankingData.getName(topThree[1]),
-                score: GetBestRankingData.getScore(topThree[1]),
+                name: topThree[1].fullname,
+                score: topThree[1].score,
                 isProfile: isProfile,
                 child: PodiumWidget(
-                  standing: GetBestRankingData.getRank(topThree[1]),
-                  profileUrl: GetBestRankingData.getProfile(topThree[1]),
+                  standing: topThree[1].rank,
+                  profileUrl: topThree[1].profilePicture,
                   paddingTop: 60,
                   radius: 40,
-                  badgeUrl: GetBestRankingData.getBadge(topThree[1]),
+                  badgeUrl: topThree[1].badge,
                   heroTag:
                       'hero-${GetBestRankingData.getName(topThree[1])}-${GetBestRankingData.getRank(topThree[1])}',
                 ),
@@ -56,15 +57,15 @@ class BestRankingWidget extends StatelessWidget {
             //top 1
             if (topThree.isNotEmpty)
               WinnerColumn(
-                name: GetBestRankingData.getName(topThree[0]),
-                score: GetBestRankingData.getScore(topThree[0]),
+                name: topThree[0].fullname,
+                score: topThree[0].score,
                 isProfile: isProfile,
                 child: PodiumWidget(
-                  standing: GetBestRankingData.getRank(topThree[0]),
-                  profileUrl: GetBestRankingData.getProfile(topThree[0]),
+                  standing: topThree[0].rank,
+                  profileUrl: topThree[0].profilePicture,
                   radius: 50,
                   paddingTop: 5,
-                  badgeUrl: GetBestRankingData.getBadge(topThree[0]),
+                  badgeUrl: topThree[0].badge,
                   heroTag:
                       'hero-${GetBestRankingData.getName(topThree[0])}-${GetBestRankingData.getRank(topThree[0])}',
                 ),
@@ -72,15 +73,15 @@ class BestRankingWidget extends StatelessWidget {
             // top 3
             if (topThree.length > 2)
               WinnerColumn(
-                name: GetBestRankingData.getName(topThree[2]),
-                score: GetBestRankingData.getScore(topThree[2]),
+                name: topThree[2].fullname,
+                score: topThree[2].score,
                 isProfile: isProfile,
                 child: PodiumWidget(
-                  standing: GetBestRankingData.getRank(topThree[2]),
-                  profileUrl: GetBestRankingData.getProfile(topThree[2]),
+                  standing: topThree[2].rank,
+                  profileUrl: topThree[2].profilePicture,
                   paddingTop: 70,
                   radius: 40,
-                  badgeUrl: GetBestRankingData.getBadge(topThree[2]),
+                  badgeUrl: topThree[2].badge,
                   heroTag:
                       'hero-${GetBestRankingData.getName(topThree[2])}-${GetBestRankingData.getRank(topThree[2])}',
                 ),

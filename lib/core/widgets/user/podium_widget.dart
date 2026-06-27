@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'profile_guard_widget.dart';
+import 'package:skill_bit/core/widgets/user/profile_network_gaurd.dart';
+
 
 class PodiumWidget extends StatelessWidget {
   const PodiumWidget({
@@ -38,7 +39,7 @@ class PodiumWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          ProfileGuardWidget(
+          ProfileNetworkGuardWidget(
             profileUrl: profileUrl,
             badgeUrl: badgeUrl,
             radius: radius,
