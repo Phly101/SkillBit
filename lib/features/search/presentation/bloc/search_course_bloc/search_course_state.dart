@@ -25,7 +25,7 @@ final class SearchCourseSuccess extends SearchCourseState
     implements SuccessState<List<CourseDetailsEntity>> {
   const SearchCourseSuccess({required this.courses});
 
-  final List<CourseDetailsEntity> courses;
+  final List<HomeCourseEntity> courses;
 
 
 

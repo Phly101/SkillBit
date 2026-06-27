@@ -89,6 +89,7 @@ class LessonPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       LessonFooter(
+                        courseId: courseId ?? '',
                         resourceList: lesson.resources ?? <MaterialEntity>[],
                       ),
 

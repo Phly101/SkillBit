@@ -35,7 +35,8 @@ class LessonBody extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           // course description
-          ExpandableText(text: description),
+
+          ExpandableText(text: description , courseId: courseId),
         ],
       ),
     );

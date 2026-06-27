@@ -1,511 +1,262 @@
-[
-  {
-    "id": "lvl_1",
-    "levelIndex": 1,
-    "title": "Level 1: Fundamentals (Beginner)",
+{
+  "message": "Home screen data fetched successfully",
+  "data": {
+    "userName": "basel",
+    "userProfilePicture": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1782525795/profile-pictures/qly5mqkipxcktiqfgk80.jpg",
+    "levelProgress": 0,
     "courses": [
       {
-        "id": "c1_l1",
+        "id": "69eee1aa0c5d9df83bdacb05",
+        "isEnrolled": true,
         "title": "Computer Fundamentals",
-        "imageUrl": "Computer-Fundamentals-Tutorial.png",
-        "progress": 1.0,
+        "description": "Learn the essential parts of a computer and how hardware and software work together.",
+        "type": "mandatory",
+        "earnScore": 100,
+        "passScore": 70,
+        "isTutorial": true,
         "isLocked": false,
-        "courseType": "Mandatory",
-        "scoreEarned": 0,
-        "lessons": [
-          {
-            "id": "l1",
-            "title": "Hardware components",
-            "description": "Computer hardware refers to the physical elements that make up a computer system. At the heart of every machine is the Central Processing Unit (CPU), often called the brain of the computer, which executes instructions and processes data. Supporting the CPU is Random Access Memory (RAM), providing high-speed, temporary storage for applications currently in use. \n\nUnlike RAM, long-term storage devices like SSDs and HDDs keep your files safe even when the power is turned off. Input devices, such as keyboards and mice, allow users to interact with the system and provide data. Output devices, like monitors and printers, translate the computer's processing into a form that humans can understand. \n\nUnderstanding how these components communicate via the motherboard is essential for any aspiring developer or engineer. This lesson explores the fetch-decode-execute cycle and how hardware performance directly impacts software efficiency. By mastering hardware fundamentals, you gain a deeper appreciation for how high-level code eventually turns into physical electrical signals. Get ready to dive deep into the silicon and circuits that power our modern digital world.",
-            "imageUrl": "Computer-Fundamentals-Tutorial.png",
-            "isLocked": false,
-            "prerequisiteId": null,
-            "quiz": {
-              "id": "q1",
-              "title": "Hardware Basics Quiz",
-              "icCompleted": true
-            },
-            "resources": [
-              {
-                "id": "rly1",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=O5nskjZ_GoI"
-              },
-              {
-                "id": "rla1",
-                "type": "article",
-                "url": "https://www.geeksforgeeks.org/computer-fundamentals-tutorial/"
-              }
-            ]
-          },
-          {
-            "id": "l2",
-            "title": "Computer Architecture",
-            "description": "How a computer operates",
-            "imageUrl": "Computer-Fundamentals-Tutorial.png",
-            "isLocked": true,
-            "prerequisiteId": "q1",
-            "quiz": {
-              "id": "q2",
-              "title": "Architecture Deep Dive",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly2",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=QXjU9qTsYCc"
-              },
-              {
-                "id": "rla2",
-                "type": "article",
-                "url": "https://www.tutorialspoint.com/computer_fundamentals/index.htm"
-              }
-            ]
-          }
-        ]
+        "status": "active",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398157/Computer-Fundamentals-Tutorial_ztmqcc.png",
+        "courseProgress": 0
       },
       {
-        "id": "c3_l1",
-        "title": "Introduction to C++",
-        "imageUrl": "cpp-concepts.png",
-        "progress": 1.0,
+        "id": "69ec9a4ae5c9822f8271b8ed",
+        "isEnrolled": false,
+        "title": "Introduction to Programming Concepts",
+        "description": "Understand what programming is, why it matters, and how software solves real-world problems.",
+        "type": "mandatory",
+        "earnScore": 120,
+        "passScore": 70,
+        "isTutorial": true,
         "isLocked": false,
-        "courseType": "Mandatory",
-        "scoreEarned": 0,
-        "lessons": [
-          {
-            "id": "cpp_1",
-            "title": "Intro & Setup",
-            "description": "Installing compilers and IDEs",
-            "imageUrl": "cpp-concepts.png",
-            "isLocked": false,
-            "prerequisiteId": "q2",
-            "quiz": {
-              "id": "qc_1",
-              "title": "Setup Check",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly3",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=vLnPwxZdW4Y"
-              }
-            ]
-          },
-          {
-            "id": "cpp_2",
-            "title": "Variables & Types",
-            "description": "int, double, string, bool",
-            "imageUrl": "what-is-cpp-programming.jpg",
-            "isLocked": true,
-            "prerequisiteId": "qc_1",
-            "quiz": {
-              "id": "qc_2",
-              "title": "Data Types Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rla3",
-                "type": "article",
-                "url": "https://www.learncpp.com/"
-              }
-            ]
-          },
-          {
-            "id": "cpp_3",
-            "title": "Input & Output",
-            "description": "Working with cin and cout",
-            "imageUrl": "what-is-cpp-programming.jpg",
-            "isLocked": true,
-            "prerequisiteId": "qc_2",
-            "quiz": {
-              "id": "qc_3",
-              "title": "I/O Mastery",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rla4",
-                "type": "article",
-                "url": "https://www.w3schools.com/cpp/"
-              }
-            ]
-          },
-          {
-            "id": "cpp_4",
-            "title": "Conditionals",
-            "description": "If, else if, and switch",
-            "imageUrl": "what-is-cpp-programming.jpg",
-            "isLocked": true,
-            "prerequisiteId": "qc_3",
-            "quiz": {
-              "id": "qc_4",
-              "title": "Logic Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rla5",
-                "type": "article",
-                "url": "https://www.programiz.com/cpp-programming"
-              }
-            ]
-          },
-          {
-            "id": "cpp_5",
-            "title": "Loops",
-            "description": "For, While, and Do-While",
-            "imageUrl": "what-is-cpp-programming.jpg",
-            "isLocked": true,
-            "prerequisiteId": "qc_4",
-            "quiz": {
-              "id": "qc_5",
-              "title": "Iteration Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly4",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=vLnPwxZdW4Y"
-              }
-            ]
-          },
-          {
-            "id": "cpp_6",
-            "title": "Arrays",
-            "description": "Fixed size collections",
-            "imageUrl": "cpp-concepts.png",
-            "isLocked": true,
-            "prerequisiteId": "qc_5",
-            "quiz": {
-              "id": "qc_6",
-              "title": "Arrays Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rla6",
-                "type": "article",
-                "url": "https://www.learncpp.com/cpp-tutorial/arrays-part-i/"
-              }
-            ]
-          },
-          {
-            "id": "cpp_7",
-            "title": "Functions",
-            "description": "Parameters and return types",
-            "imageUrl": "cpp-concepts.png",
-            "isLocked": true,
-            "prerequisiteId": "qc_6",
-            "quiz": {
-              "id": "qc_7",
-              "title": "Functions Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly5",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=vLnPwxZdW4Y"
-              }
-            ]
-          },
-          {
-            "id": "cpp_8",
-            "title": "Pointers Basics",
-            "description": "Memory addresses and references",
-            "imageUrl": "cpp-concepts.png",
-            "isLocked": true,
-            "prerequisiteId": "qc_7",
-            "quiz": {
-              "id": "qc_8",
-              "title": "Memory Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rla7",
-                "type": "article",
-                "url": "https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/"
-              }
-            ]
-          }
-        ]
+        "status": "active",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398156/intorfuction_to_programming_ildm6u.jpg",
+        "courseProgress": 0
       },
       {
-        "id": "opt_debug",
-        "title": "Debugging (Optional)",
-        "imageUrl": "Debugging.png",
-        "progress": 1.0,
+        "id": "69ec9a5ae5c9822f8271b8f4",
+        "isEnrolled": false,
+        "title": "Introduction to C++ Programming",
+        "description": "Start coding with C++ by learning variables, input/output, conditions, loops, and syntax basics.",
+        "type": "mandatory",
+        "earnScore": 150,
+        "passScore": 75,
+        "isTutorial": true,
         "isLocked": false,
-        "courseType": "Optional",
-        "scoreEarned": 0,
-        "lessons": [
-          {
-            "id": "l7",
-            "title": "Debugging Mindset",
-            "description": "Print debugging and stack traces",
-            "imageUrl": "Debugging.png",
-            "isLocked": true,
-            "prerequisiteId": "qc_8",
-            "quiz": {
-              "id": "qd_1",
-              "title": "Bug Hunter Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly6",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=H0XScE08hy8"
-              },
-              {
-                "id": "rla7",
-                "type": "article",
-                "url": "https://www.freecodecamp.org/news/how-to-debug-code/"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "lvl_2",
-    "levelIndex": 2,
-    "title": "Level 2: Intermediate",
-    "courses": [
+        "status": "active",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398155/what-is-cpp-programming_uvybai.jpg",
+        "courseProgress": 0
+      },
       {
         "id": "c1_l2",
+        "isEnrolled": false,
         "title": "Data Structures (DS 1)",
-        "imageUrl": "data_sturcture.jpg",
-        "progress": 0.0,
-        "isLocked": false,
-        "courseType": "Mandatory",
-        "scoreEarned": 0,
-        "lessons": [
-          {
-            "id": "l8",
-            "title": "Arrays & Strings",
-            "description": "Linear data storage",
-            "imageUrl": "data_sturcture.jpg",
-            "isLocked": true,
-            "prerequisiteId": "qd_1",
-            "quiz": {
-              "id": "q_ds1",
-              "title": "Arrays & Strings Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly7",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=RBSGKlAvoiM"
-              },
-              {
-                "id": "rla8",
-                "type": "article",
-                "url": "https://www.geeksforgeeks.org/data-structures/"
-              }
-            ]
-          },
-          {
-            "id": "l9",
-            "title": "Linked Lists, Stacks, Queues",
-            "description": "Abstract data types",
-            "imageUrl": "data_sturcture.jpg",
-            "isLocked": true,
-            "prerequisiteId": "q_ds1",
-            "quiz": {
-              "id": "q_ds2",
-              "title": "Linear DS Mastery",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rla9",
-                "type": "article",
-                "url": "https://visualgo.net/en"
-              }
-            ]
-          }
-        ]
+        "description": "Linear data storage and abstract data types.",
+        "type": "mandatory",
+        "earnScore": 130,
+        "passScore": 70,
+        "isTutorial": false,
+        "isLocked": true,
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398147/data_structure_ljhvr5.jpg",
+        "courseProgress": 0
       },
       {
         "id": "c2_l2",
+        "isEnrolled": false,
         "title": "Object-Oriented Programming",
-        "imageUrl": "oop.jpg",
-        "progress": 0.0,
+        "description": "Encapsulation, inheritance, and polymorphism.",
+        "type": "mandatory",
+        "earnScore": 140,
+        "passScore": 70,
+        "isTutorial": false,
         "isLocked": true,
-        "courseType": "Mandatory",
-        "scoreEarned": 0,
-        "lessons": [
-          {
-            "id": "l10",
-            "title": "Encapsulation & Inheritance",
-            "description": "Core OOP pillars",
-            "imageUrl": "oop.jpg",
-            "isLocked": true,
-            "prerequisiteId": "q_ds2",
-            "quiz": {
-              "id": "q_oop1",
-              "title": "Pillars of OOP Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly8",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=pTB0EiLXUC8"
-              },
-              {
-                "id": "rla10",
-                "type": "article",
-                "url": "https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/"
-              }
-            ]
-          },
-          {
-            "id": "l11",
-            "title": "Polymorphism",
-            "description": "Dynamic method binding",
-            "imageUrl": "oop.jpg",
-            "isLocked": true,
-            "prerequisiteId": "q_oop1",
-            "quiz": {
-              "id": "q_oop2",
-              "title": "Polymorphism Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rla11",
-                "type": "article",
-                "url": "https://www.programiz.com/cpp-programming/object-oriented-programming"
-              }
-            ]
-          }
-        ]
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398152/oop_c0esil.jpg",
+        "courseProgress": 0
+      },
+      {
+        "id": "69f3e9d8d86900decd9453c1",
+        "isEnrolled": false,
+        "title": "CRUD Operations",
+        "description": "Understand CRUD operations, database basics, API concepts, and real-world applications.",
+        "type": "optional",
+        "earnScore": 120,
+        "passScore": 70,
+        "isTutorial": true,
+        "isLocked": false,
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398147/crud_nizvki.jpg",
+        "courseProgress": 0
       },
       {
         "id": "opt_clean",
+        "isEnrolled": false,
         "title": "Clean Code Basics",
-        "imageUrl": "Clean_Code.jpg",
-        "progress": 0.0,
+        "description": "Writing maintainable, readable code.",
+        "type": "optional",
+        "earnScore": 60,
+        "passScore": 60,
+        "isTutorial": false,
         "isLocked": true,
-        "courseType": "Optional",
-        "scoreEarned": 0,
-        "lessons": [
-          {
-            "id": "l12",
-            "title": "Naming & Readability",
-            "description": "Writing maintainable code",
-            "imageUrl": "Clean_Code.jpg",
-            "isLocked": true,
-            "prerequisiteId": "q_oop2",
-            "quiz": {
-              "id": "q_clean1",
-              "title": "Clean Code Mindset",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly9",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=7EmboKQH8lM"
-              },
-              {
-                "id": "rla12",
-                "type": "article",
-                "url": "https://clean-code-developer.com/"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "lvl_3",
-    "levelIndex": 3,
-    "title": "Level 3: Advanced",
-    "courses": [
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398147/Clean_Code_s6yn6o.jpg",
+        "courseProgress": 0
+      },
+      {
+        "id": "69f3eacbd86900decd9453d8",
+        "isEnrolled": false,
+        "title": "Frameworks & Tech Tracks Overview",
+        "description": "Learn what frontend, backend, mobile, AI, cybersecurity, and game development tracks are and how they differ.",
+        "type": "optional",
+        "earnScore": 100,
+        "passScore": 70,
+        "isTutorial": true,
+        "isLocked": false,
+        "status": "active",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398161/frameworks_l7howj.png",
+        "courseProgress": 0
+      },
+      {
+        "id": "69ec9ba6e5c9822f8271b933",
+        "isEnrolled": false,
+        "title": "Advanced Algorithms (Algo 2)",
+        "description": "Solve advanced challenges using recursion, greedy methods, divide and conquer, and dynamic programming.",
+        "type": "optional",
+        "earnScore": 550,
+        "passScore": 80,
+        "isTutorial": false,
+        "isLocked": false,
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398155/algorithms_2_ax4zlj.png",
+        "courseProgress": 0
+      },
+      {
+        "id": "69ee761f3c9d877dafeb0172",
+        "isEnrolled": false,
+        "title": "Software Engineering",
+        "description": "Learn professional development practices including Git, testing, documentation, and teamwork.",
+        "type": "optional",
+        "earnScore": 450,
+        "passScore": 80,
+        "isTutorial": false,
+        "isLocked": false,
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398152/software_engineering_qko2l0.webp",
+        "courseProgress": 0
+      },
+      {
+        "id": "69f3e946d86900decd9453ba",
+        "isEnrolled": false,
+        "title": "Design Patterns (Intro)",
+        "description": "Introduction to design patterns, why we use them, and simple patterns like Singleton, Factory, and MVC concept.",
+        "type": "optional",
+        "earnScore": 130,
+        "passScore": 75,
+        "isTutorial": true,
+        "isLocked": false,
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398150/design_patterns_yyxdlv.jpg",
+        "courseProgress": 0
+      },
+      {
+        "id": "69ec9b6ae5c9822f8271b910",
+        "isEnrolled": false,
+        "title": "Algorithms (Algo 1)",
+        "description": "Master core searching and sorting techniques while learning efficiency basics.",
+        "type": "mandatory",
+        "earnScore": 300,
+        "passScore": 75,
+        "isTutorial": false,
+        "isLocked": true,
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398146/algorithm_ymuggr.jpg",
+        "courseProgress": 0
+      },
+      {
+        "id": "69ec9b76e5c9822f8271b917",
+        "isEnrolled": false,
+        "title": "Computer Networks",
+        "description": "Explore how devices communicate through networks, IP addresses, and the internet.",
+        "type": "mandatory",
+        "earnScore": 250,
+        "passScore": 70,
+        "isTutorial": false,
+        "isLocked": true,
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398146/Computer-Network_fgwen2.jpg",
+        "courseProgress": 0
+      },
+      {
+        "id": "69ec9b8ee5c9822f8271b925",
+        "isEnrolled": false,
+        "title": "Databases",
+        "description": "Learn how databases store information using tables, relationships, and basic SQL queries.",
+        "type": "mandatory",
+        "earnScore": 280,
+        "passScore": 70,
+        "isTutorial": false,
+        "isLocked": true,
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398155/databases_gfvsjl.jpg",
+        "courseProgress": 0
+      },
+      {
+        "id": "69f3e81ad86900decd9453ac",
+        "isEnrolled": false,
+        "title": "Debugging",
+        "description": "Learn how to read error messages, fix logical bugs, use print debugging, stack traces, and build a debugging mindset.",
+        "type": "optional",
+        "earnScore": 100,
+        "passScore": 70,
+        "isTutorial": true,
+        "isLocked": false,
+        "status": "active",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398156/Debugging_gqeu42.webp",
+        "courseProgress": 0
+      },
+      {
+        "id": "69ec9a68e5c9822f8271b8fb",
+        "isEnrolled": false,
+        "title": "C++ Core Concepts",
+        "description": "Build stronger coding skills with functions, debugging, scope, and problem-solving fundamentals.",
+        "type": "mandatory",
+        "earnScore": 180,
+        "passScore": 75,
+        "isTutorial": false,
+        "isLocked": true,
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398149/cpp-concepts_xjkckh.png",
+        "courseProgress": 0
+      },
       {
         "id": "c1_l3",
+        "isEnrolled": false,
         "title": "Advanced Data Structures",
-        "imageUrl": "data_sturcture.jpg",
-        "progress": 0.0,
+        "description": "Trees, graphs, and non-linear structures.",
+        "type": "mandatory",
+        "earnScore": 150,
+        "passScore": 75,
+        "isTutorial": false,
         "isLocked": true,
-        "courseType": "Mandatory",
-        "scoreEarned": 0,
-        "lessons": [
-          {
-            "id": "l13",
-            "title": "Trees & Graphs",
-            "description": "Non-linear structures",
-            "imageUrl": "data_sturcture.jpg",
-            "isLocked": true,
-            "prerequisiteId": "q_clean1",
-            "quiz": {
-              "id": "q_ads1",
-              "title": "Non-Linear DS Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly10",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=0IAPZzGSbME"
-              },
-              {
-                "id": "rla13",
-                "type": "article",
-                "url": "https://www.geeksforgeeks.org/advanced-data-structures/"
-              }
-            ]
-          }
-        ]
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398155/data-structure_2_bpgxzc.jpg",
+        "courseProgress": 0
       },
       {
         "id": "opt_tracks",
+        "isEnrolled": false,
         "title": "Frame Works",
-        "imageUrl": "frameworks.png",
-        "progress": 0.0,
+        "description": "Frontend vs backend overview and career tracks.",
+        "type": "optional",
+        "earnScore": 70,
+        "passScore": 60,
+        "isTutorial": false,
         "isLocked": true,
-        "courseType": "Optional",
-        "scoreEarned": 0,
-        "lessons": [
-          {
-            "id": "l14",
-            "title": "Mobile & Web",
-            "description": "Frontend vs Backend overview",
-            "imageUrl": "frameworks.png",
-            "isLocked": true,
-            "prerequisiteId": "q_ads1",
-            "quiz": {
-              "id": "q_tracks1",
-              "title": "Career Path Quiz",
-              "icCompleted": false
-            },
-            "resources": [
-              {
-                "id": "rly11",
-                "type": "youtube",
-                "url": "https://www.youtube.com/watch?v=PkZNo7MFNFg"
-              },
-              {
-                "id": "rla14",
-                "type": "article",
-                "url": "https://roadmap.sh/"
-              }
-            ]
-          }
-        ]
+        "status": "locked",
+        "image": "https://res.cloudinary.com/dywwfrpmj/image/upload/v1781398161/frameworks_l7howj.png",
+        "courseProgress": 0
       }
     ]
   }
-]
+}

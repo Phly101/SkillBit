@@ -29,11 +29,14 @@ Future<void> init() async {
   sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   sl.registerLazySingleton<Dio>(() => Dio());
   sl.registerLazySingleton<InternetConnection>(() => InternetConnection());
+  sl.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn.instance);
   await GoogleSignIn.instance.initialize(
     clientId:
         '59041864085-q8fnt93a0to4nr77b29561ofvnucnlr7.apps.googleusercontent.com',
+    serverClientId:
+        '59041864085-cnnehqfggg73okqs4spf8r3sssdpjh0s.apps.googleusercontent.com',
   );
-  sl.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn.instance);
+
 
   //! Core
   sl.registerLazySingleton<ApiClient>(() => DioClient(sl<Dio>()));
@@ -51,16 +54,19 @@ Future<void> init() async {
   initQuizFeature();
   initOnboardingFeature();
 
-  //! App State (Core logic that spans features)
   sl.registerLazySingleton<AppStateNotifier>(
     () => AppStateNotifier(
       hasOnBoardedUseCase: sl(),
       checkAuthStatusUseCase: sl(),
+      getSettingsUseCase: sl(),
     ),
   );
+  print('APP STATE REGISTERED: ${sl.isRegistered<AppStateNotifier>()}');
 
   //! Router
+  print('ABOUT TO REGISTER APP ROUTER');
   sl.registerLazySingleton<AppRouter>(
     () => AppRouter(appStateNotifier: sl(), onboardingBloc: sl()),
   );
+  print('APP ROUTER REGISTERED: ${sl.isRegistered<AppRouter>()}');
 }

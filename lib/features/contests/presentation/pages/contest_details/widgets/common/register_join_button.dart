@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nested/nested.dart';
-import '../../../../../../../core/constants/contest_details_strings.dart';
-import '../../../../../../../core/theme/theme.dart';
-import '../../../../../../../core/widgets/global/button_widget.dart';
-import '../../../../Bloc/contest_bloc.dart';
-import '../../../../Bloc/join_contest_bloc.dart';
+import 'package:skill_bit/core/constants/contest_details_strings.dart';
+import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/global/button_widget.dart';
+import 'package:skill_bit/features/contests/presentation/Bloc/contest_bloc.dart';
+import 'package:skill_bit/features/contests/presentation/Bloc/join_contest_bloc.dart';
 
 class RegisterJoinButton extends StatelessWidget {
   const RegisterJoinButton({super.key, required this.contestId});
@@ -42,10 +42,6 @@ class RegisterJoinButton extends StatelessWidget {
   ) {
     if (state is ContestStartSuccess) {
       context.goNamed('contest_page', extra: contestId);
-    } else if (state is ContestStartError) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(state.message)));
     }
   }
 

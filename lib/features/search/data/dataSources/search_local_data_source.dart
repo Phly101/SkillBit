@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:skill_bit/features/course/data/models/course_model.dart';
+import 'package:skill_bit/features/course/data/models/home_course_model.dart';
 import 'package:skill_bit/features/course/data/models/home_details_model.dart';
 import 'package:skill_bit/features/search/data/models/search_friends_model.dart';
 
 abstract class SearchLocalDataSource {
-  Future<List<CourseDetailsModel>> searchCourses(final String courseQuery);
+  Future<List<HomeCourseModel>> searchCourses(final String courseQuery);
 
   List<SearchFriendsModel> searchFriends(final String friendsQuery);
 }
@@ -78,37 +78,31 @@ class SearchLocalDataSourceImpl implements SearchLocalDataSource {
 
   //Todo: might want to add later fuzzy package to handle search typos and find the correct query
 
-  List<HomeDetailsModel>? _cachedLevels;
+  List<HomeCourseModel>? _cachedCourses;
 
-  Future<List<HomeDetailsModel>> _getAllLevels() async {
-    if (_cachedLevels != null) return _cachedLevels!;
-    final List<dynamic> rawJson = await _loadRawJson();
-    _cachedLevels = rawJson
-        .map(
-          (final dynamic json) =>
-              HomeDetailsModel.fromJson(json as Map<String, dynamic>),
-        )
-        .toList();
-
-    return _cachedLevels!;
+  Future<List<HomeCourseModel>> _getAllCourses() async {
+    if (_cachedCourses != null) return _cachedCourses!;
+    final Map<String, dynamic> rawJson = await _loadRawJson();
+    final HomeDetailsModel homeDetails = HomeDetailsModel.fromJson(rawJson);
+    _cachedCourses = homeDetails.courses.cast<HomeCourseModel>();
+    return _cachedCourses!;
   }
 
   @override
-  Future<List<CourseDetailsModel>> searchCourses(
-    final String courseQuery,
-  ) async {
+  Future<List<HomeCourseModel>> searchCourses(
+      final String courseQuery,
+      ) async {
     final String query = courseQuery.trim().toLowerCase();
-    final List<HomeDetailsModel> allLevels = await _getAllLevels();
-    final List<CourseDetailsModel> allCourses = allLevels
-        .expand((final HomeDetailsModel level) => level.courses)
-        .cast<CourseDetailsModel>()
-        .toList();
+    final List<HomeCourseModel> allCourses = await _getAllCourses();
 
     if (query.isEmpty) return allCourses;
 
-    final List<String> queryWords = query.split(' ');
+    final List<String> queryWords = query
+        .split(RegExp(r'\s+'))
+        .where((final String w) => w.isNotEmpty)
+        .toList();
 
-    return allCourses.where((final CourseDetailsModel course) {
+    return allCourses.where((final HomeCourseModel course) {
       final String title = course.title.toLowerCase();
       return queryWords.any((final String word) => title.contains(word));
     }).toList();
@@ -121,14 +115,14 @@ class SearchLocalDataSourceImpl implements SearchLocalDataSource {
     return _friends
         .where(
           (final SearchFriendsModel friend) =>
-              friend.name.toLowerCase().contains(query.toLowerCase()),
-        )
+          friend.name.toLowerCase().contains(query),
+    )
         .toList();
   }
 
   // Helpers
-  Future<List<dynamic>> _loadRawJson() async {
+  Future<Map<String, dynamic>> _loadRawJson() async {
     final String response = await rootBundle.loadString(_assetPath);
-    return await jsonDecode(response) as List<dynamic>;
+    return jsonDecode(response) as Map<String, dynamic>;
   }
 }

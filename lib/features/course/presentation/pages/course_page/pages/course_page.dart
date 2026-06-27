@@ -15,17 +15,18 @@ import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/course/presentation/Bloc/courseDetails/course_details_bloc.dart';
 import 'package:skill_bit/features/course/presentation/pages/course_page/widgets/components/course_intro_widget.dart';
 
-
 class CoursePage extends StatelessWidget {
-  const CoursePage({super.key, this.isEnrolledFromHome});
+  CoursePage({super.key, this.isEnrolledFromHome});
 
-  final bool? isEnrolledFromHome;
+  bool? isEnrolledFromHome;
 
   @override
   Widget build(final BuildContext context) {
-    final String? courseId = GoRouterState.of(
+    final String? courseId = GoRouterState
+        .of(
       context,
-    ).pathParameters['courseId'];
+    )
+        .pathParameters['courseId'];
 
     return BoxStateSwitcher<CourseDetailsBloc, CourseDetailsState>(
       key: ValueKey('course_page_$courseId'),
@@ -44,37 +45,36 @@ class CoursePage extends StatelessWidget {
         );
       },
       onError:
-          (
-            final String message,
-            final BuildContext context,
-            final CourseDetailsState state,
-          ) {
-            final String? courseId = GoRouterState.of(
-              context,
-            ).pathParameters['courseId'];
-            return ErrorStateWidget(
-              message: message,
-              reFreshFunction: () {
-                context.read<CourseDetailsBloc>().add(
-                  LoadCourseDetails(courseId: courseId ?? 'id'),
-                );
-              },
-              routeFunction: () {
-                context.go(AppRoutes.home);
-              },
+          (final String message,
+          final BuildContext context,
+          final CourseDetailsState state,) {
+        final String? courseId = GoRouterState
+            .of(
+          context,
+        )
+            .pathParameters['courseId'];
+        return ErrorStateWidget(
+          message: message,
+          reFreshFunction: () {
+            context.read<CourseDetailsBloc>().add(
+              LoadCourseDetails(courseId: courseId ?? 'id'),
             );
           },
+          routeFunction: () {
+            context.go(AppRoutes.home);
+          },
+        );
+      },
       loadingWidget: const CourseIntroSkeleton(),
       onSuccess: (final BuildContext context, final CourseDetailsState state) {
         final CourseDetailSuccess successState = state as CourseDetailSuccess;
         final CourseDetailsEntity course = successState.course;
-        final bool isEnrolled =
-            course.isEnrolled ?? isEnrolledFromHome ?? false;
-        debugPrint('Course ID: ${course.id}, isEnrolled: $isEnrolled');
-
+        if (isEnrolledFromHome == true) {
+          course.isEnrolled = true;
+        }
         return Stack(
           children: <Widget>[
-            if (!isEnrolled) ...<Widget>[
+            if (course.isEnrolled == false) ...<Widget>[
               Positioned(
                 top: 20,
                 left: 16,

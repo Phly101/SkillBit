@@ -16,7 +16,7 @@ class CourseDetailsEntity {
     required this.lessons,
   });
 
-  final bool? isEnrolled;
+  bool? isEnrolled;
   final EnrollmentStatus status;
   final String id;
   final String title;
@@ -28,7 +28,7 @@ class CourseDetailsEntity {
   final List<LessonViewModel> lessons;
 
   CourseDetailsEntity copyWith({
-    final bool? isEnrolled,
+    bool? isEnrolled,
     final EnrollmentStatus? status,
     final String? id,
     final String? title,

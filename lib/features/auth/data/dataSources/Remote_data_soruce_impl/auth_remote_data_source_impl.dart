@@ -94,23 +94,21 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<AuthResponseModel> signInWithGoogle() async {
+    // Ensure we start with a clean state
+    await googleSignIn.signOut();
+
     final GoogleSignInAccount googleUser = await googleSignIn.authenticate();
 
-    // if (googleUser == null) {
-    //   throw const OperationCancelledException();
-    // }
+    final String? idToken = googleUser.authentication.idToken;
 
-    final GoogleSignInAuthentication googleAuth = googleUser.authentication;
-    final String? idToken = googleAuth.idToken;
-
-    if (idToken == null) {
+    if (idToken == null || idToken.isEmpty) {
       debugPrint('Failed to get ID Token from Google');
       throw const ServerException();
     }
 
     final dynamic response = await apiClient.post(
       endpoint: ApiEndpoints.signInWithGoogle,
-      data: SignInWithGoogleModel(idToken: idToken).toJson(),
+      data: <String, dynamic>{'idToken': idToken},
     );
 
     return AuthResponseModel.fromJson(response as Map<String, dynamic>);

@@ -7,11 +7,11 @@ class ResourceBlock extends StatelessWidget {
   const ResourceBlock({
     super.key,
     required this.resourceList,
-
+    required this.courseId,
   });
 
   final List<MaterialEntity>? resourceList;
-
+  final String courseId;
 
   @override
   Widget build(final BuildContext context) {
@@ -20,7 +20,9 @@ class ResourceBlock extends StatelessWidget {
           resourceList?.map((final MaterialEntity resourceItem) {
             return ResourcesTile(
               function: () {
-              LaunchExternalUrl.launchExternalUrl(Uri.parse(resourceItem.url));
+                LaunchExternalUrl.launchExternalUrl(
+                  Uri.parse(resourceItem.url),
+                );
               },
             );
           }).toList() ??

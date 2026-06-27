@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skill_bit/core/di/injection_container.dart';
+import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/global/state_switcher.dart';
+import 'package:skill_bit/core/widgets/global/error/error_state_widget.dart';
+import 'package:skill_bit/core/widgets/home/home_skeleton.dart';
 import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
+import 'package:skill_bit/features/home/presentation/Bloc/home_bloc.dart';
 import 'package:skill_bit/features/home/presentation/widgets/components/home_body.dart';
+import 'package:skill_bit/features/home/presentation/widgets/components/home_header_widget.dart';
 import 'package:skill_bit/features/home/presentation/widgets/components/search_list_widget.dart';
 import 'package:skill_bit/features/search/presentation/bloc/search_course_bloc/search_course_bloc.dart';
-import '../../../../core/di/injection_container.dart';
-import '../../../../core/router/routes.dart';
-import '../../../../core/widgets/global/error/error_state_widget.dart';
-import '../../../../core/widgets/home/home_skeleton.dart';
-import '../Bloc/home_bloc.dart';
-import '../widgets/components/home_header_widget.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -90,23 +91,23 @@ class HomePage extends StatelessWidget {
                           final BuildContext context,
                           final SearchCourseState searchState,
                         ) {
-                          final List<CourseDetailsEntity> foundCourses =
+                          final List<HomeCourseEntity> foundCourses =
                               (searchState as SearchCourseSuccess).courses;
                           return SearchListWidget(
                             courses: foundCourses
                                 .map(
-                                  (final CourseDetailsEntity e) =>
+                                  (final HomeCourseEntity e) =>
                                       HomeCourseEntity(
                                         id: e.id,
                                         title: e.title,
                                         description: e.description,
-                                        imageUrl: e.courseImage,
+                                        imageUrl: e.imageUrl,
                                         progress: 0,
                                         isLocked: e.isLocked,
-                                        courseType: e.type,
+                                        courseType: e.courseType,
                                         status: e.status,
                                         isTutorial: e.isTutorial,
-                                        isEnrolled: e.isEnrolled ?? false,
+                                        isEnrolled: e.isEnrolled,
                                       ),
                                 )
                                 .toList(),

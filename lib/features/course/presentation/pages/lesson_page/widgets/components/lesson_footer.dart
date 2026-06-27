@@ -7,10 +7,11 @@ class LessonFooter extends StatelessWidget {
   const LessonFooter({
     super.key,
     required this.resourceList,
-
+    required this.courseId,
   });
 
   final List<MaterialEntity>? resourceList;
+  final String courseId;
 
   @override
   Widget build(final BuildContext context) {
@@ -25,9 +26,19 @@ class LessonFooter extends StatelessWidget {
         ),
         Divider(color: context.colorScheme.outline.withValues(alpha: 0.6)),
         const SizedBox(height: 30),
+        if(courseId == '69eee1aa0c5d9df83bdacb05' )...[
+          ResourceBlock(
+            resourceList:  <MaterialEntity>[
+              MaterialEntity(url: 'https://www.geeksforgeeks.org/computer-fundamentals-tutorial/'),
+              MaterialEntity(url: 'https://www.youtube.com/watch?v=O5nskjZ_GoI'),
+            ],
+            courseId: courseId,
+          ),
+        ]
+        else
         ResourceBlock(
           resourceList: resourceList ?? <MaterialEntity>[],
-
+          courseId: courseId,
         ),
       ],
     );

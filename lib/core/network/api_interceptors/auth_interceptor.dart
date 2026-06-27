@@ -44,22 +44,26 @@ class AuthInterceptor extends Interceptor {
     final DioException err,
     final ErrorInterceptorHandler handler,
   ) async {
-    final bool isUnauthorized = err.response?.statusCode == 401;
+    final int? statusCode = err.response?.statusCode;
+    // Handle both 401 and 403 as unauthorized/invalid token errors
+    final bool isUnauthorized = statusCode == 401 || statusCode == 403;
+    final bool isRefreshRequest =
+        err.requestOptions.extra['isRefreshRequest'] == true;
+    final bool isRetry = err.requestOptions.extra['isRetry'] == true;
+    final bool isAuthPath = err.requestOptions.path.contains('auth/');
 
-    if (!isUnauthorized) {
-      return handler.next(err);
-    }
-
-    if (err.requestOptions.extra['isRetry'] == true) {
+    // 1. If it's a refresh request that failed, or a retry that failed again, session is expired
+    if (isRefreshRequest || (isRetry && isUnauthorized)) {
       await _handleSessionExpired();
       return handler.next(err);
     }
 
-    if (err.requestOptions.extra['isRefreshRequest'] == true) {
-      await _handleSessionExpired();
+    // 2. If it's not unauthorized or it's an auth path (like login), don't try to refresh
+    if (!isUnauthorized || (isAuthPath && !isRefreshRequest)) {
       return handler.next(err);
     }
 
+    // 3. Handle concurrent refresh attempts to avoid multiple refresh calls
     if (_refreshCompleter != null) {
       final String? newToken = await _refreshCompleter!.future;
       if (newToken != null) {
@@ -70,21 +74,21 @@ class AuthInterceptor extends Interceptor {
 
     _refreshCompleter = Completer<String?>();
 
-    final Either<Failure, AuthResponseModel> result = await sl<AuthRepo>()
-        .refreshToken();
+    final Either<Failure, AuthResponseModel> result =
+        await sl<AuthRepo>().refreshToken();
 
-    result.fold(
+    await result.fold(
       (final Failure failure) async {
-        _refreshCompleter!.complete(null);
+        _refreshCompleter?.complete(null);
         _refreshCompleter = null;
         await _handleSessionExpired();
-        return handler.next(err);
+        handler.next(err);
       },
-      (final AuthResponseModel authResponse) {
+      (final AuthResponseModel authResponse) async {
         final String newToken = authResponse.accessToken;
-        _refreshCompleter!.complete(newToken);
+        _refreshCompleter?.complete(newToken);
         _refreshCompleter = null;
-        return _retry(err.requestOptions, handler, newToken);
+        await _retry(err.requestOptions, handler, newToken);
       },
     );
   }
@@ -124,5 +128,7 @@ class AuthInterceptor extends Interceptor {
 
   Future<void> _handleSessionExpired() async {
     await sl<AuthRepo>().logout();
+    // Force a small delay to ensure listeners are notified and navigation occurs
+    await Future<void>.delayed(const Duration(milliseconds: 100));
   }
 }

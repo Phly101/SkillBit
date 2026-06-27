@@ -125,6 +125,14 @@ class AchievementsPage extends StatelessWidget {
         isLocked: false,
         status: TrophyStatus.silver,
       ),
+      const AchievementEntity(
+        id: '15',
+        title: 'Perfectionist',
+        url: 'gold_trophy.png',
+        description: 'Scored 100% on a quiz without using any hints.',
+        isLocked: false,
+        status: TrophyStatus.silver,
+      ),
     ];
     return Scaffold(
       appBar: AppBar(
