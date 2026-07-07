@@ -1,13 +1,11 @@
 class SettingsEntity {
 
   const SettingsEntity({
-    required this.name,
+    required this.fullname,
     required this.email,
-    this.profileImageUrl,
-    this.imageUrl,
+    this.profilePicture,
   });
-  final String name;
+  final String fullname;
   final String email;
-  final String? profileImageUrl;
-  final String? imageUrl;
+  final String? profilePicture;
 }

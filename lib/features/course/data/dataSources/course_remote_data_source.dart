@@ -1,29 +1,27 @@
-import 'package:dartz/dartz.dart';
-
-import '../models/course_model.dart';
+import 'package:skill_bit/features/course/data/models/course_model.dart';
+import 'package:skill_bit/features/course/data/models/home_course_model.dart';
+import '../models/home_details_model.dart';
 import '../models/lesson_model.dart';
 
 abstract class CourseRemoteDataSource {
-  // --- Discovery & Initialization ---
-  Future<List<CourseModel>> fetchCoursesByLevel(final String levelId);
+  Future<List<HomeCourseModel>> fetchCoursesByLevel(final int levelId);
 
-  Future<List<CourseModel>> getLevelRoadMap();
+  Future<void> enrollCourse(final String courseId);
+
+  Future<HomeDetailsModel> getHomeData(final int levelId);
+
+  Future<void> finishCourse(final String courseId);
 
   // --- Detailed Information ---
-  Future<CourseModel> getCourseDetails(final String courseId);
+  Future<CourseDetailsModel> getCourseDetails(final String courseId);
 
-  Future<LessonModel> getLessonDetails(final String lessonId);
+  Future<LessonDetailsModel> getLessonDetails(final String lessonId);
 
-  // --- Active Learning Actions ---
-  Future<Unit> watchVideo(final String videoId);
+  // //--- Progress Tracking ---
+  // Future<double> getCourseProgress(final String courseId);
 
-  Future<Unit> visitArticle(final String articleId);
-
-  //--- Progress Tracking ---
-  Future<double> getCourseProgress(final String courseId);
-
-  Future<Unit> updateCourseProgress(
-    final String courseId,
-    final double progress,
-  );
+  // Future<Unit> updateCourseProgress(
+  //   final String courseId,
+  //   final double progress,
+  // );
 }

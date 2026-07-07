@@ -4,7 +4,7 @@ import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/search/domain/entities/search_friends_entity.dart';
 
 abstract class SearchRepository {
-  Future<Either<Failure, List<CourseEntity>>> searchCourses(
+  Future<Either<Failure, List<HomeCourseEntity>>> searchCourses(
     final String courseQuery,
   );
 

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_bit/core/bloc/base_state.dart';
 import 'package:skill_bit/core/error/failure.dart';
 import 'package:skill_bit/core/useCases/use_cases.dart';
+import 'package:skill_bit/features/auth/domain/entities/user_entity.dart';
 import 'package:skill_bit/features/auth/domain/useCases/forgot_password.dart';
 import 'package:skill_bit/features/auth/domain/useCases/log_out.dart';
 import 'package:skill_bit/features/auth/domain/useCases/login.dart';
@@ -18,10 +19,8 @@ import 'package:skill_bit/features/auth/domain/useCases/sign_in_with_google.dart
 import 'package:skill_bit/features/auth/domain/useCases/sign_up.dart';
 import 'package:skill_bit/features/auth/domain/useCases/verify_email.dart';
 
-import '../../domain/entities/user_entity.dart';
 
 part 'auth_event.dart';
-
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -70,11 +69,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final Either<Failure, void> result = await _login(
       LoginParams(email: event.email, password: event.password),
     );
-    result.fold(
-      (final Failure failure) =>
-          emit(const AuthError(message: 'Could not log in')),
-      (_) => emit(AuthEmailVerified()),
-    );
+    result.fold((final Failure failure) {
+      if (failure is UserNotVerifiedFailure) {
+        emit(AuthNeedsVerification(email: failure.email ?? event.email));
+        return;
+      }
+      emit(const AuthError(message: 'Could not log in'));
+    }, (_) => emit(AuthEmailVerified()));
   }
 
   Future<void> _onSignUp(
@@ -87,11 +88,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         email: event.email,
         password: event.password,
         name: event.name,
+        confirmPassword: event.confirmPassword,
       ),
     );
     result.fold(
-      (final Failure failure) =>
-          emit(const AuthError(message: 'Could not sign up')),
+      (final Failure failure) {
+        String message = 'Could not sign up';
+        if (failure is MessageFailure) {
+          message = failure.message;
+        }
+        emit(AuthError(message: message));
+      },
       (final UserEntity user) =>
           emit(AuthNeedsVerification(email: event.email)),
     );
@@ -106,7 +113,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     result.fold(
       (final Failure failure) =>
           emit(const AuthError(message: 'could not log out')),
-      (_) => emit(AuthEmailVerified()),
+      (_) => emit(AuthInitial()),
     );
   }
 

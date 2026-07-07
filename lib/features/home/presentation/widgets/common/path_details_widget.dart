@@ -7,18 +7,18 @@ import 'package:skill_bit/features/home/presentation/widgets/common/path_widget.
 class PathDetailsWidget extends StatelessWidget {
   const PathDetailsWidget({
     super.key,
-    required this.progressMade,
-    required this.progressLeft,
     required this.courseTitles,
     required this.lockedCourses,
     required this.coursesListLength,
+    required this.progress,
+    required this.activeStep,
   });
 
-  final double progressMade;
-  final double progressLeft;
+  final num progress;
   final List<String> courseTitles;
   final List<bool> lockedCourses;
   final int coursesListLength;
+  final int activeStep;
 
   @override
   Widget build(final BuildContext context) {
@@ -32,8 +32,8 @@ class PathDetailsWidget extends StatelessWidget {
               const Spacer(),
               Expanded(
                 child: PieChartWidget(
-                  progressMade: progressMade,
-                  progressLeft: progressLeft,
+                  progressMade: progress,
+                  progressLeft: (100 - progress).clamp(0, 100),
                   progressColor: context.colorScheme.secondary,
                   title: '',
                   height: 80,
@@ -46,11 +46,11 @@ class PathDetailsWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-
           PathWidget(
             courseTitles: courseTitles,
             lockedCourses: lockedCourses,
             coursesListLength: coursesListLength,
+            activeStep: activeStep,
           ),
         ],
       ).pNum(15),

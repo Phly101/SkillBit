@@ -9,7 +9,7 @@ class StatusContainer extends StatelessWidget {
   });
 
   final bool isLocked;
-  final double progress;
+  final num progress;
 
   @override
   Widget build(final BuildContext context) {

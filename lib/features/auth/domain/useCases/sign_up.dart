@@ -17,6 +17,8 @@ class SignUp implements UseCase<UserEntity, SignUpParams> {
       email: params.email,
       password: params.password,
       name: params.name,
+      confirmPassword: params.confirmPassword,
+      role: params.role ?? 'user',
     );
   }
 }

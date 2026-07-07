@@ -7,13 +7,11 @@ class LessonFooter extends StatelessWidget {
   const LessonFooter({
     super.key,
     required this.resourceList,
-    required this.lessonId,
     required this.courseId,
   });
 
-  final List<ResourceEntity>? resourceList;
-  final String? lessonId;
-  final String? courseId;
+  final List<MaterialEntity>? resourceList;
+  final String courseId;
 
   @override
   Widget build(final BuildContext context) {
@@ -21,17 +19,26 @@ class LessonFooter extends StatelessWidget {
       crossAxisAlignment: .start,
       children: <Widget>[
         Text(
-          'Lesson Resources:',
+          'Lesson Materials:',
           style: context.textTheme.bodyMedium!.copyWith(
             color: context.colorScheme.onSurface,
           ),
         ),
         Divider(color: context.colorScheme.outline.withValues(alpha: 0.6)),
         const SizedBox(height: 30),
+        if(courseId == '69eee1aa0c5d9df83bdacb05' )...[
+          ResourceBlock(
+            resourceList:  <MaterialEntity>[
+              MaterialEntity(url: 'https://www.geeksforgeeks.org/computer-fundamentals-tutorial/'),
+              MaterialEntity(url: 'https://www.youtube.com/watch?v=O5nskjZ_GoI'),
+            ],
+            courseId: courseId,
+          ),
+        ]
+        else
         ResourceBlock(
-          resourceList: resourceList ?? <ResourceEntity>[],
-          lessonId: lessonId ?? '',
-          courseId: courseId ?? '',
+          resourceList: resourceList ?? <MaterialEntity>[],
+          courseId: courseId,
         ),
       ],
     );

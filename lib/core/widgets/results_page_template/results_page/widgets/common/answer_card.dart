@@ -10,7 +10,7 @@ class AnswerCard extends StatelessWidget {
     required this.answersNum,
   });
 
-  final int answersNum;
+  final num answersNum;
   final Color color;
   final String cardText;
 

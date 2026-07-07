@@ -7,7 +7,9 @@ abstract class AuthRemoteDataSource {
   Future<UserEntity> signUp(
     final String email,
     final String password,
+    final String confirmPassword,
     final String name,
+    final String? role,
   );
 
   Future<void> forgotPassword(final String email);

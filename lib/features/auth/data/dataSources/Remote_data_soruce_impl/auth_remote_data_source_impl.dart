@@ -18,7 +18,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> forgotPassword(final String email) async {
-    await apiClient.patch(
+    await apiClient.post(
       endpoint: ApiEndpoints.forgotPassword,
       data: EmailModel(email: email).toJson(),
     );
@@ -50,7 +50,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       endpoint: ApiEndpoints.refresh,
       extra: <String, dynamic>{'isRefreshRequest': true},
     );
-    return AuthResponseModel.fromJson(response as Map<String, dynamic>);
+    final Map<String, dynamic> body = response as Map<String, dynamic>;
+    return AuthResponseModel.fromJson(body['data'] as Map<String, dynamic>);
   }
 
   @override
@@ -74,10 +75,18 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final String email,
     final String password,
     final String name,
+    final String confirmPassword,
+    final String? role,
   ) async {
     final dynamic response = await apiClient.post(
       endpoint: ApiEndpoints.signUp,
-      data: SignupModel(email: email, password: password, name: name).toJson(),
+      data: SignupModel(
+        email: email,
+        password: password,
+        name: name,
+        confirmPassword: confirmPassword,
+        role: role ?? 'user',
+      ).toJson(),
     );
 
     return UserModel.fromJson(response as Map<String, dynamic>);
@@ -85,20 +94,23 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<AuthResponseModel> signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await googleSignIn.authenticate();
-    if (googleUser == null) {
-      throw const OperationCancelledException();
-    }
-    final GoogleSignInAuthentication googleAuth = googleUser.authentication;
-    final String? idToken = googleAuth.idToken;
-    if (idToken == null) {
+    // Ensure we start with a clean state
+    await googleSignIn.signOut();
+
+    final GoogleSignInAccount googleUser = await googleSignIn.authenticate();
+
+    final String? idToken = googleUser.authentication.idToken;
+
+    if (idToken == null || idToken.isEmpty) {
       debugPrint('Failed to get ID Token from Google');
       throw const ServerException();
     }
+
     final dynamic response = await apiClient.post(
       endpoint: ApiEndpoints.signInWithGoogle,
-      data: SignInWithGoogleModel(idToken: idToken).toJson(),
+      data: <String, dynamic>{'idToken': idToken},
     );
+
     return AuthResponseModel.fromJson(response as Map<String, dynamic>);
   }
 

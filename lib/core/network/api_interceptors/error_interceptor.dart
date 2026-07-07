@@ -4,22 +4,55 @@ import 'package:skill_bit/core/error/exceptions/exception.dart';
 class ErrorInterceptor extends Interceptor {
   @override
   void onError(final DioException err, final ErrorInterceptorHandler handler) {
+    DioException errorToReject;
+
     switch (err.type) {
-      case DioException.connectionTimeout:
-      case DioException.receiveTimeout:
-      case DioException.sendTimeout:
-        throw const NetworkTimeoutException();
-      case DioException.connectionError:
-        throw const NoInternetException();
-      case DioException.badResponse:
-        _handleStatusCode(err.response?.statusCode, err.response?.data);
+      case DioExceptionType.receiveTimeout:
+      case DioExceptionType.connectionTimeout:
+        errorToReject = DioException(
+          requestOptions: err.requestOptions,
+          error: const NetworkTimeoutException(),
+        );
+        break;
+      case DioExceptionType.connectionError:
+        errorToReject = DioException(
+          requestOptions: err.requestOptions,
+          error: const NoInternetException(),
+        );
+        break;
+      case DioExceptionType.badResponse:
+        try {
+          _handleStatusCode(err.response!.statusCode, err.response!.data);
+          errorToReject = err;
+        } catch (e) {
+          errorToReject = DioException(
+            requestOptions: err.requestOptions,
+            error: e,
+          );
+        }
+        break;
       default:
-        throw const UnknownException();
+        errorToReject = DioException(
+          requestOptions: err.requestOptions,
+          error: const UnknownException(),
+        );
     }
+
+    return handler.reject(
+      errorToReject,
+    );
   }
 
   void _handleStatusCode(final int? statusCode, final dynamic data) {
+    print('SERVER DATA: $data');
     final String? message = data?['message'] as String?;
+    final bool? isVerified = data?['is_verified'] ?? data?['isVerified'];
+
+    if (isVerified == false) {
+      final String? email = data?['email'] as String?;
+      throw UserNotVerifiedException(email: email);
+    }
+
     switch (statusCode) {
       // user exceptions
       case 400:

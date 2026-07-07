@@ -1,15 +1,20 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/features/contest&quiz/time_format.dart';
-
 import '../../../../../utils/global/assets.dart';
 
 class TimerWidget extends StatefulWidget {
-  const TimerWidget({super.key, required this.contestDuration});
+  const TimerWidget({
+    super.key,
+    required this.contestDuration,
+    this.onTick,
+    this.onTimeUp,
+  });
 
   final Duration contestDuration;
+  final ValueChanged<Duration>? onTick; // reports elapsed time each second
+  final VoidCallback? onTimeUp; // fires when timer hits zero
 
   @override
   State<TimerWidget> createState() => _TimerWidgetState();
@@ -27,8 +32,11 @@ class _TimerWidgetState extends State<TimerWidget> {
         setState(() {
           remainingTime -= const Duration(seconds: 1);
         });
+        final Duration elapsed = widget.contestDuration - remainingTime;
+        widget.onTick?.call(elapsed);
       } else {
         timer.cancel();
+        widget.onTimeUp?.call();
       }
     });
     super.initState();
@@ -42,11 +50,8 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   @override
   Widget build(final BuildContext context) {
-    // 1. Calculate the percentage (remaining / total)
     final double percentRemaining =
         remainingTime.inSeconds / widget.contestDuration.inSeconds;
-
-    // 2. Determine the color: Red if less than or equal to 10% remaining (90% passed)
     final Color timerColor = percentRemaining <= 0.1
         ? context.colorScheme.error
         : Colors.black;

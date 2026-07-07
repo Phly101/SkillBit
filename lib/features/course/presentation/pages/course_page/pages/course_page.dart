@@ -2,22 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:skill_bit/core/constants/course_constants.dart';
 import 'package:skill_bit/core/router/routes.dart';
-import 'package:skill_bit/core/utils/global/state_switcher.dart';
+import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/utils/global/assets.dart';
+import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
+import 'package:skill_bit/core/widgets/course/course_intro_skeleton.dart';
 import 'package:skill_bit/core/widgets/global/back_button.dart';
 import 'package:skill_bit/core/widgets/global/error/error_state_widget.dart';
 import 'package:skill_bit/core/widgets/onboarding/transition_screen_widget.dart';
 import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
-import '../../../../../../core/constants/course_constants.dart';
-import '../../../../../../core/utils/global/assets.dart';
-import '../../../Bloc/courseDetails/course_details_bloc.dart';
+import 'package:skill_bit/features/course/presentation/Bloc/courseDetails/course_details_bloc.dart';
+import 'package:skill_bit/features/course/presentation/pages/course_page/widgets/components/course_intro_widget.dart';
 
 class CoursePage extends StatelessWidget {
-  const CoursePage({super.key});
+  CoursePage({super.key, this.isEnrolledFromHome});
+
+  bool? isEnrolledFromHome;
 
   @override
   Widget build(final BuildContext context) {
-    return StateSwitcher<CourseDetailsBloc, CourseDetailsState>(
+    final String? courseId = GoRouterState
+        .of(
+      context,
+    )
+        .pathParameters['courseId'];
+
+    return BoxStateSwitcher<CourseDetailsBloc, CourseDetailsState>(
+      key: ValueKey('course_page_$courseId'),
       onInitial: (final BuildContext context, final CourseDetailsState state) {
         return Shimmer.fromColors(
           baseColor: Colors.grey[300]!,
@@ -33,55 +45,60 @@ class CoursePage extends StatelessWidget {
         );
       },
       onError:
-          (
-            final String message,
-            final BuildContext context,
-            final CourseDetailsState state,
-          ) {
-            final String? courseId = GoRouterState.of(
-              context,
-            ).pathParameters['courseId'];
-            return ErrorStateWidget(
-              message: message,
-              reFreshFunction: () {
-                context.read<CourseDetailsBloc>().add(
-                  LoadCourseDetails(courseId: courseId ?? 'id'),
-                );
-              },
-              routeFunction: () {
-                context.go(AppRoutes.home);
-              },
+          (final String message,
+          final BuildContext context,
+          final CourseDetailsState state,) {
+        final String? courseId = GoRouterState
+            .of(
+          context,
+        )
+            .pathParameters['courseId'];
+        return ErrorStateWidget(
+          message: message,
+          reFreshFunction: () {
+            context.read<CourseDetailsBloc>().add(
+              LoadCourseDetails(courseId: courseId ?? 'id'),
             );
           },
-      loadingWidget: const Center(child: CircularProgressIndicator()),
+          routeFunction: () {
+            context.go(AppRoutes.home);
+          },
+        );
+      },
+      loadingWidget: const CourseIntroSkeleton(),
       onSuccess: (final BuildContext context, final CourseDetailsState state) {
         final CourseDetailSuccess successState = state as CourseDetailSuccess;
-        final CourseEntity course = successState.course;
+        final CourseDetailsEntity course = successState.course;
+        if (isEnrolledFromHome == true) {
+          course.isEnrolled = true;
+        }
         return Stack(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(bottom: 30.0),
-              child: TransitionScreenWidget(
-                assetUrl: Assets.animation('Online_Learning.json'),
-                screenTitle: CourseConstants.title,
-                description: CourseConstants.description,
-                buttonText: CourseConstants.buttonText,
-                function: //Todo: Implement Function logic
-                () {
-                  final String? firstLessonId = course.lessons?.first.id;
-                  context.go(
-                    '${AppRoutes.course}/${course.id}/lesson/$firstLessonId',
-                  );
-                },
+            if (course.isEnrolled == false) ...<Widget>[
+              Positioned(
+                top: 20,
+                left: 16,
+                child: ArrowBackButton(
+                  color: context.colorScheme.onSurface,
+                  function: () => context.go(AppRoutes.home),
+                ),
               ),
-            ),
-            Positioned(
-              top: 40,
-              left: 10,
-              child: ArrowBackButton(
-                function: () => context.go(AppRoutes.home),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 30.0),
+                child: TransitionScreenWidget(
+                  assetUrl: Assets.animation('Online_Learning.json'),
+                  screenTitle: CourseConstants.title,
+                  description: CourseConstants.description,
+                  buttonText: CourseConstants.buttonText,
+                  function: () {
+                    context.read<CourseDetailsBloc>().add(
+                      EnrollCourseEvent(courseId: course.id),
+                    );
+                  },
+                ),
               ),
-            ),
+            ] else
+              CourseIntroWidget(course: course),
           ],
         );
       },

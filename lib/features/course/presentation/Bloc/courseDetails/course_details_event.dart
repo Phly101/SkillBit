@@ -11,3 +11,12 @@ class LoadCourseDetails extends CourseDetailsEvent {
   @override
   List<Object?> get props => <Object?>[courseId];
 }
+
+class EnrollCourseEvent extends CourseDetailsEvent {
+  const EnrollCourseEvent({required this.courseId});
+
+  final String courseId;
+
+  @override
+  List<Object?> get props => <Object?>[courseId];
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/theme/app_colors.dart';
-import '../../theme/theme.dart';
+import 'package:skill_bit/core/theme/app_colors.dart';
+import 'package:skill_bit/core/theme/theme.dart';
+
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({

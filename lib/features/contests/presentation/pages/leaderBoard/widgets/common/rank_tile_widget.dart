@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/global/image_utils.dart';
-import 'package:skill_bit/core/widgets/user/profile_guard_widget.dart';
 import 'package:skill_bit/core/widgets/global/shadow_container.dart';
+import 'package:skill_bit/core/widgets/user/profile_network_gaurd.dart';
 
 class RankTileWidget extends StatelessWidget {
   const RankTileWidget({
@@ -11,18 +11,18 @@ class RankTileWidget extends StatelessWidget {
     required this.profileUrl,
     required this.name,
     required this.score,
-    required this.id,
     required this.addFunction,
     required this.badgeUrl,
     required this.viewProfileFunction,
+    this.isCurrentUser = false,
   });
 
-  final String rank;
-  final String profileUrl;
-  final String badgeUrl;
+  final int rank;
+  final String? profileUrl;
+  final String? badgeUrl;
   final String name;
   final int score;
-  final String id;
+  final bool isCurrentUser;
   final void Function()?
   addFunction; //Todo: will be edited to adjust to the friend adding logic
   final void Function()?
@@ -33,6 +33,21 @@ class RankTileWidget extends StatelessWidget {
     return InkWell(
       onTap: viewProfileFunction,
       child: ShadowContainer(
+        border: Border.all(
+          color: isCurrentUser
+              ? context.colorScheme.secondary
+              : context.colorScheme.tertiary.withValues(alpha: 0.2),
+          width: isCurrentUser ? 2 : 1,
+        ),
+        boxShadow: isCurrentUser
+            ? <BoxShadow>[
+              BoxShadow(
+                color: context.colorScheme.secondary.withValues(alpha: 0.3),
+                blurRadius: 10,
+                spreadRadius: 2,
+              ),
+            ]
+            : null,
         child: Row(
           children: <Widget>[
             // 1. Rank & Profile
@@ -40,7 +55,7 @@ class RankTileWidget extends StatelessWidget {
             SizedBox(
               width: 30,
               child: Text(
-                rank,
+                rank.toString(),
                 style: context.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -51,14 +66,14 @@ class RankTileWidget extends StatelessWidget {
               onTap: () {
                 ImageUtils.showHeroPreview(
                   context: context,
-                  heroTag: 'hero-$name',
-                  profileUrl: profileUrl,
+                  heroTag: 'hero-$name-$rank',
+                  profileUrl: profileUrl ?? '',
                 );
               },
-              child: ProfileGuardWidget(
-                profileUrl: profileUrl,
+              child: ProfileNetworkGuardWidget(
+                profileUrl: profileUrl ?? '',
                 badgeUrl: badgeUrl,
-                heroTag: 'hero-$name',
+                heroTag: 'hero-$name-$rank',
                 width: 25,
                 height: 25,
               ),
@@ -87,7 +102,7 @@ class RankTileWidget extends StatelessWidget {
                   width: 50,
                   height: 40,
                   decoration: BoxDecoration(
-                    border: .all(color: context.colorScheme.primary,width: 2),
+                    border: .all(color: context.colorScheme.primary, width: 2),
                     borderRadius: BorderRadius.circular(12),
                     color: context.colorScheme.surface,
                   ),

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/utils/features/courses/course_item_icon_decider.dart';
-import 'package:skill_bit/core/utils/global/state_switcher.dart';
+import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
 import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/course/domain/entities/lesson_entity.dart';
 import 'package:skill_bit/features/course/presentation/Bloc/courseDetails/course_details_bloc.dart';
 import 'package:skill_bit/features/course/presentation/pages/main/widgets/components/course_drawer.dart';
+import 'package:skill_bit/features/course/presentation/pages/main/widgets/components/lesson_drawer_tile.dart';
+import 'package:skill_bit/features/course/presentation/pages/main/widgets/components/quiz_drawer_tile.dart';
 import '../../../../../core/di/injection_container.dart';
-import '../../../../../core/router/routes.dart';
-import '../../../../../core/widgets/global/nav_tile_widget.dart';
 
 class MainCourseNavigationPage extends StatelessWidget {
   const MainCourseNavigationPage({
@@ -25,12 +23,13 @@ class MainCourseNavigationPage extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return BlocProvider<CourseDetailsBloc>(
+      key: ValueKey('course_bloc_provider_$courseId'),
       create: (final BuildContext context) =>
           sl<CourseDetailsBloc>()
             ..add(LoadCourseDetails(courseId: courseId ?? '')),
       child: Scaffold(
-        drawer: StateSwitcher<CourseDetailsBloc, CourseDetailsState>(
-          onInitial: (final BuildContext context, final Object? state) =>
+        drawer: BoxStateSwitcher<CourseDetailsBloc, CourseDetailsState>(
+          onInitial: (final BuildContext context, final CourseDetailsState state) =>
               const SizedBox.shrink(),
           loadingWidget: const Center(child: CircularProgressIndicator()),
           onError:
@@ -49,61 +48,30 @@ class MainCourseNavigationPage extends StatelessWidget {
           onSuccess: (final BuildContext context, final Object? mainPageState) {
             final CourseDetailSuccess successState =
                 mainPageState as CourseDetailSuccess;
-            final CourseEntity course = successState.course;
-            final String courseId = course.id;
-            final List<Widget> drawerWidgets =
-                course.lessons?.expand((final LessonEntity lesson) {
-                  return <NavTileWidget>[
-                    // The Lesson Tile
-                    NavTileWidget(
-                      title: lesson.title,
-                      isIcon: true,
-                      icon: CourseItemIconDecider.decideLessonIcon(
-                        lesson.isLocked,
-                      ),
-                      iconColor: !lesson.isLocked
-                          ? context.colorScheme.onError
-                          : context.colorScheme.onSurface,
-                      size: 30,
-                      function: //Todo: Implement Function logic
-                      () {
-                        if (!lesson.isLocked) {
-                          context.go(
-                            '${AppRoutes.course}/$courseId/lesson/${lesson.id}',
-                          );
-                          Navigator.pop(context);
-                        }
-                      },
-                    ),
+            final CourseDetailsEntity course = successState.course;
 
-                    //  The Quiz Tile
-                    if (lesson.quiz != null)
-                      NavTileWidget(
-                        title: '${lesson.title} Quiz',
-                        isIcon: true,
-                        icon: CourseItemIconDecider.decideQuizIcon(
-                          lesson.isLocked,
-                          lesson.quiz!.icCompleted,
-                        ),
-                        iconColor: lesson.quiz!.icCompleted
-                            ? context.colorScheme.onError
-                            : context.colorScheme.onSurface,
-                        size: 30,
-                        function: //Todo: Implement Function logic
-                        () {
-                          if (!lesson.isLocked) {
-                            context.go(
-                              '${AppRoutes.course}/$courseId/lesson/${lesson.id}/quiz/${lesson.quiz!.id}',
-                            );
-                            Navigator.pop(context);
-                          }
-                        },
-                      ),
-                  ];
-                }).toList() ??
-                <Widget>[];
+            final List<Widget> drawerItems = <Widget>[];
+            for (final LessonViewEntity lesson in course.lessons) {
+              drawerItems.add(
+                LessonDrawerTile(
+                  key: ValueKey('lesson_${lesson.id}'),
+                  courseId: course.id,
+                  courseImageUrl: course.courseImage,
+                  lesson: lesson,
+                ),
+              );
+              if (lesson.quiz != null) {
+                drawerItems.add(
+                  QuizDrawerTile(
+                    key: ValueKey('quiz_${lesson.id}'),
+                    courseId: course.id,
+                    lesson: lesson,
+                  ),
+                );
+              }
+            }
 
-            return CourseDrawer(drawerItems: drawerWidgets);
+            return CourseDrawer(drawerItems: drawerItems);
           },
         ),
         body: body,

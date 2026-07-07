@@ -18,7 +18,8 @@ export './auth/presentation/pages/verification_page.dart';
 // Contest pages
 export 'contests/presentation/pages/contest_details/page/contest_details_page.dart';
 export 'contests/presentation/pages/contest_page/contest_page.dart';
-export 'contests/presentation/pages/contest_results/contest_result_page.dart';
+export 'contests/presentation/pages/leaderBoard/page/contest_review_page.dart';
+export '../core/widgets/global/results_page.dart';
 export 'contests/presentation/pages/leaderBoard/page/leaderboard_page.dart';
 
 // Home page
@@ -30,6 +31,8 @@ export './course/presentation/pages/main/main_course_nav_page.dart';
 export './course/presentation/pages/course_page/pages/course_page.dart';
 export './course/presentation/pages/lesson_page/pages/lesson_page.dart';
 export './quiz/presentation/pages/quiz_page.dart';
+export './quiz/presentation/pages/quiz_details_page.dart';
+export './quiz/presentation/pages/quiz_review_page.dart';
 
 // Notifications page
 export './notifications/presentation/pages/notification_page.dart';

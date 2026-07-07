@@ -16,18 +16,15 @@ class ResultsPageBody extends StatelessWidget {
     required this.rightAnswers,
     required this.reviewFunction,
     required this.showLeaderBoardFunction,
-  }) : assert(
-         correctScorePercentage + inCorrectScorePercentage <= 100,
-         'Total score percentage cannot exceed 100%',
-       );
+  });
 
   final bool isContest;
   final String pageTitle;
-  final double correctScorePercentage;
-  final double inCorrectScorePercentage;
-  final int totalQuestions;
-  final int wrongAnswers;
-  final int rightAnswers;
+  final num correctScorePercentage;
+  final num inCorrectScorePercentage;
+  final num totalQuestions;
+  final num wrongAnswers;
+  final num rightAnswers;
   final void Function() reviewFunction;
   final void Function() showLeaderBoardFunction;
 

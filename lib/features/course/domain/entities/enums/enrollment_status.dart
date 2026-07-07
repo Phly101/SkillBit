@@ -1,6 +1,7 @@
 enum EnrollmentStatus {
   active,
   completed,
-  locked;
+  locked,
+  unknown;
 }
 

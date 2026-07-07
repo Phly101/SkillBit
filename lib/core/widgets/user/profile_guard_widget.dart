@@ -76,9 +76,12 @@ class ProfileGuardWidget extends StatelessWidget {
               blurRadius: size * 0.2,
               offset: Offset(0, size * 0.08),
               child: Image.asset(
-                Assets.badge(badgeUrl!),
+                Assets.badge(
+                  badgeUrl!.endsWith('.png') ? badgeUrl! : '$badgeUrl.png',
+                ),
                 width: width! * 1.1,
                 height: height! * 1.1,
+                errorBuilder: (final BuildContext context, final Object error, final StackTrace? stackTrace) => const SizedBox(),
               ),
             ),
           ),

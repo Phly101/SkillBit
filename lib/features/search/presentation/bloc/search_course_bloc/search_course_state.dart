@@ -22,10 +22,10 @@ final class SearchCourseClear extends SearchCourseState implements ClearState {
 }
 
 final class SearchCourseSuccess extends SearchCourseState
-    implements SuccessState<List<CourseEntity>> {
+    implements SuccessState<List<CourseDetailsEntity>> {
   const SearchCourseSuccess({required this.courses});
 
-  final List<CourseEntity> courses;
+  final List<HomeCourseEntity> courses;
 
 
 

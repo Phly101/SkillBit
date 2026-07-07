@@ -18,40 +18,50 @@ class ErrorStateWidget extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Padding(
-          padding: const .only(left: 10.0, right: 10.0),
-          child: Column(
-            mainAxisAlignment: .center,
-            crossAxisAlignment: .start,
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const SizedBox(height: 50),
+          Row(
             children: <Widget>[
-              const SizedBox(height: 20),
-              Text(
-                message,
-                maxLines: 3,
-                overflow: .ellipsis,
-                style: context.textTheme.displayLarge,
+              if(routeFunction != null)
+                Row(
+                  children: <Widget>[
+                    ArrowBackButton(function: routeFunction),
+                  ],
+                )
+              else
+                const SizedBox(),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    '$message!',
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.textTheme.displayLarge!.copyWith(
+                      color: context.colorScheme.error,
+                    ),
+                  ),
+                ),
               ),
-              SizedBox(
-                width: double.infinity,
-                height: MediaQuery.heightOf(context) * 0.5,
-                child: Lottie.asset(Assets.animation('Error_404.json')),
-              ),
-              ElevatedButton(
-                onPressed: reFreshFunction,
-                child: Text('Refresh', style: context.textTheme.displayMedium),
-              ),
-              const SizedBox(height: 30),
             ],
           ),
-        ),
-        Positioned(
-          top: 40,
-          left: 10,
-          child: ArrowBackButton(function: reFreshFunction),
-        ),
-      ],
+          SizedBox(
+            width: double.infinity,
+            height: MediaQuery.heightOf(context) * 0.5,
+            child: Lottie.asset(Assets.animation('Error_404.json')),
+          ),
+          ElevatedButton(
+            onPressed: reFreshFunction,
+            child: Text('Refresh', style: context.textTheme.displayMedium),
+          ),
+          const SizedBox(height: 30),
+        ],
+      ),
     );
   }
 }

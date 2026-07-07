@@ -1,48 +1,67 @@
 import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/course/domain/entities/enums/course_type.dart';
+import '../../domain/entities/enums/enrollment_status.dart';
+import 'lesson_view_model.dart';
 
-import 'lesson_model.dart';
-
-class CourseModel extends CourseEntity {
-  CourseModel({
+class CourseDetailsModel extends CourseDetailsEntity {
+  CourseDetailsModel({
+    required super.isEnrolled,
+    required super.status,
     required super.id,
     required super.title,
-    required super.imageUrl,
-    required super.progress,
+    required super.description,
+    required super.type,
+    required super.isTutorial,
     required super.isLocked,
+    required super.courseImage,
     required super.lessons,
-    required super.courseType,
-    required super.scoreEarned,
   });
 
-  factory CourseModel.fromJson(final Map<String, dynamic> json) {
-    return CourseModel(
-      id: json['id'],
-      title: json['title'],
-      imageUrl: json['imageUrl'],
-      progress: json['progress'],
-      isLocked: json['isLocked'],
-      lessons: (json['lessons'] as List<dynamic>)
-          .map((final dynamic c) => LessonModel.fromJson(c))
-          .toList(),
-      courseType: CourseType.values.firstWhere(
-        (final CourseType e) => e.toString().split('.').last == json['type'],
+  factory CourseDetailsModel.fromJson(final Map<String, dynamic> json) {
+    final Map<String, dynamic> course =
+        json['course'] as Map<String, dynamic>? ?? <String, dynamic>{};
+
+    final EnrollmentStatus status = EnrollmentStatus.values.firstWhere(
+      (final dynamic e) => e.toString().split('.').last == course['status'],
+      orElse: () => EnrollmentStatus.unknown,
+    );
+
+    return CourseDetailsModel(
+      status: status,
+      isEnrolled: course['isEnrolled'] as bool? ?? false,
+      id: course['_id'] as String? ?? course['id'] as String? ?? '',
+      title: course['title'] as String? ?? '',
+      description: course['description'] as String? ?? '',
+      isLocked: course['isLocked'] as bool? ?? false,
+      courseImage: course['courseImage'] as String? ?? '',
+      isTutorial: course['isTutorial'] as bool? ?? false,
+      type: CourseType.values.firstWhere(
+        (final dynamic e) => e.toString().split('.').last == course['type'],
         orElse: () => CourseType.other,
       ),
-      scoreEarned: json['scoreEarned'],
+      lessons:
+          (course['lessons'] as List<dynamic>?)
+              ?.map(
+                (final dynamic c) =>
+                    LessonViewModel.fromJson(c as Map<String, dynamic>),
+              )
+              .toList() ??
+          <LessonViewModel>[],
     );
   }
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
+      'isEnrolled': isEnrolled,
       'id': id,
       'title': title,
-      'imageUrl': imageUrl,
-      'progress': progress,
+      'description': description,
+      'courseImage': courseImage,
+      'lessons': lessons.map((final LessonViewModel e) => e.toJson()).toList(),
+      'status': status.toString().split('.').last,
+      'type': type.toString().split('.').last,
+      'isTutorial': isTutorial,
       'isLocked': isLocked,
-      'lessons': lessons,
-      'courseType': courseType,
-      'scoreEarned': scoreEarned,
     };
   }
 }

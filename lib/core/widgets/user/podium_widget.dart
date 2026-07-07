@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import 'profile_guard_widget.dart';
+import 'package:skill_bit/core/widgets/user/profile_network_gaurd.dart';
+
 
 class PodiumWidget extends StatelessWidget {
   const PodiumWidget({
@@ -15,7 +16,7 @@ class PodiumWidget extends StatelessWidget {
     this.height = 30,
   });
 
-  final String standing;
+  final int standing;
   final String profileUrl;
   final String? badgeUrl;
   final double paddingTop;
@@ -32,13 +33,13 @@ class PodiumWidget extends StatelessWidget {
         children: <Widget>[
           // Label or Crown
           Text(
-            standing,
+            standing.toString(),
             style: context.textTheme.bodySmall!.copyWith(
               color: context.colorScheme.tertiary,
             ),
           ),
           const SizedBox(height: 8),
-          ProfileGuardWidget(
+          ProfileNetworkGuardWidget(
             profileUrl: profileUrl,
             badgeUrl: badgeUrl,
             radius: radius,

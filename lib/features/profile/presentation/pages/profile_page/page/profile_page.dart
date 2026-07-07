@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skill_bit/core/di/injection_container.dart';
 import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/utils/global/box_state_switcher.dart';
+import 'package:skill_bit/core/widgets/profile/profile_skeleton.dart';
+import 'package:skill_bit/features/contests/domain/entities/podium_entity.dart';
+import 'package:skill_bit/features/profile/presentation/Bloc/profile_bloc.dart';
 import 'package:skill_bit/features/profile/presentation/pages/profile_page/widgets/components/profile_body.dart';
 import 'package:skill_bit/features/profile/presentation/pages/profile_page/widgets/components/profile_header.dart';
-import '../../../../../../core/entities/leaderboard_entity.dart';
+
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -12,51 +18,38 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final List<LeaderboardEntity> contestantsList = <LeaderboardEntity>[
-    LeaderboardEntity(
-      userId: '1',
-      name: 'Ahmed Zaki',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 2500,
-      rank: '👑',
-      badgeIcon: 'badge1.png',
-      inPodium: true,
-    ),
-    LeaderboardEntity(
-      userId: '2',
-      name: 'Sarah Connor',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 2100,
-      rank: '2',
-      badgeIcon: 'badge1.png',
-      inPodium: true,
-    ),
-    LeaderboardEntity(
-      userId: '3',
-      name: 'John Doe',
-      profileUrl: 'Basel_EL_Rafei.jpeg',
-      score: 1950,
-      rank: '3',
-      badgeIcon: 'badge1.png',
-      inPodium: true,
-    ),
-  ];
-
   @override
   Widget build(final BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          const ProfileHeader(
-            profileUrl: 'Basel_EL_Rafei.jpeg',
-            userName: 'Basel',
-            userPoints: '200 points',
-            badgeUrl: 'badge1.png',
-          ),
-          ProfileBody(hasBestRank: true, topThree: contestantsList),
-          30.heightBox,
-        ],
+    return BlocProvider<ProfileBloc>(
+      create: (final BuildContext context) =>
+          sl<ProfileBloc>()..add(const ProfileDetailsRequested()),
+      child: BoxStateSwitcher<ProfileBloc, ProfileState>(
+        onInitial: (final BuildContext context, final ProfileState state) =>
+            const Center(child: CircularProgressIndicator()),
+        loadingWidget: const ProfileSkeleton() ,
+        onSuccess: (final BuildContext context, final ProfileState state) {
+          if (state is ProfileSuccess) {
+            return SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  ProfileHeader(
+                    profileUrl: state.userProfile.profilePicture ?? '',
+                    userName: state.userProfile.fullName,
+                    userPoints: '${state.userProfile.score} points',
+                    badgeUrl: state.userProfile.rank,
+                  ),
+                  const ProfileBody(
+                    hasBestRank: false,
+                    topThree: <TopThreeEntity>[],
+                  ),
+                  30.heightBox,
+                ],
+              ),
+            ).pH(20);
+          }
+          return const SizedBox.shrink();
+        },
       ),
-    ).pH(20);
+    );
   }
 }

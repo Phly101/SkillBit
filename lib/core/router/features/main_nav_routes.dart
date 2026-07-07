@@ -1,13 +1,8 @@
-import 'package:flutter/material.dart';
+import'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/router/features/profile_routes.dart';
 import '../../../features/features_index.dart'
-    show
-        HomePage,
-        MainNavigationPage,
-        AgendaPage,
-        ContestDetailsPage,
-        ProfilePage;
+    show HomePage, MainNavigationPage, ProfilePage, ContestDetailsPage;
 import '../routes.dart';
 
 class MainNavRoutes {
@@ -33,17 +28,17 @@ class MainNavRoutes {
             ),
           ],
         ),
-        StatefulShellBranch(
-          routes: <RouteBase>[
-            // agenda page
-            GoRoute(
-              path: AppRoutes.agenda,
-              builder:
-                  (final BuildContext context, final GoRouterState state) =>
-                      const AgendaPage(),
-            ),
-          ],
-        ),
+        // StatefulShellBranch(
+        //   routes: <RouteBase>[
+        //     // agenda page
+        //     GoRoute(
+        //       path: AppRoutes.agenda,
+        //       builder:
+        //           (final BuildContext context, final GoRouterState state) =>
+        //               const AgendaPage(),
+        //     ),
+        //   ],
+        // ),
         StatefulShellBranch(
           routes: <RouteBase>[
             // contest page

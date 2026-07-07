@@ -11,13 +11,13 @@ class LineProgressWidget extends StatelessWidget {
   });
 
   final Color progressColor;
-  final double? progress;
+  final num? progress;
   final double? minHeight;
 
   @override
   Widget build(final BuildContext context) {
     return LinearProgressIndicator(
-      value: progress,
+      value: progress!.toDouble(),
       backgroundColor: const Color(0xffCFDBE8),
       valueColor: AlwaysStoppedAnimation<Color>(progressColor),
       minHeight: 8,

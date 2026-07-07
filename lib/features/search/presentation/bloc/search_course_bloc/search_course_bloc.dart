@@ -44,14 +44,14 @@ class SearchCourseBloc extends Bloc<SearchCourseEvent, SearchCourseState> {
     // searching state
 
     emit(SearchCourseLoading());
-    final Either<Failure, List<CourseEntity>> result =
+    final Either<Failure, List<HomeCourseEntity>> result =
        await searchCourseUseCase(SearchCourseParams(event.query));
     result.fold(
       //Failure case
       (final Failure failure) =>
           emit(const SearchCourseError(message: 'Failed to fetch Courses')),
       //Success case
-      (final List<CourseEntity> courses) =>
+      (final List<HomeCourseEntity> courses) =>
           emit(SearchCourseSuccess(courses: courses)),
     );
   }
@@ -61,7 +61,7 @@ class SearchCourseBloc extends Bloc<SearchCourseEvent, SearchCourseState> {
     final SearchCourseCleared event,
     final Emitter<SearchCourseState> emit,
   ) async {
-    final Either<Failure,List<CourseEntity> > result =
+    final Either<Failure,List<HomeCourseEntity> > result =
       await  searchCourseUseCase(const SearchCourseParams(''));
 
     result.fold(
@@ -69,7 +69,7 @@ class SearchCourseBloc extends Bloc<SearchCourseEvent, SearchCourseState> {
       (final Failure failure) =>
           emit(const SearchCourseError(message: 'Could not reset list')),
       //Success case
-      (final List<CourseEntity> courses) =>
+      (final List<HomeCourseEntity> courses) =>
           emit(SearchCourseSuccess(courses: courses)),
     );
   }

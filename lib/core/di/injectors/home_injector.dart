@@ -16,5 +16,6 @@ void initHomeFeature() {
   // sl.registerLazySingleton(() => HomeUseCase(sl()));
 
   //! Feature Bloc
-  sl.registerFactory(() => HomeBloc(fetchCoursesByLevelUseCase: sl()));
+
+  sl.registerFactory(() => HomeBloc( getHomeData: sl()));
 }

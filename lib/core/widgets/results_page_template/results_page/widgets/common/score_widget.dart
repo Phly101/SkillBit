@@ -8,8 +8,8 @@ class ScoreWidget extends StatelessWidget {
     required this.inCorrectScorePercentage,
   });
 
-  final double correctScorePercentage;
-  final double inCorrectScorePercentage;
+  final num correctScorePercentage;
+  final num inCorrectScorePercentage;
 
   @override
   Widget build(final BuildContext context) {

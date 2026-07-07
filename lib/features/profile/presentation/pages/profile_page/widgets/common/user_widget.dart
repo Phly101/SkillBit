@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/app_colors.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/global/image_utils.dart';
-import 'package:skill_bit/core/widgets/user/profile_guard_widget.dart';
+import 'package:skill_bit/core/widgets/user/profile_network_gaurd.dart';
 
 class UserWidget extends StatelessWidget {
   const UserWidget({
@@ -32,7 +32,7 @@ class UserWidget extends StatelessWidget {
               heroTag: 'profile-pic',
             );
           },
-          child: ProfileGuardWidget(
+          child: ProfileNetworkGuardWidget(
             profileUrl: profileUrl,
             badgeUrl: badgeUrl,
             heroTag: 'profile-pic',

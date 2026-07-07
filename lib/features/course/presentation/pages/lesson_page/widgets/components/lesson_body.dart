@@ -1,7 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:skill_bit/core/widgets/global/expandable_text_state.dart';
+import 'package:skill_bit/core/widgets/global/expandable_text.dart';
 
-import '../../../../../../../core/utils/global/assets.dart';
 
 class LessonBody extends StatelessWidget {
   const LessonBody({
@@ -28,14 +28,15 @@ class LessonBody extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: .circular(12),
               image: DecorationImage(
-                image: AssetImage(Assets.imageCourse(imageUrl)),
+                image: CachedNetworkImageProvider(imageUrl),
                 fit: .fill,
               ),
             ),
           ),
           const SizedBox(height: 20),
           // course description
-          ExpandableText(text: description),
+
+          ExpandableText(text: description , courseId: courseId),
         ],
       ),
     );

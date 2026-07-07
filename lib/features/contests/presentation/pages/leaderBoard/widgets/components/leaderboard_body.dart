@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/features/contests/presentation/pages/leaderBoard/widgets/common/rank_tile_widget.dart';
 
-import '../../../../../../../core/entities/leaderboard_entity.dart';
+import '../../../../../domain/entities/leaderboard_entity.dart';
+import '../../../../../domain/entities/my_results_entity.dart';
 
 class LeaderboardBody extends StatelessWidget {
-  const LeaderboardBody({super.key, required this.contestantsList});
+  const LeaderboardBody({
+    super.key,
+    required this.contestantsList,
+    this.myResult,
+  });
 
   final List<LeaderboardEntity> contestantsList;
+  final MyResultEntity? myResult;
 
   @override
   Widget build(final BuildContext context) {
@@ -24,17 +30,18 @@ class LeaderboardBody extends StatelessWidget {
 
         itemBuilder: (final BuildContext context, final int index) {
           final LeaderboardEntity contestant = contestantsList[index];
+          final bool isCurrentUser =
+              myResult != null && contestant.fullname == myResult!.fullname;
+
           return RankTileWidget(
             rank: contestant.rank,
-            profileUrl: contestant.profileUrl,
-            badgeUrl: contestant.badgeIcon,
-            name: contestant.name,
+            profileUrl: contestant.profilePicture ?? '',
+            badgeUrl: contestant.badge,
+            name: contestant.fullname,
             score: contestant.score,
-            id: contestant.userId,
-            addFunction: //Todo: Implement Function logic
-                () {},
-            viewProfileFunction: //Todo: Implement Function logic
-                () {},
+            isCurrentUser: isCurrentUser,
+            addFunction: () {},
+            viewProfileFunction: () {},
           ).p10();
         },
       ),

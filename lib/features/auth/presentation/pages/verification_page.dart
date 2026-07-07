@@ -6,9 +6,13 @@ import 'package:skill_bit/core/router/routes.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/utils/features/auth/validators.dart';
 import 'package:skill_bit/core/widgets/auth/auth_submit_button.dart';
+import 'package:skill_bit/features/auth/presentation/Bloc/auth_bloc.dart';
+import 'package:skill_bit/features/auth/presentation/widgets/auth_specific/otp_widget.dart';
+import 'package:skill_bit/features/auth/presentation/widgets/common/screen_layout.dart';
+import 'package:skill_bit/features/auth/presentation/widgets/components/header_widget.dart';
 
-import '../Bloc/auth_bloc.dart';
-import '../widgets/widgets.dart';
+import '../widgets/components/footer_widget.dart';
+
 
 class VerificationPage extends StatefulWidget {
   const VerificationPage({

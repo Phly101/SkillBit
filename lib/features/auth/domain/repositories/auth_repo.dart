@@ -12,7 +12,9 @@ abstract class AuthRepo {
   Future<Either<Failure, UserEntity>> signUp({
     required final String email,
     required final String password,
+    required final String confirmPassword,
     required final String name,
+    final String role,
   });
 
   Future<Either<Failure, void>> logout();
@@ -37,5 +39,6 @@ abstract class AuthRepo {
   });
 
   Future<Either<Failure, AuthResponseModel>> refreshToken();
-  Future<Either<Failure,bool>> isAuthenticated();
+
+  Future<Either<Failure, bool>> isAuthenticated();
 }

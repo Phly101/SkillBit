@@ -46,7 +46,7 @@ class AppRoutes {
   //? Contest screens
   static const String contestDetails = '/contestDetails';
   static const String contestPage = '/contestPage';
-  static const String contestResults = '/contestResults';
+  static const String resultsPage = '/contestResults';
   static const String contestReview = '/contestReview';
   static const String contestLeaderboards = '/contestLeaderBoards';
 }

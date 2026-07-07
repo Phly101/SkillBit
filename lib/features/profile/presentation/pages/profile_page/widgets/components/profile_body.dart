@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skill_bit/core/theme/theme.dart';
-import '../../../../../../../core/entities/leaderboard_entity.dart';
+import 'package:skill_bit/features/contests/domain/entities/podium_entity.dart';
 import '../../../../../../../core/widgets/user/best_ranking_widget.dart';
 import '../common/growth_graph_widget.dart';
 import '../common/progress_pie_chart_widget.dart';
@@ -13,7 +13,7 @@ class ProfileBody extends StatelessWidget {
   });
 
   final bool hasBestRank;
-  final List<LeaderboardEntity> topThree;
+  final List<TopThreeEntity>? topThree;
 
   @override
   Widget build(final BuildContext context) {
@@ -21,7 +21,10 @@ class ProfileBody extends StatelessWidget {
       mainAxisAlignment: .center,
       children: <Widget>[
         if (hasBestRank) ...<Widget>[
-          BestRankingWidget(topThree: topThree, isProfile: true),
+          BestRankingWidget(
+            topThree: topThree ?? <TopThreeEntity>[],
+            isProfile: true,
+          ),
         ],
         80.heightBox,
         const GrowthGraphWidget(),

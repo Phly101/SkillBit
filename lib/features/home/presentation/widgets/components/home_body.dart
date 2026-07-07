@@ -6,6 +6,7 @@ import 'package:skill_bit/features/course/domain/entities/course_entity.dart';
 import 'package:skill_bit/features/home/presentation/widgets/common/course_card_widget.dart';
 import 'package:skill_bit/features/home/presentation/widgets/common/level_row_widget.dart';
 import 'package:skill_bit/features/home/presentation/widgets/common/path_details_widget.dart';
+import '../../../../../core/widgets/alerts/locked_alert.dart';
 import '../../../../../core/router/routes.dart';
 
 class HomeBody extends StatelessWidget {
@@ -13,10 +14,14 @@ class HomeBody extends StatelessWidget {
     super.key,
     required this.courses,
     required this.currentLevel,
+    required this.levelProgress,
+    required this.activeStep,
   });
 
-  final List<CourseEntity> courses;
-  final String currentLevel;
+  final List<HomeCourseEntity> courses;
+  final int currentLevel;
+  final num levelProgress;
+  final int activeStep;
 
   @override
   Widget build(final BuildContext context) {
@@ -26,11 +31,11 @@ class HomeBody extends StatelessWidget {
         const SliverToBoxAdapter(child: SizedBox(height: 20)),
         SliverToBoxAdapter(
           child: PathDetailsWidget(
-            progressMade: courses.completedPercentage,
-            progressLeft: courses.remainingPercentage,
+            progress: levelProgress,
             courseTitles: courses.courseTitles,
             lockedCourses: courses.lockedStatus,
             coursesListLength: courses.length,
+            activeStep: activeStep,
           ),
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 20)),
@@ -45,7 +50,7 @@ class HomeBody extends StatelessWidget {
           itemCount: courses.length,
           addAutomaticKeepAlives: false,
           itemBuilder: (final BuildContext context, final int index) {
-            final CourseEntity coursesItem = courses[index];
+            final HomeCourseEntity coursesItem = courses[index];
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: CourseCardWidget(
@@ -54,21 +59,18 @@ class HomeBody extends StatelessWidget {
                 title: coursesItem.title,
                 progress: coursesItem.progress,
                 isLocked: coursesItem.isLocked,
-                function: //Todo: Implement Function logic
-                () {
+                function: () {
                   if (!coursesItem.isLocked) {
-                    if (coursesItem.progress == 0.0) {
-                      context.go('${AppRoutes.course}/${coursesItem.id}');
-                    } else {
-                      final String firstLessonId =
-                          coursesItem.lessons?.first.id ?? '';
-
-                      context.go(
-                        '${AppRoutes.course}/${coursesItem.id}/lesson/$firstLessonId',
-                      );
-                    }
+                    context.go(
+                      '${AppRoutes.course}/${coursesItem.id}?isEnrolled=${coursesItem.isEnrolled}',
+                    );
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (final BuildContext context) =>
+                          const LockedAlert(),
+                    );
                   }
-                  //Todo: add else clause with show dialoge
                 },
               ),
             );

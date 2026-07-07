@@ -12,6 +12,7 @@ class ShadowContainer extends StatelessWidget {
     this.margin,
     this.shadowColor,
     this.border,
+    this.boxShadow,
   });
 
   final Widget child;
@@ -23,6 +24,7 @@ class ShadowContainer extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final Color? shadowColor;
   final BoxBorder? border;
+  final List<BoxShadow>? boxShadow;
 
   @override
   Widget build(final BuildContext context) {
@@ -35,7 +37,7 @@ class ShadowContainer extends StatelessWidget {
         borderRadius: shape == BoxShape.rectangle
             ? BorderRadius.circular(borderRadius)
             : null,
-        boxShadow: <BoxShadow>[
+        boxShadow: boxShadow ?? <BoxShadow>[
           BoxShadow(
             color: shadowColor ?? Colors.black.withValues(alpha: 0.25),
             blurRadius: blurRadius,

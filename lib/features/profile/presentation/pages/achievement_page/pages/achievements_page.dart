@@ -3,8 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_bit/core/theme/theme.dart';
 import 'package:skill_bit/core/widgets/global/back_button.dart';
 import 'package:skill_bit/features/profile/domain/entities/achievement_entity.dart';
-import '../../../../domain/enums/trophy_status.dart';
-import '../widgets/components/achievement_body.dart';
+import 'package:skill_bit/features/profile/domain/enums/trophy_status.dart';
+import 'package:skill_bit/features/profile/presentation/pages/achievement_page/widgets/components/achievement_body.dart';
+
 
 class AchievementsPage extends StatelessWidget {
   const AchievementsPage({super.key});
@@ -121,6 +122,14 @@ class AchievementsPage extends StatelessWidget {
         title: 'Beta Tester',
         url: 'gold_trophy.png',
         description: 'Participated in the SkillBit early access program.',
+        isLocked: false,
+        status: TrophyStatus.silver,
+      ),
+      const AchievementEntity(
+        id: '15',
+        title: 'Perfectionist',
+        url: 'gold_trophy.png',
+        description: 'Scored 100% on a quiz without using any hints.',
         isLocked: false,
         status: TrophyStatus.silver,
       ),

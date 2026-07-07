@@ -10,7 +10,14 @@ class Assets {
 
   static String icon(final String name) => 'assets/icons/$name';
 
-  static String badge(final String name) => 'assets/icons/badges/$name';
+  static String badge(final String name) {
+    // Map common names/typos to actual file names
+    String fileName = name;
+    if (name.toLowerCase() == 'beginner') {
+      fileName = 'bigenner';
+    }
+    return 'assets/icons/badges/${fileName.endsWith('.png') ? fileName : '$fileName.png'}';
+  }
 
   static String animation(final String name) => 'assets/animations/$name';
 }

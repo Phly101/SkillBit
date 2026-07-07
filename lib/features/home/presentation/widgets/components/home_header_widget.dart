@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:skill_bit/core/constants/home_strings.dart';
-import 'package:skill_bit/core/router/routes.dart';
-import 'package:skill_bit/core/theme/theme.dart';
-import 'package:skill_bit/core/widgets/user/avatar_widget.dart';
-import 'package:skill_bit/core/widgets/global/button_widget.dart';
 
+// import 'package:go_router/go_router.dart';
+import 'package:skill_bit/core/constants/home_strings.dart';
+
+// import 'package:skill_bit/core/router/routes.dart';
+import 'package:skill_bit/core/theme/theme.dart';
+import 'package:skill_bit/core/widgets/user/profile_network_gaurd.dart';
+
+// import 'package:skill_bit/core/widgets/global/button_widget.dart';
 import '../../../../../core/widgets/global/search_field_widget.dart';
 import '../../../../search/presentation/bloc/search_course_bloc/search_course_bloc.dart';
 
@@ -18,7 +20,7 @@ class HomeHeaderWidget extends StatefulWidget {
     required this.profileUrl,
   });
 
-  final String profileUrl;
+  final String? profileUrl;
   final String name;
   final void Function() onTap;
 
@@ -28,17 +30,20 @@ class HomeHeaderWidget extends StatefulWidget {
 
 class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
   final TextEditingController _controller = .new();
-  final FocusNode _focusNode= .new();
-@override
-void initState() {
+  final FocusNode _focusNode = .new();
+
+  @override
+  void initState() {
     super.initState();
     _focusNode.addListener(_onFocusChange);
   }
-  void _onFocusChange(){
+
+  void _onFocusChange() {
     if (!_focusNode.hasFocus && _controller.text.isEmpty) {
       context.read<SearchCourseBloc>().add(SearchCourseResetToOriginal());
     }
   }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -74,10 +79,17 @@ void initState() {
               ),
             ),
             const Spacer(),
-            AvatarWidget(profileUrl: widget.profileUrl,radius: 35,),
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: ProfileNetworkGuardWidget(
+                profileUrl: widget.profileUrl ?? '',
+                radius: 35,
+              ),
+            ),
           ],
         ),
         30.heightBox,
+        // search button
         Row(
           mainAxisAlignment: .spaceBetween,
           children: <Widget>[
@@ -93,7 +105,7 @@ void initState() {
                     return SearchFieldWidget(
                       focusNode: _focusNode,
                       controller: _controller,
-                      width: MediaQuery.sizeOf(context).width * 0.8,
+                      width: MediaQuery.sizeOf(context).width * 0.95,
                       onChanged: (final String value) {
                         courseBloc.add(SearchCourseUpdated(value));
                       },
@@ -107,16 +119,16 @@ void initState() {
                     );
                   },
             ),
-            ButtonWidget(
-              function: () {
-                context.go(AppRoutes.notifications);
-              },
-              child: Icon(
-                Icons.notifications,
-                color: context.colorScheme.secondary,
-                size: 35,
-              ),
-            ),
+            // ButtonWidget(
+            //   function: () {
+            //     context.go(AppRoutes.notifications);
+            //   },
+            //   child: Icon(
+            //     Icons.notifications,
+            //     color: context.colorScheme.secondary,
+            //     size: 35,
+            //   ),
+            // ),
           ],
         ),
         25.heightBox,

@@ -7,7 +7,7 @@ import '../common/course_card_widget.dart';
 class SearchListWidget extends StatelessWidget {
   const SearchListWidget({super.key, required this.courses});
 
-  final List<CourseEntity> courses;
+  final List<HomeCourseEntity> courses;
 
   @override
   Widget build(final BuildContext context) {
@@ -15,7 +15,7 @@ class SearchListWidget extends StatelessWidget {
       itemCount: courses.length,
       addAutomaticKeepAlives: false,
       itemBuilder: (final BuildContext context, final int index) {
-        final CourseEntity coursesItem = courses[index];
+        final HomeCourseEntity coursesItem = courses[index];
         return CourseCardWidget(
           courseId: coursesItem.id,
           courseUrl: coursesItem.imageUrl,
@@ -25,9 +25,7 @@ class SearchListWidget extends StatelessWidget {
           function: //Todo: Implement Function logic
           () {
             if (!coursesItem.isLocked) {
-              context.go(
-                '${AppRoutes.course}/${coursesItem.id}}',
-              );
+              context.go('${AppRoutes.course}/${coursesItem.id}}');
             }
             //Todo: add else clause with show dialoge
             ScaffoldMessenger.of(context).showSnackBar(
